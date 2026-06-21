@@ -150,8 +150,8 @@ The evaluation of LLM-based code generation has progressed along a clear traject
 HumanEval~\citep{chen2021evaluating} and MBPP~\citep{austin2021program} established function-level benchmarks with unit-test-based pass rates.
 BigCodeBench~\citep{zhuo2024bigcodebench} extended this to multi-library compositions.
 SWE-bench~\citep{jimenez2024swebench} introduced real-world GitHub issue resolution, requiring agents to navigate complex codebases and produce patches that pass existing test suites.
-LiveCodeBench~\citep{jain2024livecodebench} addressed contamination concerns by using temporally filtered competition problems.
-DevBench~\citep{li2024devbench} and ProjDevBench~\citep{zhang2024projdevbench} pushed toward full project-scale development.
+LiveCodeBench~\citep{jain2024livecodebench} and PeerBench~\citep{cheng2025peerbench} addressed contamination concerns by using temporally filtered competition problems and proctored execution environments.
+DevBench~\citep{li2024devbench}, ProjDevBench~\citep{zhang2024projdevbench}, and ProjectEval~\citep{liu2025projecteval} pushed toward full project-scale development and automated simulation of user acceptance.
 Terminal-Bench~\citep{xie2024terminalbench} evaluates agents in realistic terminal environments.
 AgentBench~\citep{liu2023agentbench} provides a multi-dimensional evaluation of LLMs as agents across diverse environments.
 
@@ -595,7 +595,7 @@ We design tasks to be capability-level-agnostic where possible, but some tasks m
 
 \paragraph{Benchmark contamination.}
 As with all public benchmarks~\citep{jacovi2023stop,zhang2024careful}, there is a risk that future agents will be trained on \bench{} tasks.
-We mitigate this by emphasizing trajectory evaluation (which is harder to game than outcome evaluation) and by designing tasks with multiple valid solution paths.
+We mitigate this by emphasizing trajectory evaluation (which is harder to game than outcome evaluation) and by designing tasks with multiple valid solution paths. Recent proposals such as PeerBench~\citep{cheng2025peerbench} aim to address this systematically via proctored execution, which is highly complementary to our approach.
 
 
 
