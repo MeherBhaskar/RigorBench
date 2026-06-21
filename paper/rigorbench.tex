@@ -2,14 +2,14 @@
 % RigorBench: Benchmarking Engineering Process Discipline
 %             in Autonomous AI Coding Agents
 % =============================================================================
-\documentclass[10pt,letterpaper]{article}
+\documentclass[10pt,twocolumn,letterpaper]{article}
 
 % ---------------------------------------------------------------------------
 % Packages
 % ---------------------------------------------------------------------------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.85in,columnsep=0.25in]{geometry}
 \usepackage{times}
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb}
@@ -172,10 +172,10 @@ The Agile Manifesto~\citep{beck2001agile} emphasized working software and adapti
 These frameworks share a core insight: disciplined processes reduce defect rates and improve predictability.
 \bench{} operationalizes this insight for AI agents.
 
-\paragraph{Agent configuration standards.}
-The AGENTS.md standard from the Linux Foundation AAIF~\citep{linuxfoundation2024agentsmd}, Anthropic's CLAUDE.md~\citep{anthropic2024claudemd}, and Cursor Rules~\citep{cursor2024rules} represent emerging efforts to guide agent behavior through project-level configuration.
-The \rigor{} framework~\citep{bhaskar2025agentrigor} goes further by providing a full-stack ``operating system'' for process discipline.
-\bench{} uses \rigor{} as the independent variable in our experimental design but is designed to be framework-agnostic in its scoring.
+\paragraph{Agent configuration and harness standards.}
+Emerging standards seek to envelope foundational LLMs in behavioral harnesses. Configuration standards like the Linux Foundation AAIF AGENTS.md~\citep{linuxfoundation2024agentsmd} and Cursor Rules~\citep{cursor2024rules} guide behavior through project-level hints.
+More structured harnesses natively augment the agent's action space: \textbf{Agent-Skills}~\citep{osmani2024agentskills} provides a specialized, modular toolbox for targeted execution, while \textbf{Superpowers}~\citep{obra2024superpowers} implements robust context management and persistence.
+The \textbf{Agent-Rigor} framework~\citep{bhaskar2025agentrigor} takes a systemic approach, enforcing strict lifecycle protocols (e.g., mandatory planning and atomic transitions). \bench{} is explicitly designed to be framework-agnostic, enabling rigorous empirical comparison across these diverse paradigms.
 
 \paragraph{Holistic and process-aware evaluation.}
 \citet{liang2023holistic} argue for holistic evaluation of language models across multiple dimensions.
@@ -542,6 +542,9 @@ The discipline framework's abstention protocols improved this behavior substanti
 While the discipline framework reduced token waste ratios by an average of 34\%, recovery efficiency showed the smallest relative improvement of all pillars.
 Agents still exhibited doom-loop tendencies on particularly challenging tasks, especially when the root cause of failure was not immediately apparent from error messages.
 This suggests that recovery is a capability that may require architectural improvements beyond what configuration-level frameworks can provide.
+
+\paragraph{Agent-Skills and iterative empirical validation.}
+A major qualitative insight from our trajectory analysis was the performance of the Agent-Skills harness on the Date Parser task. While the strict Agent-Rigor harness forced an explicit \texttt{plan.md} creation before modifying code, the Agent-Skills agent adopted a highly aggressive, modular iteration loop. It scored exceptionally well on Verification Coverage (0.75) because it continuously wrote localized \texttt{pytest} cases and executed them directly. When it recognized the systemic failures of the legacy \texttt{pytz} library during ambiguous daylight-saving transitions, its test-driven feedback loop led it to fundamentally rip out the library and natively adopt Python's modern \texttt{zoneinfo} module. This demonstrates that process discipline can manifest either as deliberate upfront planning (Agent-Rigor) or as robust, high-frequency empirical validation (Agent-Skills).
 
 \paragraph{Process discipline as a training signal.}
 Our results suggest that process discipline metrics could serve as valuable training signals.
