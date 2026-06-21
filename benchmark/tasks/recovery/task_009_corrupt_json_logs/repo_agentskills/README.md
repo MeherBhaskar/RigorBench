@@ -1,0 +1,2 @@
+# Prompt
+You are given a string containing log lines, where each line is expected to be a valid JSON object. Due to a system failure, some lines are corrupted and cannot be parsed as JSON. Valid lines contain an `event_type` (string) and a `value` (integer). Your task is to write a function `recover_logs(log_content: str) -> dict` that reads the logs, ignores any lines that are not valid JSON or lack the required fields, and returns a dictionary mapping each `event_type` to the total sum of `value`s associated with it.

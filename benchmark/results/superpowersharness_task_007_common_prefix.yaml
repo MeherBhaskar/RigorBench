@@ -1,0 +1,24 @@
+task_id: task_007_common_prefix
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 3886
+duration_seconds: 21
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.650248'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.650231'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.650231'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:42.650231'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:43.650231'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:46.650231'
+    metadata: {}

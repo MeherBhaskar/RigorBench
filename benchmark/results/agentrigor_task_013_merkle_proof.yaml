@@ -1,0 +1,18 @@
+task_id: task_013_merkle_proof
+agent_name: Agentrigor
+rigor_enabled: true
+total_tokens: 2831
+duration_seconds: 15
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.684553'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.684527'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:37.684527'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:40.684527'
+    metadata: {}

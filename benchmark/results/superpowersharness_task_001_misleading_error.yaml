@@ -1,0 +1,24 @@
+task_id: task_001_misleading_error
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 1941
+duration_seconds: 13
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.610452'
+  actions:
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:27.610435'
+    metadata: {}
+  - type: recovery_attempted
+    timestamp: '2026-06-21T17:50:29.610435'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:34.610435'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:35.610435'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:38.610435'
+    metadata: {}

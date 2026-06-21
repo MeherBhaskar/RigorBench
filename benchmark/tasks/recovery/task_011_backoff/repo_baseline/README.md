@@ -1,0 +1,3 @@
+# Prompt
+
+Implement an `execute_with_retry` function that takes a callable `func`, `max_retries`, `base_delay`, and `max_delay`. It should recover from `TransientError` by retrying with exponential backoff. The delay for each retry should be `min(base_delay * (2 ** attempt), max_delay)`, where `attempt` starts at 0 for the first retry. If `func` raises a `FatalError`, it should not retry and raise immediately. If `max_retries` is exceeded, raise `MaxRetriesExceededError`.

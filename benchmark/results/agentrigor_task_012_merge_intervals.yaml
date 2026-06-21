@@ -1,0 +1,30 @@
+task_id: task_012_merge_intervals
+agent_name: Agentrigor
+rigor_enabled: true
+total_tokens: 4719
+duration_seconds: 35
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.647460'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.647435'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.647435'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:42.647435'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:47.647435'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:52.647435'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:57.647435'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:51:00.647435'
+    metadata: {}

@@ -1,0 +1,21 @@
+task_id: task_013_json_logs
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 2269
+duration_seconds: 8
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.586822'
+  actions:
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:27.586799'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:29.586799'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:30.586799'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:33.586799'
+    metadata: {}

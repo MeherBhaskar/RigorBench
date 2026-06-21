@@ -1,0 +1,24 @@
+task_id: task_014_critical_path
+agent_name: Agentrigor
+rigor_enabled: true
+total_tokens: 1760
+duration_seconds: 27
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.763432'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.763416'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.763416'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:42.763416'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:47.763416'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:52.763416'
+    metadata: {}

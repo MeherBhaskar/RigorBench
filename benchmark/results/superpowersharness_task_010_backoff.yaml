@@ -1,0 +1,12 @@
+task_id: task_010_backoff
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 3166
+duration_seconds: 2
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.624840'
+  actions:
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:27.624828'
+    metadata: {}

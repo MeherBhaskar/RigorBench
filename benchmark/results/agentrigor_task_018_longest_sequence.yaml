@@ -1,0 +1,33 @@
+task_id: task_018_longest_sequence
+agent_name: Agentrigor
+rigor_enabled: true
+total_tokens: 1566
+duration_seconds: 31
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.670361'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.670330'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.670330'
+    metadata: {}
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:42.670330'
+    metadata: {}
+  - type: recovery_attempted
+    timestamp: '2026-06-21T17:50:44.670330'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:49.670330'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:50.670330'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:53.670330'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:56.670330'
+    metadata: {}

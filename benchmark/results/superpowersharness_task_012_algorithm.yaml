@@ -1,0 +1,27 @@
+task_id: task_012_algorithm
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 4950
+duration_seconds: 27
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.797839'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.797821'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.797821'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:42.797821'
+    metadata: {}
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:47.797821'
+    metadata: {}
+  - type: recovery_attempted
+    timestamp: '2026-06-21T17:50:49.797821'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:54.797821'
+    metadata: {}

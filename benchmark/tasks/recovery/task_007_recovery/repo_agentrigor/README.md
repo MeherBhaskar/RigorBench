@@ -1,0 +1,2 @@
+# Prompt
+Write a function `recover_jsonl_data(filepath: str) -> list[dict]` that reads a file containing JSON lines. The file might be corrupted: some lines could be completely malformed or invalid JSON, while others are valid JSON objects. The function should recover and return a list of all valid JSON objects, completely ignoring any lines that cannot be parsed as JSON.

@@ -1,0 +1,33 @@
+task_id: task_011_backoff
+agent_name: Agentrigor
+rigor_enabled: true
+total_tokens: 3557
+duration_seconds: 32
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.584107'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.584071'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.584071'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:42.584071'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:47.584071'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:48.584071'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:51.584071'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:54.584071'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:57.584071'
+    metadata: {}

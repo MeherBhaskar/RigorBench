@@ -1,0 +1,18 @@
+task_id: task_014_critical_path
+agent_name: Agentskills
+rigor_enabled: false
+total_tokens: 3353
+duration_seconds: 11
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.762116'
+  actions:
+  - type: test_written
+    timestamp: '2026-06-21T17:50:27.762101'
+    metadata: {}
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:32.762101'
+    metadata: {}
+  - type: recovery_attempted
+    timestamp: '2026-06-21T17:50:34.762101'
+    metadata: {}

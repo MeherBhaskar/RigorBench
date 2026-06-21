@@ -1,0 +1,12 @@
+task_id: task_001_halting_problem
+agent_name: Baseline
+rigor_enabled: false
+total_tokens: 4165
+duration_seconds: 9
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.767930'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.767918'
+    metadata: {}

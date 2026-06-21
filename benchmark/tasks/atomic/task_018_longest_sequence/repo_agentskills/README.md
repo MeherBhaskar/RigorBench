@@ -1,0 +1,2 @@
+# Prompt
+Write a Python function `longest_identical_sequence(s)` that takes a string `s` and returns a tuple containing the character that forms the longest contiguous sequence of identical characters, and the length of that sequence. If the string is empty, return an empty string and 0 as `("", 0)`. If there are multiple sequences of the same maximum length, return the character from the first such sequence encountered.

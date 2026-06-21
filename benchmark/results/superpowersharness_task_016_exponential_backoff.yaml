@@ -1,0 +1,30 @@
+task_id: task_016_exponential_backoff
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 4732
+duration_seconds: 29
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.614381'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.614355'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.614355'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:42.614355'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:47.614355'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:48.614355'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:51.614355'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:54.614355'
+    metadata: {}

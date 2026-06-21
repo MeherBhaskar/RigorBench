@@ -1,0 +1,30 @@
+task_id: task_008_recovery
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 3582
+duration_seconds: 29
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.607344'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.607325'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.607325'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:42.607325'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:47.607325'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:48.607325'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:51.607325'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:54.607325'
+    metadata: {}

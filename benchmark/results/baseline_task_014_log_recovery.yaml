@@ -1,0 +1,15 @@
+task_id: task_014_log_recovery
+agent_name: Baseline
+rigor_enabled: false
+total_tokens: 4016
+duration_seconds: 12
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.575688'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.575652'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:37.575652'
+    metadata: {}

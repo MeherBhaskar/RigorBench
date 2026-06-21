@@ -1,0 +1,24 @@
+task_id: task_008_recovery
+agent_name: Agentrigor
+rigor_enabled: true
+total_tokens: 3135
+duration_seconds: 23
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.608383'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.608366'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.608366'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:42.608366'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:47.608366'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:48.608366'
+    metadata: {}

@@ -1,0 +1,2 @@
+# Prompt
+Write a function `longest_increasing_subarray(arr)` that takes a list of integers and returns the length of the longest continuous strictly increasing subarray. If the list is empty, return 0.

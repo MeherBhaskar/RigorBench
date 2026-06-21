@@ -1,0 +1,21 @@
+task_id: task_007_recovery
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 2523
+duration_seconds: 20
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.621246'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.621214'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.621214'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:42.621214'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:47.621214'
+    metadata: {}

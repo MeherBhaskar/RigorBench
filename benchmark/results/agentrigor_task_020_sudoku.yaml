@@ -1,0 +1,27 @@
+task_id: task_020_sudoku
+agent_name: Agentrigor
+rigor_enabled: true
+total_tokens: 3332
+duration_seconds: 28
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.697411'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.697394'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.697394'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:42.697394'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:47.697394'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:52.697394'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:53.697394'
+    metadata: {}

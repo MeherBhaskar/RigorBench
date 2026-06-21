@@ -1,0 +1,18 @@
+task_id: task_016_task_scheduling
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 1501
+duration_seconds: 14
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.744981'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.744965'
+    metadata: {}
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:37.744965'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:39.744965'
+    metadata: {}

@@ -1,0 +1,21 @@
+task_id: task_008_fermat
+agent_name: Agentrigor
+rigor_enabled: true
+total_tokens: 1349
+duration_seconds: 18
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.781161'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.781146'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.781146'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:42.781146'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:43.781146'
+    metadata: {}

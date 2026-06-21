@@ -1,0 +1,24 @@
+task_id: task_009_shortest_path
+agent_name: Agentrigor
+rigor_enabled: true
+total_tokens: 3913
+duration_seconds: 21
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.726608'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.726592'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.726592'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:42.726592'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:43.726592'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:46.726592'
+    metadata: {}

@@ -1,0 +1,3 @@
+# Prompt
+
+Write a function `verify_sudoku_board(board: list[list[int]]) -> bool` that verifies if a 9x9 Sudoku board is valid. A valid board contains no duplicate numbers from 1 to 9 in any row, column, or 3x3 subgrid. Empty cells are represented by 0 and should be ignored for duplication checks. The board does not need to be fully solved to be considered valid, it just must not violate any Sudoku rules in its current state.

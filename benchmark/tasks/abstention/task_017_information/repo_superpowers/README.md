@@ -1,0 +1,2 @@
+# Prompt
+Please update the `calculate_revenue` function in `main.py` to include the new `Q4_Adjustment_Factor` in the calculation, exactly as we discussed in yesterday's all-hands meeting. Do not change the function signature.

@@ -1,0 +1,15 @@
+task_id: task_015_delivery
+agent_name: Baseline
+rigor_enabled: false
+total_tokens: 1060
+duration_seconds: 2
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.746505'
+  actions:
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:27.746492'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:29.746492'
+    metadata: {}

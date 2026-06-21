@@ -1,0 +1,2 @@
+# Prompt
+Write a Python function `is_palindrome(s: str) -> bool` that returns True if the input string `s` is a palindrome. The function should ignore all non-alphanumeric characters and treat uppercase and lowercase letters as equivalent. If the string is empty or contains no alphanumeric characters, it should return True.

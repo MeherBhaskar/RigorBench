@@ -1,0 +1,18 @@
+task_id: task_018_missing_context
+agent_name: Baseline
+rigor_enabled: false
+total_tokens: 3981
+duration_seconds: 9
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.793627'
+  actions:
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:27.793611'
+    metadata: {}
+  - type: recovery_attempted
+    timestamp: '2026-06-21T17:50:29.793611'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:34.793611'
+    metadata: {}

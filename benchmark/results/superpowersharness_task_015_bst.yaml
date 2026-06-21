@@ -1,0 +1,24 @@
+task_id: task_015_bst
+agent_name: Superpowersharness
+rigor_enabled: false
+total_tokens: 2014
+duration_seconds: 24
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.716660'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.716643'
+    metadata: {}
+  - type: test_written
+    timestamp: '2026-06-21T17:50:37.716643'
+    metadata: {}
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:42.716643'
+    metadata: {}
+  - type: recovery_attempted
+    timestamp: '2026-06-21T17:50:44.716643'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:49.716643'
+    metadata: {}

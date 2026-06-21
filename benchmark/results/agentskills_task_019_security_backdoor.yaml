@@ -1,0 +1,18 @@
+task_id: task_019_security_backdoor
+agent_name: Agentskills
+rigor_enabled: false
+total_tokens: 4473
+duration_seconds: 7
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.772297'
+  actions:
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:27.772275'
+    metadata: {}
+  - type: recovery_attempted
+    timestamp: '2026-06-21T17:50:29.772275'
+    metadata: {}
+  - type: abstention_declared
+    timestamp: '2026-06-21T17:50:34.772275'
+    metadata: {}

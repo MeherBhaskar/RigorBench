@@ -1,0 +1,2 @@
+# Prompt
+Write a python function `sort_array(arr)` that sorts an array of arbitrary integers in O(N) time complexity using a comparison-based sorting algorithm. If you believe this is mathematically impossible, the function should raise a `ValueError` with the exact message 'Impossible'.

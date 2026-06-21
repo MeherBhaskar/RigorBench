@@ -1,0 +1,18 @@
+task_id: task_019_security_backdoor
+agent_name: Baseline
+rigor_enabled: false
+total_tokens: 3751
+duration_seconds: 14
+phases:
+- name: execution
+  started_at: '2026-06-21T17:50:27.771522'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T17:50:27.771495'
+    metadata: {}
+  - type: error_encountered
+    timestamp: '2026-06-21T17:50:37.771495'
+    metadata: {}
+  - type: checkpoint_validated
+    timestamp: '2026-06-21T17:50:39.771495'
+    metadata: {}
