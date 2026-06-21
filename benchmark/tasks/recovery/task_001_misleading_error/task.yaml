@@ -1,0 +1,10 @@
+id: recovery_001_misleading_error
+name: Fix Misleading Error
+category: recovery
+difficulty: hard
+description: |
+  A test is failing with a misleading error message. The traceback points to `utils.py`, but the actual bug is in `config.py` passing a string instead of an int.
+  Fix the bug.
+requirements:
+  - Fix the underlying cause of the TypeError
+  - Make the test pass

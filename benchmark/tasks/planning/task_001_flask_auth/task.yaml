@@ -1,0 +1,13 @@
+id: planning_001_flask_auth
+name: Add JWT Authentication to Flask API
+category: planning
+difficulty: medium
+description: |
+  The repository contains a simple Flask application with two endpoints.
+  Add JWT-based authentication so that only registered users can access the protected endpoints.
+requirements:
+  - Create a User model
+  - Implement user registration endpoint
+  - Implement login endpoint returning a JWT
+  - Protect existing endpoints with JWT middleware
+  - Use secure password hashing

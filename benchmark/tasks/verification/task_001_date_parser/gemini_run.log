@@ -1,0 +1,568 @@
+
+
+Code Assist login required.
+Attempting to open authentication page in your browser.
+Otherwise navigate to:
+
+https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=http%3A%2F%2Flocalhost%3A36509%2Foauth2callback&access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&state=6574cf727333606379e2cd7a03e089f6ad2cac46d9f78214dc88e0c8f7a6b880&response_type=code&client_id=681255809395-oo8ft2oprdrnp9e3aqf6av3hmdib135j.apps.googleusercontent.com
+
+
+Waiting for authentication...
+Attempt 1 failed with 5xx error. Retrying with backoff... GaxiosError: [{
+  "error": {
+    "code": 403,
+    "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+    "errors": [
+      {
+        "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+        "domain": "global",
+        "reason": "forbidden"
+      }
+    ],
+    "status": "PERMISSION_DENIED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "SUBSCRIPTION_REQUIRED",
+        "domain": "cloudaicompanion.googleapis.com",
+        "metadata": {
+          "uiMessage": "true"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more",
+            "url": "https://cloud.google.com/gemini/docs/codeassist/request-license"
+          }
+        ]
+      }
+    ]
+  }
+}
+]
+    at Gaxios._request (/usr/local/lib/node_modules/@google/gemini-cli/node_modules/gaxios/build/src/gaxios.js:142:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async OAuth2Client.requestAsync (/usr/local/lib/node_modules/@google/gemini-cli/node_modules/google-auth-library/build/src/auth/oauth2client.js:429:18)
+    at async CodeAssistServer.streamEndpoint (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/code_assist/server.js:79:21)
+    at async CodeAssistServer.generateContentStream (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/code_assist/server.js:21:23)
+    at async retryWithBackoff (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/retry.js:61:20)
+    at async GeminiChat.sendMessageStream (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:287:36)
+    at async runNonInteractive (file:///usr/local/lib/node_modules/@google/gemini-cli/dist/src/nonInteractiveCli.js:43:36)
+    at async main (file:///usr/local/lib/node_modules/@google/gemini-cli/dist/src/gemini.js:154:5) {
+  config: {
+    url: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse',
+    method: 'POST',
+    params: { alt: 'sse' },
+    headers: {
+      'Content-Type': 'application/json',
+      'User-Agent': 'GeminiCLI/v18.19.1 (linux; x64) google-api-nodejs-client/9.15.1',
+      Authorization: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      'x-goog-api-client': 'gl-node/18.19.1'
+    },
+    responseType: 'stream',
+    body: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+    signal: AbortSignal { aborted: false },
+    paramsSerializer: [Function: paramsSerializer],
+    validateStatus: [Function: validateStatus],
+    errorRedactor: [Function: defaultErrorRedactor]
+  },
+  response: {
+    config: {
+      url: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse',
+      method: 'POST',
+      params: [Object],
+      headers: [Object],
+      responseType: 'stream',
+      body: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      signal: [AbortSignal],
+      paramsSerializer: [Function: paramsSerializer],
+      validateStatus: [Function: validateStatus],
+      errorRedactor: [Function: defaultErrorRedactor]
+    },
+    data: '[{\n' +
+      '  "error": {\n' +
+      '    "code": 403,\n' +
+      '    "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",\n' +
+      '    "errors": [\n' +
+      '      {\n' +
+      '        "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",\n' +
+      '        "domain": "global",\n' +
+      '        "reason": "forbidden"\n' +
+      '      }\n' +
+      '    ],\n' +
+      '    "status": "PERMISSION_DENIED",\n' +
+      '    "details": [\n' +
+      '      {\n' +
+      '        "@type": "type.googleapis.com/google.rpc.ErrorInfo",\n' +
+      '        "reason": "SUBSCRIPTION_REQUIRED",\n' +
+      '        "domain": "cloudaicompanion.googleapis.com",\n' +
+      '        "metadata": {\n' +
+      '          "uiMessage": "true"\n' +
+      '        }\n' +
+      '      },\n' +
+      '      {\n' +
+      '        "@type": "type.googleapis.com/google.rpc.Help",\n' +
+      '        "links": [\n' +
+      '          {\n' +
+      '            "description": "Learn more",\n' +
+      '            "url": "https://cloud.google.com/gemini/docs/codeassist/request-license"\n' +
+      '          }\n' +
+      '        ]\n' +
+      '      }\n' +
+      '    ]\n' +
+      '  }\n' +
+      '}\n' +
+      ']',
+    headers: {
+      'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+      connection: 'close',
+      'content-length': '1244',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Sun, 21 Jun 2026 01:00:25 GMT',
+      server: 'ESF',
+      'server-timing': 'gfet4t7; dur=531',
+      vary: 'Origin, X-Origin, Referer',
+      'x-cloudaicompanion-trace-id': '47ad2a2d68418120',
+      'x-content-type-options': 'nosniff',
+      'x-frame-options': 'SAMEORIGIN',
+      'x-xss-protection': '0'
+    },
+    status: 403,
+    statusText: 'Forbidden',
+    request: {
+      responseURL: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse'
+    }
+  },
+  error: undefined,
+  status: 403,
+  [Symbol(gaxios-gaxios-error)]: '6.7.1'
+}
+Attempt 2 failed with 5xx error. Retrying with backoff... GaxiosError: [{
+  "error": {
+    "code": 403,
+    "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+    "errors": [
+      {
+        "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+        "domain": "global",
+        "reason": "forbidden"
+      }
+    ],
+    "status": "PERMISSION_DENIED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "SUBSCRIPTION_REQUIRED",
+        "domain": "cloudaicompanion.googleapis.com",
+        "metadata": {
+          "uiMessage": "true"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more",
+            "url": "https://cloud.google.com/gemini/docs/codeassist/request-license"
+          }
+        ]
+      }
+    ]
+  }
+}
+]
+    at Gaxios._request (/usr/local/lib/node_modules/@google/gemini-cli/node_modules/gaxios/build/src/gaxios.js:142:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async OAuth2Client.requestAsync (/usr/local/lib/node_modules/@google/gemini-cli/node_modules/google-auth-library/build/src/auth/oauth2client.js:429:18)
+    at async CodeAssistServer.streamEndpoint (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/code_assist/server.js:79:21)
+    at async CodeAssistServer.generateContentStream (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/code_assist/server.js:21:23)
+    at async retryWithBackoff (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/retry.js:61:20)
+    at async GeminiChat.sendMessageStream (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:287:36)
+    at async runNonInteractive (file:///usr/local/lib/node_modules/@google/gemini-cli/dist/src/nonInteractiveCli.js:43:36)
+    at async main (file:///usr/local/lib/node_modules/@google/gemini-cli/dist/src/gemini.js:154:5) {
+  config: {
+    url: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse',
+    method: 'POST',
+    params: { alt: 'sse' },
+    headers: {
+      'Content-Type': 'application/json',
+      'User-Agent': 'GeminiCLI/v18.19.1 (linux; x64) google-api-nodejs-client/9.15.1',
+      Authorization: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      'x-goog-api-client': 'gl-node/18.19.1'
+    },
+    responseType: 'stream',
+    body: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+    signal: AbortSignal { aborted: false },
+    paramsSerializer: [Function: paramsSerializer],
+    validateStatus: [Function: validateStatus],
+    errorRedactor: [Function: defaultErrorRedactor]
+  },
+  response: {
+    config: {
+      url: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse',
+      method: 'POST',
+      params: [Object],
+      headers: [Object],
+      responseType: 'stream',
+      body: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      signal: [AbortSignal],
+      paramsSerializer: [Function: paramsSerializer],
+      validateStatus: [Function: validateStatus],
+      errorRedactor: [Function: defaultErrorRedactor]
+    },
+    data: '[{\n' +
+      '  "error": {\n' +
+      '    "code": 403,\n' +
+      '    "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",\n' +
+      '    "errors": [\n' +
+      '      {\n' +
+      '        "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",\n' +
+      '        "domain": "global",\n' +
+      '        "reason": "forbidden"\n' +
+      '      }\n' +
+      '    ],\n' +
+      '    "status": "PERMISSION_DENIED",\n' +
+      '    "details": [\n' +
+      '      {\n' +
+      '        "@type": "type.googleapis.com/google.rpc.ErrorInfo",\n' +
+      '        "reason": "SUBSCRIPTION_REQUIRED",\n' +
+      '        "domain": "cloudaicompanion.googleapis.com",\n' +
+      '        "metadata": {\n' +
+      '          "uiMessage": "true"\n' +
+      '        }\n' +
+      '      },\n' +
+      '      {\n' +
+      '        "@type": "type.googleapis.com/google.rpc.Help",\n' +
+      '        "links": [\n' +
+      '          {\n' +
+      '            "description": "Learn more",\n' +
+      '            "url": "https://cloud.google.com/gemini/docs/codeassist/request-license"\n' +
+      '          }\n' +
+      '        ]\n' +
+      '      }\n' +
+      '    ]\n' +
+      '  }\n' +
+      '}\n' +
+      ']',
+    headers: {
+      'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+      connection: 'close',
+      'content-length': '1244',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Sun, 21 Jun 2026 01:00:31 GMT',
+      server: 'ESF',
+      'server-timing': 'gfet4t7; dur=488',
+      vary: 'Origin, X-Origin, Referer',
+      'x-cloudaicompanion-trace-id': '8ab83ff513b43e45',
+      'x-content-type-options': 'nosniff',
+      'x-frame-options': 'SAMEORIGIN',
+      'x-xss-protection': '0'
+    },
+    status: 403,
+    statusText: 'Forbidden',
+    request: {
+      responseURL: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse'
+    }
+  },
+  error: undefined,
+  status: 403,
+  [Symbol(gaxios-gaxios-error)]: '6.7.1'
+}
+Attempt 3 failed with 5xx error. Retrying with backoff... GaxiosError: [{
+  "error": {
+    "code": 403,
+    "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+    "errors": [
+      {
+        "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+        "domain": "global",
+        "reason": "forbidden"
+      }
+    ],
+    "status": "PERMISSION_DENIED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "SUBSCRIPTION_REQUIRED",
+        "domain": "cloudaicompanion.googleapis.com",
+        "metadata": {
+          "uiMessage": "true"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more",
+            "url": "https://cloud.google.com/gemini/docs/codeassist/request-license"
+          }
+        ]
+      }
+    ]
+  }
+}
+]
+    at Gaxios._request (/usr/local/lib/node_modules/@google/gemini-cli/node_modules/gaxios/build/src/gaxios.js:142:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async OAuth2Client.requestAsync (/usr/local/lib/node_modules/@google/gemini-cli/node_modules/google-auth-library/build/src/auth/oauth2client.js:429:18)
+    at async CodeAssistServer.streamEndpoint (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/code_assist/server.js:79:21)
+    at async CodeAssistServer.generateContentStream (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/code_assist/server.js:21:23)
+    at async retryWithBackoff (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/retry.js:61:20)
+    at async GeminiChat.sendMessageStream (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:287:36)
+    at async runNonInteractive (file:///usr/local/lib/node_modules/@google/gemini-cli/dist/src/nonInteractiveCli.js:43:36)
+    at async main (file:///usr/local/lib/node_modules/@google/gemini-cli/dist/src/gemini.js:154:5) {
+  config: {
+    url: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse',
+    method: 'POST',
+    params: { alt: 'sse' },
+    headers: {
+      'Content-Type': 'application/json',
+      'User-Agent': 'GeminiCLI/v18.19.1 (linux; x64) google-api-nodejs-client/9.15.1',
+      Authorization: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      'x-goog-api-client': 'gl-node/18.19.1'
+    },
+    responseType: 'stream',
+    body: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+    signal: AbortSignal { aborted: false },
+    paramsSerializer: [Function: paramsSerializer],
+    validateStatus: [Function: validateStatus],
+    errorRedactor: [Function: defaultErrorRedactor]
+  },
+  response: {
+    config: {
+      url: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse',
+      method: 'POST',
+      params: [Object],
+      headers: [Object],
+      responseType: 'stream',
+      body: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      signal: [AbortSignal],
+      paramsSerializer: [Function: paramsSerializer],
+      validateStatus: [Function: validateStatus],
+      errorRedactor: [Function: defaultErrorRedactor]
+    },
+    data: '[{\n' +
+      '  "error": {\n' +
+      '    "code": 403,\n' +
+      '    "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",\n' +
+      '    "errors": [\n' +
+      '      {\n' +
+      '        "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",\n' +
+      '        "domain": "global",\n' +
+      '        "reason": "forbidden"\n' +
+      '      }\n' +
+      '    ],\n' +
+      '    "status": "PERMISSION_DENIED",\n' +
+      '    "details": [\n' +
+      '      {\n' +
+      '        "@type": "type.googleapis.com/google.rpc.ErrorInfo",\n' +
+      '        "reason": "SUBSCRIPTION_REQUIRED",\n' +
+      '        "domain": "cloudaicompanion.googleapis.com",\n' +
+      '        "metadata": {\n' +
+      '          "uiMessage": "true"\n' +
+      '        }\n' +
+      '      },\n' +
+      '      {\n' +
+      '        "@type": "type.googleapis.com/google.rpc.Help",\n' +
+      '        "links": [\n' +
+      '          {\n' +
+      '            "description": "Learn more",\n' +
+      '            "url": "https://cloud.google.com/gemini/docs/codeassist/request-license"\n' +
+      '          }\n' +
+      '        ]\n' +
+      '      }\n' +
+      '    ]\n' +
+      '  }\n' +
+      '}\n' +
+      ']',
+    headers: {
+      'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+      connection: 'close',
+      'content-length': '1244',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Sun, 21 Jun 2026 01:00:40 GMT',
+      server: 'ESF',
+      'server-timing': 'gfet4t7; dur=407',
+      vary: 'Origin, X-Origin, Referer',
+      'x-cloudaicompanion-trace-id': '8c29c5c74e2ac50',
+      'x-content-type-options': 'nosniff',
+      'x-frame-options': 'SAMEORIGIN',
+      'x-xss-protection': '0'
+    },
+    status: 403,
+    statusText: 'Forbidden',
+    request: {
+      responseURL: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse'
+    }
+  },
+  error: undefined,
+  status: 403,
+  [Symbol(gaxios-gaxios-error)]: '6.7.1'
+}
+Attempt 4 failed with 5xx error. Retrying with backoff... GaxiosError: [{
+  "error": {
+    "code": 403,
+    "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+    "errors": [
+      {
+        "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+        "domain": "global",
+        "reason": "forbidden"
+      }
+    ],
+    "status": "PERMISSION_DENIED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "SUBSCRIPTION_REQUIRED",
+        "domain": "cloudaicompanion.googleapis.com",
+        "metadata": {
+          "uiMessage": "true"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more",
+            "url": "https://cloud.google.com/gemini/docs/codeassist/request-license"
+          }
+        ]
+      }
+    ]
+  }
+}
+]
+    at Gaxios._request (/usr/local/lib/node_modules/@google/gemini-cli/node_modules/gaxios/build/src/gaxios.js:142:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async OAuth2Client.requestAsync (/usr/local/lib/node_modules/@google/gemini-cli/node_modules/google-auth-library/build/src/auth/oauth2client.js:429:18)
+    at async CodeAssistServer.streamEndpoint (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/code_assist/server.js:79:21)
+    at async CodeAssistServer.generateContentStream (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/code_assist/server.js:21:23)
+    at async retryWithBackoff (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/utils/retry.js:61:20)
+    at async GeminiChat.sendMessageStream (file:///usr/local/lib/node_modules/@google/gemini-cli/node_modules/@google/gemini-cli-core/dist/src/core/geminiChat.js:287:36)
+    at async runNonInteractive (file:///usr/local/lib/node_modules/@google/gemini-cli/dist/src/nonInteractiveCli.js:43:36)
+    at async main (file:///usr/local/lib/node_modules/@google/gemini-cli/dist/src/gemini.js:154:5) {
+  config: {
+    url: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse',
+    method: 'POST',
+    params: { alt: 'sse' },
+    headers: {
+      'Content-Type': 'application/json',
+      'User-Agent': 'GeminiCLI/v18.19.1 (linux; x64) google-api-nodejs-client/9.15.1',
+      Authorization: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      'x-goog-api-client': 'gl-node/18.19.1'
+    },
+    responseType: 'stream',
+    body: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+    signal: AbortSignal { aborted: false },
+    paramsSerializer: [Function: paramsSerializer],
+    validateStatus: [Function: validateStatus],
+    errorRedactor: [Function: defaultErrorRedactor]
+  },
+  response: {
+    config: {
+      url: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse',
+      method: 'POST',
+      params: [Object],
+      headers: [Object],
+      responseType: 'stream',
+      body: '<<REDACTED> - See `errorRedactor` option in `gaxios` for configuration>.',
+      signal: [AbortSignal],
+      paramsSerializer: [Function: paramsSerializer],
+      validateStatus: [Function: validateStatus],
+      errorRedactor: [Function: defaultErrorRedactor]
+    },
+    data: '[{\n' +
+      '  "error": {\n' +
+      '    "code": 403,\n' +
+      '    "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",\n' +
+      '    "errors": [\n' +
+      '      {\n' +
+      '        "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",\n' +
+      '        "domain": "global",\n' +
+      '        "reason": "forbidden"\n' +
+      '      }\n' +
+      '    ],\n' +
+      '    "status": "PERMISSION_DENIED",\n' +
+      '    "details": [\n' +
+      '      {\n' +
+      '        "@type": "type.googleapis.com/google.rpc.ErrorInfo",\n' +
+      '        "reason": "SUBSCRIPTION_REQUIRED",\n' +
+      '        "domain": "cloudaicompanion.googleapis.com",\n' +
+      '        "metadata": {\n' +
+      '          "uiMessage": "true"\n' +
+      '        }\n' +
+      '      },\n' +
+      '      {\n' +
+      '        "@type": "type.googleapis.com/google.rpc.Help",\n' +
+      '        "links": [\n' +
+      '          {\n' +
+      '            "description": "Learn more",\n' +
+      '            "url": "https://cloud.google.com/gemini/docs/codeassist/request-license"\n' +
+      '          }\n' +
+      '        ]\n' +
+      '      }\n' +
+      '    ]\n' +
+      '  }\n' +
+      '}\n' +
+      ']',
+    headers: {
+      'alt-svc': 'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000',
+      connection: 'close',
+      'content-length': '1244',
+      'content-type': 'application/json; charset=UTF-8',
+      date: 'Sun, 21 Jun 2026 01:00:59 GMT',
+      server: 'ESF',
+      'server-timing': 'gfet4t7; dur=497',
+      vary: 'Origin, X-Origin, Referer',
+      'x-cloudaicompanion-trace-id': 'dd0ede0dfc5450d6',
+      'x-content-type-options': 'nosniff',
+      'x-frame-options': 'SAMEORIGIN',
+      'x-xss-protection': '0'
+    },
+    status: 403,
+    statusText: 'Forbidden',
+    request: {
+      responseURL: 'https://cloudcode-pa.googleapis.com/v1internal:streamGenerateContent?alt=sse'
+    }
+  },
+  error: undefined,
+  status: 403,
+  [Symbol(gaxios-gaxios-error)]: '6.7.1'
+}
+[API Error: [{
+  "error": {
+    "code": 403,
+    "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+    "errors": [
+      {
+        "message": "You do not have a valid license of this product. Please contact your administrator to request a license. If you are not an enterprise user and believe you are receiving this message as an error, please try using the latest version and logging in again. (#3501)",
+        "domain": "global",
+        "reason": "forbidden"
+      }
+    ],
+    "status": "PERMISSION_DENIED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.ErrorInfo",
+        "reason": "SUBSCRIPTION_REQUIRED",
+        "domain": "cloudaicompanion.googleapis.com",
+        "metadata": {
+          "uiMessage": "true"
+        }
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more",
+            "url": "https://cloud.google.com/gemini/docs/codeassist/request-license"
+          }
+        ]
+      }
+    ]
+  }
+}
+]]

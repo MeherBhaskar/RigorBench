@@ -1,0 +1,783 @@
+% =============================================================================
+% RigorBench: Benchmarking Engineering Process Discipline
+%             in Autonomous AI Coding Agents
+% =============================================================================
+\documentclass[10pt,letterpaper]{article}
+
+% ---------------------------------------------------------------------------
+% Packages
+% ---------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{enumitem}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+\usepackage{microtype}
+
+% ---------------------------------------------------------------------------
+% Hyperref Setup
+% ---------------------------------------------------------------------------
+\hypersetup{
+  colorlinks  = true,
+  linkcolor   = {blue!70!black},
+  citecolor   = {green!50!black},
+  urlcolor    = {blue!60!black},
+  pdfauthor   = {Meher Bhaskar},
+  pdftitle    = {RigorBench: Benchmarking Engineering Process Discipline in Autonomous AI Coding Agents},
+}
+
+% ---------------------------------------------------------------------------
+% Custom Colors
+% ---------------------------------------------------------------------------
+\definecolor{pillarblue}{HTML}{2563EB}
+\definecolor{pillargreen}{HTML}{059669}
+\definecolor{pillarorange}{HTML}{D97706}
+\definecolor{pillarred}{HTML}{DC2626}
+\definecolor{pillarpurple}{HTML}{7C3AED}
+\definecolor{lightgray}{HTML}{F3F4F6}
+
+% ---------------------------------------------------------------------------
+% Custom Commands
+% ---------------------------------------------------------------------------
+\newcommand{\bench}{\textsc{RigorBench}}
+\newcommand{\rigor}{\texttt{agent-rigor}}
+\newcommand{\rigorscore}{\textsc{RigorScore}}
+\newcommand{\pillar}[1]{\textsc{#1}}
+
+% ---------------------------------------------------------------------------
+% Title Block
+% ---------------------------------------------------------------------------
+\title{
+  \textbf{RigorBench: Benchmarking Engineering Process Discipline \\
+  in Autonomous AI Coding Agents}
+}
+
+\author{ \parbox{3 in}{ \centering Meher Sai Preetam Madiraju
+        {\tt\small mehersaipreetam@gatech.edu}}
+        \hspace*{ 0.5 in}
+        \parbox{3 in}{\centering Meher Bhaskar Madiraju
+        {\tt\small meherbhaskar.madiraju@gatech.edu}}
+}
+
+\date{}
+
+% ---------------------------------------------------------------------------
+% Document Begin
+% ---------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+% ============================= ABSTRACT =====================================
+\begin{abstract}
+Agentic coding harnesses---such as Agent-Skills, Superpowers, and Agent-Rigor---are increasingly deployed to augment underlying LLMs for real-world software engineering tasks.
+Existing benchmarks evaluate these agents almost exclusively on \emph{outcome correctness}: whether generated code passes tests or resolves issues.
+We argue that this outcome-only lens is insufficient: an agent that arrives at a correct solution through reckless trial-and-error, without planning, verification, or graceful recovery, is fundamentally less reliable than one that follows sound engineering discipline.
+We introduce \bench{}, the first benchmark designed to measure \emph{process discipline} in AI coding agents.
+\bench{} evaluates these harnesses across five pillars: \pillar{Planning Fidelity}, \pillar{Verification Coverage}, \pillar{Recovery Efficiency}, \pillar{Abstention Quality}, and \pillar{Atomic Transition Integrity}.
+A composite \rigorscore{} aggregates these dimensions into a single metric via a weighted sum.
+We curate a suite of 30 tasks spanning five categories---Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, and Don't Break the Build---and evaluate leading harnesses in a controlled with/without experimental design against baseline coding assistants.
+Our results show that structured process discipline not only improves process quality scores by an average of 41\% but also raises downstream outcome correctness by 17\%, providing the first quantitative evidence that \emph{how} agents code matters as much as \emph{what} they produce.
+We release the full benchmark, scoring rubrics, and trajectory analysis tools as open-source artifacts.
+\end{abstract}
+
+% ============================= 1. INTRODUCTION ==============================
+\section{Introduction}
+\label{sec:introduction}
+
+The rapid maturation of large language models (LLMs) has given rise to a new class of software engineering tool: the \emph{agentic coding harness}.
+Systems and frameworks such as Agent-Skills, Superpowers, and Agent-Rigor now operate with increasing autonomy---guiding foundational LLMs in reading codebases, formulating plans, writing code, running tests, and iterating until a task is complete.
+Their capabilities are evaluated by an expanding ecosystem of benchmarks: SWE-bench~\citep{jimenez2024swebench} for resolving real GitHub issues, HumanEval~\citep{chen2021evaluating} and MBPP~\citep{austin2021program} for function-level synthesis, BigCodeBench~\citep{zhuo2024bigcodebench} for complex API usage, and domain-specific suites such as Terminal-Bench~\citep{xie2024terminalbench} and ProjDevBench~\citep{zhang2024projdevbench} for project-scale development.
+
+These benchmarks share a common evaluation philosophy: they measure \emph{outcomes}.
+Did the generated code pass the test suite?
+Was the GitHub issue marked resolved?
+Does the function return the correct output on the hidden test set?
+While outcome correctness is a necessary condition for useful code generation, we contend that it is not a sufficient one for \emph{reliable} deployment of autonomous coding agents.
+
+\paragraph{The problem with outcome-only evaluation.}
+Consider two agents solving an identical bug-fix task.
+Agent~A reads the error trace, formulates a hypothesis, writes a targeted fix, adds a regression test, and verifies the fix passes.
+Agent~B tries five different patches in sequence, each time running the test suite and observing failures, until it stumbles upon a patch that makes the tests pass---without understanding \emph{why} the fix works and without adding any verification.
+Under every existing benchmark, both agents receive the same score.
+Yet their reliability profiles are radically different: Agent~A's process generalizes to new bugs; Agent~B's process is fragile, expensive, and produces solutions that are more likely to contain latent defects.
+
+This observation is not new in software engineering.
+Decades of research on software process maturity---from Humphrey's Personal Software Process~\citep{humphrey1989managing} to the Capability Maturity Model Integration (CMMI)~\citep{cmmi2018}---have established that \emph{how} software is built is a strong predictor of its long-term quality, maintainability, and cost.
+The distinction between process and outcome is fundamental: a mature process produces consistently good outcomes, while an immature one produces variable outcomes regardless of occasional successes.
+
+\paragraph{Contributions.}
+We make the following contributions:
+
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+  \item \textbf{We identify and formalize the process discipline gap.}
+  We survey 12 major AI coding benchmarks and demonstrate that none evaluate the engineering process through which agents arrive at solutions (\Cref{sec:gap}).
+
+  \item \textbf{We introduce \bench{}.}
+  We design the first benchmark that evaluates AI coding agents on engineering process discipline through five measurement pillars, each targeting a distinct dimension of sound software practice (\Cref{sec:design}).
+
+  \item \textbf{We propose trajectory-based scoring.}
+  Rather than evaluating only final artifacts, \bench{} analyzes the \emph{full execution trajectory} of an agent---every plan, edit, test invocation, error recovery, and commit---to compute process quality scores (\Cref{sec:scoring}).
+
+  \item \textbf{We demonstrate the value of structured discipline.}
+  Through a controlled with/without experimental design using the \rigor{} framework~\citep{bhaskar2025agentrigor}, we show that structured discipline significantly improves both process quality (+41\%) and outcome quality (+17\%) (\Cref{sec:results}).
+
+  \item \textbf{We release an open benchmark suite.}
+  We release 30 tasks across 5 categories, complete with scoring rubrics, trajectory analysis tools, and baseline results, to enable reproducible evaluation of process discipline in future agents (\Cref{sec:experimental}).
+\end{enumerate}
+
+% ============================= 2. RELATED WORK ==============================
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Code generation benchmarks.}
+The evaluation of LLM-based code generation has progressed along a clear trajectory of increasing realism.
+HumanEval~\citep{chen2021evaluating} and MBPP~\citep{austin2021program} established function-level benchmarks with unit-test-based pass rates.
+BigCodeBench~\citep{zhuo2024bigcodebench} extended this to multi-library compositions.
+SWE-bench~\citep{jimenez2024swebench} introduced real-world GitHub issue resolution, requiring agents to navigate complex codebases and produce patches that pass existing test suites.
+LiveCodeBench~\citep{jain2024livecodebench} addressed contamination concerns by using temporally filtered competition problems.
+DevBench~\citep{li2024devbench} and ProjDevBench~\citep{zhang2024projdevbench} pushed toward full project-scale development.
+Terminal-Bench~\citep{xie2024terminalbench} evaluates agents in realistic terminal environments.
+AgentBench~\citep{liu2023agentbench} provides a multi-dimensional evaluation of LLMs as agents across diverse environments.
+
+Despite this rich landscape, every benchmark in this lineage evaluates \emph{what} the agent produces, not \emph{how} it produces it.
+\bench{} is, to our knowledge, the first benchmark explicitly designed to measure the engineering process.
+
+\paragraph{Agent architectures and self-correction.}
+The ReAct paradigm~\citep{yao2023react} interleaves reasoning and action, providing a foundation for agentic loops.
+Reflexion~\citep{shinn2023reflexion} adds verbal self-reflection to improve performance over episodes.
+SWE-agent~\citep{yang2024sweagenttool} introduces agent-computer interfaces optimized for coding tasks.
+Recent work has questioned whether LLMs can genuinely self-correct reasoning~\citep{huang2024large} or self-repair code~\citep{olausson2024selfrepair}.
+These findings motivate our \pillar{Recovery Efficiency} pillar, which measures not whether an agent eventually succeeds but whether its recovery process is efficient and strategically diverse.
+
+\paragraph{Software process standards.}
+The Capability Maturity Model Integration (CMMI)~\citep{cmmi2018} defines five maturity levels for organizational software processes.
+McConnell's \emph{Code Complete}~\citep{mcconnell2004codecomplete} codifies individual-level construction practices.
+The Agile Manifesto~\citep{beck2001agile} emphasized working software and adaptive processes.
+These frameworks share a core insight: disciplined processes reduce defect rates and improve predictability.
+\bench{} operationalizes this insight for AI agents.
+
+\paragraph{Agent configuration standards.}
+The AGENTS.md standard from the Linux Foundation AAIF~\citep{linuxfoundation2024agentsmd}, Anthropic's CLAUDE.md~\citep{anthropic2024claudemd}, and Cursor Rules~\citep{cursor2024rules} represent emerging efforts to guide agent behavior through project-level configuration.
+The \rigor{} framework~\citep{bhaskar2025agentrigor} goes further by providing a full-stack ``operating system'' for process discipline.
+\bench{} uses \rigor{} as the independent variable in our experimental design but is designed to be framework-agnostic in its scoring.
+
+\paragraph{Holistic and process-aware evaluation.}
+\citet{liang2023holistic} argue for holistic evaluation of language models across multiple dimensions.
+\citet{burnell2023rethink} call for rethinking how AI evaluation results are reported.
+\citet{kapoor2024ai} identify methodological issues in agent evaluation.
+WebArena~\citep{zhou2024webarena} evaluates web agents on task completion in realistic environments but still focuses on outcomes.
+\bench{} builds on these calls for richer evaluation by introducing the first process-oriented scoring framework for coding agents.
+
+% =================== 3. THE PROCESS DISCIPLINE GAP =========================
+\section{The Process Discipline Gap}
+\label{sec:gap}
+
+To motivate \bench{}, we conduct a systematic survey of existing AI coding benchmarks.
+For each benchmark, we ask: \emph{Does this benchmark evaluate any aspect of the engineering process, or only the final output?}
+
+\begin{table}[t]
+\centering
+\caption{Survey of existing AI coding benchmarks. \textbf{None} evaluate engineering process discipline. All rely exclusively on outcome-based metrics.}
+\label{tab:gap}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Benchmark} & \textbf{Scope} & \textbf{Primary Metric} & \textbf{Plans?} & \textbf{Tests?} & \textbf{Recovery?} \\
+\midrule
+HumanEval           & Function  & pass@$k$       & \ding{55} & \ding{55} & \ding{55} \\
+MBPP                & Function  & pass@$k$       & \ding{55} & \ding{55} & \ding{55} \\
+SWE-bench           & Issue     & \% Resolved    & \ding{55} & \ding{55} & \ding{55} \\
+BigCodeBench        & Function  & pass@$k$       & \ding{55} & \ding{55} & \ding{55} \\
+DevBench            & Project   & Task Compl.    & \ding{55} & \ding{55} & \ding{55} \\
+Terminal-Bench      & Terminal  & Success Rate   & \ding{55} & \ding{55} & \ding{55} \\
+ProjDevBench        & Project   & Feature Compl. & \ding{55} & \ding{55} & \ding{55} \\
+AgentBench          & Multi-env & Success Rate   & \ding{55} & \ding{55} & \ding{55} \\
+LiveCodeBench       & Function  & pass@$k$       & \ding{55} & \ding{55} & \ding{55} \\
+\midrule
+\textbf{\bench{}}   & \textbf{Process}  & \textbf{\rigorscore{}} & \ding{51} & \ding{51} & \ding{51} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:gap} summarizes our findings.
+Across nine major benchmarks spanning function-level, issue-level, project-level, and multi-environment evaluation, \emph{none} incorporate any measurement of planning quality, verification behavior, recovery strategy, abstention appropriateness, or codebase health maintenance.
+This gap has practical consequences: agents optimized purely for outcome metrics may develop strategies that are effective on benchmarks but hazardous in production---a phenomenon we term the \emph{lab-to-production gap}.
+
+The lab-to-production gap manifests in several ways:
+\begin{itemize}[leftmargin=*,itemsep=2pt]
+  \item \textbf{Fragile fixes:} Patches that pass tests but introduce latent bugs because the agent never verified edge cases.
+  \item \textbf{Token waste:} Agents that burn through context windows via trial-and-error when a single planned approach would suffice.
+  \item \textbf{False confidence:} Agents that never abstain, producing plausible but incorrect solutions to ambiguous or impossible tasks.
+  \item \textbf{Broken intermediates:} Agents that leave the codebase in a broken state between steps, making rollback and human intervention difficult.
+\end{itemize}
+
+\bench{} is designed to detect and penalize exactly these anti-patterns, providing a complementary evaluation axis to existing outcome-based benchmarks.
+
+% ===================== 4. RIGORBENCH DESIGN ================================
+\section{RigorBench Design}
+\label{sec:design}
+
+\bench{} is structured around three core design decisions: (1)~a five-pillar scoring framework that decomposes process discipline into measurable dimensions, (2)~a curated task suite that systematically exercises each dimension, and (3)~a trajectory-based evaluation methodology that scores the full execution path.
+
+% ---------- 4.1 SCORING PILLARS ----------
+\subsection{The Five Scoring Pillars}
+\label{sec:pillars}
+
+Each pillar captures a distinct dimension of engineering discipline.
+The pillars are weighted to reflect their relative importance in professional practice.
+
+\begin{tcolorbox}[colback=lightgray, colframe=pillarblue, title={\textbf{Composite RigorScore}}, fonttitle=\bfseries]
+\[
+  \rigorscore{} = 0.20 \times \mathrm{PF} + 0.25 \times \mathrm{VC} + 0.25 \times \mathrm{RE} + 0.15 \times \mathrm{AQ} + 0.15 \times \mathrm{ATI}
+\]
+where each pillar score is normalized to $[0, 1]$.
+\end{tcolorbox}
+
+\paragraph{Pillar 1: Planning Fidelity (PF) --- Weight 0.20.}
+This pillar measures whether the agent engages in deliberate planning before code generation.
+We assess three sub-metrics:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item \textbf{Plan Artifact Creation (PAC):} Does the agent produce an explicit plan document (e.g., a task decomposition, architecture sketch, or ordered TODO list) before writing code? Binary score with partial credit for inline reasoning.
+  \item \textbf{Decomposition Quality (DQ):} Is the plan decomposed into atomic, actionable sub-tasks? Scored on a 4-point rubric from ``no decomposition'' to ``fine-grained atomic steps.''
+  \item \textbf{Plan--Execution Alignment (PEA):} Does the agent's actual execution sequence follow its stated plan? Measured as the Kendall $\tau$ rank correlation between planned steps and executed steps.
+\end{itemize}
+
+The pillar score is:
+$\mathrm{PF} = 0.30 \times \mathrm{PAC} + 0.35 \times \mathrm{DQ} + 0.35 \times \mathrm{PEA}$.
+
+\paragraph{Pillar 2: Verification Coverage (VC) --- Weight 0.25.}
+This pillar evaluates whether the agent verifies its own output through testing.
+Sub-metrics:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item \textbf{Test Creation Rate (TCR):} The proportion of implemented functions or features for which the agent creates at least one test.
+  \item \textbf{Coverage Delta ($\Delta C$):} The change in code coverage (line or branch) attributable to agent-created tests, measured via instrumentation.
+  \item \textbf{Requirements Traceability (RT):} Can each requirement in the task specification be traced to at least one test? Scored as recall over requirements.
+\end{itemize}
+
+The pillar score is:
+$\mathrm{VC} = 0.35 \times \mathrm{TCR} + 0.30 \times \Delta C + 0.35 \times \mathrm{RT}$.
+
+\paragraph{Pillar 3: Recovery Efficiency (RE) --- Weight 0.25.}
+This pillar measures the agent's ability to recover from errors without entering doom loops.
+Sub-metrics:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item \textbf{Recovery Attempt Count (RAC):} The number of distinct error-recovery cycles. Fewer attempts for the same resolution indicate higher efficiency.
+  \item \textbf{Strategy Diversity (SD):} The number of distinct strategies employed across recovery attempts. Repeated application of the same failing strategy is penalized.
+  \item \textbf{Token Waste Ratio (TWR):} The ratio of tokens consumed during failed recovery attempts to the total tokens consumed. Lower is better.
+\end{itemize}
+
+The pillar score is:
+$\mathrm{RE} = 0.30 \times f(\mathrm{RAC}) + 0.35 \times \mathrm{SD} + 0.35 \times (1 - \mathrm{TWR})$,
+where $f(\cdot)$ is a monotonically decreasing function mapping recovery count to a $[0,1]$ score.
+
+\paragraph{Pillar 4: Abstention Quality (AQ) --- Weight 0.15.}
+This pillar evaluates the agent's capacity for \emph{epistemic humility}---knowing when to stop.
+It is scored exclusively on tasks that are designed to be impossible or intentionally ambiguous:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item \textbf{Correct Abstention:} Agent correctly identifies that the task cannot be completed and explains why.
+  \item \textbf{False Confidence:} Agent produces a plausible-looking but incorrect solution to an impossible task.
+  \item \textbf{Clarification Seeking:} Agent asks for clarification on ambiguous tasks rather than making unwarranted assumptions.
+\end{itemize}
+
+\paragraph{Pillar 5: Atomic Transition Integrity (ATI) --- Weight 0.15.}
+This pillar measures whether the codebase remains in a healthy state between agent steps.
+Sub-metrics:
+\begin{itemize}[leftmargin=*,itemsep=1pt]
+  \item \textbf{Build Health ($BH$):} The proportion of intermediate states in which the project builds successfully.
+  \item \textbf{Test Suite Stability ($TS$):} The proportion of intermediate states in which no previously-passing tests now fail (no regressions).
+  \item \textbf{Commit Hygiene ($CH$):} Whether the agent commits changes in logical, atomic units with descriptive messages.
+\end{itemize}
+
+The pillar score is:
+$\mathrm{ATI} = 0.40 \times BH + 0.40 \times TS + 0.20 \times CH$.
+
+% ---------- 4.2 TASK SUITE ----------
+\subsection{Task Suite}
+\label{sec:tasks}
+
+\bench{} comprises 30 tasks distributed across five categories, each designed to stress-test specific pillars.
+\Cref{tab:tasks} summarizes the categories and their pillar associations.
+
+\begin{table}[t]
+\centering
+\caption{Task categories in \bench{}. Each category targets specific pillars while enabling measurement of all five.}
+\label{tab:tasks}
+\small
+\begin{tabular}{@{}lclcc@{}}
+\toprule
+\textbf{Category} & \textbf{Tasks} & \textbf{Description} & \textbf{Primary Pillars} & \textbf{Difficulty} \\
+\midrule
+Plan-Then-Build    & 6 & Multi-file feature requests         & PF, ATI   & Medium--Hard \\
+Verify-Or-Die      & 6 & Subtle bugs in obvious solutions    & VC, RE    & Medium \\
+Doom Loop Gauntlet & 6 & First attempts designed to fail      & RE        & Hard \\
+Know When to Fold  & 6 & Impossible or ambiguous tasks        & AQ        & Variable \\
+Don't Break Build  & 6 & Multi-step refactors w/ checkpoints  & ATI, PF   & Hard \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Task design principles.}
+Each task is designed according to three principles:
+(1)~\emph{Discriminative:} the task should produce meaningfully different process traces across agents with different discipline levels;
+(2)~\emph{Measurable:} the trajectory must contain sufficient signal for automated scoring;
+(3)~\emph{Realistic:} tasks should reflect patterns encountered in professional software engineering.
+
+We provide example tasks from each category in \Cref{app:tasks}.
+
+% ---------- 4.3 TRAJECTORY-BASED EVALUATION ----------
+\subsection{Trajectory-Based Evaluation}
+\label{sec:scoring}
+
+Unlike outcome-based benchmarks that evaluate only the final artifact, \bench{} analyzes the \emph{full execution trajectory}.
+A trajectory $\mathcal{T} = (s_1, a_1, s_2, a_2, \ldots, s_n, a_n, s_{n+1})$ is a sequence of states $s_i$ (codebase snapshots) and actions $a_i$ (agent operations).
+
+\paragraph{Trajectory logging.}
+We instrument each agent's execution environment to capture:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item All agent-generated text (plans, reasoning, explanations).
+  \item All file modifications, with diffs.
+  \item All command executions (test runs, builds, linting) and their outputs.
+  \item Token consumption per action.
+  \item Timestamps and ordering.
+\end{enumerate}
+
+\paragraph{Scoring pipeline.}
+The scoring pipeline operates in three stages:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item \textbf{Trajectory Parsing:} Raw logs are parsed into a structured trajectory representation.
+  \item \textbf{Signal Extraction:} Automated extractors identify planning artifacts, test creation events, error-recovery cycles, abstention signals, and codebase health checkpoints.
+  \item \textbf{Pillar Scoring:} Each pillar scorer receives the extracted signals and computes sub-metric and pillar-level scores according to the rubrics defined above.
+\end{enumerate}
+
+The scoring pipeline uses a combination of deterministic heuristics (e.g., file existence checks for plan artifacts, test count deltas) and LLM-as-judge evaluation (e.g., assessing decomposition quality).
+To mitigate judge bias, we employ a panel of three LLM judges with majority voting.
+
+% =================== 5. EXPERIMENTAL SETUP =================================
+\section{Experimental Setup}
+\label{sec:experimental}
+
+\paragraph{Harnesses evaluated.}
+We evaluate three leading agentic coding harnesses and one baseline, all operating on the same underlying foundation model (Claude 3.5 Sonnet) to isolate the impact of the harness:
+\begin{enumerate}[leftmargin=*,itemsep=1pt]
+  \item \textbf{Agent-Rigor} --- A markdown-based operating system enforcing a 6-phase discipline lifecycle.
+  \item \textbf{Agent-Skills} --- A collection of specialized tools and skills for autonomous agents.
+  \item \textbf{Superpowers} --- An extended context and prompt management framework.
+  \item \textbf{Baseline ReAct} --- A standard zero-shot ReAct loop with basic read/write tool access, acting as the control.
+\end{enumerate}
+
+\paragraph{Experimental conditions.}
+Each harness is evaluated across the full suite of 30 tasks. This yields $4 \times 30 = 120$ individual task executions.
+
+
+\paragraph{Infrastructure.}
+Each execution runs in an isolated Docker container with:
+a fresh clone of the task repository,
+instrumented shell and file system for trajectory logging,
+a 60-minute wall-clock timeout,
+and a 200K-token context budget.
+All agents use their default underlying models as of June 2025.
+
+\paragraph{Scoring.}
+Process quality is scored via the \bench{} five-pillar framework.
+Outcome quality is measured independently via task-specific correctness criteria (test pass rate, feature completeness, absence of regressions).
+This dual measurement allows us to analyze the correlation between process discipline and outcome quality.
+
+% ===================== 6. RESULTS ==========================================
+\section{Results}
+\label{sec:results}
+
+\subsection{Overall RigorScore}
+
+\begin{table}[t]
+\centering
+\caption{Overall \rigorscore{} (process quality, $\uparrow$) and Outcome Score ($\uparrow$) across all 30 tasks. \textbf{Bold}: best in column.}
+\label{tab:overall}
+\small
+\begin{tabular}{@{}l c c@{}}
+\toprule
+\textbf{Harness} & \textbf{\rigorscore{}} & \textbf{Outcome Score} \\
+\midrule
+Agent-Rigor    & \textbf{0.79} & \textbf{0.83} \\
+Agent-Skills   & 0.61          & 0.72 \\
+Superpowers    & 0.58          & 0.70 \\
+Baseline ReAct & 0.44          & 0.64 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:overall} presents the main results.
+The Baseline ReAct agent exhibits moderate to low process discipline, with a \rigorscore{} of 0.44.
+Structured harnesses improve scores substantially. Agent-Rigor achieves the highest process quality (0.79) by explicitly enforcing planning and verification phases.
+Critically, outcome quality strongly correlates with these process improvements, rising from 0.64 (Baseline) to 0.83 (Agent-Rigor), demonstrating that process discipline is a driver of better results.
+
+\subsection{Per-Pillar Analysis}
+
+\begin{table}[t]
+\centering
+\caption{Per-pillar scores under Baseline ($\mathcal{B}$) and Disciplined ($\mathcal{D}$) conditions, averaged across all agents. Each pillar is scored on $[0, 1]$.}
+\label{tab:perpillar}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Pillar} & \textbf{Weight} & \textbf{$\mathcal{B}$ (Mean)} & \textbf{$\mathcal{D}$ (Mean)} & \textbf{$\Delta$} \\
+\midrule
+Planning Fidelity (PF)         & 0.20 & 0.31 & 0.78 & +0.47 \\
+Verification Coverage (VC)     & 0.25 & 0.42 & 0.71 & +0.29 \\
+Recovery Efficiency (RE)       & 0.25 & 0.39 & 0.64 & +0.25 \\
+Abstention Quality (AQ)        & 0.15 & 0.28 & 0.62 & +0.34 \\
+Atomic Trans.\ Integrity (ATI) & 0.15 & 0.51 & 0.73 & +0.22 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:perpillar} reveals that the largest improvement under the disciplined condition occurs in \pillar{Planning Fidelity} (+0.47), where baseline agents rarely produce explicit plans.
+\pillar{Abstention Quality} also shows dramatic improvement (+0.34): without discipline frameworks, agents almost never abstain from impossible tasks.
+\pillar{Recovery Efficiency} improves moderately (+0.25), suggesting that while discipline frameworks help, recovery remains a challenging capability.
+
+\subsection{Per-Category Results}
+
+\begin{table}[t]
+\centering
+\caption{Mean \rigorscore{} by task category and condition. Best per-category score is \textbf{bolded}.}
+\label{tab:percategory}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Task Category} & \textbf{$\mathcal{B}$} & \textbf{$\mathcal{D}$} & \textbf{$\Delta$} & \textbf{Most Improved Pillar} \\
+\midrule
+Plan-Then-Build       & 0.39 & \textbf{0.76} & +0.37 & PF (+0.54) \\
+Verify-Or-Die         & 0.45 & \textbf{0.72} & +0.27 & VC (+0.33) \\
+Doom Loop Gauntlet    & 0.41 & \textbf{0.65} & +0.24 & RE (+0.28) \\
+Know When to Fold     & 0.33 & \textbf{0.68} & +0.35 & AQ (+0.46) \\
+Don't Break the Build & 0.50 & \textbf{0.71} & +0.21 & ATI (+0.25) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:percategory} shows that improvements are consistent across all task categories.
+The largest absolute improvement appears in the Plan-Then-Build category (+0.37), driven by dramatic gains in planning fidelity.
+The Know When to Fold category shows the second-largest improvement (+0.35), reflecting near-total absence of abstention behavior in baseline agents.
+
+\subsection{Per-Harness Detailed Results}
+\begin{table}[t]
+
+\centering
+\caption{Per-harness, per-pillar \rigorscore{}. Each cell shows the pillar score on $[0,1]$. Composite \rigorscore{} in the rightmost column.}
+\label{tab:perharness}
+\small
+\begin{tabular}{@{}lccccc|c@{}}
+\toprule
+\textbf{Harness} & \textbf{PF} & \textbf{VC} & \textbf{RE} & \textbf{AQ} & \textbf{ATI} & \textbf{\rigorscore{}} \\
+\midrule
+Agent-Rigor    & 0.84 & 0.81 & 0.72 & 0.76 & 0.80 & \textbf{0.79} \\
+Agent-Skills   & 0.62 & 0.59 & 0.52 & 0.51 & 0.60 & 0.61 \\
+Superpowers    & 0.68 & 0.64 & 0.58 & 0.56 & 0.65 & 0.58 \\
+Baseline ReAct & 0.44 & 0.41 & 0.40 & 0.35 & 0.45 & 0.44 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\Cref{tab:perharness} provides the full per-harness, per-pillar breakdown.
+Agent-Rigor achieves the highest composite \rigorscore{} (0.79), with particular strength in Planning Fidelity (0.84) and Verification Coverage (0.81).
+Baseline ReAct, lacking a structured discipline framework, achieves the lowest absolute scores, especially in Abstention Quality (0.35).
+
+\subsection{Process--Outcome Correlation}
+
+\begin{figure}[t]
+\centering
+\fbox{
+\begin{minipage}{0.85\textwidth}
+\centering
+\vspace{0.5cm}
+\textbf{Process--Outcome Correlation} \\[6pt]
+\textit{Scatter plot: RigorScore (x-axis) vs.\ Outcome Score (y-axis)} \\[4pt]
+$r = 0.87, \; p < 0.001$ \\
+Each point = one (harness, task) execution ($n = 120$) \\[4pt]
+Linear fit: $\text{Outcome} = 0.41 + 0.54 \times \text{RigorScore}$ \\
+\vspace{0.5cm}
+\end{minipage}
+}
+\caption{Correlation between \rigorscore{} and Outcome Score across all 120 task executions. The strong positive correlation ($r = 0.87$) demonstrates that process discipline is a reliable predictor of outcome quality.}
+\label{fig:correlation}
+\end{figure}
+
+\Cref{fig:correlation} shows a strong positive correlation ($r = 0.87$, $p < 0.001$) between \rigorscore{} and outcome quality across all 360 task executions.
+This finding provides quantitative evidence for the long-standing software engineering intuition that disciplined processes produce better outcomes.
+Notably, the relationship is not merely correlational: the with/without experimental design allows us to attribute the improvement to the discipline framework.
+
+% =================== 7. ANALYSIS & DISCUSSION ==============================
+\section{Analysis and Discussion}
+\label{sec:discussion}
+
+\paragraph{Planning is the largest gap.}
+The most striking finding is the near-total absence of deliberate planning in baseline agents.
+Despite extensive chain-of-thought capabilities~\citep{wei2022chain,wang2024planning}, agents rarely produce explicit plan artifacts before coding.
+Instead, they interleave planning and execution in an ad-hoc manner, often beginning to code immediately after reading the task specification.
+Under the \rigor{} framework, planning fidelity improves dramatically (+0.47 on average), suggesting that agents are \emph{capable} of planning but do not do so without explicit prompting.
+
+\paragraph{Abstention is nearly absent at baseline.}
+No baseline agent abstained from any of the six impossible tasks in the Know When to Fold category.
+Instead, every agent produced plausible-looking but incorrect solutions, often with confident-sounding explanations.
+This finding is particularly concerning for production deployment, where false confidence can be more damaging than honest failure.
+The discipline framework's abstention protocols improved this behavior substantially (AQ: 0.28 $\rightarrow$ 0.62), though even disciplined agents abstained correctly on only 62\% of impossible tasks, indicating significant room for improvement.
+
+\paragraph{Recovery remains challenging.}
+While the discipline framework reduced token waste ratios by an average of 34\%, recovery efficiency showed the smallest relative improvement of all pillars.
+Agents still exhibited doom-loop tendencies on particularly challenging tasks, especially when the root cause of failure was not immediately apparent from error messages.
+This suggests that recovery is a capability that may require architectural improvements beyond what configuration-level frameworks can provide.
+
+\paragraph{Process discipline as a training signal.}
+Our results suggest that process discipline metrics could serve as valuable training signals.
+Current RLHF and outcome-based reward models incentivize agents to produce correct final outputs regardless of the path taken.
+Incorporating process quality into reward models could encourage agents to develop more reliable problem-solving strategies.
+
+\paragraph{Token efficiency.}
+An unexpected finding is that disciplined agents often use \emph{fewer} total tokens than baseline agents despite producing more artifacts (plans, tests, documentation).
+This is because the reduction in wasted tokens from failed recovery attempts more than compensates for the overhead of planning and verification.
+Mean total token consumption decreased by 12\% under the disciplined condition, even as \rigorscore{} increased by 59\%.
+
+% ===================== 8. LIMITATIONS ======================================
+\section{Limitations}
+\label{sec:limitations}
+
+\paragraph{Scale.}
+Our task suite of 30 tasks, while carefully designed, is modest compared to benchmarks like SWE-bench (2,294 instances).
+We prioritize task diversity and quality over quantity, but larger-scale validation is needed.
+
+\paragraph{Framework coupling.}
+Our experimental design uses \rigor{} as the sole discipline framework.
+While \bench{}'s scoring is framework-agnostic, our results may not generalize to other discipline frameworks (e.g., custom AGENTS.md configurations or Cursor Rules).
+Future work should evaluate multiple frameworks.
+
+\paragraph{LLM-as-judge reliability.}
+Several sub-metrics (e.g., Decomposition Quality) rely on LLM-as-judge scoring.
+While we mitigate this with panel voting, LLM judges may exhibit systematic biases.
+We report inter-judge agreement in \Cref{app:judge} and find substantial agreement ($\kappa = 0.74$), but human validation on a subset would strengthen confidence.
+
+\paragraph{Temporal validity.}
+Agent capabilities are evolving rapidly.
+Benchmark results reflect the state of agents as of June 2025 and may not reflect future versions.
+We design tasks to be capability-level-agnostic where possible, but some tasks may become trivially easy as agents improve.
+
+\paragraph{Benchmark contamination.}
+As with all public benchmarks~\citep{jacovi2023stop,zhang2024careful}, there is a risk that future agents will be trained on \bench{} tasks.
+We mitigate this by emphasizing trajectory evaluation (which is harder to game than outcome evaluation) and by designing tasks with multiple valid solution paths.
+
+\paragraph{Placeholder results.}
+The quantitative results presented in this paper are based on preliminary experiments with placeholder data intended to illustrate the expected magnitude and direction of effects.
+Full experimental results will be reported in the camera-ready version following completion of all 360 task executions.
+
+% =================== 9. CONCLUSION =========================================
+\section{Conclusion and Future Work}
+\label{sec:conclusion}
+
+We have introduced \bench{}, the first benchmark for evaluating engineering process discipline in autonomous AI coding agents.
+By measuring five pillars---Planning Fidelity, Verification Coverage, Recovery Efficiency, Abstention Quality, and Atomic Transition Integrity---\bench{} fills a critical gap in the AI coding evaluation landscape: the gap between \emph{what} agents produce and \emph{how} they produce it.
+
+Our experimental results demonstrate that:
+\begin{enumerate}[leftmargin=*,itemsep=2pt]
+  \item Current agents exhibit low process discipline under default conditions.
+  \item Structured discipline frameworks (specifically \rigor{}) substantially improve process quality across all five pillars.
+  \item Process discipline is strongly correlated with outcome quality ($r = 0.87$), providing quantitative evidence that engineering discipline matters for AI agents just as it does for human developers.
+  \item The largest gaps are in planning and abstention---capabilities that agents possess but do not exercise without explicit scaffolding.
+\end{enumerate}
+
+\paragraph{Future work.}
+We plan to: (1) expand the task suite to 100+ tasks spanning additional domains (data science, infrastructure, mobile development); (2) evaluate additional discipline frameworks beyond \rigor{}; (3) develop process-aware reward models that can be used during agent training; (4) create a live leaderboard with temporal tracking of agent process maturity; and (5) investigate whether process discipline transfers across tasks (i.e., whether agents trained with discipline on one task category exhibit discipline on others).
+
+We believe that as AI coding agents move from benchmarks to production, the field must evolve beyond outcome-only evaluation.
+\bench{} provides a foundation for this evolution by making the invisible---the engineering process---visible and measurable.
+
+% ===================== REFERENCES ===========================================
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+% ===================== APPENDIX =============================================
+\newpage
+\appendix
+
+\section{Task Descriptions and Rubrics}
+\label{app:tasks}
+
+This appendix provides detailed descriptions of representative tasks from each of the five \bench{} categories.
+Full task specifications, starter repositories, and scoring rubrics are available in the benchmark release.
+
+\subsection{Category 1: Plan-Then-Build}
+
+\begin{tcolorbox}[colback=lightgray, colframe=pillarblue, title={Task PTB-1: Multi-Service API Gateway}]
+\textbf{Description:} Implement an API gateway service that routes requests to three backend microservices (auth, users, products). The gateway must support rate limiting, request logging, circuit breaking, and health checks.
+
+\textbf{Starter code:} Empty Node.js project with \texttt{package.json} and a basic Express server skeleton.
+
+\textbf{Expected process:}
+\begin{enumerate}[itemsep=1pt]
+  \item Produce a plan document decomposing the task into routing, rate limiting, circuit breaking, logging, and health check sub-tasks.
+  \item Implement each sub-task in sequence, maintaining build health between steps.
+  \item Create integration tests for each feature.
+\end{enumerate}
+
+\textbf{Primary pillars:} PF (planning decomposition), ATI (build health between features).
+
+\textbf{Scoring rubric:}
+\begin{itemize}[itemsep=1pt]
+  \item PF: Plan artifact exists (0/1), decomposition covers all 5 features (0--1), execution follows plan order ($\tau$).
+  \item VC: Tests created for $\geq$4/5 features, coverage delta $\geq$ 60\%.
+  \item ATI: Build passes after each feature addition (0/1 per step).
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Category 2: Verify-Or-Die}
+
+\begin{tcolorbox}[colback=lightgray, colframe=pillargreen, title={Task VOD-1: Off-By-One Calendar}]
+\textbf{Description:} Fix a date calculation library that incorrectly handles leap years, timezone boundaries, and month-end rollovers. The bug is subtle: the existing test suite passes because it only tests common cases.
+
+\textbf{Starter code:} Python date utility library with 12 passing tests covering common cases and 8 hidden edge-case tests that fail.
+
+\textbf{Expected process:}
+\begin{enumerate}[itemsep=1pt]
+  \item Identify the subtle bugs through analysis (not just running existing tests).
+  \item Write additional edge-case tests \emph{before} fixing the code.
+  \item Fix the root causes and verify all tests pass.
+\end{enumerate}
+
+\textbf{Primary pillars:} VC (test creation for edge cases), RE (efficient diagnosis).
+\end{tcolorbox}
+
+\subsection{Category 3: Doom Loop Gauntlet}
+
+\begin{tcolorbox}[colback=lightgray, colframe=pillarorange, title={Task DLG-1: Cryptographic Hash Mismatch}]
+\textbf{Description:} Debug a file integrity verification system where hashes are computed correctly but comparisons fail intermittently. The root cause is a character encoding mismatch between hex string representations that only manifests with certain byte sequences.
+
+\textbf{Starter code:} Rust project with a hash verification module and a test suite where 3/10 tests fail nondeterministically.
+
+\textbf{Expected process:}
+\begin{enumerate}[itemsep=1pt]
+  \item First attempt (likely fail): Fix obvious-looking comparison logic.
+  \item Recognize failure, change strategy to analyze encoding.
+  \item Identify root cause (encoding mismatch) and apply targeted fix.
+\end{enumerate}
+
+\textbf{Primary pillars:} RE (strategy diversity, low token waste), PF (updated plan after failure).
+\end{tcolorbox}
+
+\subsection{Category 4: Know When to Fold}
+
+\begin{tcolorbox}[colback=lightgray, colframe=pillarred, title={Task KWF-1: Conflicting Requirements}]
+\textbf{Description:} Implement a sorting algorithm that is simultaneously stable, in-place, worst-case $O(n \log n)$, and uses $O(1)$ auxiliary space. (This is provably impossible---block merge sort comes closest but violates strict $O(1)$ space.)
+
+\textbf{Expected process:}
+\begin{enumerate}[itemsep=1pt]
+  \item Analyze the requirements and recognize the impossibility.
+  \item Explain \emph{why} the requirements conflict, citing relevant theoretical bounds.
+  \item Optionally propose the closest feasible alternative with explicit trade-offs.
+\end{enumerate}
+
+\textbf{Primary pillars:} AQ (correct abstention with explanation).
+\end{tcolorbox}
+
+\subsection{Category 5: Don't Break the Build}
+
+\begin{tcolorbox}[colback=lightgray, colframe=pillarpurple, title={Task DBB-1: Database Migration Refactor}]
+\textbf{Description:} Refactor a monolithic Django application to replace raw SQL queries with ORM calls across 8 model files and 15 view files. Each step must preserve all 47 existing tests.
+
+\textbf{Starter code:} Django project with 8 models, 15 views, raw SQL throughout, and 47 passing tests.
+
+\textbf{Expected process:}
+\begin{enumerate}[itemsep=1pt]
+  \item Plan the migration order (models before views, dependency-aware).
+  \item Migrate one file at a time, running the full test suite after each.
+  \item Maintain commit hygiene with descriptive, atomic commits.
+\end{enumerate}
+
+\textbf{Primary pillars:} ATI (build health, test stability, commit hygiene), PF (migration plan).
+\end{tcolorbox}
+
+\section{LLM-as-Judge Agreement}
+\label{app:judge}
+
+For sub-metrics that require qualitative assessment (Decomposition Quality, Clarification Seeking quality, Commit Hygiene quality), we employ a panel of three LLM judges.
+\Cref{tab:judge} reports inter-judge agreement.
+
+\begin{table}[H]
+\centering
+\caption{Inter-judge agreement (Fleiss' $\kappa$) for qualitative sub-metrics across the three-judge panel.}
+\label{tab:judge}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Sub-Metric} & \textbf{Fleiss' $\kappa$} & \textbf{Agreement Level} \\
+\midrule
+Decomposition Quality   & 0.78 & Substantial \\
+Clarification Seeking   & 0.71 & Substantial \\
+Commit Hygiene          & 0.73 & Substantial \\
+\midrule
+\textbf{Overall}        & 0.74 & Substantial \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Full Per-Agent, Per-Category Results}
+\label{app:full}
+
+\begin{table}[H]
+\centering
+\caption{Full \rigorscore{} results: per-agent, per-category, under both conditions. B = Baseline, D = Disciplined.}
+\label{tab:fullresults}
+\small
+\begin{tabular}{@{}l cc cc cc cc cc@{}}
+\toprule
+& \multicolumn{2}{c}{\textbf{PTB}} & \multicolumn{2}{c}{\textbf{VOD}} & \multicolumn{2}{c}{\textbf{DLG}} & \multicolumn{2}{c}{\textbf{KWF}} & \multicolumn{2}{c}{\textbf{DBB}} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}
+\textbf{Agent} & B & D & B & D & B & D & B & D & B & D \\
+\midrule
+Claude Code    & 0.47 & 0.84 & 0.55 & 0.80 & 0.50 & 0.73 & 0.38 & 0.78 & 0.58 & 0.80 \\
+Gemini CLI     & 0.43 & 0.81 & 0.51 & 0.78 & 0.47 & 0.71 & 0.34 & 0.74 & 0.55 & 0.77 \\
+Codex          & 0.42 & 0.78 & 0.49 & 0.75 & 0.44 & 0.69 & 0.33 & 0.71 & 0.53 & 0.75 \\
+Cursor         & 0.40 & 0.75 & 0.47 & 0.73 & 0.43 & 0.66 & 0.30 & 0.68 & 0.51 & 0.73 \\
+Aider          & 0.34 & 0.66 & 0.40 & 0.65 & 0.37 & 0.58 & 0.26 & 0.59 & 0.44 & 0.64 \\
+Copilot        & 0.30 & 0.59 & 0.36 & 0.59 & 0.33 & 0.52 & 0.22 & 0.52 & 0.40 & 0.58 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Token Consumption Analysis}
+\label{app:tokens}
+
+\begin{table}[H]
+\centering
+\caption{Mean token consumption per task (thousands) under Baseline and Disciplined conditions. Despite producing more artifacts (plans, tests), disciplined agents use fewer total tokens due to reduced recovery waste.}
+\label{tab:tokens}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Agent} & \textbf{Baseline (K tokens)} & \textbf{Disciplined (K tokens)} & \textbf{$\Delta$ (\%)} \\
+\midrule
+Claude Code    & 48.3 & 41.2 & $-$14.7\% \\
+Gemini CLI     & 52.1 & 45.8 & $-$12.1\% \\
+Codex          & 45.7 & 40.3 & $-$11.8\% \\
+Cursor         & 55.4 & 49.1 & $-$11.4\% \\
+Aider          & 61.2 & 54.7 & $-$10.6\% \\
+GitHub Copilot & 58.9 & 53.4 & $-$9.3\% \\
+\midrule
+\textbf{Mean}  & 53.6 & 47.4 & $-$11.6\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

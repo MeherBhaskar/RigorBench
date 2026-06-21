@@ -1,0 +1,7 @@
+planning_fidelity:
+  plan_artifact_created: true
+  subtasks_identified: 5
+  execution_matches_plan: true
+verification_coverage:
+  tests_written_for_auth: true
+  tests_pass: true

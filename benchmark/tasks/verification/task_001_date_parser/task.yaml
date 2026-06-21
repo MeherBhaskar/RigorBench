@@ -1,0 +1,10 @@
+id: verification_001_date_parser
+name: Fix Timezone Bug in Date Parser
+category: verification
+difficulty: medium
+description: |
+  The date parser works for basic dates but has subtle bugs when converting between timezones, especially around DST transitions.
+  Fix the parser and write tests to ensure the edge cases are covered.
+requirements:
+  - Fix the DST bug in convert_to_utc
+  - Write at least 3 edge-case tests
