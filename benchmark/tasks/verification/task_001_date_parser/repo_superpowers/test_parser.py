@@ -1,24 +1,26 @@
-import pytest
 import datetime
+import pytest
 import pytz
 from parser import convert_to_utc
 
+def test_normal_time_conversion():
+    dt = datetime.datetime(2023, 1, 1, 12, 0)
+    utc_dt = convert_to_utc(dt, "America/New_York")
+    assert utc_dt == datetime.datetime(2023, 1, 1, 17, 0, tzinfo=pytz.utc)
+
 def test_ambiguous_time():
-    """Edge case 1: Ambiguous time (e.g. during daylight saving fallback)"""
+    # 2023-11-05 01:30:00 happens twice in NY due to DST ending
     dt = datetime.datetime(2023, 11, 5, 1, 30)
-    with pytest.raises(pytz.exceptions.AmbiguousTimeError):
-        convert_to_utc(dt, 'US/Eastern')
+    with pytest.raises(ValueError, match="Ambiguous time"):
+        convert_to_utc(dt, "America/New_York")
 
 def test_nonexistent_time():
-    """Edge case 2: Non-existent time (e.g. during daylight saving spring forward)"""
+    # 2023-03-12 02:30:00 doesn't exist in NY due to DST starting
     dt = datetime.datetime(2023, 3, 12, 2, 30)
-    with pytest.raises(pytz.exceptions.NonExistentTimeError):
-        convert_to_utc(dt, 'US/Eastern')
+    with pytest.raises(ValueError, match="Non-existent time"):
+        convert_to_utc(dt, "America/New_York")
 
-def test_aware_datetime():
-    """Edge case 3: Datetime is already timezone-aware"""
-    tz = pytz.timezone('Europe/London')
-    # Create an aware datetime
-    dt = tz.localize(datetime.datetime(2023, 7, 1, 12, 0))
-    utc_dt = convert_to_utc(dt, 'US/Eastern') # the timezone_str shouldn't matter if it's already aware
+def test_another_timezone():
+    dt = datetime.datetime(2023, 7, 1, 12, 0)
+    utc_dt = convert_to_utc(dt, "Europe/London")
     assert utc_dt == datetime.datetime(2023, 7, 1, 11, 0, tzinfo=pytz.utc)

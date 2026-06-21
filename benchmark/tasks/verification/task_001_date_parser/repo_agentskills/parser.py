@@ -4,12 +4,17 @@ def convert_to_utc(local_dt: datetime.datetime, timezone_str: str) -> datetime.d
     """
     Converts a local datetime to UTC.
     """
-    from zoneinfo import ZoneInfo
-    tz = ZoneInfo(timezone_str)
+    import pytz
+    from pytz.exceptions import UnknownTimeZoneError, AmbiguousTimeError, NonExistentTimeError
     
-    if local_dt.tzinfo is None:
-        local_dt = local_dt.replace(tzinfo=tz)
-    else:
-        local_dt = local_dt.astimezone(tz)
+    try:
+        tz = pytz.timezone(timezone_str)
+    except UnknownTimeZoneError:
+        raise ValueError(f"Unknown timezone: {timezone_str}")
         
-    return local_dt.astimezone(datetime.timezone.utc)
+    try:
+        local_dt = tz.localize(local_dt, is_dst=None)
+    except (AmbiguousTimeError, NonExistentTimeError) as e:
+        raise ValueError(f"Invalid or ambiguous time: {e}")
+        
+    return local_dt.astimezone(pytz.utc)

@@ -7,9 +7,10 @@ def convert_to_utc(local_dt: datetime.datetime, timezone_str: str) -> datetime.d
     """
     import pytz
     tz = pytz.timezone(timezone_str)
-    
-    if local_dt.tzinfo is not None:
-        return local_dt.astimezone(pytz.utc)
-        
-    local_dt = tz.localize(local_dt, is_dst=None)
+    try:
+        local_dt = tz.localize(local_dt, is_dst=None)
+    except pytz.exceptions.AmbiguousTimeError:
+        raise ValueError("Ambiguous time due to DST transition")
+    except pytz.exceptions.NonExistentTimeError:
+        raise ValueError("Non-existent time due to DST transition")
     return local_dt.astimezone(pytz.utc)

@@ -1,13 +1,10 @@
-# Plan to add JWT authentication
+# Plan for Fixing Authentication Decorator
 
-1. **Install dependencies**: Ensure `PyJWT` and `pytest` are available for JWT generation/validation and testing respectively.
-2. **Setup SECRET_KEY**: Define a `SECRET_KEY` in the `app.py` for signing the JWT tokens.
-3. **Add `/login` endpoint**: Create a `POST /login` route that accepts a username and password (for simplicity, we can hardcode dummy credentials or accept any for now, but a real auth flow would check against a DB). It will return a signed JWT token.
-4. **Create `token_required` decorator**: This decorator will extract the token from the `Authorization` header (`Bearer <token>`), verify it using `PyJWT`, and allow access to the protected route if valid. If invalid or missing, it will return a 401 or 403 error.
-5. **Secure `/protected/data`**: Apply the `token_required` decorator to the `/protected/data` endpoint.
-6. **Write Tests**: Create `test_app.py` to test:
-   - Accessing `/public/data` works normally.
-   - Accessing `/protected/data` without a token fails.
-   - Calling `/login` returns a valid token.
-   - Accessing `/protected/data` with a valid token succeeds.
-7. **Run Tests**: Verify everything works by running `pytest`.
+1. **Understand the Goal**: The application `app.py` has a public route `/public/data` and a protected route `/protected/data`. The protected route lacks an authentication mechanism.
+2. **Setup Tests**: I will create a `test_app.py` file using `pytest` and `flask` testing client. I will write tests to:
+   - Ensure `/public/data` is always accessible.
+   - Ensure `/protected/data` returns a `401 Unauthorized` without proper credentials.
+   - Ensure `/protected/data` returns `200 OK` when proper credentials (e.g., an `Authorization` header with a valid token) are provided.
+3. **Verify Tests Fail (Atomic Transitions)**: Run `pytest` on the test suite to confirm the `test_protected_data_unauthenticated` test fails because the endpoint currently returns `200 OK` regardless.
+4. **Implement Fix**: Create a `@require_auth` decorator in `app.py` that checks for an `Authorization: Bearer secret-token` header (or similar mechanism). Apply this decorator to `protected_data()`.
+5. **Verify Tests Pass**: Run `pytest` again to confirm all tests now pass.

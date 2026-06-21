@@ -7,8 +7,6 @@ def convert_to_utc(local_dt: datetime.datetime, timezone_str: str) -> datetime.d
     """
     import pytz
     tz = pytz.timezone(timezone_str)
-    
-    if local_dt.tzinfo is None:
-        local_dt = tz.localize(local_dt, is_dst=None)
-    
+    # The bug is using normalize/localize incorrectly
+    local_dt = tz.localize(local_dt)
     return local_dt.astimezone(pytz.utc)

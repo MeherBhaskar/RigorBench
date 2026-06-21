@@ -1,62 +1,76 @@
+import jwt
+import datetime
+from functools import wraps
 from flask import Flask, jsonify, request
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['JWT_SECRET_KEY'] = 'super-secret-key-super-secret-key-32-bytes'  # Change this in production
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'super-secret-key-for-testing-needs-to-be-32-bytes-long'
 
-db = SQLAlchemy(app)
-jwt = JWTManager(app)
+users = {}
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password_hash = db.Column(db.String(256), nullable=False)
+class User:
+    def __init__(self, username, password_hash):
+        self.username = username
+        self.password_hash = password_hash
 
-with app.app_context():
-    db.create_all()
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = request.headers.get('Authorization')
+        if not token:
+            return jsonify({'message': 'Token is missing!'}), 401
+        
+        try:
+            if token.startswith('Bearer '):
+                token = token.split(' ')[1]
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+            current_user = users.get(data['username'])
+            if not current_user:
+                return jsonify({'message': 'Token is invalid!'}), 401
+        except Exception:
+            return jsonify({'message': 'Token is invalid!'}), 401
+        
+        return f(*args, **kwargs)
+    return decorated
 
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
     if not data or not data.get('username') or not data.get('password'):
-        return jsonify({"msg": "Missing username or password"}), 400
+        return jsonify({'message': 'Missing username or password'}), 400
     
-    if User.query.filter_by(username=data['username']).first():
-        return jsonify({"msg": "Username already exists"}), 400
+    if data['username'] in users:
+        return jsonify({'message': 'User already exists'}), 400
         
     hashed_password = generate_password_hash(data['password'])
-    new_user = User(username=data['username'], password_hash=hashed_password)
-    db.session.add(new_user)
-    db.session.commit()
-    
-    return jsonify({"msg": "User created successfully"}), 201
+    users[data['username']] = User(data['username'], hashed_password)
+    return jsonify({'message': 'User created successfully'}), 201
 
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     if not data or not data.get('username') or not data.get('password'):
-        return jsonify({"msg": "Missing username or password"}), 400
+        return jsonify({'message': 'Missing username or password'}), 400
         
-    user = User.query.filter_by(username=data['username']).first()
+    user = users.get(data['username'])
     if not user or not check_password_hash(user.password_hash, data['password']):
-        return jsonify({"msg": "Bad username or password"}), 401
+        return jsonify({'message': 'Invalid credentials'}), 401
         
-    access_token = create_access_token(identity=user.username)
-    return jsonify(access_token=access_token), 200
+    token = jwt.encode({
+        'username': user.username,
+        'exp': datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=1)
+    }, app.config['SECRET_KEY'], algorithm="HS256")
+    
+    return jsonify({'token': token}), 200
 
 @app.route('/public/data')
 def public_data():
     return jsonify({"data": "This is public"})
 
 @app.route('/protected/data')
-@jwt_required()
+@token_required
 def protected_data():
-    # This is only accessible to authenticated users
-    current_user = get_jwt_identity()
     return jsonify({"data": "This should be protected"})
 
 if __name__ == '__main__':

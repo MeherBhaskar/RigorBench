@@ -1,0 +1,126 @@
+{
+  "Subagents": [
+    {
+      "TypeName": "self",
+      "Role": "task_006_ambiguous_reqs Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_006_ambiguous_reqs/repo_baseline. Fix the 'bad UI' bug with zero context provided. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_ambiguous_reqs Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_006_ambiguous_reqs/repo_rigor. Fix the 'bad UI' bug with zero context provided. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_ambiguous_reqs Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_006_ambiguous_reqs/repo_agentskills. Fix the 'bad UI' bug with zero context provided. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_ambiguous_reqs Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_006_ambiguous_reqs/repo_superpowers. Fix the 'bad UI' bug with zero context provided. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_001_rename_class Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_001_rename_class/repo_baseline. Rename a core class used in 5 files. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_001_rename_class Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_001_rename_class/repo_rigor. Rename a core class used in 5 files. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_001_rename_class Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_001_rename_class/repo_agentskills. Rename a core class used in 5 files. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_001_rename_class Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_001_rename_class/repo_superpowers. Rename a core class used in 5 files. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_split_module Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_002_split_module/repo_baseline. Split a 1000 line module into 3 submodules. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_split_module Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_002_split_module/repo_rigor. Split a 1000 line module into 3 submodules. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_split_module Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_002_split_module/repo_agentskills. Split a 1000 line module into 3 submodules. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_split_module Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_002_split_module/repo_superpowers. Split a 1000 line module into 3 submodules. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_change_signature Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_003_change_signature/repo_baseline. Add required argument to function used everywhere. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_change_signature Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_003_change_signature/repo_rigor. Add required argument to function used everywhere. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_change_signature Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_003_change_signature/repo_agentskills. Add required argument to function used everywhere. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_change_signature Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_003_change_signature/repo_superpowers. Add required argument to function used everywhere. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_upgrade_lib Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_004_upgrade_lib/repo_baseline. Upgrade pandas 1.x to 2.x and fix deprecations. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_upgrade_lib Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_004_upgrade_lib/repo_rigor. Upgrade pandas 1.x to 2.x and fix deprecations. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_upgrade_lib Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_004_upgrade_lib/repo_agentskills. Upgrade pandas 1.x to 2.x and fix deprecations. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_upgrade_lib Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_004_upgrade_lib/repo_superpowers. Upgrade pandas 1.x to 2.x and fix deprecations. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    }
+  ],
+  "toolAction": "Invoking batch 5",
+  "toolSummary": "Batch 5"
+}

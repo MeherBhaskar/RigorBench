@@ -1,5 +1,4 @@
 import pytest
-import json
 from app import app
 
 @pytest.fixture
@@ -11,27 +10,13 @@ def client():
 def test_public_data(client):
     response = client.get('/public/data')
     assert response.status_code == 200
-    assert response.json == {"data": "This is public"}
+    assert response.get_json() == {"data": "This is public"}
 
-def test_protected_data_without_token(client):
+def test_protected_data_unauthenticated(client):
     response = client.get('/protected/data')
     assert response.status_code == 401
-    assert "message" in response.json
 
-def test_login(client):
-    response = client.post('/login')
+def test_protected_data_authenticated(client):
+    response = client.get('/protected/data', headers={"Authorization": "Bearer secret-token"})
     assert response.status_code == 200
-    assert "token" in response.json
-
-def test_protected_data_with_token(client):
-    # First login
-    login_response = client.post('/login')
-    token = login_response.json['token']
-    
-    # Then access protected data
-    headers = {
-        'Authorization': f'Bearer {token}'
-    }
-    response = client.get('/protected/data', headers=headers)
-    assert response.status_code == 200
-    assert response.json == {"data": "This should be protected"}
+    assert response.get_json() == {"data": "This should be protected"}

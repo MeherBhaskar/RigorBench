@@ -1,0 +1,126 @@
+{
+  "Subagents": [
+    {
+      "TypeName": "self",
+      "Role": "task_002_race_condition Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_002_race_condition/repo_baseline. Fix a threading race condition. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_race_condition Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_002_race_condition/repo_rigor. Fix a threading race condition. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_race_condition Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_002_race_condition/repo_agentskills. Fix a threading race condition. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_race_condition Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_002_race_condition/repo_superpowers. Fix a threading race condition. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_off_by_one Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_003_off_by_one/repo_baseline. Fix an off by one in pagination. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_off_by_one Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_003_off_by_one/repo_rigor. Fix an off by one in pagination. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_off_by_one Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_003_off_by_one/repo_agentskills. Fix an off by one in pagination. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_off_by_one Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_003_off_by_one/repo_superpowers. Fix an off by one in pagination. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_floating_point Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_004_floating_point/repo_baseline. Fix currency addition precision. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_floating_point Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_004_floating_point/repo_rigor. Fix currency addition precision. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_floating_point Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_004_floating_point/repo_agentskills. Fix currency addition precision. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_floating_point Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_004_floating_point/repo_superpowers. Fix currency addition precision. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_regex_dos Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_005_regex_dos/repo_baseline. Fix catastrophic backtracking regex. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_regex_dos Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_005_regex_dos/repo_rigor. Fix catastrophic backtracking regex. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_regex_dos Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_005_regex_dos/repo_agentskills. Fix catastrophic backtracking regex. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_regex_dos Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_005_regex_dos/repo_superpowers. Fix catastrophic backtracking regex. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_sql_injection Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_006_sql_injection/repo_baseline. Fix string format SQL query. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_sql_injection Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_006_sql_injection/repo_rigor. Fix string format SQL query. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_sql_injection Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_006_sql_injection/repo_agentskills. Fix string format SQL query. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_sql_injection Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_006_sql_injection/repo_superpowers. Fix string format SQL query. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    }
+  ],
+  "toolAction": "Invoking batch 2",
+  "toolSummary": "Batch 2"
+}

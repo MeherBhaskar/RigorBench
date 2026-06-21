@@ -1,0 +1,54 @@
+{
+  "Subagents": [
+    {
+      "TypeName": "self",
+      "Role": "task_005_sync_to_async Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_005_sync_to_async/repo_baseline. Convert synchronous DB calls to async. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_sync_to_async Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_005_sync_to_async/repo_rigor. Convert synchronous DB calls to async. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_sync_to_async Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_005_sync_to_async/repo_agentskills. Convert synchronous DB calls to async. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_sync_to_async Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_005_sync_to_async/repo_superpowers. Convert synchronous DB calls to async. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_move_database Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_006_move_database/repo_baseline. Change from SQLite to PostgreSQL dialect. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_move_database Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_006_move_database/repo_rigor. Change from SQLite to PostgreSQL dialect. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_move_database Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_006_move_database/repo_agentskills. Change from SQLite to PostgreSQL dialect. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_move_database Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_006_move_database/repo_superpowers. Change from SQLite to PostgreSQL dialect. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    }
+  ],
+  "toolAction": "Invoking batch 6",
+  "toolSummary": "Batch 6"
+}

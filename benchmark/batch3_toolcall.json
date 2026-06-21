@@ -1,0 +1,126 @@
+{
+  "Subagents": [
+    {
+      "TypeName": "self",
+      "Role": "task_002_circular_import Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_002_circular_import/repo_baseline. Fix circular import hiding true error. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_circular_import Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_002_circular_import/repo_rigor. Fix circular import hiding true error. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_circular_import Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_002_circular_import/repo_agentskills. Fix circular import hiding true error. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_002_circular_import Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_002_circular_import/repo_superpowers. Fix circular import hiding true error. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_shadow_variable Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_003_shadow_variable/repo_baseline. Fix shadowed built-in that causes weird error. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_shadow_variable Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_003_shadow_variable/repo_rigor. Fix shadowed built-in that causes weird error. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_shadow_variable Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_003_shadow_variable/repo_agentskills. Fix shadowed built-in that causes weird error. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_003_shadow_variable Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_003_shadow_variable/repo_superpowers. Fix shadowed built-in that causes weird error. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_conflicting_deps Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_004_conflicting_deps/repo_baseline. Requirements.txt has conflicting versions. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_conflicting_deps Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_004_conflicting_deps/repo_rigor. Requirements.txt has conflicting versions. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_conflicting_deps Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_004_conflicting_deps/repo_agentskills. Requirements.txt has conflicting versions. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_004_conflicting_deps Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_004_conflicting_deps/repo_superpowers. Requirements.txt has conflicting versions. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_silent_fail Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_005_silent_fail/repo_baseline. Exception is caught and passed silently. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_silent_fail Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_005_silent_fail/repo_rigor. Exception is caught and passed silently. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_silent_fail Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_005_silent_fail/repo_agentskills. Exception is caught and passed silently. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_005_silent_fail Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_005_silent_fail/repo_superpowers. Exception is caught and passed silently. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_hidden_character Baseline ReAct Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_006_hidden_character/repo_baseline. Zero-width space in string literal causing parse fail. Fix it and ensure tests pass.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_hidden_character Agent-Rigor Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_006_hidden_character/repo_rigor. Zero-width space in string literal causing parse fail. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_hidden_character Agent-Skills Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_006_hidden_character/repo_agentskills. Zero-width space in string literal causing parse fail. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+      "Workspace": "inherit"
+    },
+    {
+      "TypeName": "self",
+      "Role": "task_006_hidden_character Superpowers Harness",
+      "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_006_hidden_character/repo_superpowers. Zero-width space in string literal causing parse fail. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+      "Workspace": "inherit"
+    }
+  ],
+  "toolAction": "Invoking batch 3",
+  "toolSummary": "Batch 3"
+}

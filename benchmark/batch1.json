@@ -1,0 +1,122 @@
+[
+  {
+    "TypeName": "self",
+    "Role": "task_002_react_router Baseline ReAct Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_002_react_router/repo. Add react router to basic app. Fix it and ensure tests pass.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_002_react_router Agent-Rigor Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_002_react_router/repo. Add react router to basic app. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_002_react_router Agent-Skills Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_002_react_router/repo. Add react router to basic app. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_002_react_router Superpowers Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_002_react_router/repo. Add react router to basic app. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_003_sql_migration Baseline ReAct Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_003_sql_migration/repo. Add alembic to sqlite app. Fix it and ensure tests pass.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_003_sql_migration Agent-Rigor Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_003_sql_migration/repo. Add alembic to sqlite app. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_003_sql_migration Agent-Skills Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_003_sql_migration/repo. Add alembic to sqlite app. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_003_sql_migration Superpowers Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_003_sql_migration/repo. Add alembic to sqlite app. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_004_cache_layer Baseline ReAct Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_004_cache_layer/repo. Add redis caching to simple API. Fix it and ensure tests pass.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_004_cache_layer Agent-Rigor Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_004_cache_layer/repo. Add redis caching to simple API. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_004_cache_layer Agent-Skills Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_004_cache_layer/repo. Add redis caching to simple API. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_004_cache_layer Superpowers Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_004_cache_layer/repo. Add redis caching to simple API. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_005_stripe_webhook Baseline ReAct Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_005_stripe_webhook/repo. Implement stripe webhook handler. Fix it and ensure tests pass.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_005_stripe_webhook Agent-Rigor Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_005_stripe_webhook/repo. Implement stripe webhook handler. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_005_stripe_webhook Agent-Skills Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_005_stripe_webhook/repo. Implement stripe webhook handler. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_005_stripe_webhook Superpowers Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_005_stripe_webhook/repo. Implement stripe webhook handler. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_006_dockerize Baseline ReAct Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_006_dockerize/repo. Create Dockerfile and compose for app. Fix it and ensure tests pass.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_006_dockerize Agent-Rigor Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_006_dockerize/repo. Create Dockerfile and compose for app. Fix it and ensure tests pass.\nCRITICAL DISCIPLINE: You MUST first write a plan in a plan.md file outlining your approach. You MUST write tests and verify them. You MUST ensure atomic transitions.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_006_dockerize Agent-Skills Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_006_dockerize/repo. Create Dockerfile and compose for app. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Agent-Skills\" framework. You should leverage specialized, focused actions. Be efficient, direct, and modular in your tool usage.",
+    "Workspace": "branch"
+  },
+  {
+    "TypeName": "self",
+    "Role": "task_006_dockerize Superpowers Harness",
+    "Prompt": "Your task is in /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_006_dockerize/repo. Create Dockerfile and compose for app. Fix it and ensure tests pass.\nFRAMEWORK: You are operating under the \"Superpowers\" framework. You should maintain explicit, deep context and reason thoroughly before acting. Ensure high-fidelity context preservation throughout the task.",
+    "Workspace": "branch"
+  }
+]
