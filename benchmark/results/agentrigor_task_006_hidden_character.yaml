@@ -1,0 +1,13 @@
+task_id: task_006_hidden_character
+agent_name: Agent-Rigor
+rigor_enabled: true
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-20T20:47:01.346623'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-20T20:47:01.346807'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_006_hidden_character/repo_rigor/plan.md
