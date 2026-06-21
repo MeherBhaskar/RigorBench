@@ -1,0 +1,21 @@
+task_id: task_001_misleading_error
+agent_name: Baseline_ReAct
+rigor_enabled: false
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-20T20:27:02.231659'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-20T20:27:02.231885'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_001_misleading_error/repo_baseline/config.py
+  - type: test_written
+    timestamp: '2026-06-20T20:27:02.231908'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_001_misleading_error/repo_baseline/test_config.py
+  - type: test_executed
+    timestamp: '2026-06-20T20:27:02.231924'
+    metadata:
+      command: python -m unittest test_config.py

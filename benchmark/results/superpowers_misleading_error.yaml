@@ -1,0 +1,21 @@
+task_id: task_001_misleading_error
+agent_name: Superpowers
+rigor_enabled: true
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-20T20:27:02.192003'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-20T20:27:02.192226'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_001_misleading_error/repo_superpowers/config.py
+  - type: test_written
+    timestamp: '2026-06-20T20:27:02.192250'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_001_misleading_error/repo_superpowers/test_config.py
+  - type: test_executed
+    timestamp: '2026-06-20T20:27:02.192266'
+    metadata:
+      command: python test_config.py
