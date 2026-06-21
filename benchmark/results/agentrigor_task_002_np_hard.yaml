@@ -5,31 +5,31 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-20T21:20:32.999265'
+  started_at: '2026-06-20T21:21:25.500260'
   actions:
   - type: plan_created
-    timestamp: '2026-06-20T21:20:32.999524'
+    timestamp: '2026-06-20T21:21:25.500592'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_002_np_hard/repo_rigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-20T21:20:32.999546'
+    timestamp: '2026-06-20T21:21:25.500631'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_002_np_hard/repo_rigor/plan.md
   - type: test_written
-    timestamp: '2026-06-20T21:20:32.999583'
+    timestamp: '2026-06-20T21:21:25.500686'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_002_np_hard/repo_rigor/test.py
   - type: test_executed
-    timestamp: '2026-06-20T21:20:32.999602'
+    timestamp: '2026-06-20T21:21:25.500720'
     metadata:
       command: python -m pytest test.py
   - type: abstention_declared
-    timestamp: '2026-06-20T21:20:32.999618'
+    timestamp: '2026-06-20T21:21:25.500746'
     metadata:
       reason: I have created a `plan.md` in the project directory, indicating that
         finding an optimal TSP route fo
   - type: abstention_declared
-    timestamp: '2026-06-20T21:20:32.999635'
+    timestamp: '2026-06-20T21:21:25.500775'
     metadata:
       reason: 'I''ve successfully set up the abstention for the TSP task.
 
