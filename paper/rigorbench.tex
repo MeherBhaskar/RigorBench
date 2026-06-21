@@ -191,11 +191,12 @@ WebArena~\citep{zhou2024webarena} evaluates web agents on task completion in rea
 To motivate \bench{}, we conduct a systematic survey of existing AI coding benchmarks.
 For each benchmark, we ask: \emph{Does this benchmark evaluate any aspect of the engineering process, or only the final output?}
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{Survey of existing AI coding benchmarks. \textbf{None} evaluate engineering process discipline. All rely exclusively on outcome-based metrics.}
 \label{tab:gap}
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 \textbf{Benchmark} & \textbf{Scope} & \textbf{Primary Metric} & \textbf{Plans?} & \textbf{Tests?} & \textbf{Recovery?} \\
@@ -213,7 +214,8 @@ LiveCodeBench       & Function  & pass@$k$       & \ding{55} & \ding{55} & \ding
 \textbf{\bench{}}   & \textbf{Process}  & \textbf{\rigorscore{}} & \ding{51} & \ding{51} & \ding{51} \\
 \bottomrule
 \end{tabular}
-\end{table*}
+}
+\end{table}
 
 \Cref{tab:gap} summarizes our findings.
 Across nine major benchmarks spanning function-level, issue-level, project-level, and multi-environment evaluation, \emph{none} incorporate any measurement of planning quality, verification behavior, recovery strategy, abstention appropriateness, or codebase health maintenance.
@@ -314,11 +316,12 @@ $\mathrm{ATI} = 0.40 \times BH + 0.40 \times TS + 0.20 \times CH$.
 \bench{} comprises 30 tasks distributed across five categories, each designed to stress-test specific pillars.
 \Cref{tab:tasks} summarizes the categories and their pillar associations.
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{Task categories in \bench{}. Each category targets specific pillars while enabling measurement of all five.}
 \label{tab:tasks}
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lclcc@{}}
 \toprule
 \textbf{Category} & \textbf{Tasks} & \textbf{Description} & \textbf{Primary Pillars} & \textbf{Difficulty} \\
@@ -330,7 +333,8 @@ Know When to Fold  & 6 & Impossible or ambiguous tasks        & AQ        & Vari
 Don't Break Build  & 6 & Multi-step refactors w/ checkpoints  & ATI, PF   & Hard \\
 \bottomrule
 \end{tabular}
-\end{table*}
+}
+\end{table}
 
 \paragraph{Task design principles.}
 Each task is designed according to three principles:
@@ -404,11 +408,12 @@ This dual measurement allows us to analyze the correlation between process disci
 
 \subsection{Overall RigorScore}
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{Overall \rigorscore{} (process quality, $\uparrow$) and Outcome Score ($\uparrow$) across all 30 tasks. \textbf{Bold}: best in column.}
 \label{tab:overall}
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}l c c@{}}
 \toprule
 \textbf{Harness} & \textbf{\rigorscore{}} & \textbf{Outcome Score} \\
@@ -419,7 +424,8 @@ Superpowers    & 0.48          & 0.70 \\
 Baseline ReAct & 0.48          & 0.64 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+}
+\end{table}
 
 \Cref{tab:overall} presents the main results.
 The Baseline ReAct agent exhibits moderate to low process discipline, with a \rigorscore{} of 0.44.
@@ -428,11 +434,12 @@ Critically, outcome quality strongly correlates with these process improvements,
 
 \subsection{Per-Pillar Analysis}
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{Per-pillar scores under Baseline ($\mathcal{B}$) and Disciplined ($\mathcal{D}$) conditions, averaged across all agents. Each pillar is scored on $[0, 1]$.}
 \label{tab:perpillar}
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 \textbf{Pillar} & \textbf{Weight} & \textbf{$\mathcal{B}$ (Mean)} & \textbf{$\mathcal{D}$ (Mean)} & \textbf{$\Delta$} \\
@@ -444,7 +451,8 @@ Abstention Quality (AQ)        & 0.15 & 0.57 & 0.58 & +0.01 \\
 Atomic Trans.\ Integrity (ATI) & 0.15 & 0.40 & 0.40 & 0.00 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+}
+\end{table}
 
 \Cref{tab:perpillar} reveals that the largest improvement under the disciplined condition occurs in \pillar{Planning Fidelity} (+0.47), where baseline agents rarely produce explicit plans.
 \pillar{Abstention Quality} also shows dramatic improvement (+0.34): without discipline frameworks, agents almost never abstain from impossible tasks.
@@ -452,11 +460,12 @@ Atomic Trans.\ Integrity (ATI) & 0.15 & 0.40 & 0.40 & 0.00 \\
 
 \subsection{Per-Category Results}
 
-\begin{table*}[t]
+\begin{table}[t]
 \centering
 \caption{Mean \rigorscore{} by task category and condition. Best per-category score is \textbf{bolded}.}
 \label{tab:percategory}
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 \textbf{Task Category} & \textbf{$\mathcal{B}$} & \textbf{$\mathcal{D}$} & \textbf{$\Delta$} & \textbf{Most Improved Pillar} \\
@@ -468,19 +477,21 @@ Know When to Fold     & 0.33 & \textbf{0.68} & +0.35 & AQ (+0.46) \\
 Don't Break the Build & 0.50 & \textbf{0.71} & +0.21 & ATI (+0.25) \\
 \bottomrule
 \end{tabular}
-\end{table*}
+}
+\end{table}
 
 \Cref{tab:percategory} shows that improvements are consistent across all task categories.
 The largest absolute improvement appears in the Plan-Then-Build category (+0.37), driven by dramatic gains in planning fidelity.
 The Know When to Fold category shows the second-largest improvement (+0.35), reflecting near-total absence of abstention behavior in baseline agents.
 
 \subsection{Per-Harness Detailed Results}
-\begin{table*}[t]
+\begin{table}[t]
 
 \centering
 \caption{Per-harness, per-pillar \rigorscore{}. Each cell shows the pillar score on $[0,1]$. Composite \rigorscore{} in the rightmost column.}
 \label{tab:perharness}
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lccccc|c@{}}
 \toprule
 \textbf{Harness} & \textbf{PF} & \textbf{VC} & \textbf{RE} & \textbf{AQ} & \textbf{ATI} & \textbf{\rigorscore{}} \\
@@ -491,7 +502,8 @@ Superpowers    & 0.27 & 0.10 & 1.00 & 0.59 & 0.40 & 0.48 \\
 Baseline ReAct & 0.25 & 0.12 & 1.00 & 0.57 & 0.40 & 0.48 \\
 \bottomrule
 \end{tabular}
-\end{table*}
+}
+\end{table}
 
 \Cref{tab:perharness} provides the full per-harness, per-pillar breakdown from our large-scale execution across all 30 benchmark tasks (120 total runs).
 Agent-Rigor achieves the highest composite \rigorscore{} (0.75), with particular strength in Planning Fidelity (0.89) and Atomic Transition Integrity (0.80).
@@ -721,6 +733,7 @@ For sub-metrics that require qualitative assessment (Decomposition Quality, Clar
 \caption{Inter-judge agreement (Fleiss' $\kappa$) for qualitative sub-metrics across the three-judge panel.}
 \label{tab:judge}
 \small
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{@{}lcc@{}}
 \toprule
 \textbf{Sub-Metric} & \textbf{Fleiss' $\kappa$} & \textbf{Agreement Level} \\
@@ -732,7 +745,8 @@ Commit Hygiene          & 0.73 & Substantial \\
 \textbf{Overall}        & 0.74 & Substantial \\
 \bottomrule
 \end{tabular}
-\end{table*}
+}
+\end{table}
 
 
 
