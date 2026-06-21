@@ -5,9 +5,13 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-20T21:21:22.478425'
+  started_at: '2026-06-20T21:22:29.578883'
   actions:
   - type: test_written
-    timestamp: '2026-06-20T21:21:22.478753'
+    timestamp: '2026-06-20T21:22:29.579103'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_005_sync_to_async/repo_agentskills/test.py
+  - type: test_executed
+    timestamp: '2026-06-20T21:22:29.579123'
+    metadata:
+      command: pytest test.py

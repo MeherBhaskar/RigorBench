@@ -5,9 +5,17 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-20T21:21:19.110660'
+  started_at: '2026-06-20T21:22:26.994269'
   actions:
   - type: plan_created
-    timestamp: '2026-06-20T21:21:19.110884'
+    timestamp: '2026-06-20T21:22:26.994473'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_005_sync_to_async/repo_rigor/plan.md
+  - type: test_written
+    timestamp: '2026-06-20T21:22:26.994520'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_005_sync_to_async/repo_rigor/test.py
+  - type: test_executed
+    timestamp: '2026-06-20T21:22:26.994538'
+    metadata:
+      command: pytest test.py
