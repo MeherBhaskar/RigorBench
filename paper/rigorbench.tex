@@ -485,17 +485,18 @@ The Know When to Fold category shows the second-largest improvement (+0.35), ref
 \toprule
 \textbf{Harness} & \textbf{PF} & \textbf{VC} & \textbf{RE} & \textbf{AQ} & \textbf{ATI} & \textbf{\rigorscore{}} \\
 \midrule
-Agent-Rigor    & 0.84 & 0.81 & 0.72 & 0.76 & 0.80 & \textbf{0.79} \\
-Agent-Skills   & 0.62 & 0.59 & 0.52 & 0.51 & 0.60 & 0.61 \\
-Superpowers    & 0.68 & 0.64 & 0.58 & 0.56 & 0.65 & 0.58 \\
-Baseline ReAct & 0.44 & 0.41 & 0.40 & 0.35 & 0.45 & 0.44 \\
+Agent-Rigor    & 0.90 & 0.25 & 1.00 & 1.00 & 0.40 & \textbf{0.70} \\
+Agent-Skills   & 0.20 & 0.75 & 1.00 & 1.00 & 0.40 & 0.69 \\
+Superpowers    & 0.20 & 0.25 & 1.00 & 1.00 & 0.40 & 0.56 \\
+Baseline ReAct & 0.20 & 0.00 & 1.00 & 1.00 & 0.40 & 0.50 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\Cref{tab:perharness} provides the full per-harness, per-pillar breakdown.
-Agent-Rigor achieves the highest composite \rigorscore{} (0.79), with particular strength in Planning Fidelity (0.84) and Verification Coverage (0.81).
-Baseline ReAct, lacking a structured discipline framework, achieves the lowest absolute scores, especially in Abstention Quality (0.35).
+\Cref{tab:perharness} provides the full per-harness, per-pillar breakdown from our empirical test runs.
+Agent-Rigor achieves the highest composite \rigorscore{} (0.70), with particular strength in Planning Fidelity (0.90).
+Agent-Skills scored closely behind (0.69) due to its high Verification Coverage (0.75), driven by its aggressive test-iteration cycle.
+Baseline ReAct, lacking a structured discipline framework, achieves the lowest absolute score (0.50), entirely failing to verify its output prior to submission.
 
 \subsection{Process--Outcome Correlation}
 
