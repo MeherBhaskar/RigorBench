@@ -1,0 +1,21 @@
+task_id: task_002_np_hard
+agent_name: Baseline
+rigor_enabled: false
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-20T21:23:52.355589'
+  actions:
+  - type: test_executed
+    timestamp: '2026-06-20T21:23:52.356215'
+    metadata:
+      command: pytest test.py
+  - type: test_written
+    timestamp: '2026-06-20T21:23:52.356460'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_002_np_hard/repo_baseline/test.py
+  - type: test_executed
+    timestamp: '2026-06-20T21:23:52.356509'
+    metadata:
+      command: pytest test.py

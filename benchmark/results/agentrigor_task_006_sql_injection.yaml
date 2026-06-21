@@ -5,21 +5,21 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-20T21:22:30.760077'
+  started_at: '2026-06-20T21:23:54.229575'
   actions:
   - type: plan_created
-    timestamp: '2026-06-20T21:22:30.760210'
+    timestamp: '2026-06-20T21:23:54.229727'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_006_sql_injection/repo_rigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-20T21:22:30.760234'
+    timestamp: '2026-06-20T21:23:54.229757'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_006_sql_injection/repo_rigor/plan.md
   - type: test_written
-    timestamp: '2026-06-20T21:22:30.760296'
+    timestamp: '2026-06-20T21:23:54.229838'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_006_sql_injection/repo_rigor/test.py
   - type: test_executed
-    timestamp: '2026-06-20T21:22:30.760314'
+    timestamp: '2026-06-20T21:23:54.229862'
     metadata:
       command: python -m pytest test.py

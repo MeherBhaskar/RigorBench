@@ -5,17 +5,17 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-20T21:22:30.651707'
+  started_at: '2026-06-20T21:23:54.098943'
   actions:
   - type: plan_created
-    timestamp: '2026-06-20T21:22:30.651945'
+    timestamp: '2026-06-20T21:23:54.099154'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_002_race_condition/repo_rigor/plan.md
   - type: test_written
-    timestamp: '2026-06-20T21:22:30.651980'
+    timestamp: '2026-06-20T21:23:54.099200'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_002_race_condition/repo_rigor/test.py
   - type: test_executed
-    timestamp: '2026-06-20T21:22:30.651997'
+    timestamp: '2026-06-20T21:23:54.099221'
     metadata:
       command: pytest test.py

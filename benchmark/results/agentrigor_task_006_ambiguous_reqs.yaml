@@ -5,18 +5,18 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-20T21:22:32.143894'
+  started_at: '2026-06-20T21:23:55.941865'
   actions:
   - type: plan_created
-    timestamp: '2026-06-20T21:22:32.144207'
+    timestamp: '2026-06-20T21:23:55.942123'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_006_ambiguous_reqs/repo_rigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-20T21:22:32.144235'
+    timestamp: '2026-06-20T21:23:55.942149'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_006_ambiguous_reqs/repo_rigor/plan.md
   - type: abstention_declared
-    timestamp: '2026-06-20T21:22:32.144260'
+    timestamp: '2026-06-20T21:23:55.942170'
     metadata:
       reason: 'I''ve reviewed the repository and written my initial plan to `plan.md`.
 

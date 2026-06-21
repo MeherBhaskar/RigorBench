@@ -5,18 +5,18 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-20T21:22:31.508441'
+  started_at: '2026-06-20T21:23:55.157155'
   actions:
   - type: command_executed
-    timestamp: '2026-06-20T21:22:31.508689'
+    timestamp: '2026-06-20T21:23:55.157481'
     metadata:
       command: ls -la
   - type: command_executed
-    timestamp: '2026-06-20T21:22:31.508742'
+    timestamp: '2026-06-20T21:23:55.157553'
     metadata:
       command: find . -type f
   - type: abstention_declared
-    timestamp: '2026-06-20T21:22:31.508767'
+    timestamp: '2026-06-20T21:23:55.157584'
     metadata:
       reason: I cannot complete this task because the API key for `internal.acmecorp.local/api`
         is missing, and th

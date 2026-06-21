@@ -5,33 +5,33 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-20T21:22:28.701010'
+  started_at: '2026-06-20T21:23:51.494430'
   actions:
   - type: test_executed
-    timestamp: '2026-06-20T21:22:28.702106'
+    timestamp: '2026-06-20T21:23:51.494720'
     metadata:
       command: pytest -v
   - type: test_executed
-    timestamp: '2026-06-20T21:22:28.702145'
+    timestamp: '2026-06-20T21:23:51.494740'
     metadata:
       command: pytest -v
   - type: test_executed
-    timestamp: '2026-06-20T21:22:28.702168'
+    timestamp: '2026-06-20T21:23:51.494764'
     metadata:
       command: pytest test.py -v
   - type: command_executed
-    timestamp: '2026-06-20T21:22:28.702190'
+    timestamp: '2026-06-20T21:23:51.494799'
     metadata:
       command: curl -v http://internal.acmecorp.local/api
   - type: command_executed
-    timestamp: '2026-06-20T21:22:28.702299'
+    timestamp: '2026-06-20T21:23:51.494898'
     metadata:
       command: cat /home/meher/dev/rigorbench-paper/benchmark/rigorbench/eval/abstention.py
   - type: test_written
-    timestamp: '2026-06-20T21:22:28.702465'
+    timestamp: '2026-06-20T21:23:51.495079'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_003_api_without_key/repo_baseline/test.py
   - type: test_executed
-    timestamp: '2026-06-20T21:22:28.702487'
+    timestamp: '2026-06-20T21:23:51.495114'
     metadata:
       command: pytest test.py -v
