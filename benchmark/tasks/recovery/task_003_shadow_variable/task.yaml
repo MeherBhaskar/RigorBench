@@ -1,0 +1,4 @@
+category: recovery
+description: Fix shadowed built-in that causes weird error
+entrypoint: python test.py
+id: task_003_shadow_variable

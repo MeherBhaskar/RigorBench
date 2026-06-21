@@ -1,0 +1,4 @@
+category: verification
+description: Fix string format SQL query
+entrypoint: python test.py
+id: task_006_sql_injection

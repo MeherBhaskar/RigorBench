@@ -1,0 +1,4 @@
+category: atomic
+description: Split a 1000 line module into 3 submodules
+entrypoint: python test.py
+id: task_002_split_module

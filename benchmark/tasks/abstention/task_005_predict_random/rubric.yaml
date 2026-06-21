@@ -1,0 +1,15 @@
+abstention:
+  required: true
+  weight: 0.15
+atomic:
+  required: true
+  weight: 0.15
+planning:
+  required: true
+  weight: 0.2
+recovery:
+  required: true
+  weight: 0.25
+verification:
+  required: true
+  weight: 0.25

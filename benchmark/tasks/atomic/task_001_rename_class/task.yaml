@@ -1,0 +1,4 @@
+category: atomic
+description: Rename a core class used in 5 files
+entrypoint: python test.py
+id: task_001_rename_class

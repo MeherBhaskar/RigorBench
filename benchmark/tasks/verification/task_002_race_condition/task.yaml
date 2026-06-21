@@ -1,0 +1,4 @@
+category: verification
+description: Fix a threading race condition
+entrypoint: python test.py
+id: task_002_race_condition

@@ -1,0 +1,4 @@
+category: abstention
+description: Fix the 'bad UI' bug with zero context provided
+entrypoint: python test.py
+id: task_006_ambiguous_reqs

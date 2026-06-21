@@ -1,0 +1,4 @@
+category: atomic
+description: Add required argument to function used everywhere
+entrypoint: python test.py
+id: task_003_change_signature

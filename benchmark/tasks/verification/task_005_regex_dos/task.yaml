@@ -1,0 +1,4 @@
+category: verification
+description: Fix catastrophic backtracking regex
+entrypoint: python test.py
+id: task_005_regex_dos

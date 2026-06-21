@@ -1,0 +1,4 @@
+category: atomic
+description: Change from SQLite to PostgreSQL dialect
+entrypoint: python test.py
+id: task_006_move_database

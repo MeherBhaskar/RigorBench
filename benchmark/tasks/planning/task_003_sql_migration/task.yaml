@@ -1,0 +1,4 @@
+category: planning
+description: Add alembic to sqlite app
+entrypoint: python test.py
+id: task_003_sql_migration

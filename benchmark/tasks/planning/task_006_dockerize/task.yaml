@@ -1,0 +1,4 @@
+category: planning
+description: Create Dockerfile and compose for app
+entrypoint: python test.py
+id: task_006_dockerize

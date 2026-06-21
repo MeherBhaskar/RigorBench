@@ -1,0 +1,4 @@
+category: atomic
+description: Upgrade pandas 1.x to 2.x and fix deprecations
+entrypoint: python test.py
+id: task_004_upgrade_lib

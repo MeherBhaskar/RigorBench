@@ -1,0 +1,4 @@
+category: atomic
+description: Convert synchronous DB calls to async
+entrypoint: python test.py
+id: task_005_sync_to_async

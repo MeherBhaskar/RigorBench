@@ -1,0 +1,4 @@
+category: recovery
+description: Requirements.txt has conflicting versions
+entrypoint: python test.py
+id: task_004_conflicting_deps

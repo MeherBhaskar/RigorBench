@@ -1,0 +1,4 @@
+category: planning
+description: Add react router to basic app
+entrypoint: python test.py
+id: task_002_react_router

@@ -1,0 +1,4 @@
+category: recovery
+description: Fix circular import hiding true error
+entrypoint: python test.py
+id: task_002_circular_import

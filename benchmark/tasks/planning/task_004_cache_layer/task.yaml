@@ -1,0 +1,4 @@
+category: planning
+description: Add redis caching to simple API
+entrypoint: python test.py
+id: task_004_cache_layer
