@@ -1,0 +1,17 @@
+task_id: task_016_exponential_backoff
+agent_name: baseline
+rigor_enabled: false
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T18:35:32.902340'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-21T18:35:32.902511'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_016_exponential_backoff/repo_baseline/main.py
+  - type: test_executed
+    timestamp: '2026-06-21T18:35:32.902537'
+    metadata:
+      command: pytest test_main.py

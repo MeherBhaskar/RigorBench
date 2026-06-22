@@ -1,0 +1,27 @@
+task_id: task_016_extract_domain
+agent_name: superpowersharness
+rigor_enabled: false
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T18:48:26.741681'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-21T18:48:26.741862'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_016_extract_domain/repo_superpowersharness/main.py
+  - type: test_executed
+    timestamp: '2026-06-21T18:48:26.741884'
+    metadata:
+      command: python3 -c \"import main; print(main.extract_domain('test@example.com'));
+        print(main.extract_domain('user@sub.example.com'))\
+  - type: file_modified
+    timestamp: '2026-06-21T18:48:26.741906'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_016_extract_domain/repo_superpowersharness/main.py
+  - type: command_executed
+    timestamp: '2026-06-21T18:48:26.741928'
+    metadata:
+      command: python3 -c \"import main; print(main.extract_domain('abc@def@ghi.com'));
+        main.extract_domain('noatsymbol')\

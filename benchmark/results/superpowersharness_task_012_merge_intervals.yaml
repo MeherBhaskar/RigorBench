@@ -1,0 +1,13 @@
+task_id: task_012_merge_intervals
+agent_name: superpowersharness
+rigor_enabled: false
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T19:00:46.843644'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-21T19:00:46.843785'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_012_merge_intervals/repo_superpowersharness/merge_intervals.py

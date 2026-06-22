@@ -1,0 +1,25 @@
+task_id: task_016_exponential_backoff
+agent_name: agentrigor
+rigor_enabled: true
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T18:36:11.658654'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T18:36:11.658822'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_016_exponential_backoff/repo_agentrigor/plan.md
+  - type: plan_created
+    timestamp: '2026-06-21T18:36:11.658856'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_016_exponential_backoff/repo_agentrigor/plan.md
+  - type: file_modified
+    timestamp: '2026-06-21T18:36:11.658877'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_016_exponential_backoff/repo_agentrigor/main.py
+  - type: test_executed
+    timestamp: '2026-06-21T18:36:11.658894'
+    metadata:
+      command: pytest test_main.py

@@ -1,0 +1,17 @@
+task_id: task_017_retry_backoff
+agent_name: agentrigor
+rigor_enabled: true
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T18:38:27.181839'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-21T18:38:27.182018'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_017_retry_backoff/repo_agentrigor/main.py
+  - type: test_executed
+    timestamp: '2026-06-21T18:38:27.182037'
+    metadata:
+      command: python -m pytest test_main.py

@@ -1,0 +1,17 @@
+task_id: task_017_retry_backoff
+agent_name: superpowersharness
+rigor_enabled: false
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T18:39:40.295027'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-21T18:39:40.295362'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_017_retry_backoff/repo_superpowers/main.py
+  - type: test_executed
+    timestamp: '2026-06-21T18:39:40.295395'
+    metadata:
+      command: pytest test_main.py

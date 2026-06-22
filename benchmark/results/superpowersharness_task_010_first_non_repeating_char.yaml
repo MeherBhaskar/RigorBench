@@ -1,0 +1,17 @@
+task_id: task_010_first_non_repeating_char
+agent_name: superpowersharness
+rigor_enabled: false
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T19:04:59.943536'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-21T19:04:59.943717'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_010_first_non_repeating_char/repo_superpowers/main.py
+  - type: test_executed
+    timestamp: '2026-06-21T19:04:59.943737'
+    metadata:
+      command: python -m pytest test_main.py
