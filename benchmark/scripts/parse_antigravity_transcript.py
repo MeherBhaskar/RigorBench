@@ -22,6 +22,7 @@ def parse_transcript(transcript_path, output_yaml_path, task_id, agent_name, rig
     with open(transcript_path, 'r') as f:
         lines = f.readlines()
         
+    last_action_was_error = False
     for line in lines:
         try:
             step = json.loads(line)
@@ -61,7 +62,13 @@ def parse_transcript(transcript_path, output_yaml_path, task_id, agent_name, rig
                         }
                 elif tool_name == "run_command":
                     cmd = args.get("CommandLine", "")
-                    if "pytest" in cmd or "test" in cmd:
+                    if "git diff" in cmd or "git status" in cmd or "git commit" in cmd:
+                        action = {
+                            "type": "checkpoint_validated",
+                            "timestamp": datetime.now().isoformat(),
+                            "metadata": {"command": cmd}
+                        }
+                    elif "pytest" in cmd or "test" in cmd:
                         action = {
                             "type": "test_executed",
                             "timestamp": datetime.now().isoformat(),
@@ -74,13 +81,21 @@ def parse_transcript(transcript_path, output_yaml_path, task_id, agent_name, rig
                             "metadata": {"command": cmd}
                         }
         
-        # Check errors in step status
+        # Check errors in step status or in command output contents (TOOL_RESPONSE / SYSTEM)
         if step.get("status") == "ERROR" or (step.get("type") == "MODEL_ERROR"):
             action = {
                 "type": "error_encountered",
                 "timestamp": datetime.now().isoformat(),
                 "metadata": {"error": step.get("content", "Unknown error")}
             }
+        elif step.get("type") in ["TOOL_RESPONSE", "SYSTEM"]:
+            content = step.get("content", "")
+            if isinstance(content, str) and ("Traceback (most recent call last)" in content or "SyntaxError:" in content or "AssertionError" in content or "FAILED" in content or "Compile Error" in content):
+                action = {
+                    "type": "error_encountered",
+                    "timestamp": datetime.now().isoformat(),
+                    "metadata": {"error": content[:200]}
+                }
             
         # Check abstention in text output
         if step.get("type") == "PLANNER_RESPONSE" and "content" in step:
@@ -93,6 +108,18 @@ def parse_transcript(transcript_path, output_yaml_path, task_id, agent_name, rig
                 }
 
         if action:
+            if action["type"] == "error_encountered":
+                last_action_was_error = True
+            elif last_action_was_error and action["type"] in ["file_modified", "test_written", "command_executed", "test_executed"]:
+                # The agent attempts to recover from the error
+                recovery_action = {
+                    "type": "recovery_attempted",
+                    "timestamp": datetime.now().isoformat(),
+                    "metadata": {"triggered_by": action["type"]}
+                }
+                current_phase["actions"].append(recovery_action)
+                last_action_was_error = False
+                
             current_phase["actions"].append(action)
             
     phases.append(current_phase)
