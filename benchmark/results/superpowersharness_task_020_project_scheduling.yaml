@@ -1,0 +1,9 @@
+task_id: task_020_project_scheduling
+agent_name: superpowersharness
+rigor_enabled: false
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T19:46:44.341369'
+  actions: []

@@ -1,0 +1,29 @@
+task_id: task_011_state_machine
+agent_name: agentrigor
+rigor_enabled: true
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T19:26:37.999679'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-21T19:26:37.999989'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_011_state_machine/repo_agentrigor/plan.md
+  - type: file_modified
+    timestamp: '2026-06-21T19:26:38.000030'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_011_state_machine/repo_agentrigor/main.py
+  - type: test_executed
+    timestamp: '2026-06-21T19:26:38.000062'
+    metadata:
+      command: python test_main.py
+  - type: test_written
+    timestamp: '2026-06-21T19:26:38.000096'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_011_state_machine/repo_agentrigor/test_main.py
+  - type: test_executed
+    timestamp: '2026-06-21T19:26:38.000130'
+    metadata:
+      command: python test_main.py

@@ -1,0 +1,17 @@
+task_id: task_014_search_contracts
+agent_name: superpowersharness
+rigor_enabled: false
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-21T19:29:57.103133'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-21T19:29:57.103395'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_014_search_contracts/repo_superpowers/main.py
+  - type: test_executed
+    timestamp: '2026-06-21T19:29:57.103516'
+    metadata:
+      command: pytest test_main.py
