@@ -5,5 +5,29 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:44:26.898631'
-  actions: []
+  started_at: '2026-06-22T10:39:15.174286'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-22T10:39:15.174472'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_016_task_scheduling/repo_baseline/main.py
+  - type: test_executed
+    timestamp: '2026-06-22T10:39:15.174495'
+    metadata:
+      command: pytest test_main.py
+  - type: command_executed
+    timestamp: '2026-06-22T10:39:15.174542'
+    metadata:
+      command: 'python3 -c \"from main import calculate_start_times\ntasks = {\n    ''Start'':
+        {''duration'': 0, ''dependencies'': []},\n    ''Task1'': {''duration'': 10,
+        ''dependencies'': [''Start'']},\n    ''Task2'': {''duration'': 15, ''dependencies'':
+        [''Start'']},\n    ''Task3'': {''duration'': 5, ''dependencies'': [''Task1'']},\n    ''Task4'':
+        {''duration'': 5, ''dependencies'': [''Task2'']},\n    ''End'': {''duration'':
+        0, ''dependencies'': [''Task3'', ''Task4'']}\n}\nprint(calculate_start_times(tasks))\'
+  - type: command_executed
+    timestamp: '2026-06-22T10:39:15.174558'
+    metadata:
+      command: 'python3 -c \"from main import calculate_start_times\ntasks = {\n    ''A'':
+        {''duration'': 1, ''dependencies'': [''C'']},\n    ''B'': {''duration'': 1,
+        ''dependencies'': [''A'']},\n    ''C'': {''duration'': 1, ''dependencies'':
+        [''B'']}\n}\ntry:\n    calculate_start_times(tasks)\nexcept Exception as e:\n    print(repr(e))\'

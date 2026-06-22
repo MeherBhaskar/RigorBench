@@ -5,5 +5,53 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:46:22.317565'
-  actions: []
+  started_at: '2026-06-22T11:04:37.125368'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-22T11:04:37.125633'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_020_project_scheduling/repo_baseline/test_solution.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:04:37.125653'
+    metadata:
+      command: python test_solution.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:04:37.125689'
+    metadata:
+      command: 'python -c ''\nimport random, time\nfrom test_solution import min_completion_time\ntasks
+        = [{\"id\": str(i), \"duration\": random.randint(1, 100), \"prerequisites\":
+        []} for i in range(15)]\nt0 = time.time()\nres = min_completion_time(tasks,
+        5)\nprint(\"Random Res:\", res, \"Time:\", time.time()-t0)\n'''
+  - type: plan_created
+    timestamp: '2026-06-22T11:04:37.125755'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_020_project_scheduling/repo_baseline/test_solution.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:04:37.125774'
+    metadata:
+      command: python test_solution.py
+  - type: plan_created
+    timestamp: '2026-06-22T11:04:37.125836'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_020_project_scheduling/repo_baseline/test_solution.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:04:37.125855'
+    metadata:
+      command: python test_solution.py
+  - type: command_executed
+    timestamp: '2026-06-22T11:04:37.125880'
+    metadata:
+      command: python -c \"import z3\
+  - type: plan_created
+    timestamp: '2026-06-22T11:04:37.125936'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_020_project_scheduling/repo_baseline/main.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:04:37.125954'
+    metadata:
+      command: pytest test_main.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:04:37.125979'
+    metadata:
+      command: python -c \"\nfrom test_main import *\ntest_simple_scheduling()\ntest_cycle_detection()\ntest_independent_tasks()\ntest_bottleneck_prerequisite()\ntest_complex_dependencies()\nprint('All
+        tests passed!')\n\

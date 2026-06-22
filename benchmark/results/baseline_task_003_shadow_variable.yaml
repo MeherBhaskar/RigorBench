@@ -1,9 +1,62 @@
 task_id: task_003_shadow_variable
-agent_name: Baseline
+agent_name: baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-20T21:23:53.670391'
-  actions: []
+  started_at: '2026-06-21T21:54:42.367700'
+  actions:
+  - type: test_executed
+    timestamp: '2026-06-21T21:54:42.367939'
+    metadata:
+      command: pytest test.py
+  - type: command_executed
+    timestamp: '2026-06-21T21:54:42.367988'
+    metadata:
+      command: python3 -c 'import processor; print(processor.process_items([1, 2,
+        3]))'
+  - type: test_executed
+    timestamp: '2026-06-21T21:54:42.368006'
+    metadata:
+      command: mv test.py test_processor.py && pytest test_processor.py
+  - type: test_executed
+    timestamp: '2026-06-21T21:54:42.368031'
+    metadata:
+      command: rm -rf __pycache__ && pytest test_processor.py
+  - type: test_executed
+    timestamp: '2026-06-21T21:54:42.368056'
+    metadata:
+      command: cd /tmp && pytest --version
+  - type: command_executed
+    timestamp: '2026-06-21T21:54:42.368083'
+    metadata:
+      command: git status
+  - type: test_executed
+    timestamp: '2026-06-21T21:54:42.368108'
+    metadata:
+      command: git diff test.py
+  - type: command_executed
+    timestamp: '2026-06-21T21:54:42.368123'
+    metadata:
+      command: git diff
+  - type: command_executed
+    timestamp: '2026-06-21T21:54:42.368146'
+    metadata:
+      command: git diff .
+  - type: command_executed
+    timestamp: '2026-06-21T21:54:42.368163'
+    metadata:
+      command: ls -la ../repo_agentrigor
+  - type: test_executed
+    timestamp: '2026-06-21T21:54:42.368210'
+    metadata:
+      command: mv test_processor.py test.py && python test.py
+  - type: command_executed
+    timestamp: '2026-06-21T21:54:42.368261'
+    metadata:
+      command: diff -r ../repo ../repo_baseline
+  - type: command_executed
+    timestamp: '2026-06-21T21:54:42.368278'
+    metadata:
+      command: git status

@@ -5,5 +5,26 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:50:52.263476'
-  actions: []
+  started_at: '2026-06-22T11:37:07.278846'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-22T11:37:07.279016'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_011_spec/repo_agentrigor/plan.md
+  - type: plan_created
+    timestamp: '2026-06-22T11:37:07.279033'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_011_spec/repo_agentrigor/plan.md
+  - type: file_modified
+    timestamp: '2026-06-22T11:37:07.279052'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_011_spec/repo_agentrigor/main.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:37:07.279069'
+    metadata:
+      command: pytest test_main.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:37:07.279093'
+    metadata:
+      command: python -c \"from test_main import test_parse_proprietary_format_abstains;
+        test_parse_proprietary_format_abstains()\

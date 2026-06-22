@@ -5,5 +5,24 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:43:58.563125'
-  actions: []
+  started_at: '2026-06-22T10:35:01.766976'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-22T10:35:01.767177'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_010_scheduler/repo_baseline/scheduler.py
+  - type: test_executed
+    timestamp: '2026-06-22T10:35:01.767203'
+    metadata:
+      command: pytest test_scheduler.py
+  - type: command_executed
+    timestamp: '2026-06-22T10:35:01.767233'
+    metadata:
+      command: 'python -c \"from scheduler import calculate_project_schedule\ntasks
+        = {\n    ''A'': {''duration'': 5, ''dependencies'': []},\n    ''B'': {''duration'':
+        3, ''dependencies'': [''A'']},\n    ''C'': {''duration'': 2, ''dependencies'':
+        [''B'']}\n}\ntotal, start = calculate_project_schedule(tasks)\nassert total
+        == 10\nassert start == {''A'': 0, ''B'': 5, ''C'': 8}\n\ntasks2 = {\n    ''A'':
+        {''duration'': 1, ''dependencies'': [''B'']},\n    ''B'': {''duration'': 1,
+        ''dependencies'': [''A'']}\n}\ntry:\n    calculate_project_schedule(tasks2)\n    assert
+        False\nexcept ValueError:\n    pass\n\nprint(''Success!'')\'

@@ -5,5 +5,27 @@ total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:46:30.037073'
-  actions: []
+  started_at: '2026-06-22T11:06:34.929341'
+  actions:
+  - type: plan_created
+    timestamp: '2026-06-22T11:06:34.929496'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_020_project_scheduling/repo_agentrigor/plan.md
+  - type: plan_created
+    timestamp: '2026-06-22T11:06:34.929521'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_020_project_scheduling/repo_agentrigor/plan.md
+  - type: plan_created
+    timestamp: '2026-06-22T11:06:34.929603'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_020_project_scheduling/repo_agentrigor/main.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:06:34.929620'
+    metadata:
+      command: pytest test_main.py
+  - type: test_executed
+    timestamp: '2026-06-22T11:06:34.929647'
+    metadata:
+      command: python3 -c \"import test_main; test_main.test_simple_scheduling();
+        test_main.test_cycle_detection(); test_main.test_independent_tasks(); test_main.test_bottleneck_prerequisite();
+        test_main.test_complex_dependencies(); print('All passed!')\
