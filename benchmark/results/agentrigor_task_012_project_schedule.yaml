@@ -1,31 +1,31 @@
 task_id: task_012_project_schedule
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:53:07.659839'
+  started_at: '2026-06-22T18:17:42.930731'
   actions:
   - type: plan_created
-    timestamp: '2026-06-22T10:53:07.660022'
+    timestamp: '2026-06-22T18:17:42.930921'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_012_project_schedule/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-22T10:53:07.660050'
+    timestamp: '2026-06-22T18:17:42.930949'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_012_project_schedule/repo_agentrigor/main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:53:07.660069'
+    timestamp: '2026-06-22T18:17:42.930971'
     metadata:
       command: python3 -m pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:53:07.660097'
+    timestamp: '2026-06-22T18:17:42.931001'
     metadata:
       command: python3 -c \"import test_main; test_main.test_linear(); test_main.test_parallel();
         test_main.test_independent(); test_main.test_complex(); test_main.test_empty();
         print('All tests passed!')\
   - type: command_executed
-    timestamp: '2026-06-22T10:53:07.660113'
+    timestamp: '2026-06-22T18:17:42.931017'
     metadata:
       command: cat plan.md

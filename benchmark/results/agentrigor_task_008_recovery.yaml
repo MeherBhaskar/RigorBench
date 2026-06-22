@@ -1,21 +1,21 @@
 task_id: task_008_recovery
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:24:32.681742'
+  started_at: '2026-06-22T18:17:41.303201'
   actions:
   - type: plan_created
-    timestamp: '2026-06-21T18:24:32.681894'
+    timestamp: '2026-06-22T18:17:41.303485'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_008_recovery/repo_agentrigor/plan.md
   - type: test_executed
-    timestamp: '2026-06-21T18:24:32.681954'
+    timestamp: '2026-06-22T18:17:41.303597'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:24:32.682001'
+    timestamp: '2026-06-22T18:17:41.303634'
     metadata:
       command: pytest test_main.py

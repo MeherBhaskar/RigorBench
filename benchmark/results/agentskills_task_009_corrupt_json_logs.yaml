@@ -1,17 +1,17 @@
 task_id: task_009_corrupt_json_logs
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:18:02.686524'
+  started_at: '2026-06-22T18:17:43.370447'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:18:02.686691'
+    timestamp: '2026-06-22T18:17:43.370705'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_009_corrupt_json_logs/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:18:02.686714'
+    timestamp: '2026-06-22T18:17:43.370744'
     metadata:
       command: python test_main.py

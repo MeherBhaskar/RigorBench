@@ -1,21 +1,21 @@
 task_id: task_007_common_prefix
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:01:43.931602'
+  started_at: '2026-06-22T18:17:49.558199'
   actions:
   - type: plan_created
-    timestamp: '2026-06-21T19:01:43.931796'
+    timestamp: '2026-06-22T18:17:49.558354'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_007_common_prefix/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-21T19:01:43.931840'
+    timestamp: '2026-06-22T18:17:49.558396'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_007_common_prefix/repo_agentrigor/main.py
   - type: test_executed
-    timestamp: '2026-06-21T19:01:43.931859'
+    timestamp: '2026-06-22T18:17:49.558416'
     metadata:
       command: python test_main.py

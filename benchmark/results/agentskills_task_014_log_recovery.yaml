@@ -1,17 +1,17 @@
 task_id: task_014_log_recovery
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:06:32.648970'
+  started_at: '2026-06-22T18:17:52.095120'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:06:32.649213'
+    timestamp: '2026-06-22T18:17:52.095291'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_014_log_recovery/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:06:32.649234'
+    timestamp: '2026-06-22T18:17:52.095350'
     metadata:
       command: pytest test_main.py

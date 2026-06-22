@@ -1,20 +1,9 @@
 task_id: task_009_shortest_path
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:17:15.016495'
-  actions:
-  - type: plan_created
-    timestamp: '2026-06-22T10:17:15.016651'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_009_shortest_path/repo_superpowersharness/solution.py
-  - type: command_executed
-    timestamp: '2026-06-22T10:17:15.016673'
-    metadata:
-      command: 'python3 -c ''\nfrom solution import plan_crafting\n\nrecipes = {\n    \"A\":
-        [\n        {\"B\": 1, \"C\": 1},\n        {\"D\": 2}\n    ],\n    \"B\": [\n        {\"C\":
-        1}\n    ]\n}\ninventory = {\"C\": 2, \"D\": 2}\n\nprint(plan_crafting(\"A\",
-        1, recipes, inventory))\n'''
+  started_at: '2026-06-22T18:17:44.566406'
+  actions: []

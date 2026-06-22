@@ -1,33 +1,33 @@
 task_id: task_012_merge_intervals
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:59:59.106562'
+  started_at: '2026-06-22T18:17:51.965607'
   actions:
   - type: plan_created
-    timestamp: '2026-06-21T18:59:59.106693'
+    timestamp: '2026-06-22T18:17:51.965746'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_012_merge_intervals/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-21T18:59:59.106718'
+    timestamp: '2026-06-22T18:17:51.965769'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_012_merge_intervals/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-21T18:59:59.106737'
+    timestamp: '2026-06-22T18:17:51.965786'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_012_merge_intervals/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-21T18:59:59.106771'
+    timestamp: '2026-06-22T18:17:51.965832'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_012_merge_intervals/repo_agentrigor/merge_intervals.py
   - type: test_written
-    timestamp: '2026-06-21T18:59:59.106794'
+    timestamp: '2026-06-22T18:17:51.965859'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_012_merge_intervals/repo_agentrigor/test_merge_intervals.py
   - type: test_executed
-    timestamp: '2026-06-21T18:59:59.106814'
+    timestamp: '2026-06-22T18:17:51.965877'
     metadata:
       command: python test_merge_intervals.py

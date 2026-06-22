@@ -1,29 +1,29 @@
 task_id: task_015_bst
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T22:10:04.156404'
+  started_at: '2026-06-22T18:17:46.508607'
   actions:
   - type: plan_created
-    timestamp: '2026-06-21T22:10:04.156809'
+    timestamp: '2026-06-22T18:17:46.508874'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_015_bst/repo_agentrigor/plan.md
   - type: test_written
-    timestamp: '2026-06-21T22:10:04.156893'
+    timestamp: '2026-06-22T18:17:46.508946'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_015_bst/repo_agentrigor/test_bst_verifier.py
   - type: test_executed
-    timestamp: '2026-06-21T22:10:04.156950'
+    timestamp: '2026-06-22T18:17:46.508973'
     metadata:
       command: pytest test_bst_verifier.py
   - type: test_written
-    timestamp: '2026-06-21T22:10:04.157035'
+    timestamp: '2026-06-22T18:17:46.509036'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_015_bst/repo_agentrigor/test_bst_verifier.py
   - type: test_executed
-    timestamp: '2026-06-21T22:10:04.157079'
+    timestamp: '2026-06-22T18:17:46.509062'
     metadata:
       command: python test_bst_verifier.py

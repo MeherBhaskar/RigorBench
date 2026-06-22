@@ -1,30 +1,30 @@
 task_id: task_018_project_schedule
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:26:53.018452'
+  started_at: '2026-06-22T18:17:43.168963'
   actions:
   - type: plan_created
-    timestamp: '2026-06-22T10:26:53.018650'
+    timestamp: '2026-06-22T18:17:43.169168'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_018_project_schedule/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-22T10:26:53.018673'
+    timestamp: '2026-06-22T18:17:43.169191'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_018_project_schedule/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-22T10:26:53.018700'
+    timestamp: '2026-06-22T18:17:43.169219'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_018_project_schedule/repo_agentrigor/main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:26:53.018722'
+    timestamp: '2026-06-22T18:17:43.169244'
     metadata:
       command: python3 -m pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:26:53.018748'
+    timestamp: '2026-06-22T18:17:43.169275'
     metadata:
       command: python3 -c \"\nimport test_main\ntest_main.test_linear_schedule()\ntest_main.test_parallel_schedule()\ntest_main.test_complex_dependencies()\ntest_main.test_cycle_raises_value_error()\ntest_main.test_missing_dependency_raises_value_error()\ntest_main.test_empty_tasks()\nprint('All
         tests passed!')\n\

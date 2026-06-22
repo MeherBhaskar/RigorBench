@@ -1,17 +1,17 @@
 task_id: task_012_aof_log
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:20:23.031159'
+  started_at: '2026-06-22T18:17:40.821624'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:20:23.031322'
+    timestamp: '2026-06-22T18:17:40.821990'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_012_aof_log/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:20:23.031342'
+    timestamp: '2026-06-22T18:17:40.822021'
     metadata:
       command: python test_main.py

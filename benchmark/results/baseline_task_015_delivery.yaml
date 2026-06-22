@@ -1,26 +1,26 @@
 task_id: task_015_delivery
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:44:21.038031'
+  started_at: '2026-06-22T18:17:50.821568'
   actions:
   - type: test_executed
-    timestamp: '2026-06-22T10:44:21.038225'
+    timestamp: '2026-06-22T18:17:50.821775'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:44:21.038241'
+    timestamp: '2026-06-22T18:17:50.821792'
     metadata:
       command: pytest test_main.py
   - type: file_modified
-    timestamp: '2026-06-22T10:44:21.038284'
+    timestamp: '2026-06-22T18:17:50.821832'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_015_delivery/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:44:21.038309'
+    timestamp: '2026-06-22T18:17:50.821857'
     metadata:
       command: python -c \"import test_main; test_main.test_simple_delivery(); test_main.test_requires_recharge();
         test_main.test_impossible_reach(); test_main.test_multiple_packages(); test_main.test_recharge_detour();

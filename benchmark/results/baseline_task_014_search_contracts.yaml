@@ -1,13 +1,13 @@
 task_id: task_014_search_contracts
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:27:55.624679'
+  started_at: '2026-06-22T18:17:38.683471'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T19:27:55.624816'
+    timestamp: '2026-06-22T18:17:38.683609'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_014_search_contracts/repo_baseline/main.py

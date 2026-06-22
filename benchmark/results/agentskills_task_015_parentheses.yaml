@@ -1,17 +1,17 @@
 task_id: task_015_parentheses
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:54:12.090999'
+  started_at: '2026-06-22T18:17:33.603694'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:54:12.091156'
+    timestamp: '2026-06-22T18:17:33.603886'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_015_parentheses/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:54:12.091176'
+    timestamp: '2026-06-22T18:17:33.603907'
     metadata:
       command: pytest test_main.py

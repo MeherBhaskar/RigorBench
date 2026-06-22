@@ -1,17 +1,17 @@
 task_id: task_008_ipv4_validation
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:50:47.129133'
+  started_at: '2026-06-22T18:17:47.235405'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:50:47.129325'
+    timestamp: '2026-06-22T18:17:47.235913'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_008_ipv4_validation/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:50:47.129345'
+    timestamp: '2026-06-22T18:17:47.235935'
     metadata:
       command: python3 -m pytest test_main.py

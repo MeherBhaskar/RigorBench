@@ -1,17 +1,17 @@
 task_id: task_014_log_recovery
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:05:27.337135'
+  started_at: '2026-06-22T18:17:45.007059'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:05:27.337341'
+    timestamp: '2026-06-22T18:17:45.007387'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_014_log_recovery/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:05:27.337367'
+    timestamp: '2026-06-22T18:17:45.007412'
     metadata:
       command: pytest test_main.py

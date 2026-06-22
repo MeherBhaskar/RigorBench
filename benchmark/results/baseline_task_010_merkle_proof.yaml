@@ -1,22 +1,22 @@
 task_id: task_010_merkle_proof
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T22:02:44.608891'
+  started_at: '2026-06-22T18:17:42.130500'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T22:02:44.609397'
+    timestamp: '2026-06-22T18:17:42.130672'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_010_merkle_proof/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-21T22:02:44.609466'
+    timestamp: '2026-06-22T18:17:42.130693'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-21T22:02:44.609680'
+    timestamp: '2026-06-22T18:17:42.130751'
     metadata:
       command: python -c \"from test_main import *; test_verify_merkle_proof_valid();
         test_verify_merkle_proof_invalid_root(); test_verify_merkle_proof_invalid_direction();

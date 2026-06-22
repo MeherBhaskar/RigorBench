@@ -1,31 +1,31 @@
 task_id: task_015_bst
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T09:58:59.618853'
+  started_at: '2026-06-22T18:17:50.550665'
   actions:
   - type: test_executed
-    timestamp: '2026-06-22T09:58:59.619019'
+    timestamp: '2026-06-22T18:17:50.550829'
     metadata:
       command: python3 -m unittest test_bst_verifier.py
   - type: test_executed
-    timestamp: '2026-06-22T09:58:59.619053'
+    timestamp: '2026-06-22T18:17:50.550860'
     metadata:
       command: pytest test_bst_verifier.py
   - type: test_executed
-    timestamp: '2026-06-22T09:58:59.619077'
+    timestamp: '2026-06-22T18:17:50.550886'
     metadata:
       command: python3 -c \"import test_bst_verifier; test_bst_verifier.test_valid_bst();
         test_bst_verifier.test_invalid_bst(); print('All passed!')\
   - type: file_modified
-    timestamp: '2026-06-22T09:58:59.619111'
+    timestamp: '2026-06-22T18:17:50.550920'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_015_bst/repo_agentskills/bst_verifier.py
   - type: test_executed
-    timestamp: '2026-06-22T09:58:59.619129'
+    timestamp: '2026-06-22T18:17:50.550940'
     metadata:
       command: python3 -c \"import test_bst_verifier; test_bst_verifier.test_valid_bst();
         test_bst_verifier.test_invalid_bst(); print('All passed!')\

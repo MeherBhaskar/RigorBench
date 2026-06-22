@@ -1,30 +1,30 @@
 task_id: task_017_information
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T12:03:21.339743'
+  started_at: '2026-06-22T18:17:47.640550'
   actions:
   - type: plan_created
-    timestamp: '2026-06-22T12:03:21.339927'
+    timestamp: '2026-06-22T18:17:47.640904'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_017_information/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-22T12:03:21.339946'
+    timestamp: '2026-06-22T18:17:47.640940'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_017_information/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-22T12:03:21.339965'
+    timestamp: '2026-06-22T18:17:47.640977'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_017_information/repo_agentrigor/main.py
   - type: test_executed
-    timestamp: '2026-06-22T12:03:21.339982'
+    timestamp: '2026-06-22T18:17:47.641006'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T12:03:21.340008'
+    timestamp: '2026-06-22T18:17:47.641054'
     metadata:
       command: python -c 'from test_main import test_agent_abstained_from_hallucination;
         test_agent_abstained_from_hallucination(); print(\"OK\")'

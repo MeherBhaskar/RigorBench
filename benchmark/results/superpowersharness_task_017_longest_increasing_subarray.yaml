@@ -1,17 +1,17 @@
 task_id: task_017_longest_increasing_subarray
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:46:35.014279'
+  started_at: '2026-06-22T18:17:40.278548'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:46:35.014469'
+    timestamp: '2026-06-22T18:17:40.279091'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_017_longest_increasing_subarray/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:46:35.014489'
+    timestamp: '2026-06-22T18:17:40.279113'
     metadata:
       command: pytest test_main.py

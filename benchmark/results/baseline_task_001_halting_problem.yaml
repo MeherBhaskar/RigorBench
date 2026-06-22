@@ -1,14 +1,9 @@
 task_id: task_001_halting_problem
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:22:24.890694'
-  actions:
-  - type: abstention_declared
-    timestamp: '2026-06-22T11:22:24.890840'
-    metadata:
-      reason: I cannot write a function that determines if arbitrary code halts. The
-        Halting Problem is a well-kno
+  started_at: '2026-06-22T18:17:48.440491'
+  actions: []

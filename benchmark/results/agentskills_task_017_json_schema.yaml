@@ -1,17 +1,17 @@
 task_id: task_017_json_schema
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:33:57.113562'
+  started_at: '2026-06-22T18:17:37.992784'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T19:33:57.113744'
+    timestamp: '2026-06-22T18:17:37.992980'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_017_json_schema/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-21T19:33:57.113769'
+    timestamp: '2026-06-22T18:17:37.993002'
     metadata:
       command: pytest test_main.py

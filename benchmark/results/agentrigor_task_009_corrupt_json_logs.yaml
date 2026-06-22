@@ -1,29 +1,29 @@
 task_id: task_009_corrupt_json_logs
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:17:34.986164'
+  started_at: '2026-06-22T18:17:42.751206'
   actions:
   - type: plan_created
-    timestamp: '2026-06-21T18:17:34.986321'
+    timestamp: '2026-06-22T18:17:42.751389'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_009_corrupt_json_logs/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-21T18:17:34.986347'
+    timestamp: '2026-06-22T18:17:42.751416'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_009_corrupt_json_logs/repo_agentrigor/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:17:34.986366'
+    timestamp: '2026-06-22T18:17:42.751438'
     metadata:
       command: python3 -m unittest test_main.py
   - type: test_written
-    timestamp: '2026-06-21T18:17:34.986389'
+    timestamp: '2026-06-22T18:17:42.751463'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_009_corrupt_json_logs/repo_agentrigor/test_main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:17:34.986408'
+    timestamp: '2026-06-22T18:17:42.751482'
     metadata:
       command: python3 -m unittest test_main.py

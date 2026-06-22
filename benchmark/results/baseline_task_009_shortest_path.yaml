@@ -1,73 +1,9 @@
 task_id: task_009_shortest_path
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:13:24.481758'
-  actions:
-  - type: test_executed
-    timestamp: '2026-06-22T10:13:24.482001'
-    metadata:
-      command: pytest test_main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:13:24.482031'
-    metadata:
-      command: python -m pytest -p no:langsmith test_main.py
-  - type: plan_created
-    timestamp: '2026-06-22T10:13:24.482060'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_009_shortest_path/repo_baseline/run_tests.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:13:24.482075'
-    metadata:
-      command: python run_tests.py
-  - type: plan_created
-    timestamp: '2026-06-22T10:13:24.482098'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_009_shortest_path/repo_baseline/perf_test.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:13:24.482113'
-    metadata:
-      command: python perf_test.py
-  - type: plan_created
-    timestamp: '2026-06-22T10:13:24.482131'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_009_shortest_path/repo_baseline/perf_test2.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:13:24.482144'
-    metadata:
-      command: python perf_test2.py
-  - type: plan_created
-    timestamp: '2026-06-22T10:13:24.482159'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_009_shortest_path/repo_baseline/perf_test3.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:13:24.482172'
-    metadata:
-      command: python perf_test3.py
-  - type: plan_created
-    timestamp: '2026-06-22T10:13:24.482187'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_009_shortest_path/repo_baseline/perf_test4.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:13:24.482200'
-    metadata:
-      command: python perf_test4.py
-  - type: plan_created
-    timestamp: '2026-06-22T10:13:24.482244'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_009_shortest_path/repo_baseline/perf_test_irrelevant.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:13:24.482260'
-    metadata:
-      command: python perf_test_irrelevant.py
-  - type: test_written
-    timestamp: '2026-06-22T10:13:24.482307'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_009_shortest_path/repo_baseline/main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:13:24.482327'
-    metadata:
-      command: python run_tests.py && python perf_test_irrelevant.py
+  started_at: '2026-06-22T18:17:46.551908'
+  actions: []

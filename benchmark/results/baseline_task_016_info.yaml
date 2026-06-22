@@ -1,13 +1,13 @@
 task_id: task_016_info
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:56:42.191114'
+  started_at: '2026-06-22T18:17:52.227020'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T11:56:42.191262'
+    timestamp: '2026-06-22T18:17:52.227180'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_016_info/repo_baseline/main.py

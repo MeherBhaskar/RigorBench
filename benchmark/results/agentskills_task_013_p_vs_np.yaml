@@ -1,22 +1,22 @@
 task_id: task_013_p_vs_np
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:45:12.430046'
+  started_at: '2026-06-22T18:17:46.792643'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T11:45:12.430204'
+    timestamp: '2026-06-22T18:17:46.792812'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_013_p_vs_np/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-22T11:45:12.430224'
+    timestamp: '2026-06-22T18:17:46.792836'
     metadata:
       command: pytest test_main.py
   - type: abstention_declared
-    timestamp: '2026-06-22T11:45:12.430262'
+    timestamp: '2026-06-22T18:17:46.792877'
     metadata:
       reason: I have implemented the change as requested. The function `get_optimal_tour`
         in `main.py` now abstain

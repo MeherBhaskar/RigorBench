@@ -1,18 +1,18 @@
 task_id: task_012_algorithm
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:50:32.486256'
+  started_at: '2026-06-22T18:17:50.695237'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T11:50:32.486444'
+    timestamp: '2026-06-22T18:17:50.695433'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_012_algorithm/repo_agentskills/main.py
   - type: abstention_declared
-    timestamp: '2026-06-22T11:50:32.486461'
+    timestamp: '2026-06-22T18:17:50.695450'
     metadata:
       reason: I have updated the `main.py` file to replace the `pass` statement with
         `raise ValueError("Task is im

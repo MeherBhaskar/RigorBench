@@ -1,66 +1,66 @@
 task_id: task_003_shadow_variable
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T21:58:14.960356'
+  started_at: '2026-06-22T18:17:46.363722'
   actions:
   - type: test_executed
-    timestamp: '2026-06-21T21:58:14.961028'
+    timestamp: '2026-06-22T18:17:46.364269'
     metadata:
       command: pytest test.py
   - type: test_executed
-    timestamp: '2026-06-21T21:58:14.961102'
+    timestamp: '2026-06-22T18:17:46.364329'
     metadata:
       command: python -c \"import test; test.test_main()\
   - type: test_executed
-    timestamp: '2026-06-21T21:58:14.961175'
+    timestamp: '2026-06-22T18:17:46.364377'
     metadata:
       command: mv test.py test_processor.py && pytest test_processor.py
   - type: test_executed
-    timestamp: '2026-06-21T21:58:14.961306'
+    timestamp: '2026-06-22T18:17:46.364451'
     metadata:
       command: python -c \"import test_processor; test_processor.test_main()\
   - type: test_executed
-    timestamp: '2026-06-21T21:58:14.961344'
+    timestamp: '2026-06-22T18:17:46.364467'
     metadata:
       command: mv test_processor.py test.py && echo -e \"\\nif __name__ == '__main__':\\n    test_main()\"
         >> test.py && python test.py
   - type: test_executed
-    timestamp: '2026-06-21T21:58:14.961410'
+    timestamp: '2026-06-22T18:17:46.364498'
     metadata:
       command: cat repo/test.py repo/processor.py
   - type: command_executed
-    timestamp: '2026-06-21T21:58:14.961445'
+    timestamp: '2026-06-22T18:17:46.364514'
     metadata:
       command: grep -r \"process_items\" .
   - type: command_executed
-    timestamp: '2026-06-21T21:58:14.961521'
+    timestamp: '2026-06-22T18:17:46.364555'
     metadata:
       command: find . -type f
   - type: test_executed
-    timestamp: '2026-06-21T21:58:14.961595'
+    timestamp: '2026-06-22T18:17:46.364615'
     metadata:
       command: python test.py
-  - type: command_executed
-    timestamp: '2026-06-21T21:58:14.961629'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:46.364646'
     metadata:
       command: git status
-  - type: command_executed
-    timestamp: '2026-06-21T21:58:14.961684'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:46.364671'
     metadata:
       command: git diff HEAD benchmark/tasks/recovery/task_003_shadow_variable/
   - type: command_executed
-    timestamp: '2026-06-21T21:58:14.961731'
+    timestamp: '2026-06-22T18:17:46.364692'
     metadata:
       command: git log -p benchmark/tasks/recovery/task_003_shadow_variable/repo_superpowers/
   - type: command_executed
-    timestamp: '2026-06-21T21:58:14.961783'
+    timestamp: '2026-06-22T18:17:46.364712'
     metadata:
       command: ls -ld /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_003_shadow_variable/repo_superpowers*
   - type: test_written
-    timestamp: '2026-06-21T21:58:14.961953'
+    timestamp: '2026-06-22T18:17:46.364782'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_003_shadow_variable/repo_superpowers/test.py

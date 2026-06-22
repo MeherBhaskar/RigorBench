@@ -1,22 +1,22 @@
 task_id: task_014_critical_path
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:18:35.861863'
+  started_at: '2026-06-22T18:17:37.811804'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T11:18:35.862060'
+    timestamp: '2026-06-22T18:17:37.811989'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_014_critical_path/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-22T11:18:35.862087'
+    timestamp: '2026-06-22T18:17:37.812012'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T11:18:35.862116'
+    timestamp: '2026-06-22T18:17:37.812040'
     metadata:
       command: python -c \"\nfrom test_main import test_simple_critical_path, test_independent_tasks,
         test_complex_dependencies\ntest_simple_critical_path()\ntest_independent_tasks()\ntest_complex_dependencies()\nprint('All

@@ -1,25 +1,25 @@
 task_id: task_010_backoff
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:43:06.327586'
+  started_at: '2026-06-22T18:17:34.127752'
   actions:
   - type: plan_created
-    timestamp: '2026-06-21T18:43:06.327942'
+    timestamp: '2026-06-22T18:17:34.128011'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_010_backoff/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-21T18:43:06.327967'
+    timestamp: '2026-06-22T18:17:34.128034'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_010_backoff/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-21T18:43:06.328029'
+    timestamp: '2026-06-22T18:17:34.128056'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_010_backoff/repo_agentrigor/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:43:06.328048'
+    timestamp: '2026-06-22T18:17:34.128075'
     metadata:
       command: pytest test_main.py -v

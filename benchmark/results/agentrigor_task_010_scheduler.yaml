@@ -1,34 +1,34 @@
 task_id: task_010_scheduler
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:36:10.034998'
+  started_at: '2026-06-22T18:17:47.454677'
   actions:
   - type: plan_created
-    timestamp: '2026-06-22T10:36:10.035154'
+    timestamp: '2026-06-22T18:17:47.454892'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_010_scheduler/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-22T10:36:10.035178'
+    timestamp: '2026-06-22T18:17:47.454919'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_010_scheduler/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-22T10:36:10.035253'
+    timestamp: '2026-06-22T18:17:47.455015'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_010_scheduler/repo_agentrigor/scheduler.py
   - type: test_executed
-    timestamp: '2026-06-22T10:36:10.035274'
+    timestamp: '2026-06-22T18:17:47.455039'
     metadata:
       command: pytest test_scheduler.py
   - type: test_executed
-    timestamp: '2026-06-22T10:36:10.035300'
+    timestamp: '2026-06-22T18:17:47.455067'
     metadata:
       command: python -m pytest -p no:langsmith test_scheduler.py
   - type: test_executed
-    timestamp: '2026-06-22T10:36:10.035336'
+    timestamp: '2026-06-22T18:17:47.455097'
     metadata:
       command: python -c \"import test_scheduler; test_scheduler.test_simple_sequence();
         test_scheduler.test_parallel_tasks(); test_scheduler.test_complex_graph();

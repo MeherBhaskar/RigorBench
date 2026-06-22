@@ -1,62 +1,62 @@
 task_id: task_003_shadow_variable
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T21:54:42.367700'
+  started_at: '2026-06-22T18:17:36.959257'
   actions:
   - type: test_executed
-    timestamp: '2026-06-21T21:54:42.367939'
+    timestamp: '2026-06-22T18:17:36.959573'
     metadata:
       command: pytest test.py
   - type: command_executed
-    timestamp: '2026-06-21T21:54:42.367988'
+    timestamp: '2026-06-22T18:17:36.959616'
     metadata:
       command: python3 -c 'import processor; print(processor.process_items([1, 2,
         3]))'
   - type: test_executed
-    timestamp: '2026-06-21T21:54:42.368006'
+    timestamp: '2026-06-22T18:17:36.959635'
     metadata:
       command: mv test.py test_processor.py && pytest test_processor.py
   - type: test_executed
-    timestamp: '2026-06-21T21:54:42.368031'
+    timestamp: '2026-06-22T18:17:36.959660'
     metadata:
       command: rm -rf __pycache__ && pytest test_processor.py
   - type: test_executed
-    timestamp: '2026-06-21T21:54:42.368056'
+    timestamp: '2026-06-22T18:17:36.959686'
     metadata:
       command: cd /tmp && pytest --version
-  - type: command_executed
-    timestamp: '2026-06-21T21:54:42.368083'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:36.959711'
     metadata:
       command: git status
-  - type: test_executed
-    timestamp: '2026-06-21T21:54:42.368108'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:36.959738'
     metadata:
       command: git diff test.py
-  - type: command_executed
-    timestamp: '2026-06-21T21:54:42.368123'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:36.959753'
     metadata:
       command: git diff
-  - type: command_executed
-    timestamp: '2026-06-21T21:54:42.368146'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:36.959775'
     metadata:
       command: git diff .
   - type: command_executed
-    timestamp: '2026-06-21T21:54:42.368163'
+    timestamp: '2026-06-22T18:17:36.959793'
     metadata:
       command: ls -la ../repo_agentrigor
   - type: test_executed
-    timestamp: '2026-06-21T21:54:42.368210'
+    timestamp: '2026-06-22T18:17:36.959840'
     metadata:
       command: mv test_processor.py test.py && python test.py
   - type: command_executed
-    timestamp: '2026-06-21T21:54:42.368261'
+    timestamp: '2026-06-22T18:17:36.959892'
     metadata:
       command: diff -r ../repo ../repo_baseline
-  - type: command_executed
-    timestamp: '2026-06-21T21:54:42.368278'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:36.959908'
     metadata:
       command: git status

@@ -1,22 +1,22 @@
 task_id: task_010_scheduler
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:37:00.183851'
+  started_at: '2026-06-22T18:17:43.978138'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T10:37:00.184064'
+    timestamp: '2026-06-22T18:17:43.978412'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_010_scheduler/repo_agentskills/scheduler.py
   - type: test_executed
-    timestamp: '2026-06-22T10:37:00.184086'
+    timestamp: '2026-06-22T18:17:43.978440'
     metadata:
       command: python -m pytest test_scheduler.py
   - type: test_executed
-    timestamp: '2026-06-22T10:37:00.184114'
+    timestamp: '2026-06-22T18:17:43.978468'
     metadata:
       command: python -c \"from test_scheduler import *; test_simple_sequence(); test_parallel_tasks();
         test_complex_graph(); test_disconnected_components(); test_circular_dependency();

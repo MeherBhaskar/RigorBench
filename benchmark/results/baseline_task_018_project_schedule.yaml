@@ -1,28 +1,9 @@
 task_id: task_018_project_schedule
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:25:48.424180'
-  actions:
-  - type: file_modified
-    timestamp: '2026-06-22T10:25:48.424378'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_018_project_schedule/repo_baseline/main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:25:48.424403'
-    metadata:
-      command: python3 -m pytest test_main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:25:48.424429'
-    metadata:
-      command: python3 test_main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:25:48.424445'
-    metadata:
-      command: python3 -c \"import test_main; test_main.test_linear_schedule(); test_main.test_parallel_schedule();
-        test_main.test_complex_dependencies(); test_main.test_cycle_raises_value_error();
-        test_main.test_missing_dependency_raises_value_error(); test_main.test_empty_tasks();
-        print('All tests passed!')\
+  started_at: '2026-06-22T18:17:49.179392'
+  actions: []

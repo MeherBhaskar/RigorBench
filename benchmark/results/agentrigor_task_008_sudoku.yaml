@@ -1,34 +1,34 @@
 task_id: task_008_sudoku
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:01:31.574670'
+  started_at: '2026-06-22T18:17:43.840869'
   actions:
   - type: plan_created
-    timestamp: '2026-06-22T10:01:31.574852'
+    timestamp: '2026-06-22T18:17:43.841054'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_008_sudoku/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-22T10:01:31.574870'
+    timestamp: '2026-06-22T18:17:43.841073'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_008_sudoku/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-22T10:01:31.574892'
+    timestamp: '2026-06-22T18:17:43.841097'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_008_sudoku/repo_agentrigor/main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:01:31.574912'
+    timestamp: '2026-06-22T18:17:43.841116'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:01:31.574936'
+    timestamp: '2026-06-22T18:17:43.841142'
     metadata:
       command: python -m pytest test_main.py -p no:langsmith
   - type: test_executed
-    timestamp: '2026-06-22T10:01:31.574961'
+    timestamp: '2026-06-22T18:17:43.841168'
     metadata:
       command: python -c \"import test_main; test_main.test_valid_board(); test_main.test_invalid_row();
         test_main.test_invalid_col(); test_main.test_invalid_subgrid(); print('All

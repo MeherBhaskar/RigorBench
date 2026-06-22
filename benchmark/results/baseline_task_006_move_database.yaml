@@ -1,13 +1,13 @@
 task_id: task_006_move_database
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T22:00:02.936505'
+  started_at: '2026-06-22T18:17:50.623391'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T22:00:02.937084'
+    timestamp: '2026-06-22T18:17:50.623567'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_006_move_database/repo_baseline/schema.sql

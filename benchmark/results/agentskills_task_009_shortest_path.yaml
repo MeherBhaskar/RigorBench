@@ -1,27 +1,27 @@
 task_id: task_009_shortest_path
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:16:30.086029'
+  started_at: '2026-06-22T18:17:48.136200'
   actions:
   - type: test_executed
-    timestamp: '2026-06-22T10:16:30.086237'
+    timestamp: '2026-06-22T18:17:48.136509'
     metadata:
       command: python -m pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:16:30.086264'
+    timestamp: '2026-06-22T18:17:48.136570'
     metadata:
       command: python -c \"import pytest; pytest.main(['test_main.py'])\
   - type: test_executed
-    timestamp: '2026-06-22T10:16:30.086298'
+    timestamp: '2026-06-22T18:17:48.136614'
     metadata:
       command: python -c '\nimport test_main\ntest_main.test_already_satisfied()\ntest_main.test_simple_crafting()\ntest_main.test_shortest_path()\ntest_main.test_impossible()\ntest_main.test_multi_step()\ntest_main.test_complex_choice()\nprint(\"All
         tests passed!\")\n'
   - type: test_executed
-    timestamp: '2026-06-22T10:16:30.086320'
+    timestamp: '2026-06-22T18:17:48.136641'
     metadata:
       command: 'cat << ''EOF'' > test_perf.py\nimport time\nfrom main import plan_crafting\n\ndef
         test_perf():\n    recipes = {f\"Item_{i}\": [{f\"Item_{i-1}\": 1}] for i in
@@ -30,7 +30,7 @@ phases:
         {end - start}s\")\n    assert plan is not None\n\nif __name__ == \"__main__\":\n    test_perf()\nEOF\npython
         test_perf.py\n'
   - type: test_executed
-    timestamp: '2026-06-22T10:16:30.086343'
+    timestamp: '2026-06-22T18:17:48.136696'
     metadata:
       command: 'cat << ''EOF'' > test_perf2.py\nimport time\nfrom main import plan_crafting\n\ndef
         test_perf2():\n    recipes = {\n        \"Target\": [{\"A\": 1}],\n        \"A\":
@@ -41,7 +41,7 @@ phases:
         = time.time()\n    print(f\"Time: {end - start}s\")\n    assert plan is not
         None\n\nif __name__ == \"__main__\":\n    test_perf2()\nEOF\npython test_perf2.py'
   - type: test_executed
-    timestamp: '2026-06-22T10:16:30.086364'
+    timestamp: '2026-06-22T18:17:48.136735'
     metadata:
       command: "cat << 'EOF' > test_perf3.py\\nimport time\\nfrom collections import\
         \ deque\\n\\ndef plan_crafting(target: str, amount: int, recipes: dict[str,\
@@ -72,11 +72,11 @@ phases:
         n                    if new_state not in visited:\\n                     \
         \   visited.add(new_state)\\n                   \n<truncated 633 bytes>"
   - type: test_written
-    timestamp: '2026-06-22T10:16:30.086388'
+    timestamp: '2026-06-22T18:17:48.136785'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_009_shortest_path/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:16:30.086406'
+    timestamp: '2026-06-22T18:17:48.136808'
     metadata:
       command: python -c '\nimport test_main\ntest_main.test_already_satisfied()\ntest_main.test_simple_crafting()\ntest_main.test_shortest_path()\ntest_main.test_impossible()\ntest_main.test_multi_step()\ntest_main.test_complex_choice()\nprint(\"All
         tests passed!\")\n'

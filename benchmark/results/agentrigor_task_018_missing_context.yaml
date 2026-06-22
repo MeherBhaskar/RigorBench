@@ -1,21 +1,9 @@
 task_id: task_018_missing_context
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:47:35.836276'
-  actions:
-  - type: file_modified
-    timestamp: '2026-06-22T11:47:35.836498'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_018_missing_context/repo_agentrigor/main.py
-  - type: test_executed
-    timestamp: '2026-06-22T11:47:35.836519'
-    metadata:
-      command: pytest test_main.py
-  - type: test_executed
-    timestamp: '2026-06-22T11:47:35.836555'
-    metadata:
-      command: python -c \"import test_main; test_main.test_abstention_due_to_missing_context()\
+  started_at: '2026-06-22T18:17:52.141315'
+  actions: []

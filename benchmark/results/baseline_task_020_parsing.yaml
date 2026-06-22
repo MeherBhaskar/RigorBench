@@ -1,13 +1,13 @@
 task_id: task_020_parsing
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:12:20.943757'
+  started_at: '2026-06-22T18:17:42.474819'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:12:20.944253'
+    timestamp: '2026-06-22T18:17:42.474949'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_020_parsing/repo_baseline/main.py

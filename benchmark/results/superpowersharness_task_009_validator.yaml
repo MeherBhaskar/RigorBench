@@ -1,17 +1,17 @@
 task_id: task_009_validator
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:17:37.255795'
+  started_at: '2026-06-22T18:17:47.015224'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T19:17:37.256083'
+    timestamp: '2026-06-22T18:17:47.015837'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_009_validator/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T19:17:37.256121'
+    timestamp: '2026-06-22T18:17:47.015862'
     metadata:
       command: pytest test_main.py

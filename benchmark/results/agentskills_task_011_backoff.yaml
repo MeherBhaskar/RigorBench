@@ -1,17 +1,17 @@
 task_id: task_011_backoff
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:09:04.091456'
+  started_at: '2026-06-22T18:17:40.777384'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:09:04.091621'
+    timestamp: '2026-06-22T18:17:40.777572'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_011_backoff/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:09:04.091642'
+    timestamp: '2026-06-22T18:17:40.777593'
     metadata:
       command: pytest test_main.py

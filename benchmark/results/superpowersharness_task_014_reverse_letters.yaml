@@ -1,25 +1,25 @@
 task_id: task_014_reverse_letters
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:58:49.050055'
+  started_at: '2026-06-22T18:17:50.377258'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:58:49.050262'
+    timestamp: '2026-06-22T18:17:50.377796'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_014_reverse_letters/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:58:49.050286'
+    timestamp: '2026-06-22T18:17:50.377818'
     metadata:
       command: python -m pytest test_main.py
   - type: file_modified
-    timestamp: '2026-06-21T18:58:49.050327'
+    timestamp: '2026-06-22T18:17:50.377863'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_014_reverse_letters/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:58:49.050343'
+    timestamp: '2026-06-22T18:17:50.377880'
     metadata:
       command: python -m pytest test_main.py

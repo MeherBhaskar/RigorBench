@@ -1,17 +1,17 @@
 task_id: task_016_exponential_backoff
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:37:18.715403'
+  started_at: '2026-06-22T18:17:39.294886'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:37:18.715623'
+    timestamp: '2026-06-22T18:17:39.295358'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_016_exponential_backoff/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:37:18.715643'
+    timestamp: '2026-06-22T18:17:39.295380'
     metadata:
       command: pytest test_main.py

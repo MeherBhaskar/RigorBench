@@ -1,17 +1,17 @@
 task_id: task_012_merge_intervals
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:59:16.606385'
+  started_at: '2026-06-22T18:17:35.659736'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:59:16.606534'
+    timestamp: '2026-06-22T18:17:35.659884'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_012_merge_intervals/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:59:16.606555'
+    timestamp: '2026-06-22T18:17:35.659907'
     metadata:
       command: pytest test_main.py

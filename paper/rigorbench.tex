@@ -94,7 +94,7 @@ We introduce \bench{}, an exploratory benchmark designed to measure \emph{proces
 \bench{} evaluates these harnesses across five pillars: \pillar{Planning Fidelity}, \pillar{Verification Coverage}, \pillar{Recovery Efficiency}, \pillar{Abstention Quality}, and \pillar{Atomic Transition Integrity}.
 A composite \rigorscore{} aggregates these dimensions into a single metric via a weighted sum.
 We curate an exploratory pilot suite of 100 tasks spanning five categories---Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, and Don't Break the Build---and evaluate leading harnesses in a comparative study against baseline coding assistants.
-Our results show that while tool-enforced frameworks fail to improve baseline process metrics, upfront planning-enforced frameworks (like Agent-Rigor) improve process quality scores by 31\% and raise downstream outcome correctness by 30\%, providing the first quantitative evidence that \emph{how} agents code matters.
+Our results show that while tool-enforced frameworks fail to improve baseline process metrics, upfront planning-enforced frameworks (like Agent-Rigor) improve process quality scores by 27\% and raise downstream outcome correctness by 30\%, providing the first quantitative evidence that \emph{how} agents code matters.
 We release the full benchmark, scoring rubrics, and trajectory analysis tools as open-source artifacts at \url{https://github.com/MeherBhaskar/RigorBench}.
 \end{abstract}
 
@@ -137,7 +137,7 @@ We make the following contributions:
   Rather than evaluating only final artifacts, \bench{} analyzes the \emph{full execution trajectory} of an agent---every plan, edit, test invocation, error recovery, and commit---to compute process quality scores (\Cref{sec:scoring}).
 
   \item \textbf{We demonstrate the value of structured discipline.}
-  Through a comparative evaluation using the \rigor{} framework~\citep{bhaskar2026agentrigor} (which was co-developed by the co-authors of this work) as a reference implementation, we show that upfront planning-enforced discipline significantly improves both process quality (+31\%) and outcome quality (+30\%) (\Cref{sec:results}), while merely tool-enforced harnesses do not.
+  Through a comparative evaluation using the \rigor{} framework~\citep{bhaskar2026agentrigor} (which was co-developed by the co-authors of this work) as a reference implementation, we show that upfront planning-enforced discipline significantly improves both process quality (+27\%) and outcome quality (+30\%) (\Cref{sec:results}), while merely tool-enforced harnesses do not.
 
   \item \textbf{We release an open benchmark suite.}
   We release a suite of 100 tasks across 5 categories, complete with scoring rubrics, trajectory analysis tools, and baseline results, to enable reproducible evaluation of process discipline in future agents (\Cref{sec:experimental}).
@@ -424,9 +424,9 @@ This dual measurement allows us to analyze the correlation between process disci
 \toprule
 \textbf{Harness} & \textbf{\rigorscore{}} & \textbf{Outcome Score} \\
 \midrule
-Agent-Rigor    & \textbf{0.59 $\pm$ 0.07} & \textbf{0.83 $\pm$ 0.05} \\
-Superpowers    & 0.46 $\pm$ 0.06          & 0.70 $\pm$ 0.06 \\
-Baseline ReAct & 0.45 $\pm$ 0.04          & 0.64 $\pm$ 0.05 \\
+Agent-Rigor    & \textbf{0.56 $\pm$ 0.09} & \textbf{0.83 $\pm$ 0.05} \\
+Superpowers    & 0.45 $\pm$ 0.05          & 0.70 $\pm$ 0.06 \\
+Baseline ReAct & 0.44 $\pm$ 0.04          & 0.64 $\pm$ 0.05 \\
 Agent-Skills   & 0.44 $\pm$ 0.04          & 0.72 $\pm$ 0.06 \\
 \bottomrule
 \end{tabular}
@@ -434,8 +434,8 @@ Agent-Skills   & 0.44 $\pm$ 0.04          & 0.72 $\pm$ 0.06 \\
 \end{table}
 
 \Cref{tab:overall} presents the main results.
-The Baseline ReAct agent exhibits moderate to low process discipline, with a \rigorscore{} of 0.45.
-However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.44) and Superpowers (0.46) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our reference implementation (Agent-Rigor) achieves the highest process quality (0.59) by explicitly enforcing planning and verification phases. This represents a 31\% relative improvement in process quality scores over the Baseline ReAct agent (0.45).
+The Baseline ReAct agent exhibits moderate to low process discipline, with a \rigorscore{} of 0.44.
+However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.44) and Superpowers (0.45) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our reference implementation (Agent-Rigor) achieves the highest process quality (0.56) by explicitly enforcing planning and verification phases. This represents a 27\% relative improvement in process quality scores over the Baseline ReAct agent (0.44).
 Critically, outcome quality strongly correlates with these process improvements, rising from 0.64 (Baseline) to 0.83 (Agent-Rigor), demonstrating that process discipline is a driver of better results.
 
 \subsection{Per-Pillar Analysis}
@@ -482,10 +482,10 @@ Consequently, we acknowledge that three of our five pillars act primarily as con
 \toprule
 \textbf{Task Category} & \textbf{Baseline} & \textbf{Superpowers} & \textbf{Agent-Skills} & \textbf{Agent-Rigor} \\
 \midrule
-Plan-Then-Build       & 0.48 & 0.50 & 0.46 & \textbf{0.58} \\
+Plan-Then-Build       & 0.46 & 0.48 & 0.46 & \textbf{0.52} \\
 Verify-Or-Die         & 0.43 & 0.43 & 0.43 & \textbf{0.61} \\
-Doom Loop Gauntlet    & 0.43 & 0.43 & 0.43 & \textbf{0.57} \\
-Know When to Fold     & 0.47 & 0.49 & 0.47 & \textbf{0.60} \\
+Doom Loop Gauntlet    & 0.44 & 0.44 & 0.44 & \textbf{0.57} \\
+Know When to Fold     & 0.46 & 0.46 & 0.46 & \textbf{0.53} \\
 Don't Break the Build & 0.43 & 0.43 & 0.43 & \textbf{0.58} \\
 \bottomrule
 \end{tabular}
@@ -493,9 +493,9 @@ Don't Break the Build & 0.43 & 0.43 & 0.43 & \textbf{0.58} \\
 \end{table}
 
 \Cref{tab:percategory} shows the breakdown across all task categories.
-Agent-Rigor maintains a dominant lead across all challenges, particularly excelling in the Verify-Or-Die (0.61) and Know When to Fold (0.60) domains.
+Agent-Rigor maintains a dominant lead across all challenges, particularly excelling in the Verify-Or-Die (0.61) and Don't Break the Build (0.58) domains.
 We note that the differences between the Baseline, Superpowers, and Agent-Skills harnesses across these categories are extremely small and statistically negligible (within one standard deviation), and should not be interpreted as a meaningful relative ranking among these three systems.
-While we initially hypothesized that the Superpowers harness might excel in the Doom Loop Gauntlet---which tests recovery efficiency from catastrophic error states---empirical live testing proved otherwise. Agent-Rigor maintained a commanding lead (0.57) while Superpowers merely matched the baseline (0.43). This indicates that explicit, upfront planning is strictly superior to ad-hoc context preservation, even when navigating compounding error states.
+While we initially hypothesized that the Superpowers harness might excel in the Doom Loop Gauntlet---which tests recovery efficiency from catastrophic error states---empirical live testing proved otherwise. Agent-Rigor maintained a commanding lead (0.57) while Superpowers merely matched the baseline (0.44). This indicates that explicit, upfront planning is strictly superior to ad-hoc context preservation, even when navigating compounding error states.
 
 \subsection{Per-Harness Detailed Results}
 \begin{table}[t]
@@ -508,17 +508,17 @@ While we initially hypothesized that the Superpowers harness might excel in the 
 \toprule
 \textbf{Harness} & \textbf{PF} & \textbf{VC} & \textbf{RE} & \textbf{AQ} & \textbf{ATI} & \textbf{\rigorscore{}} \\
 \midrule
-Agent-Rigor    & 0.82 & 0.12 & 1.00 & 0.57 & 0.40 & \textbf{0.59} \\
-Superpowers    & 0.28 & 0.03 & 1.00 & 0.56 & 0.40 & 0.46 \\
-Baseline ReAct & 0.23 & 0.04 & 1.00 & 0.55 & 0.40 & 0.45 \\
-Agent-Skills   & 0.22 & 0.02 & 1.00 & 0.56 & 0.40 & 0.44 \\
+Agent-Rigor    & 0.72 & 0.11 & 1.00 & 0.53 & 0.40 & \textbf{0.56} \\
+Superpowers    & 0.25 & 0.03 & 1.00 & 0.54 & 0.40 & 0.45 \\
+Baseline ReAct & 0.21 & 0.03 & 1.00 & 0.54 & 0.42 & 0.44 \\
+Agent-Skills   & 0.22 & 0.02 & 1.00 & 0.56 & 0.41 & 0.44 \\
 \bottomrule
 \end{tabular}
 }
 \end{table}
 
 \Cref{tab:perharness} provides the full per-harness, per-pillar breakdown from our large-scale execution across all 100 benchmark tasks (400 total runs).
-Agent-Rigor achieves the highest composite \rigorscore{} (0.59), entirely driven by its massive lead in Planning Fidelity (0.82), confirming its core design philosophy.
+Agent-Rigor achieves the highest composite \rigorscore{} (0.56), entirely driven by its massive lead in Planning Fidelity (0.72), confirming its core design philosophy.
 Conversely, Agent-Skills achieved the lowest absolute score (0.44), suffering heavily in Verification Coverage (0.02) and Planning Fidelity (0.22), as its aggressive tool-chaining loop frequently bypassed formal verification and explicit planning.
 Baseline ReAct and Superpowers occupy the middle tier, relying primarily on LLM-inherent context window retention rather than strict formalization.
 
@@ -545,14 +545,14 @@ Baseline ReAct and Superpowers occupy the middle tier, relying primarily on LLM-
   \draw[dashed, blue, thick] (2.0, 2.59) -- (6.0, 3.67) node[right, black, scale=0.8] {Fit};
 
   % Data points:
-  % 1. Agent-Rigor: RigorScore = 0.59, Outcome = 0.83
-  \filldraw[red] (5.9, 4.15) circle (3pt) node[above right, black, scale=0.7] {Agent-Rigor (0.59, 0.83)};
+  % 1. Agent-Rigor: RigorScore = 0.56, Outcome = 0.83
+  \filldraw[red] (5.6, 4.15) circle (3pt) node[above right, black, scale=0.7] {Agent-Rigor (0.56, 0.83)};
   
-  % 2. Superpowers: RigorScore = 0.46, Outcome = 0.70
-  \filldraw[green!60!black] (4.6, 3.5) circle (3pt) node[below right, black, scale=0.7] {Superpowers (0.46, 0.70)};
+  % 2. Superpowers: RigorScore = 0.45, Outcome = 0.70
+  \filldraw[green!60!black] (4.5, 3.5) circle (3pt) node[below right, black, scale=0.7] {Superpowers (0.45, 0.70)};
   
-  % 3. Baseline ReAct: RigorScore = 0.45, Outcome = 0.64
-  \filldraw[blue] (4.5, 3.20) circle (3pt) node[below left, black, scale=0.7] {Baseline (0.45, 0.64)};
+  % 3. Baseline ReAct: RigorScore = 0.44, Outcome = 0.64
+  \filldraw[blue] (4.4, 3.20) circle (3pt) node[below left, black, scale=0.7] {Baseline (0.44, 0.64)};
   
   % 4. Agent-Skills: RigorScore = 0.44, Outcome = 0.72
   \filldraw[purple] (4.4, 3.60) circle (3pt) node[above left, black, scale=0.7] {Agent-Skills (0.44, 0.72)};
@@ -591,7 +591,7 @@ Incorporating process quality into reward models could encourage agents to devel
 \paragraph{Token efficiency.}
 An unexpected finding is that disciplined agents often use \emph{fewer} total tokens than baseline agents despite producing more artifacts (plans, tests, documentation).
 This is because the reduction in wasted tokens from failed recovery attempts more than compensates for the overhead of planning and verification.
-Mean total token consumption per task decreased from approximately 42,500 tokens in the baseline to 37,400 tokens under the upfront planning-enforced condition, representing a 12\% reduction, even as \rigorscore{} increased by 31\%.
+Mean total token consumption per task decreased from approximately 42,500 tokens in the baseline to 37,400 tokens under the upfront planning-enforced condition, representing a 12\% reduction, even as \rigorscore{} increased by 27\%.
 
 % ===================== 8. LIMITATIONS ======================================
 \section{Limitations}

@@ -1,17 +1,17 @@
 task_id: task_013_p_vs_np
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:40:45.282134'
+  started_at: '2026-06-22T18:17:40.225069'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T11:40:45.282290'
+    timestamp: '2026-06-22T18:17:40.225223'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_013_p_vs_np/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-22T11:40:45.282311'
+    timestamp: '2026-06-22T18:17:40.225244'
     metadata:
       command: pytest test_main.py

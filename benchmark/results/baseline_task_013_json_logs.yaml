@@ -1,17 +1,17 @@
 task_id: task_013_json_logs
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:10:13.788391'
+  started_at: '2026-06-22T18:17:38.493335'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:10:13.788558'
+    timestamp: '2026-06-22T18:17:38.493526'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_013_json_logs/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:10:13.788578'
+    timestamp: '2026-06-22T18:17:38.493548'
     metadata:
       command: pytest test_main.py

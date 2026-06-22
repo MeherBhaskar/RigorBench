@@ -1,25 +1,9 @@
 task_id: task_016_task_scheduling
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:41:00.041951'
-  actions:
-  - type: file_modified
-    timestamp: '2026-06-22T10:41:00.042146'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_016_task_scheduling/repo_agentskills/main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:41:00.042169'
-    metadata:
-      command: pytest test_main.py
-  - type: command_executed
-    timestamp: '2026-06-22T10:41:00.042201'
-    metadata:
-      command: 'python3 -c ''\nfrom main import calculate_start_times\ntasks = {\n    \"A\":
-        {\"duration\": 1, \"dependencies\": [\"C\"]},\n    \"B\": {\"duration\": 1,
-        \"dependencies\": [\"A\"]},\n    \"C\": {\"duration\": 1, \"dependencies\":
-        [\"B\"]}\n}\ntry:\n    calculate_start_times(tasks)\n    print(\"Failed\")\nexcept
-        ValueError as e:\n    print(str(e))\n'''
+  started_at: '2026-06-22T18:17:34.831561'
+  actions: []

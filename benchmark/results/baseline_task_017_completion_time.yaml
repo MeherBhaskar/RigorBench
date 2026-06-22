@@ -1,22 +1,22 @@
 task_id: task_017_completion_time
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:21:48.802841'
+  started_at: '2026-06-22T18:17:48.356314'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T10:21:48.803026'
+    timestamp: '2026-06-22T18:17:48.356620'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_017_completion_time/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:21:48.803049'
+    timestamp: '2026-06-22T18:17:48.356652'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:21:48.803076'
+    timestamp: '2026-06-22T18:17:48.356686'
     metadata:
       command: python -c \"import test_main; test_main.test_linear_dependencies();
         test_main.test_parallel_execution(); test_main.test_complex_dependencies();

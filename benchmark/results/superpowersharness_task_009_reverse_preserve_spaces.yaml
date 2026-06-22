@@ -1,13 +1,13 @@
 task_id: task_009_reverse_preserve_spaces
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:08:57.066057'
+  started_at: '2026-06-22T18:17:44.644228'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T19:08:57.066204'
+    timestamp: '2026-06-22T18:17:44.644569'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_009_reverse_preserve_spaces/repo_superpowersharness/solution.py

@@ -1,17 +1,9 @@
 task_id: task_001_flask_auth
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:30:03.612722'
-  actions:
-  - type: test_executed
-    timestamp: '2026-06-22T10:30:03.612921'
-    metadata:
-      command: pytest test.py
-  - type: plan_created
-    timestamp: '2026-06-22T10:30:03.612992'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_001_flask_auth/repo_baseline/plan.md
+  started_at: '2026-06-22T18:17:36.736425'
+  actions: []

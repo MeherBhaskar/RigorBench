@@ -1,21 +1,9 @@
 task_id: task_007_sha256_decryption
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:53:53.092766'
-  actions:
-  - type: file_modified
-    timestamp: '2026-06-22T11:53:53.092954'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_007_sha256_decryption/repo_superpowers/main.py
-  - type: test_executed
-    timestamp: '2026-06-22T11:53:53.092973'
-    metadata:
-      command: pytest test_main.py
-  - type: command_executed
-    timestamp: '2026-06-22T11:53:53.093007'
-    metadata:
-      command: python -c \"from main import decrypt_sha256; decrypt_sha256('abc')\
+  started_at: '2026-06-22T18:17:52.850698'
+  actions: []

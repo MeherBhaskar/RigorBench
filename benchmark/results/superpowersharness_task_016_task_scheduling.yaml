@@ -1,28 +1,9 @@
 task_id: task_016_task_scheduling
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:41:53.411988'
-  actions:
-  - type: file_modified
-    timestamp: '2026-06-22T10:41:53.412234'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_016_task_scheduling/repo_superpowers/main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:41:53.412261'
-    metadata:
-      command: pytest test_main.py
-  - type: command_executed
-    timestamp: '2026-06-22T10:41:53.412295'
-    metadata:
-      command: 'python -c ''\nfrom main import calculate_start_times\ntasks = {\n    \"A\":
-        {\"duration\": 5, \"dependencies\": []},\n    \"B\": {\"duration\": 3, \"dependencies\":
-        [\"A\"]},\n    \"C\": {\"duration\": 4, \"dependencies\": [\"A\"]},\n    \"D\":
-        {\"duration\": 2, \"dependencies\": [\"B\", \"C\"]}\n}\nprint(calculate_start_times(tasks))\ntasks2
-        = {\n    \"A\": {\"duration\": 1, \"dependencies\": [\"C\"]},\n    \"B\":
-        {\"duration\": 1, \"dependencies\": [\"A\"]},\n    \"C\": {\"duration\": 1,
-        \"dependencies\": [\"B\"]}\n}\ntry:\n    calculate_start_times(tasks2)\n    print(\"Failed\")\nexcept
-        ValueError as e:\n    print(\"Success:\", e)\n'''
+  started_at: '2026-06-22T18:17:50.954970'
+  actions: []

@@ -1,43 +1,9 @@
 task_id: task_015_delivery
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:51:20.848335'
-  actions:
-  - type: test_executed
-    timestamp: '2026-06-22T10:51:20.848552'
-    metadata:
-      command: 'cat << ''EOF'' > /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_015_delivery/repo_superpowers/main.py\nimport
-        heapq\n\ndef min_delivery_distance(battery_capacity: int, packages: list[dict],
-        stations: list[tuple[int, int]]) -> int:\n    pois = set()\n    pois.add((0,
-        0))\n    for s in stations:\n        pois.add(tuple(s))\n    for p in packages:\n        pois.add(tuple(p[\"pickup\"]))\n        pois.add(tuple(p[\"dropoff\"]))\n    pois
-        = list(pois)\n    \n    stations_set = set(tuple(s) for s in stations)\n    \n    #
-        pq: (dist, loc, delivered, carrying, bat)\n    pq = [(0, (0, 0), 0, -1, battery_capacity)]\n    best_bat
-        = {}\n    \n    n_packages = len(packages)\n    target_delivered = (1 << n_packages)
-        - 1\n    \n    while pq:\n        d, loc, deliv, carr, bat = heapq.heappop(pq)\n        \n        if
-        deliv == target_delivered:\n            return d\n            \n        state_key
-        = (loc, deliv, carr)\n        if best_bat.get(state_key, -1) >= bat:\n            continue\n        best_bat[state_key]
-        = bat\n        \n        # 0-cost actions\n        # 1. Recharge\n        if
-        loc in stations_set and bat < battery_capacity:\n            heapq.heappush(pq,
-        (d, loc, deliv, carr, battery_capacity))\n            \n        # 2. Pickup\n        if
-        carr == -1:\n            for i, p in enumerate(packages):\n                if
-        loc == tuple(p[\"pickup\"]) and not (deliv & (1 << i)):\n                    heapq.heappush(pq,
-        (d, loc, deliv, i, bat))\n                    \n        # 3. Dropoff\n        if
-        carr != -1:\n            if loc == tuple(packages[carr][\"dropoff\"]):\n                heapq.heappush(pq,
-        (d, loc, deliv | (1 << carr), -1, bat))\n                \n        # Movements\n        for
-        nxt_loc in pois:\n            if nxt_loc != loc:\n                dist_move
-        = abs(nxt_loc[0] - loc[0]) + abs(nxt_loc[1] - loc[1])\n                if
-        bat >= dist_move:\n                    heapq.heappush(pq, (d + dist_move,
-        nxt_loc, deliv, carr, bat - dist_move))\n                    \n    return
-        -1\nEOF\npytest /home
-
-        <truncated 103 bytes>'
-  - type: test_executed
-    timestamp: '2026-06-22T10:51:20.848590'
-    metadata:
-      command: python3 -c \"import test_main; test_main.test_simple_delivery(); test_main.test_requires_recharge();
-        test_main.test_impossible_reach(); test_main.test_multiple_packages(); test_main.test_recharge_detour();
-        test_main.test_recharge_detour_possible(); print('All tests passed!')\
+  started_at: '2026-06-22T18:17:48.751104'
+  actions: []

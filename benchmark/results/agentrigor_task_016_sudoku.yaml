@@ -1,29 +1,29 @@
 task_id: task_016_sudoku
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:38:23.636419'
+  started_at: '2026-06-22T18:17:37.856891'
   actions:
   - type: command_executed
-    timestamp: '2026-06-21T19:38:23.636610'
+    timestamp: '2026-06-22T18:17:37.857151'
     metadata:
       command: mkdir -p /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_016_sudoku/repo_agentrigor
   - type: plan_created
-    timestamp: '2026-06-21T19:38:23.636644'
+    timestamp: '2026-06-22T18:17:37.857210'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_016_sudoku/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-21T19:38:23.636667'
+    timestamp: '2026-06-22T18:17:37.857249'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_016_sudoku/repo_agentrigor/plan.md
   - type: test_written
-    timestamp: '2026-06-21T19:38:23.636704'
+    timestamp: '2026-06-22T18:17:37.857395'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_016_sudoku/repo_agentrigor/test_sudoku.py
   - type: test_executed
-    timestamp: '2026-06-21T19:38:23.636723'
+    timestamp: '2026-06-22T18:17:37.857431'
     metadata:
       command: pytest test_sudoku.py

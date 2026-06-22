@@ -1,35 +1,35 @@
 task_id: task_001_misleading_error
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:35:06.529093'
+  started_at: '2026-06-22T18:17:37.054396'
   actions:
   - type: command_executed
-    timestamp: '2026-06-21T18:35:06.529455'
+    timestamp: '2026-06-22T18:17:37.055082'
     metadata:
       command: python -c \"from config import get_timeout; print(get_timeout())\
   - type: command_executed
-    timestamp: '2026-06-21T18:35:06.529511'
+    timestamp: '2026-06-22T18:17:37.055131'
     metadata:
       command: for dir in repo*; do echo \"Testing $dir\"; cd $dir && python -c \"from
         config import get_timeout; print(get_timeout())\" || echo \"Failed in $dir\";
         cd ..; done
   - type: command_executed
-    timestamp: '2026-06-21T18:35:06.529542'
+    timestamp: '2026-06-22T18:17:37.055163'
     metadata:
       command: find . -name \"*.py\
   - type: command_executed
-    timestamp: '2026-06-21T18:35:06.529594'
+    timestamp: '2026-06-22T18:17:37.055218'
     metadata:
       command: cat repo_agentrigor/config.py
   - type: command_executed
-    timestamp: '2026-06-21T18:35:06.529643'
+    timestamp: '2026-06-22T18:17:37.055261'
     metadata:
       command: cp -r repo_baseline repo_superpowersharness
   - type: command_executed
-    timestamp: '2026-06-21T18:35:06.529664'
+    timestamp: '2026-06-22T18:17:37.055276'
     metadata:
       command: python -c \"from config import get_timeout; print(get_timeout())\

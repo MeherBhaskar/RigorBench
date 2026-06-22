@@ -1,14 +1,14 @@
 task_id: task_006_ambiguous_reqs
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:46:32.512624'
+  started_at: '2026-06-22T18:17:52.561331'
   actions:
   - type: abstention_declared
-    timestamp: '2026-06-22T11:46:32.512849'
+    timestamp: '2026-06-22T18:17:52.562035'
     metadata:
       reason: 'I''ve looked into the `ui.py` file in the repository. The only information
         available is the function '

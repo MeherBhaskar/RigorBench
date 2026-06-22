@@ -1,28 +1,9 @@
 task_id: task_017_completion_time
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:24:51.092997'
-  actions:
-  - type: file_modified
-    timestamp: '2026-06-22T10:24:51.093223'
-    metadata:
-      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_017_completion_time/repo_superpowers/main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:24:51.093245'
-    metadata:
-      command: pytest test_main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:24:51.093273'
-    metadata:
-      command: python -m pytest test_main.py
-  - type: test_executed
-    timestamp: '2026-06-22T10:24:51.093299'
-    metadata:
-      command: python -c \"import test_main; test_main.test_linear_dependencies();
-        test_main.test_parallel_execution(); test_main.test_complex_dependencies();
-        test_main.test_circular_dependency(); test_main.test_empty_project(); print('All
-        tests passed!')\
+  started_at: '2026-06-22T18:17:53.027128'
+  actions: []

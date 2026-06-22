@@ -1,21 +1,21 @@
 task_id: task_008_recovery
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:25:54.472029'
+  started_at: '2026-06-22T18:17:44.523810'
   actions:
   - type: command_executed
-    timestamp: '2026-06-21T18:25:54.472204'
+    timestamp: '2026-06-22T18:17:44.524144'
     metadata:
       command: ls -la /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_008_recovery/
   - type: file_modified
-    timestamp: '2026-06-21T18:25:54.472275'
+    timestamp: '2026-06-22T18:17:44.524212'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_008_recovery/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:25:54.472300'
+    timestamp: '2026-06-22T18:17:44.524232'
     metadata:
       command: pytest test_main.py

@@ -1,21 +1,21 @@
 task_id: task_017_json_schema
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:34:33.263325'
+  started_at: '2026-06-22T18:17:51.553182'
   actions:
   - type: command_executed
-    timestamp: '2026-06-21T19:34:33.263466'
+    timestamp: '2026-06-22T18:17:51.553810'
     metadata:
       command: ls -la /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_017_json_schema
   - type: file_modified
-    timestamp: '2026-06-21T19:34:33.263541'
+    timestamp: '2026-06-22T18:17:51.553885'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_017_json_schema/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T19:34:33.263562'
+    timestamp: '2026-06-22T18:17:51.553908'
     metadata:
       command: python -m pytest test_main.py

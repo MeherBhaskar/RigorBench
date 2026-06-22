@@ -1,13 +1,13 @@
 task_id: task_016_extract_domain
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:47:48.067177'
+  started_at: '2026-06-22T18:17:39.471747'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:47:48.067316'
+    timestamp: '2026-06-22T18:17:39.471880'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_016_extract_domain/repo_agentskills/main.py

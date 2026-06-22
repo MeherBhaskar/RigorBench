@@ -1,22 +1,22 @@
 task_id: task_019_path_duration
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:20:05.384106'
+  started_at: '2026-06-22T18:17:49.929968'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T11:20:05.384261'
+    timestamp: '2026-06-22T18:17:49.930161'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_019_path_duration/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-22T11:20:05.384281'
+    timestamp: '2026-06-22T18:17:49.930184'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T11:20:05.384315'
+    timestamp: '2026-06-22T18:17:49.930213'
     metadata:
       command: python -c \"import test_main; test_main.test_empty(); test_main.test_linear();
         test_main.test_parallel(); test_main.test_complex(); test_main.test_disconnected_components();

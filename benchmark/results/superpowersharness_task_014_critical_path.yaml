@@ -1,21 +1,21 @@
 task_id: task_014_critical_path
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:19:18.338859'
+  started_at: '2026-06-22T18:17:50.907713'
   actions:
   - type: plan_created
-    timestamp: '2026-06-22T11:19:18.338999'
+    timestamp: '2026-06-22T18:17:50.908043'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_014_critical_path/repo_superpowersharness/solution.py
   - type: plan_created
-    timestamp: '2026-06-22T11:19:18.339021'
+    timestamp: '2026-06-22T18:17:50.908067'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_014_critical_path/repo_superpowersharness/test_solution.py
   - type: test_executed
-    timestamp: '2026-06-22T11:19:18.339038'
+    timestamp: '2026-06-22T18:17:50.908085'
     metadata:
       command: python test_solution.py

@@ -1,17 +1,17 @@
 task_id: task_002_circular_import
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T21:45:38.761291'
+  started_at: '2026-06-22T18:17:49.887869'
   actions:
   - type: test_executed
-    timestamp: '2026-06-21T21:45:38.761472'
+    timestamp: '2026-06-22T18:17:49.888050'
     metadata:
       command: python test.py
   - type: command_executed
-    timestamp: '2026-06-21T21:45:38.761587'
+    timestamp: '2026-06-22T18:17:49.888167'
     metadata:
       command: ls -a

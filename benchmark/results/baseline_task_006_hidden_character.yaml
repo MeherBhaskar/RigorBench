@@ -1,19 +1,19 @@
 task_id: task_006_hidden_character
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T21:50:41.597021'
+  started_at: '2026-06-22T18:17:34.445857'
   actions:
   - type: command_executed
-    timestamp: '2026-06-21T21:50:41.597172'
+    timestamp: '2026-06-22T18:17:34.446061'
     metadata:
       command: python3 -c \"import re; f=open('parser.py', 'r'); text=f.read(); f.close();
         text=re.sub(r'[\\u200b\\u200c\\u200d\\ufeff]', '', text); f=open('parser.py',
         'w'); f.write(text); f.close()\
   - type: command_executed
-    timestamp: '2026-06-21T21:50:41.597191'
+    timestamp: '2026-06-22T18:17:34.446081'
     metadata:
       command: python3 -c \"import parser; print(parser.get_user())\

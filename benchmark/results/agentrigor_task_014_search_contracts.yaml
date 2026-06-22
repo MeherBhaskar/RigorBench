@@ -1,21 +1,21 @@
 task_id: task_014_search_contracts
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:28:34.292515'
+  started_at: '2026-06-22T18:17:34.967134'
   actions:
   - type: plan_created
-    timestamp: '2026-06-21T19:28:34.292669'
+    timestamp: '2026-06-22T18:17:34.967330'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_014_search_contracts/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-21T19:28:34.292694'
+    timestamp: '2026-06-22T18:17:34.967375'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_014_search_contracts/repo_agentrigor/main.py
   - type: test_executed
-    timestamp: '2026-06-21T19:28:34.292715'
+    timestamp: '2026-06-22T18:17:34.967395'
     metadata:
       command: python -m pytest test_main.py

@@ -1,17 +1,17 @@
 task_id: task_015_parentheses
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:54:48.964123'
+  started_at: '2026-06-22T18:17:45.416538'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:54:48.964299'
+    timestamp: '2026-06-22T18:17:45.416925'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_015_parentheses/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:54:48.964318'
+    timestamp: '2026-06-22T18:17:45.416947'
     metadata:
       command: pytest test_main.py

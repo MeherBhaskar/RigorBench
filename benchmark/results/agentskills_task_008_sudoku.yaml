@@ -1,22 +1,22 @@
 task_id: task_008_sudoku
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:02:17.017750'
+  started_at: '2026-06-22T18:17:41.044989'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T10:02:17.017926'
+    timestamp: '2026-06-22T18:17:41.045164'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_008_sudoku/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:02:17.017951'
+    timestamp: '2026-06-22T18:17:41.045190'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:02:17.018009'
+    timestamp: '2026-06-22T18:17:41.045237'
     metadata:
       command: python -c \"import test_main; test_main.test_valid_board(); test_main.test_invalid_row();
         test_main.test_invalid_col(); test_main.test_invalid_subgrid(); print('All

@@ -1,45 +1,45 @@
 task_id: task_005_silent_fail
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T21:52:06.731504'
+  started_at: '2026-06-22T18:17:46.048831'
   actions:
   - type: test_executed
-    timestamp: '2026-06-21T21:52:06.731697'
+    timestamp: '2026-06-22T18:17:46.049024'
     metadata:
       command: python3 test.py
-  - type: command_executed
-    timestamp: '2026-06-21T21:52:06.731716'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:46.049042'
     metadata:
       command: git status
-  - type: command_executed
-    timestamp: '2026-06-21T21:52:06.731741'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:46.049067'
     metadata:
       command: git diff loader.py
   - type: command_executed
-    timestamp: '2026-06-21T21:52:06.731756'
+    timestamp: '2026-06-22T18:17:46.049082'
     metadata:
       command: git log -p -1
   - type: command_executed
-    timestamp: '2026-06-21T21:52:06.731795'
+    timestamp: '2026-06-22T18:17:46.049121'
     metadata:
       command: git log loader.py
-  - type: command_executed
-    timestamp: '2026-06-21T21:52:06.731810'
+  - type: checkpoint_validated
+    timestamp: '2026-06-22T18:17:46.049136'
     metadata:
       command: git diff ff9e61c4237d03f7c9735cd69456f3267055743d^ loader.py
   - type: test_executed
-    timestamp: '2026-06-21T21:52:06.731825'
+    timestamp: '2026-06-22T18:17:46.049153'
     metadata:
       command: python3 -m pytest test.py
   - type: file_modified
-    timestamp: '2026-06-21T21:52:06.731854'
+    timestamp: '2026-06-22T18:17:46.049183'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_005_silent_fail/repo_agentskills/loader.py
   - type: test_executed
-    timestamp: '2026-06-21T21:52:06.731869'
+    timestamp: '2026-06-22T18:17:46.049200'
     metadata:
       command: python3 test.py

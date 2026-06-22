@@ -1,25 +1,25 @@
 task_id: task_014_reverse_letters
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:57:42.138422'
+  started_at: '2026-06-22T18:17:34.078888'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:57:42.138613'
+    timestamp: '2026-06-22T18:17:34.079087'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_014_reverse_letters/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:57:42.138632'
+    timestamp: '2026-06-22T18:17:34.079110'
     metadata:
       command: pytest test_main.py
   - type: file_modified
-    timestamp: '2026-06-21T18:57:42.138681'
+    timestamp: '2026-06-22T18:17:34.079162'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_014_reverse_letters/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:57:42.138698'
+    timestamp: '2026-06-22T18:17:34.079182'
     metadata:
       command: pytest test_main.py

@@ -1,13 +1,13 @@
 task_id: task_016_sudoku
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:38:47.814946'
+  started_at: '2026-06-22T18:17:46.738475'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T19:38:47.815166'
+    timestamp: '2026-06-22T18:17:46.738640'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_016_sudoku/repo_agentskills/main.py

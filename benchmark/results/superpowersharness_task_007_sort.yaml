@@ -1,17 +1,17 @@
 task_id: task_007_sort
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:25:24.698715'
+  started_at: '2026-06-22T18:17:48.966671'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T19:25:24.698910'
+    timestamp: '2026-06-22T18:17:48.967222'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_007_sort/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T19:25:24.698931'
+    timestamp: '2026-06-22T18:17:48.967244'
     metadata:
       command: pytest test_main.py

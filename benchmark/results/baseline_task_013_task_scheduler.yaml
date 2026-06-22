@@ -1,22 +1,22 @@
 task_id: task_013_task_scheduler
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:17:57.389935'
+  started_at: '2026-06-22T18:17:39.964372'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T10:17:57.390147'
+    timestamp: '2026-06-22T18:17:39.964566'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_013_task_scheduler/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:17:57.390172'
+    timestamp: '2026-06-22T18:17:39.964589'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T10:17:57.390201'
+    timestamp: '2026-06-22T18:17:39.964617'
     metadata:
       command: python -c \"import test_main; test_main.test_schedule_tasks_simple();
         test_main.test_schedule_tasks_independent(); test_main.test_schedule_tasks_circular();

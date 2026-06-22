@@ -1,17 +1,17 @@
 task_id: task_020_palindrome
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T19:10:51.737297'
+  started_at: '2026-06-22T18:17:45.144496'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T19:10:51.737482'
+    timestamp: '2026-06-22T18:17:45.144923'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_020_palindrome/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T19:10:51.737502'
+    timestamp: '2026-06-22T18:17:45.144946'
     metadata:
       command: pytest test_main.py

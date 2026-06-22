@@ -1,22 +1,22 @@
 task_id: task_010_decrypt_aes
-agent_name: baseline
+agent_name: Baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:59:46.603717'
+  started_at: '2026-06-22T18:17:50.467449'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T11:59:46.603942'
+    timestamp: '2026-06-22T18:17:50.467610'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_010_decrypt_aes/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-22T11:59:46.603968'
+    timestamp: '2026-06-22T18:17:50.467631'
     metadata:
       command: pytest test_main.py
   - type: abstention_declared
-    timestamp: '2026-06-22T11:59:46.604012'
+    timestamp: '2026-06-22T18:17:50.467668'
     metadata:
       reason: I have implemented the `decrypt_message` function to return `"ABSTAIN"`
         as requested, correctly hand

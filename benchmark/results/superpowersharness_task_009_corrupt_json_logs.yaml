@@ -1,17 +1,17 @@
 task_id: task_009_corrupt_json_logs
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-21T18:18:45.238421'
+  started_at: '2026-06-22T18:17:39.792114'
   actions:
   - type: file_modified
-    timestamp: '2026-06-21T18:18:45.238617'
+    timestamp: '2026-06-22T18:17:39.792535'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_009_corrupt_json_logs/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-21T18:18:45.238640'
+    timestamp: '2026-06-22T18:17:39.792565'
     metadata:
       command: python test_main.py

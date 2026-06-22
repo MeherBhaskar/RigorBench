@@ -1,14 +1,14 @@
 task_id: task_020_project_scheduling
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:08:38.072985'
+  started_at: '2026-06-22T18:17:36.610688'
   actions:
   - type: command_executed
-    timestamp: '2026-06-22T11:08:38.073209'
+    timestamp: '2026-06-22T18:17:36.610893'
     metadata:
       command: "cat << 'EOF' > /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_020_project_scheduling/repo_agentskills/main.py\\\
         nimport heapq\\nfrom itertools import combinations\\nimport math\\n\\ndef\
@@ -39,11 +39,11 @@ phases:
         n                rem = active_dict[i]\\n                EC[i] = est + rem\\\
         n             \n<truncated 2692 bytes>"
   - type: test_executed
-    timestamp: '2026-06-22T11:08:38.073230'
+    timestamp: '2026-06-22T18:17:36.610912'
     metadata:
       command: python3 -m pytest test_main.py -v
   - type: test_executed
-    timestamp: '2026-06-22T11:08:38.073261'
+    timestamp: '2026-06-22T18:17:36.610941'
     metadata:
       command: cat << 'EOF' > run_tests.py\nimport test_main\n\nprint(\"Running test_simple_scheduling\")\ntest_main.test_simple_scheduling()\nprint(\"Running
         test_cycle_detection\")\ntest_main.test_cycle_detection()\nprint(\"Running

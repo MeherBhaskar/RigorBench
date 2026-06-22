@@ -1,22 +1,22 @@
 task_id: task_001_date_parser
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:09:52.816252'
+  started_at: '2026-06-22T18:17:49.141014'
   actions:
   - type: test_written
-    timestamp: '2026-06-22T10:09:52.816532'
+    timestamp: '2026-06-22T18:17:49.141636'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_001_date_parser/repo_superpowers/test_parser.py
   - type: test_executed
-    timestamp: '2026-06-22T10:09:52.816561'
+    timestamp: '2026-06-22T18:17:49.141663'
     metadata:
       command: pytest test_parser.py
   - type: abstention_declared
-    timestamp: '2026-06-22T10:09:52.816586'
+    timestamp: '2026-06-22T18:17:49.141689'
     metadata:
       reason: I have successfully fixed the timezone bug in `parser.py` and added
         edge-case tests to `test_parser.

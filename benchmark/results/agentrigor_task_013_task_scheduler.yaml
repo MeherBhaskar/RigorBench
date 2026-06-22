@@ -1,41 +1,41 @@
 task_id: task_013_task_scheduler
-agent_name: agentrigor
+agent_name: Agent-Rigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T10:19:20.622442'
+  started_at: '2026-06-22T18:17:52.714791'
   actions:
   - type: plan_created
-    timestamp: '2026-06-22T10:19:20.622595'
+    timestamp: '2026-06-22T18:17:52.714942'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_013_task_scheduler/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-22T10:19:20.622619'
+    timestamp: '2026-06-22T18:17:52.714965'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_013_task_scheduler/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-22T10:19:20.622653'
+    timestamp: '2026-06-22T18:17:52.714997'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_013_task_scheduler/repo_agentrigor/schedule_tasks.py
   - type: plan_created
-    timestamp: '2026-06-22T10:19:20.622676'
+    timestamp: '2026-06-22T18:17:52.715019'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_013_task_scheduler/repo_agentrigor/test_schedule_tasks.py
   - type: test_executed
-    timestamp: '2026-06-22T10:19:20.622691'
+    timestamp: '2026-06-22T18:17:52.715034'
     metadata:
       command: pytest test_schedule_tasks.py
   - type: test_executed
-    timestamp: '2026-06-22T10:19:20.622717'
+    timestamp: '2026-06-22T18:17:52.715062'
     metadata:
       command: python -m unittest test_schedule_tasks.py
   - type: plan_created
-    timestamp: '2026-06-22T10:19:20.622738'
+    timestamp: '2026-06-22T18:17:52.715085'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_013_task_scheduler/repo_agentrigor/test_schedule_tasks.py
   - type: test_executed
-    timestamp: '2026-06-22T10:19:20.622754'
+    timestamp: '2026-06-22T18:17:52.715102'
     metadata:
       command: python test_schedule_tasks.py

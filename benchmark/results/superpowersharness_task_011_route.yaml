@@ -1,31 +1,31 @@
 task_id: task_011_route
-agent_name: superpowersharness
-rigor_enabled: false
+agent_name: Superpowers-Harness
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:16:31.729660'
+  started_at: '2026-06-22T18:17:43.669084'
   actions:
   - type: command_executed
-    timestamp: '2026-06-22T11:16:31.729828'
+    timestamp: '2026-06-22T18:17:43.669828'
     metadata:
       command: mkdir -p /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_011_route/repo_superpowersharness
   - type: plan_created
-    timestamp: '2026-06-22T11:16:31.729862'
+    timestamp: '2026-06-22T18:17:43.669865'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_011_route/repo_superpowersharness/solution.py
   - type: command_executed
-    timestamp: '2026-06-22T11:16:31.729893'
+    timestamp: '2026-06-22T18:17:43.669896'
     metadata:
       command: python3 -c \"from solution import plan_delivery_route\ngrid = [[0,
         0, 0], [0, 1, 0], [0, 0, 0]]\nstart = (1, 0)\nwaypoints = [(1, 2), (0, 0)]\nprint(plan_delivery_route(grid,
         start, waypoints))\
   - type: plan_created
-    timestamp: '2026-06-22T11:16:31.729912'
+    timestamp: '2026-06-22T18:17:43.669914'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_011_route/repo_superpowersharness/test_solution.py
   - type: test_executed
-    timestamp: '2026-06-22T11:16:31.729929'
+    timestamp: '2026-06-22T18:17:43.669932'
     metadata:
       command: python3 test_solution.py

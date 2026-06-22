@@ -1,22 +1,22 @@
 task_id: task_019_path_duration
-agent_name: agentskills
-rigor_enabled: false
+agent_name: Agent-Skills
+rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T11:21:39.783178'
+  started_at: '2026-06-22T18:17:47.898426'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T11:21:39.783383'
+    timestamp: '2026-06-22T18:17:47.898611'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_019_path_duration/repo_agentskills/main.py
   - type: test_executed
-    timestamp: '2026-06-22T11:21:39.783408'
+    timestamp: '2026-06-22T18:17:47.898633'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T11:21:39.783440'
+    timestamp: '2026-06-22T18:17:47.898659'
     metadata:
       command: python3 -c \"import test_main; test_main.test_empty(); test_main.test_linear();
         test_main.test_parallel(); test_main.test_complex(); test_main.test_disconnected_components();
