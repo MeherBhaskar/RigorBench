@@ -4,7 +4,7 @@ run_eval.py — Master Evaluation Entrypoint for RigorBench
 
 This script runs the entire evaluation pipeline:
 1. Loads the trajectory YAMLs and computes the core 7-pillar RigorScores.
-2. Runs the static analysis and transcript parser for extended metrics (RR, EE, TAD, DCR, DM, CGR).
+2. Runs the static analysis and transcript parser for extended metrics (RR, EE, TAD, DCA, DM, CGR).
 3. Loads the Specification Coverage (SC) and Clarification Behavior Score (CBS) evaluations.
 4. Aggregates all 9 process metrics and prints formatted Markdown and LaTeX tables.
 
@@ -71,16 +71,16 @@ def main():
             if rr is not None: agg[label]["RR"].append(rr)
             if ee is not None: agg[label]["EE"].append(ee)
 
-        # Repo metrics (TAD, DCR, DM, CGR)
+        # Repo metrics (TAD, DCA, DM, CGR)
         repo = compute_extended.find_repo(tid, harness)
         seed = compute_extended.find_seed(tid)
         if repo:
             tad = compute_extended.test_assertion_density(repo)
-            dcr = compute_extended.dead_code_ratio(repo)
+            dca = compute_extended.dead_code_ratio(repo)
             dm = compute_extended.diff_minimality(repo, seed)
             cgr = compute_extended.contextual_grounding_rate(repo)
             if tad is not None: agg[label]["TAD"].append(tad)
-            if dcr is not None: agg[label]["DCR"].append(dcr)
+            if dca is not None: agg[label]["DCA"].append(dca)
             if dm is not None: agg[label]["DM"].append(dm)
             if cgr is not None: agg[label]["CGR"].append(cgr)
 
@@ -116,7 +116,7 @@ def main():
         ("RR", "Regression Resilience (RR) ↑"),
         ("EE", "Exploration Efficiency (EE) ↑"),
         ("TAD", "Test Assertion Density (TAD) ↑"),
-        ("DCR", "Dead Code Ratio (DCR) ↑"),
+        ("DCA", "Dead Code Avoidance (DCA) ↑"),
         ("DM", "Diff Minimality (DM) ↑"),
         ("CGR", "Contextual Grounding Rate (CGR) ↑"),
         ("SC", "Specification Coverage (SC) ↑"),

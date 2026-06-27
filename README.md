@@ -55,11 +55,11 @@ This will parse the 400+ checked-in trajectories and repository artifacts, calcu
 
 RigorBench evaluates coding agents across nine process dimensions, all scaled from `[0, 1]` where **higher is better** ($\uparrow$):
 
-1. **RigorScore (Composite)**: The weighted average of the core process pillars (Planning, Verification, Recovery, Abstention, and Atomic Transitions).
-2. **Regression Rate (RR) $\uparrow$**: Measures development stability. Defined as $1 - \text{Regression Ratio}$, where a regression is a transition from a passing test suite state to a failing test suite state.
+1. **RigorScore (Composite)**: The weighted average of the core process pillars.
+2. **Regression Resilience (RR) $\uparrow$**: Measures development stability. Defined as $1 - \text{Regression Ratio}$, where a regression is a transition from a passing test suite state to a failing test suite state.
 3. **Exploration Efficiency (EE) $\uparrow$**: Measures how targeted the agent's file access is. Ratio of modified files to total read/modified files.
 4. **Test Assertion Density (TAD) $\uparrow$**: Evaluates test quality. Measures the average number of meaningful assertions per test function (excluding trivial checks like `assert True`).
-5. **Dead Code Ratio (DCR) $\uparrow$**: Measures code cleanliness. Ratio of active, used symbols to total declared symbols.
+5. **Dead Code Avoidance (DCA) $\uparrow$**: Measures code cleanliness. Ratio of active, used symbols to total declared symbols.
 6. **Diff Minimality (DM) $\uparrow$**: Measures edit surgical precision. Penalizes excessive code churn.
 7. **Contextual Grounding Rate (CGR) $\uparrow$**: Measures grounding of imports. Ratio of valid imports (stdlib, local files, requirements) to total imports.
 8. **Specification Coverage (SC) $\uparrow$**: Evaluates semantic completeness against the task README using an LLM-as-judge.

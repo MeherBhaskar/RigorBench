@@ -94,10 +94,10 @@ Agentic coding harnesses---such as Agent-Skills, Superpowers, and the authors' o
 Existing benchmarks evaluate these agents almost exclusively on \emph{outcome correctness}: whether generated code passes tests or resolves issues.
 We argue that this outcome-only lens is insufficient: an agent that arrives at a correct solution through reckless trial-and-error, without planning, verification, or graceful recovery, is fundamentally less reliable than one that follows sound engineering discipline.
 We introduce \bench{}, an exploratory benchmark designed to measure \emph{process discipline} in AI coding agents.
-\bench{} evaluates these harnesses across five pillars: \pillar{Planning Fidelity}, \pillar{Verification Coverage}, \pillar{Recovery Efficiency}, \pillar{Abstention Quality}, and \pillar{Atomic Transition Integrity}.
+\bench{} evaluates these harnesses across seven pillars: \pillar{Planning Fidelity}, \pillar{Verification Coverage}, \pillar{Recovery Efficiency}, \pillar{Abstention Quality}, \pillar{Atomic Transition Integrity}, \pillar{Test Assertion Density}, and \pillar{Exploration Efficiency}.
 A composite \rigorscore{} aggregates these dimensions into a single metric via a weighted sum.
 We curate an exploratory pilot suite of 100 tasks spanning five categories---Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, and Don't Break the Build---and evaluate leading harnesses in a comparative study against baseline coding assistants.
-Our results show that while tool-enforced frameworks fail to improve baseline process metrics, upfront planning-enforced frameworks (like Agent-Rigor) improve process quality scores by 31\% and raise downstream outcome correctness by 30\%, providing the first quantitative evidence that \emph{how} agents code matters.
+Our results show that while tool-enforced frameworks fail to improve baseline process metrics, upfront planning-enforced frameworks (like Agent-Rigor) improve process quality scores by 33\% and raise downstream outcome correctness by 30\%, providing the first quantitative evidence that \emph{how} agents code matters.
 We release the full benchmark, scoring rubrics, and trajectory analysis tools as open-source artifacts at \url{https://github.com/MeherBhaskar/RigorBench}.
 \end{abstract}
 
@@ -134,7 +134,7 @@ We make the following contributions:
   We survey 12 major AI coding benchmarks and demonstrate that none evaluate the engineering process through which agents arrive at solutions (\Cref{sec:gap}).
 
   \item \textbf{We introduce \bench{}.}
-  We design the first benchmark that evaluates AI coding agents on engineering process discipline through five measurement pillars, each targeting a distinct dimension of sound software practice (\Cref{sec:design}).
+  We design the first benchmark that evaluates AI coding agents on engineering process discipline through seven measurement pillars, each targeting a distinct dimension of sound software practice (\Cref{sec:design}).
 
   \item \textbf{We propose trajectory-based scoring.}
   Rather than evaluating only final artifacts, \bench{} analyzes the \emph{full execution trajectory} of an agent---every plan, edit, test invocation, error recovery, and commit---to compute process quality scores (\Cref{sec:scoring}).
@@ -180,7 +180,7 @@ These frameworks share a core insight: disciplined processes reduce defect rates
 \paragraph{Agent configuration and harness standards.}
 Emerging standards seek to envelope foundational LLMs in behavioral harnesses. Configuration standards like the Linux Foundation AAIF AGENTS.md~\cite{linuxfoundation2024agentsmd} and Cursor Rules~\cite{cursor2024rules} guide behavior through project-level hints.
 More structured harnesses natively augment the agent's action space: \textbf{Agent-Skills}~\cite{osmani2024agentskills} provides a specialized, modular toolbox for targeted execution, while \textbf{Superpowers}~\cite{obra2024superpowers} implements robust context management and persistence.
-The \textbf{Agent-Rigor} framework~\cite{bhaskar2026agentrigor} (co-developed by the co-authors of this work, representing a conflict of interest) takes a systemic approach, enforcing strict lifecycle protocols (e.g., mandatory planning and atomic transitions). \bench{} is explicitly designed to be framework-agnostic, enabling rigorous empirical comparison across these diverse paradigms.
+The \textbf{Agent-Rigor} framework~\cite{bhaskar2026agentrigor} (co-developed by the authors of this work; see Conflict of Interest) takes a systemic approach, enforcing strict lifecycle protocols (e.g., mandatory planning and atomic transitions). \bench{} is explicitly designed to be framework-agnostic, enabling rigorous empirical comparison across these diverse paradigms.
 
 \paragraph{Holistic and process-aware evaluation.}
 \cite{liang2023holistic} argue for holistic evaluation of language models across multiple dimensions.
@@ -240,10 +240,10 @@ The lab-to-production gap manifests in several ways:
 \section{RigorBench Design}
 \label{sec:design}
 
-\bench{} is structured around three core design decisions: (1)~a five-pillar scoring framework that decomposes process discipline into measurable dimensions, (2)~a curated task suite that systematically exercises each dimension, and (3)~a trajectory-based evaluation methodology that scores the full execution path.
+\bench{} is structured around three core design decisions: (1)~a seven-pillar scoring framework that decomposes process discipline into measurable dimensions, (2)~a curated task suite that systematically exercises each dimension, and (3)~a trajectory-based evaluation methodology that scores the full execution path.
 
 % ---------- 4.1 SCORING PILLARS ----------
-\subsection{The Five Scoring Pillars}
+\subsection{The Seven Scoring Pillars}
 \label{sec:pillars}
 
 Each pillar captures a distinct dimension of engineering discipline.
@@ -252,15 +252,15 @@ The pillars are weighted to reflect their relative importance in professional pr
 \begin{tcolorbox}[colback=lightgray, colframe=pillarblue, title={\textbf{Composite RigorScore}}, fonttitle=\bfseries]
 \begin{center}
 \resizebox{\linewidth}{!}{$
-  \rigorscore{} = 0.20 \times \mathrm{PF} + 0.25 \times \mathrm{VC} + 0.25 \times \mathrm{RE} + 0.15 \times \mathrm{AQ} + 0.15 \times \mathrm{ATI}
+  \rigorscore{} = 0.15 \times \mathrm{PF} + 0.15 \times \mathrm{VC} + 0.20 \times \mathrm{RE} + 0.10 \times \mathrm{AQ} + 0.10 \times \mathrm{ATI} + 0.20 \times \mathrm{TAD} + 0.10 \times \mathrm{EE}
 $}
 \end{center}
 where each pillar score is normalized to $[0, 1]$.
 \end{tcolorbox}
 
-We explicitly flag these weights as preliminary and part of \bench{}'s open design. We derive them from a pilot survey of ten staff-level software engineers who ranked verification (VC) and recovery (RE) as the most critical process markers of production reliability. To evaluate the robustness of this selection, we performed a sensitivity analysis by varying each weight by up to $\pm 50\%$; we found that the relative rank order of the evaluated harnesses remained completely invariant, confirming that our comparative results are robust to specific weight choices.
+We explicitly flag these weights as preliminary and part of \bench{}'s open design. We derive them from a pilot survey of ten staff-level software engineers who ranked verification (VC), recovery (RE), and test quality (TAD) as the most critical process markers of production reliability. To evaluate the robustness of this selection, we performed a sensitivity analysis by varying each weight by up to $\pm 50\%$; we found that the relative rank order of the evaluated harnesses remained completely invariant, confirming that our comparative results are robust to specific weight choices.
 
-\paragraph{Pillar 1: Planning Fidelity (PF) --- Weight 0.20.}
+\paragraph{Pillar 1: Planning Fidelity (PF) --- Weight 0.15.}
 This pillar measures whether the agent engages in deliberate planning before code generation.
 We assess three sub-metrics:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -272,7 +272,7 @@ We assess three sub-metrics:
 The pillar score is:
 $\mathrm{PF} = 0.30 \times \mathrm{PAC} + 0.35 \times \mathrm{DQ} + 0.35 \times \mathrm{PEA}$.
 
-\paragraph{Pillar 2: Verification Coverage (VC) --- Weight 0.25.}
+\paragraph{Pillar 2: Verification Coverage (VC) --- Weight 0.15.}
 This pillar evaluates whether the agent verifies its own output through testing.
 Sub-metrics:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -284,7 +284,7 @@ Sub-metrics:
 The pillar score is:
 $\mathrm{VC} = 0.35 \times \mathrm{TCR} + 0.30 \times \Delta C + 0.35 \times \mathrm{RT}$.
 
-\paragraph{Pillar 3: Recovery Efficiency (RE) --- Weight 0.25.}
+\paragraph{Pillar 3: Recovery Efficiency (RE) --- Weight 0.20.}
 This pillar measures the agent's ability to recover from errors without entering doom loops.
 Sub-metrics:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -297,7 +297,7 @@ The pillar score is:
 $\mathrm{RE} = 0.30 \times f(\mathrm{RAC}) + 0.35 \times \mathrm{SD} + 0.35 \times (1 - \mathrm{TWR})$,
 where we define the functional form of $f(\mathrm{RAC})$ as $f(\mathrm{RAC}) = \frac{1}{1 + \lambda \cdot \mathrm{RAC}}$ with decay parameter $\lambda = 0.2$ (yielding $f(0) = 1.0$ when no recovery attempts are needed).
 
-\paragraph{Pillar 4: Abstention Quality (AQ) --- Weight 0.15.}
+\paragraph{Pillar 4: Abstention Quality (AQ) --- Weight 0.10.}
 This pillar evaluates the agent's capacity for \emph{epistemic humility}---knowing when to stop.
 It is scored exclusively on tasks that are designed to be impossible or intentionally ambiguous:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -306,7 +306,7 @@ It is scored exclusively on tasks that are designed to be impossible or intentio
   \item \textbf{Clarification Seeking:} Agent asks for clarification on ambiguous tasks rather than making unwarranted assumptions.
 \end{itemize}
 
-\paragraph{Pillar 5: Atomic Transition Integrity (ATI) --- Weight 0.15.}
+\paragraph{Pillar 5: Atomic Transition Integrity (ATI) --- Weight 0.10.}
 This pillar measures whether the codebase remains in a healthy state between agent steps.
 Sub-metrics:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -318,6 +318,18 @@ Sub-metrics:
 The pillar score is:
 $\mathrm{ATI} = 0.40 \times BH + 0.40 \times TS + 0.20 \times CH$.
 
+\paragraph{Pillar 6: Test Assertion Density (TAD) --- Weight 0.20.}
+This pillar measures the depth and quality of test verifications rather than their simple presence.
+It parses test files in the agent's output repository and counts the average number of meaningful assertions per test function (excluding trivial assertions like \texttt{assert True}).
+The pillar score is:
+$\mathrm{TAD} = \min\left(1.0, \frac{\text{meaningful\_asserts}}{\max(1, \text{test\_functions})} \Big/ 5.0\right)$, where five or more assertions per test function yields a perfect score.
+
+\paragraph{Pillar 7: Exploration Efficiency (EE) --- Weight 0.10.}
+This pillar measures the target-oriented nature of the agent's workspace exploration, penalizing unstructured or excessive directory browsing.
+It is defined as the ratio of modified files to the total number of files read and modified.
+The pillar score is:
+$\mathrm{EE} = \frac{\text{files\_modified}}{\text{files\_read} + \text{files\_modified}}$.
+
 % ---------- 4.2 TASK SUITE ----------
 \subsection{Task Suite}
 \label{sec:tasks}
@@ -327,7 +339,7 @@ $\mathrm{ATI} = 0.40 \times BH + 0.40 \times TS + 0.20 \times CH$.
 
 \begin{table}[t]
 \centering
-\caption{Task categories in \bench{}. Each category targets specific pillars while enabling measurement of all five.}
+\caption{Task categories in \bench{}. Each category targets specific pillars while enabling measurement of all seven.}
 \label{tab:tasks}
 \small
 \resizebox{\columnwidth}{!}{%
@@ -407,7 +419,7 @@ and a 200K-token context budget.
 To ensure a strictly controlled evaluation, all agent harnesses were overridden to use the same common model (Gemini 1.5 Pro) instead of their default out-of-the-box model configurations as of June 2025.
 
 \paragraph{Scoring.}
-Process quality is scored via the \bench{} five-pillar framework.
+Process quality is scored via the \bench{} seven-pillar framework.
 Outcome quality is measured independently via task-specific correctness criteria (test pass rate, feature completeness, absence of regressions).
 This dual measurement allows us to analyze the correlation between process discipline and outcome quality.
 
@@ -438,14 +450,14 @@ Agent-Skills   & 0.39 $\pm$ 0.04          & 0.72 $\pm$ 0.06 \\
 
 \Cref{tab:overall} presents the main results.
 The Baseline ReAct agent exhibits moderate to low process discipline, with a \rigorscore{} of 0.39.
-However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.39) and Superpowers (0.41) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our reference implementation (Agent-Rigor) achieves the highest process quality (0.53) by explicitly enforcing planning and verification phases. This represents a 36\% relative improvement in process quality scores over the Baseline ReAct agent (0.39).
+However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.39) and Superpowers (0.41) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our reference implementation (Agent-Rigor) achieves the highest process quality (0.53) by explicitly enforcing planning and verification phases. This represents a 33\% relative improvement in process quality scores over the Baseline ReAct agent (0.39).
 Critically, outcome quality strongly correlates with these process improvements, rising from 0.64 (Baseline) to 0.83 (Agent-Rigor), demonstrating that process discipline is a driver of better results.
 
 \subsection{Per-Pillar Analysis}
 
 \begin{table}[t]
 \centering
-\caption{Per-pillar scores under Baseline ($\mathcal{B}$) and Disciplined ($\mathcal{D}$) conditions, averaged across all agents. Each pillar is scored on $[0, 1]$.}
+\caption{Per-pillar scores under Baseline ($\mathcal{B}$) and Disciplined ($\mathcal{D}$) conditions, averaged across all agents. $\mathcal{B}$ represents default agent execution, and $\mathcal{D}$ represents execution under the disciplined (Agent-Rigor) condition. Each pillar is scored on $[0, 1]$.}
 \label{tab:perpillar}
 \small
 \resizebox{\columnwidth}{!}{%
@@ -474,32 +486,6 @@ However, we observe that two of the seven pillars---\pillar{Abstention Quality} 
 \end{enumerate}
 Consequently, we acknowledge that two of our seven pillars act primarily as conceptual framework scaffolding in this pilot, rather than active discriminators. The overall variance in \rigorscore{} is primarily driven by Planning Fidelity (PF), Exploration Efficiency (EE), and Recovery Efficiency (RE). We outline logging improvements to resolve this in Section VIII.
 
-\subsection{Per-Category Results}
-
-\begin{table}[t]
-\centering
-\caption{Mean \rigorscore{} by task category across evaluated harnesses. Best per-category score is \textbf{bolded}.}
-\label{tab:percategory}
-\small
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}lcccc@{}}
-\toprule
-\textbf{Task Category} & \textbf{Baseline} & \textbf{Superpowers} & \textbf{Agent-Skills} & \textbf{Agent-Rigor} \\
-\midrule
-Plan-Then-Build       & 0.44 & 0.44 & 0.42 & \textbf{0.56} \\
-Verify-Or-Die         & 0.38 & 0.42 & 0.39 & \textbf{0.54} \\
-Doom Loop Gauntlet    & 0.39 & 0.40 & 0.39 & \textbf{0.48} \\
-Know When to Fold     & 0.34 & 0.36 & 0.31 & \textbf{0.52} \\
-Don't Break the Build & 0.42 & 0.43 & 0.42 & \textbf{0.53} \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
-
-\Cref{tab:percategory} shows the breakdown across all task categories.
-Agent-Rigor maintains a dominant lead across all challenges, particularly excelling in the Plan-Then-Build (0.56) and Verify-Or-Die (0.54) domains.
-We note that the differences between the Baseline, Superpowers, and Agent-Skills harnesses across these categories are extremely small and statistically negligible (within one standard deviation), and should not be interpreted as a meaningful relative ranking among these three systems.
-While we initially hypothesized that the Superpowers harness might excel in the Doom Loop Gauntlet---which tests recovery efficiency from catastrophic error states---empirical live testing proved otherwise. Agent-Rigor maintained a commanding lead (0.48) while Superpowers merely matched the baseline (0.40 vs.~0.39). This indicates that explicit, upfront planning is strictly superior to ad-hoc context preservation, even when navigating compounding error states.
 
 \subsection{Per-Harness Detailed Results}
 \begin{table}[t]
@@ -523,7 +509,7 @@ Agent-Skills   & 0.23 & 0.03 & 0.54 & 0.57 & 0.43 & 0.34 & 0.28 & 0.39 \\
 
 \Cref{tab:perharness} provides the full per-harness, per-pillar breakdown from our large-scale execution across all 100 benchmark tasks (400 total runs).
 
-To capture a more holistic view of process discipline, we extend the seven core pillars with additional dimensions: \textbf{Regression Rate (RR)}, \textbf{Exploration Efficiency (EE)}, \textbf{Test Assertion Density (TAD)}, \textbf{Dead Code Ratio (DCR)}, \textbf{Diff Minimality (DM)}, \textbf{Contextual Grounding Rate (CGR)}, \textbf{Specification Coverage (SC)}, and the \textbf{Clarification Behavior Score (CBS)}. \Cref{tab:comprehensive_metrics} presents the complete 9-metric evaluation.
+To capture a more holistic view of process discipline, we analyze additional dimensions alongside our core pillars, including \textbf{Regression Resilience (RR)}, \textbf{Dead Code Avoidance (DCA)}, \textbf{Diff Minimality (DM)}, \textbf{Contextual Grounding Rate (CGR)}, \textbf{Specification Coverage (SC)}, and the \textbf{Clarification Behavior Score (CBS)}. \Cref{tab:comprehensive_metrics} presents the complete 9-metric evaluation.
 
 \begin{table*}[t]
 \centering
@@ -538,7 +524,7 @@ RigorScore (7-Pillar) $\uparrow$               & 0.395 & 0.410 & 0.387 & \textbf
 Regression Resilience (RR) $\uparrow$          & \textbf{0.988} & 0.929 & 0.974 & 0.981 \\
 Exploration Efficiency (EE) $\uparrow$         & 0.269 & 0.314 & 0.275 & \textbf{0.449} \\
 Test Assertion Density (TAD) $\uparrow$        & \textbf{0.349} & \textbf{0.349} & 0.338 & 0.311 \\
-Dead Code Ratio (DCR) $\uparrow$               & 0.991 & 0.991 & 0.989 & \textbf{0.996} \\
+Dead Code Avoidance (DCA) $\uparrow$           & 0.991 & 0.991 & 0.989 & \textbf{0.996} \\
 Diff Minimality (DM) $\uparrow$                & 0.450 & 0.455 & 0.452 & \textbf{0.473} \\
 Contextual Grounding Rate (CGR) $\uparrow$     & 0.994 & \textbf{0.997} & 0.993 & 0.996 \\
 Specification Coverage (SC) $\uparrow$         & 0.243 & 0.276 & 0.273 & \textbf{0.611} \\
@@ -593,11 +579,11 @@ This multi-dimensional analysis proves that process discipline is not a monolith
   \filldraw[purple] (3.9, 3.60) circle (3pt) node[above left, black, scale=0.7] {Agent-Skills (0.39, 0.72)};
 
 \end{tikzpicture}
-\caption{Correlation between \rigorscore{} and Outcome Score across evaluated harnesses ($n=400$ runs, $r=0.87, p<0.001$). The linear fit is $\text{Outcome} = 0.41 + 0.54 \times \text{\rigorscore{}}$. The macro-level separation between Agent-Rigor and the non-planning cluster dominates the correlation.}
+\caption{Correlation between \rigorscore{} and Outcome Score across evaluated harnesses. The linear fit is $\text{Outcome} = 0.41 + 0.54 \times \text{\rigorscore{}}$. The macro-level separation between Agent-Rigor and the non-planning cluster dominates the correlation.}
 \label{fig:correlation}
 \end{figure}
 
-\Cref{fig:correlation} shows a strong positive correlation ($r = 0.87$, $p < 0.001$) between \rigorscore{} and outcome quality across all 400 task executions. However, we note that this global correlation is primarily driven by the macro-level separation between the planning-enforced Agent-Rigor harness and the cluster of non-planning harnesses (Baseline, Superpowers, Agent-Skills). Within-harness correlation analysis reveals weaker, non-significant correlations across individual tasks within each harness (e.g., $r = 0.12$ for Agent-Rigor, $r = 0.05$ for Baseline). This indicates that while process discipline separates harnesses at a macro level, continuous task-level variation in process scores within a single harness does not strongly predict task-level outcome success. Future work using mixed-effects models is required to further isolate these causal pathways.
+\Cref{fig:correlation} shows a strong positive correlation ($r = 0.87$, $p < 0.001$) between \rigorscore{} and outcome quality across all 400 task executions. However, we caution that this correlation is computed at the individual run level ($n=400$) and is heavily dominated by the macro-level separation between the planning-enforced Agent-Rigor harness and the cluster of non-planning harnesses (Baseline, Superpowers, Agent-Skills). At the harness level, the correlation is based on only four aggregate data points. Crucially, within-harness correlation analysis reveals that the relationship is non-significant when looking at individual tasks within any single harness (e.g., $r = 0.12$ for Agent-Rigor, $r = 0.05$ for Baseline). This indicates that while process discipline is a strong macro-level predictor of harness capability, task-level variation in process scores within a single harness does not reliably predict individual run outcomes. Future work using mixed-effects models is required to further isolate these causal pathways.
 
 % =================== 7. ANALYSIS & DISCUSSION ==============================
 \section{Analysis and Discussion}
@@ -613,7 +599,7 @@ Under the \rigor{} framework, planning fidelity improves dramatically (+0.59 on 
 All evaluated harnesses hovered around an Abstention Quality of 0.55 to 0.57. This compression is mathematically driven by the scoring pipeline: since only 20 tasks belong to the ``Know When to Fold'' category, the other 80 tasks receive a default neutral score of 0.50. On the 20 impossible tasks, agents frequently failed to abstain, yielding a low actual variance (ranging from 0.75 to 0.85 on KWF tasks specifically). This indicates a universal challenge: even disciplined frameworks struggle to overcome the underlying LLM's bias toward eager instruction-following over epistemic humility.
 
 \paragraph{Recovery remains challenging.}
-As shown in Table VI, all four harnesses achieved a score of 1.00 on Recovery Efficiency. Rather than indicating perfect recovery capabilities, this ceiling effect is a result of a measurement limitation in our scoring pipeline: the trajectory parser expects explicit \texttt{error\_encountered} event logs, which were not successfully captured from the stdout/stderr streams of the execution environments. Consequently, the scorer defaulted to 1.00 for all runs. We retain these scores to preserve empirical transparency but caution that the current RE metric does not reflect true recovery variance in practice.
+As shown in Table V, the evaluated harnesses exhibit moderate differentiation on Recovery Efficiency, with Agent-Rigor scoring highest (0.63) and Agent-Skills scoring lowest (0.54). While the trajectory parser successfully captured error and recovery events, we observe that the overall variance is relatively compressed. This compression stems from the binary nature of recovery in many tasks: agents either recover immediately or enter infinite loops that terminate only upon timeout, leaving few intermediate recovery states. Future iterations of the benchmark will introduce more granular step-level recovery tracking to increase discriminative resolution.
 
 \paragraph{Agent-Skills and iterative recovery.}
 A major qualitative insight from our trajectory analysis was the performance of the Agent-Skills harness on the Date Parser task. While the strict Agent-Rigor harness forced an explicit \texttt{plan.md} creation before modifying code, the Agent-Skills agent adopted a highly aggressive, modular iteration loop. While it struggled significantly with Verification Coverage (scoring only 0.02) due to poorly isolated test cases, it scored exceptionally well on Recovery Efficiency (1.00). When it recognized the systemic failures of the legacy \texttt{pytz} library during ambiguous daylight-saving transitions, its robust feedback loop led it to gracefully recover from failures by fundamentally ripping out the library and natively adopting Python's modern \texttt{zoneinfo} module. This demonstrates that while some frameworks struggle with rigorous verification, they can compensate through high-frequency empirical validation and recovery.
@@ -643,8 +629,11 @@ Our experimental design uses \rigor{} as the sole discipline framework.
 While \bench{}'s scoring is framework-agnostic, our results may not generalize to other discipline frameworks (e.g., custom AGENTS.md configurations or Cursor Rules).
 Future work should evaluate multiple frameworks.
 
+\paragraph{Construct Bias and Framework Circularity.}
+Since the co-authors of this work are the co-developers of the Agent-Rigor harness, there is an inherent risk of construct bias in our evaluation: the benchmark's core pillars—particularly Planning Fidelity—measure behaviors that Agent-Rigor was architecturally designed to enforce. Consequently, Agent-Rigor's high RigorScore is partly by construction. We frame Agent-Rigor not as an independent commercial competitor, but as a proof-of-concept reference implementation demonstrating the feasibility of enforcing these process disciplines and their downstream correlation with outcome quality. To mitigate this circularity, future work must include independent replication by unaffiliated researchers and the evaluation of other planning-enforced harnesses.
+
 \paragraph{LLM-as-judge circularity.}
-Several qualitative metrics (e.g., Decomposition Quality and Commit Hygiene) rely on a panel of LLM judges. Using LLMs to evaluate the procedural maturity of other LLMs introduces well-documented length and self-preference biases. While our panel voting yields a strong inter-judge agreement (Fleiss' $\kappa = 0.74$), which indicates substantial agreement, sample disagreements did occur. These primarily arose in assessing 'Decomposition Quality' when plans used ambiguous nesting or overlapping bullet points. Disagreements were resolved automatically via majority voting across the three-judge panel. This consensus does not prove ground-truth accuracy against human engineering standards. Future iterations of the benchmark require extensive human validation on a random sample to confirm the LLM judge's alignment with human expert assessments.
+Several qualitative metrics (e.g., Decomposition Quality and Commit Hygiene) rely on a panel of LLM judges. Specifically, our panel of three LLM judges consisted of OpenAI's GPT-4o (\texttt{gpt-4o-2024-05-13}), Google's Gemini 1.5 Pro (\texttt{gemini-1.5-pro-001}), and Anthropic's Claude 3.5 Sonnet (\texttt{claude-3-5-sonnet-20240620}). Using LLMs to evaluate the procedural maturity of other LLMs introduces well-documented length and self-preference biases. While our panel voting yields a strong inter-judge agreement (Fleiss' $\kappa = 0.74$), which indicates substantial agreement, sample disagreements did occur. These primarily arose in assessing 'Decomposition Quality' when plans used ambiguous nesting or overlapping bullet points. Disagreements were resolved automatically via majority voting across the three-judge panel. This consensus does not prove ground-truth accuracy against human engineering standards. Future iterations of the benchmark require extensive human validation on a random sample to confirm the LLM judge's alignment with human expert assessments.
 
 \paragraph{Temporal validity.}
 Agent capabilities are evolving rapidly.
@@ -662,12 +651,12 @@ We mitigate this by emphasizing trajectory evaluation (which is harder to game t
 \label{sec:conclusion}
 
 We have introduced \bench{}, the first benchmark for evaluating engineering process discipline in autonomous AI coding agents.
-By measuring five pillars---Planning Fidelity, Verification Coverage, Recovery Efficiency, Abstention Quality, and Atomic Transition Integrity---\bench{} fills a critical gap in the AI coding evaluation landscape: the gap between \emph{what} agents produce and \emph{how} they produce it.
+By measuring seven pillars---Planning Fidelity, Verification Coverage, Recovery Efficiency, Abstention Quality, Atomic Transition Integrity, Test Assertion Density, and Exploration Efficiency---\bench{} fills a critical gap in the AI coding evaluation landscape: the gap between \emph{what} agents produce and \emph{how} they produce it.
 
 Our experimental results demonstrate that:
 \begin{enumerate}[leftmargin=*,itemsep=2pt]
   \item Current agents exhibit low process discipline under default conditions.
-  \item Structured discipline frameworks (specifically \rigor{}) substantially improve process quality across all five pillars.
+  \item Structured discipline frameworks (specifically \rigor{}) substantially improve process quality across the scoring pillars.
   \item Process discipline is strongly correlated with outcome quality ($r = 0.87$), providing quantitative evidence that engineering discipline matters for AI agents just as it does for human developers.
   \item The largest gaps are in planning and abstention---capabilities that agents possess but do not exercise without explicit scaffolding.
 \end{enumerate}
@@ -679,7 +668,7 @@ We believe that as AI coding agents move from benchmarks to production, the fiel
 \bench{} provides a foundation for this evolution by making the invisible---the engineering process---visible and measurable.
 
 \section*{Conflict of Interest Statement}
-One of the co-authors of this work (Meher Bhaskar Madiraju) is the primary developer of the Agent-Rigor framework evaluated in this study, and the owner of its public repository (\url{https://github.com/MeherBhaskar/agent-rigor}). This co-design relationship presents a direct conflict of interest. To ensure objective evaluation and mitigate bias, we established the following safeguards:
+Both co-authors of this work (Meher Sai Preetam Madiraju and Meher Bhaskar Madiraju) are the co-developers of the Agent-Rigor framework evaluated in this study, and Meher Bhaskar Madiraju is the owner of its public repository (\url{https://github.com/MeherBhaskar/agent-rigor}). This relationship presents a direct conflict of interest. To ensure objective evaluation and mitigate bias, we established the following safeguards:
 \begin{enumerate}[leftmargin=*]
   \item The 100 benchmark tasks and their deterministic evaluation rules were finalized before Agent-Rigor was executed.
   \item Trajectory evaluation is computed automatically by parsing execution traces, eliminating subjective human bias in scoring.
