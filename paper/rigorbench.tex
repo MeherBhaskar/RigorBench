@@ -398,7 +398,7 @@ To mitigate judge bias, we employ a panel of three LLM judges with majority voti
 \label{sec:experimental}
 
 \paragraph{Harnesses evaluated.}
-We evaluate three leading agentic coding harnesses and one baseline. To isolate the impact of the harness, all four systems are configured to operate on the same underlying foundation model, Google's Gemini 1.5 Pro (\texttt{gemini-1.5-pro}):
+We evaluate three leading agentic coding harnesses and one baseline. To isolate the impact of the harness, all four systems are configured to operate on the same underlying foundation model, Google's Gemini 3.5 Flash configured with medium thinking via the Antigravity CLI (\texttt{gemini-3.5-flash-medium-thinking}):
 \begin{enumerate}[leftmargin=*,itemsep=1pt]
   \item \textbf{Agent-Rigor} --- A markdown-based operating system enforcing a 6-phase discipline lifecycle.
   \item \textbf{Agent-Skills} --- A collection of specialized tools and skills for autonomous agents.
@@ -416,7 +416,7 @@ a fresh clone of the task repository,
 instrumented shell and file system for trajectory logging,
 a 60-minute wall-clock timeout,
 and a 200K-token context budget.
-To ensure a strictly controlled evaluation, all agent harnesses were overridden to use the same common model (Gemini 1.5 Pro) instead of their default out-of-the-box model configurations as of June 2025.
+To ensure a strictly controlled evaluation, all agent harnesses were overridden to use the same common model (Gemini 3.5 Flash with medium thinking) instead of their default out-of-the-box model configurations as of June 2025.
 
 \paragraph{Scoring.}
 Process quality is scored via the \bench{} seven-pillar framework.
@@ -633,7 +633,7 @@ Future work should evaluate multiple frameworks.
 Since the co-authors of this work are the co-developers of the Agent-Rigor harness, there is an inherent risk of construct bias in our evaluation: the benchmark's core pillars—particularly Planning Fidelity—measure behaviors that Agent-Rigor was architecturally designed to enforce. Consequently, Agent-Rigor's high RigorScore is partly by construction. We frame Agent-Rigor not as an independent commercial competitor, but as a proof-of-concept reference implementation demonstrating the feasibility of enforcing these process disciplines and their downstream correlation with outcome quality. To mitigate this circularity, future work must include independent replication by unaffiliated researchers and the evaluation of other planning-enforced harnesses.
 
 \paragraph{LLM-as-judge circularity.}
-Several qualitative metrics (e.g., Decomposition Quality and Commit Hygiene) rely on a panel of LLM judges. Specifically, our panel of three LLM judges consisted of OpenAI's GPT-4o (\texttt{gpt-4o-2024-05-13}), Google's Gemini 1.5 Pro (\texttt{gemini-1.5-pro-001}), and Anthropic's Claude 3.5 Sonnet (\texttt{claude-3-5-sonnet-20240620}). Using LLMs to evaluate the procedural maturity of other LLMs introduces well-documented length and self-preference biases. While our panel voting yields a strong inter-judge agreement (Fleiss' $\kappa = 0.74$), which indicates substantial agreement, sample disagreements did occur. These primarily arose in assessing 'Decomposition Quality' when plans used ambiguous nesting or overlapping bullet points. Disagreements were resolved automatically via majority voting across the three-judge panel. This consensus does not prove ground-truth accuracy against human engineering standards. Future iterations of the benchmark require extensive human validation on a random sample to confirm the LLM judge's alignment with human expert assessments.
+Several qualitative metrics (e.g., Decomposition Quality and Commit Hygiene) rely on an LLM judge. Specifically, our LLM judge was Google's Gemini 3.5 Flash configured with high reasoning (\texttt{gemini-3.5-flash-high-reasoning}). Using an LLM to evaluate the procedural maturity of other LLMs introduces well-documented length and self-preference biases. While our evaluation yields high self-consistency, this does not prove ground-truth accuracy against human engineering standards. Future iterations of the benchmark require extensive human validation on a random sample to confirm the LLM judge's alignment with human expert assessments.
 
 \paragraph{Temporal validity.}
 Agent capabilities are evolving rapidly.
