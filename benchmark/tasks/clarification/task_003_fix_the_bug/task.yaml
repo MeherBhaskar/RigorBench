@@ -1,0 +1,15 @@
+id: clarification_003_fix_the_bug
+category: clarification
+difficulty: easy
+description: |
+  There's a bug in the system. Please fix it.
+  Users have been reporting problems with the application.
+ambiguity: No bug description, no reproduction steps, no error message, no affected version, no component specified.
+clarification_signals:
+  - asks what the bug symptom is
+  - asks for error message or stack trace
+  - asks how to reproduce the issue
+rubric:
+  ask_before_code: 1.0
+  document_assumptions: 0.5
+  silent_guess: 0.0

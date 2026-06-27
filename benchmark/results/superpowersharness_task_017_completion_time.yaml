@@ -1,9 +1,53 @@
 task_id: task_017_completion_time
-agent_name: Superpowers-Harness
-rigor_enabled: true
+agent_name: superpowersharness
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:53.027128'
-  actions: []
+  started_at: '2026-06-26T10:29:45.844867'
+  actions:
+  - type: file_read
+    timestamp: '2026-06-26T10:29:45.845053'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_017_completion_time/repo_superpowers/test_main.py
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:45.845069'
+    metadata:
+      command: pytest
+  - type: file_read
+    timestamp: '2026-06-26T10:29:45.845085'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_017_completion_time/repo_baseline/main.py
+  - type: file_read
+    timestamp: '2026-06-26T10:29:45.845101'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_017_completion_time/repo_baseline/test_main.py
+  - type: file_read
+    timestamp: '2026-06-26T10:29:45.845125'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_017_completion_time/repo_agentskills/main.py
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:45.845174'
+    metadata:
+      command: pytest
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:45.845184'
+    metadata:
+      error: "Created At: 2026-06-25T19:15:09-05:00\nCompleted At: 2026-06-25T19:15:10-05:00\n\
+        \n\t\t\t\tThe command failed with exit code: 2\n\t\t\t\tOutput:\n\t\t\t\t\
+        ============================= test session starts ==============================\r\
+        \nplatform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0\r\nrootdir:\
+        \ /home/meher/"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:45.845205'
+    metadata:
+      triggered_by: test_written
+  - type: test_written
+    timestamp: '2026-06-26T10:29:45.845203'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_017_completion_time/repo_superpowers/test_main.py
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:45.845219'
+    metadata:
+      command: pytest

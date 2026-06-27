@@ -1,9 +1,13 @@
 task_id: task_011_spec
-agent_name: Superpowers-Harness
-rigor_enabled: true
+agent_name: superpowersharness
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:52.982090'
-  actions: []
+  started_at: '2026-06-26T10:29:44.067583'
+  actions:
+  - type: file_modified
+    timestamp: '2026-06-26T10:29:44.067696'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_011_spec/repo_superpowersharness/parse.py

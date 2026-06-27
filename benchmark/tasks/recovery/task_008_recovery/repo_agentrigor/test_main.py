@@ -52,3 +52,18 @@ def test_multiple_transactions():
         "SET user3 charlie"
     ]
     assert recover_state(wal) == {"user1": "alice"}
+
+def test_atomic_transitions_and_deletions():
+    wal = [
+        "SET user1 alice",
+        "BEGIN",
+        "SET user1 bob",
+        "DELETE user1",
+        "SET user2 charlie",
+        "ROLLBACK",
+        "BEGIN",
+        "DELETE user1",
+        "COMMIT"
+    ]
+    # first tx rolls back, second tx commits deletion of user1
+    assert recover_state(wal) == {}

@@ -43,6 +43,10 @@ def test_verify_merkle_proof_invalid():
     proof_invalid_hash = [('right', fake_leaf), ('right', node34)]
     assert verify_merkle_proof(root, leaf1, proof_invalid_hash) is False
 
+    # Invalid direction string completely
+    proof_invalid_dir_string = [('up', leaf2), ('right', node34)]
+    assert verify_merkle_proof(root, leaf1, proof_invalid_dir_string) is False
+
 def test_verify_merkle_proof_empty():
     leaf1 = hashlib.sha256(b"data1").hexdigest()
     assert verify_merkle_proof(leaf1, leaf1, []) is True

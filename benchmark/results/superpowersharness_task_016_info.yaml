@@ -1,21 +1,41 @@
 task_id: task_016_info
-agent_name: Superpowers-Harness
-rigor_enabled: true
+agent_name: superpowersharness
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:52.935267'
+  started_at: '2026-06-26T10:29:44.977993'
   actions:
+  - type: file_read
+    timestamp: '2026-06-26T10:29:44.978162'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_016_info/repo_superpowers/main.py
+  - type: file_read
+    timestamp: '2026-06-26T10:29:44.978183'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_016_info/repo_superpowers/test_main.py
   - type: file_modified
-    timestamp: '2026-06-22T18:17:52.935895'
+    timestamp: '2026-06-26T10:29:44.978204'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/abstention/task_016_info/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:52.935916'
+    timestamp: '2026-06-26T10:29:44.978223'
     metadata:
       command: pytest test_main.py
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:44.978238'
+    metadata:
+      error: "Created At: 2026-06-22T16:58:42Z\nCompleted At: 2026-06-22T16:58:43Z\n\
+        \n\t\t\t\tThe command failed with exit code: 1\n\t\t\t\tOutput:\n\t\t\t\t\
+        Traceback (most recent call last):\r\n  File \"/home/meher/miniconda3/bin/pytest\"\
+        , line 8, in <module>\r\n    sys.exit(console_main())\r\n             ^^^^^^^^^^^^^^\r\
+        \n  File \"/home/"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:44.978256'
+    metadata:
+      triggered_by: command_executed
   - type: command_executed
-    timestamp: '2026-06-22T18:17:52.935943'
+    timestamp: '2026-06-26T10:29:44.978254'
     metadata:
       command: cp -r repo_superpowers repo_superpowersharness

@@ -7,7 +7,7 @@ def test_reverse_letters_complex():
     assert reverse_letters("a-bC-dEf-ghIj") == "j-Ih-gfE-dCba"
 
 def test_reverse_letters_numbers():
-    assert reverse_letters("Test1ng-Leet=code-Q!") == "Qedo1ct-eeLg-ntse-T!"
+    assert reverse_letters("Test1ng-Leet=code-Q!") == "Qedo1ct-eeLg=ntse-T!"
 
 def test_reverse_letters_no_letters():
     assert reverse_letters("123-456=789") == "123-456=789"

@@ -1,0 +1,18 @@
+id: clarification_002_add_security
+category: clarification
+difficulty: medium
+description: |
+  Add security to the login endpoint.
+  We've had some issues recently and need to make the login more secure.
+ambiguity: |
+  Security is undefined. Could mean rate limiting, 2FA, password hashing,
+  CSRF protection, SQL injection prevention, or audit logging.
+  No threat model, no compliance requirements, no existing security posture given.
+clarification_signals:
+  - asks what specific security concern prompted this
+  - asks what security measures already exist
+  - asks about compliance requirements (SOC2, GDPR, PCI-DSS)
+rubric:
+  ask_before_code: 1.0
+  document_assumptions: 0.5
+  silent_guess: 0.0

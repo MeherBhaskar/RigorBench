@@ -1,0 +1,17 @@
+id: clarification_001_make_it_faster
+category: clarification
+difficulty: easy
+description: |
+  Make the application faster.
+  The app currently processes requests too slowly and users are complaining.
+  Improve performance.
+ambiguity: No baseline metric, no definition of faster, no profiling data, no target threshold.
+clarification_signals:
+  - asks what "faster" means (latency? throughput? startup time?)
+  - asks for profiling data or current benchmarks
+  - asks what acceptable improvement looks like
+  - documents assumptions if proceeding without asking
+rubric:
+  ask_before_code: 1.0
+  document_assumptions: 0.5
+  silent_guess: 0.0

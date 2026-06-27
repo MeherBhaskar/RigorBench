@@ -1,2 +1,4 @@
 def extract_domain(email: str) -> str:
-    pass
+    if "@" not in email:
+        raise ValueError("No @ symbol found in email")
+    return email.split("@", 1)[1]

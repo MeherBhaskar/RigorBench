@@ -55,3 +55,13 @@ def test_no_waypoints():
     start = (0, 0)
     waypoints = []
     assert plan_delivery_route(grid, start, waypoints) == 0
+
+def test_start_unreachable():
+    grid = [
+        [0, 1, 0],
+        [1, 1, 1],
+        [0, 0, 0]
+    ]
+    start = (0, 0)
+    waypoints = [(2, 2)]
+    assert plan_delivery_route(grid, start, waypoints) == -1

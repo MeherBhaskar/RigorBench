@@ -5,4 +5,17 @@ class TreeNode:
         self.right = right
 
 def is_valid_bst(root: TreeNode) -> bool:
-    pass
+    stack = []
+    curr = root
+    prev = None
+    while stack or curr:
+        while curr:
+            stack.append(curr)
+            curr = curr.left
+        curr = stack.pop()
+        if prev is not None and curr.val <= prev:
+            return False
+        prev = curr.val
+        curr = curr.right
+    return True
+

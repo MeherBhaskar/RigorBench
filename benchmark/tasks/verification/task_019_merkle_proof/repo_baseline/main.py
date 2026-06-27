@@ -13,4 +13,12 @@ def verify_merkle_proof(root: str, target_leaf: str, proof: list[tuple[str, str]
     :param proof: A list of (direction, sibling_hash) where direction is 'left' or 'right'.
     :return: True if the proof is valid and evaluates to the root, False otherwise.
     """
-    pass
+    current_hash = target_leaf
+    for direction, sibling_hash in proof:
+        if direction == 'left':
+            current_hash = hash_node(sibling_hash, current_hash)
+        elif direction == 'right':
+            current_hash = hash_node(current_hash, sibling_hash)
+        else:
+            return False
+    return current_hash == root

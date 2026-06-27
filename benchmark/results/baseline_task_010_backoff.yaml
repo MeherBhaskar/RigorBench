@@ -1,17 +1,21 @@
 task_id: task_010_backoff
-agent_name: Baseline
+agent_name: baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:51.261835'
+  started_at: '2026-06-26T10:29:40.595535'
   actions:
+  - type: file_read
+    timestamp: '2026-06-26T10:29:40.595769'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_010_backoff/repo_baseline/test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:51.262087'
+    timestamp: '2026-06-26T10:29:40.595789'
     metadata:
       command: pytest test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:51.262110'
+    timestamp: '2026-06-26T10:29:40.595814'
     metadata:
       command: pytest test_main.py -v

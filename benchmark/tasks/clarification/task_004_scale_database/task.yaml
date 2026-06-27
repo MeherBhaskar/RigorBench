@@ -1,0 +1,15 @@
+id: clarification_004_scale_database
+category: clarification
+difficulty: hard
+description: |
+  The database needs to scale. Help us scale the database for our growing userbase.
+ambiguity: No current scale stated. No target scale. No database engine. No budget. No read/write ratio. No latency requirements.
+clarification_signals:
+  - asks current database size or QPS
+  - asks target scale or growth projections
+  - asks about read vs write ratio
+  - asks what database engine is in use
+rubric:
+  ask_before_code: 1.0
+  document_assumptions: 0.5
+  silent_guess: 0.0

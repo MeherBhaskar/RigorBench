@@ -1,31 +1,62 @@
 task_id: task_018_project_schedule
-agent_name: Superpowers-Harness
-rigor_enabled: true
+agent_name: superpowersharness
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:48.708553'
+  started_at: '2026-06-26T10:29:42.172567'
   actions:
+  - type: file_read
+    timestamp: '2026-06-26T10:29:42.172743'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_018_project_schedule/repo_superpowers/main.py
+  - type: file_read
+    timestamp: '2026-06-26T10:29:42.172761'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_018_project_schedule/repo_superpowers/test_main.py
   - type: file_modified
-    timestamp: '2026-06-22T18:17:48.708982'
+    timestamp: '2026-06-26T10:29:42.172795'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_018_project_schedule/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:48.709008'
+    timestamp: '2026-06-26T10:29:42.172816'
     metadata:
       command: pytest test_main.py
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:42.172831'
+    metadata:
+      error: "Created At: 2026-06-22T15:28:33Z\nCompleted At: 2026-06-22T15:28:33Z\n\
+        \n\t\t\t\tThe command failed with exit code: 1\n\t\t\t\tOutput:\n\t\t\t\t\
+        Traceback (most recent call last):\r\n  File \"/home/meher/miniconda3/bin/pytest\"\
+        , line 8, in <module>\r\n    sys.exit(console_main())\r\n             ^^^^^^^^^^^^^^\r\
+        \n  File \"/home/"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:42.172849'
+    metadata:
+      triggered_by: test_executed
   - type: test_executed
-    timestamp: '2026-06-22T18:17:48.709038'
+    timestamp: '2026-06-26T10:29:42.172847'
     metadata:
       command: python -c \"\nimport test_main\ntest_main.test_linear_schedule()\ntest_main.test_parallel_schedule()\ntest_main.test_complex_dependencies()\ntest_main.test_cycle_raises_value_error()\ntest_main.test_missing_dependency_raises_value_error()\ntest_main.test_empty_tasks()\nprint('All
         tests passed!')\n\
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:42.172856'
+    metadata:
+      error: "Created At: 2026-06-22T15:28:39Z\nCompleted At: 2026-06-22T15:28:39Z\n\
+        \n\t\t\t\tThe command failed with exit code: 1\n\t\t\t\tOutput:\n\t\t\t\t\
+        Traceback (most recent call last):\r\n  File \"<string>\", line 3, in <module>\r\
+        \n  File \"/home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_018_project_schedule/repo_s"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:42.172874'
+    metadata:
+      triggered_by: file_modified
   - type: file_modified
-    timestamp: '2026-06-22T18:17:48.709061'
+    timestamp: '2026-06-26T10:29:42.172873'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_018_project_schedule/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:48.709080'
+    timestamp: '2026-06-26T10:29:42.172894'
     metadata:
       command: python -c \"\nimport test_main\ntest_main.test_linear_schedule()\ntest_main.test_parallel_schedule()\ntest_main.test_complex_dependencies()\ntest_main.test_cycle_raises_value_error()\ntest_main.test_missing_dependency_raises_value_error()\ntest_main.test_empty_tasks()\nprint('All
         tests passed!')\n\

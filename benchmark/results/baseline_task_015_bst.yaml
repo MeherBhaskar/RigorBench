@@ -1,9 +1,69 @@
 task_id: task_015_bst
-agent_name: Baseline
+agent_name: baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:43.753609'
-  actions: []
+  started_at: '2026-06-26T10:29:45.427624'
+  actions:
+  - type: file_read
+    timestamp: '2026-06-26T10:29:45.427767'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_015_bst/repo_baseline/bst_verifier.py
+  - type: file_read
+    timestamp: '2026-06-26T10:29:45.427782'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_015_bst/repo_baseline/test_bst_verifier.py
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:45.427805'
+    metadata:
+      command: pytest test_bst_verifier.py
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:45.427812'
+    metadata:
+      error: "Created At: 2026-06-22T23:40:20Z\nCompleted At: 2026-06-22T23:40:20Z\n\
+        \n\t\t\t\tThe command failed with exit code: 127\n\t\t\t\tOutput:\n\t\t\t\t\
+        bash: line 1: pytest: command not found\r\n\n"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:45.427824'
+    metadata:
+      triggered_by: test_executed
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:45.427822'
+    metadata:
+      command: python3 -m pytest test_bst_verifier.py
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:45.427829'
+    metadata:
+      error: "Created At: 2026-06-22T23:40:21Z\nCompleted At: 2026-06-22T23:40:21Z\n\
+        \n\t\t\t\tThe command failed with exit code: 1\n\t\t\t\tOutput:\n\t\t\t\t\
+        /usr/bin/python3: No module named pytest\r\n\n"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:45.427839'
+    metadata:
+      triggered_by: test_executed
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:45.427837'
+    metadata:
+      command: python3 -c \"import test_bst_verifier; test_bst_verifier.test_valid_bst();
+        test_bst_verifier.test_invalid_bst(); print('All tests passed!')\
+  - type: checkpoint_validated
+    timestamp: '2026-06-26T10:29:45.427859'
+    metadata:
+      command: git status
+  - type: file_modified
+    timestamp: '2026-06-26T10:29:45.427886'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_015_bst/repo_baseline/bst_verifier.py
+  - type: test_written
+    timestamp: '2026-06-26T10:29:45.427905'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_015_bst/repo_baseline/test_bst_verifier.py
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:45.427919'
+    metadata:
+      command: python3 -c \"import test_bst_verifier; test_bst_verifier.test_valid_bst();
+        test_bst_verifier.test_invalid_bst(); test_bst_verifier.test_empty_tree();
+        test_bst_verifier.test_single_node(); test_bst_verifier.test_duplicate_values();
+        test_bst_verifier.test_infinity_values(); print('All new/expanded tests passed!')\

@@ -1,4 +1,16 @@
 import json
 
 def recover_jsonl_data(filepath: str) -> list[dict]:
-    pass
+    results = []
+    with open(filepath, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+                if isinstance(obj, dict):
+                    results.append(obj)
+            except json.JSONDecodeError:
+                continue
+    return results

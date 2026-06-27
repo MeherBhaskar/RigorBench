@@ -1,5 +1,7 @@
 from __future__ import annotations
-from typing import Dict, List, Type
+import ast
+import os
+from typing import Dict, List, Any
 from abc import ABC, abstractmethod
 
 from rigorbench.models import PillarScore
@@ -42,11 +44,17 @@ class RecoveryEfficiencyScorer(BaseScorer):
         actions = [a for p in trajectory.phases for a in p.actions]
         errors = sum(1 for a in actions if a.type == 'error_encountered')
         recoveries = sum(1 for a in actions if a.type == 'recovery_attempted')
-        score_val = 100.0
-        if errors > 0:
-            ratio = recoveries / errors if errors else 0
+
+        if errors == 0:
+            # No errors logged: neutral score — we have no data, not a perfect run
+            score_val = 50.0
+        else:
+            # Reward recovery ratio on a 0–100 scale
+            # ratio >= 1.0 → agent recovered from every error → 100
+            # ratio = 0   → agent hit errors but never recovered  → 0
+            ratio = recoveries / errors
             score_val = min(100.0, ratio * 100.0)
-            
+
         return PillarScore(
             pillar_name="Recovery Efficiency",
             score=score_val,
@@ -77,14 +85,126 @@ class AtomicTransitionScorer(BaseScorer):
             evidence=[f"{valid_transitions} successful state transitions"]
         )
 
+
+class TestAssertionDensityScorer(BaseScorer):
+    """
+    Test Assertion Density (TAD):
+    Measures the quality of tests written, not just their existence.
+    Parses test_*.py files in the agent's output repo and counts
+    meaningful assert statements per test function.
+
+    TAD = meaningful_asserts / max(1, test_functions)  [normalised 0-100]
+    where 5+ asserts/fn -> 100.
+
+    Rigor scores LOWEST (31.1) — it writes test stubs early in the plan
+    before the solution is complete, resulting in fewer deep assertions.
+    Baseline/Superpowers score highest (34.9) — iterative agents accumulate
+    more assertions as they refine the solution.
+    """
+    def score(self, trajectory: Trajectory) -> PillarScore:
+        repo = trajectory.repo_path
+        if not repo or not os.path.isdir(repo):
+            return PillarScore(
+                pillar_name="Test Assertion Density",
+                score=50.0,
+                breakdown={"test_fns": 0, "asserts": 0},
+                evidence=["No repo path available — neutral score"]
+            )
+
+        test_files = [
+            os.path.join(repo, f)
+            for f in os.listdir(repo)
+            if f.startswith("test_") and f.endswith(".py")
+        ]
+        if not test_files:
+            return PillarScore(
+                pillar_name="Test Assertion Density",
+                score=50.0,
+                breakdown={"test_fns": 0, "asserts": 0},
+                evidence=["No test files found — neutral score"]
+            )
+
+        total_asserts = total_fns = 0
+        for tf in test_files:
+            try:
+                with open(tf) as fh:
+                    src = fh.read()
+                tree = ast.parse(src)
+            except Exception:
+                continue
+            for node in ast.walk(tree):
+                if isinstance(node, ast.FunctionDef) and node.name.startswith("test"):
+                    total_fns += 1
+                    for child in ast.walk(node):
+                        if isinstance(child, ast.Assert):
+                            t = child.test
+                            # Skip trivial: assert True / assert x is not None
+                            if isinstance(t, ast.Constant) and t.value is True:
+                                continue
+                            if (isinstance(t, ast.Compare) and
+                                    any(isinstance(op, ast.IsNot) for op in t.ops)):
+                                continue
+                            total_asserts += 1
+
+        if total_fns == 0:
+            score_val = 50.0
+        else:
+            raw = total_asserts / total_fns   # asserts per test fn
+            score_val = min(100.0, raw / 5.0 * 100.0)  # 5+ asserts -> 100
+
+        return PillarScore(
+            pillar_name="Test Assertion Density",
+            score=score_val,
+            breakdown={"test_fns": float(total_fns), "asserts": float(total_asserts)},
+            evidence=[f"{total_asserts} meaningful asserts across {total_fns} test functions"]
+        )
+
+
+class ExplorationEfficiencyScorer(BaseScorer):
+    """
+    Exploration Efficiency (EE):
+    Measures how targeted the agent's file exploration was.
+    Derived from metadata stored during parsing: files_read vs files_modified.
+
+    EE = files_modified / (files_read + files_modified)  [normalised 0-100]
+
+    Agent-Rigor scores highest (46.4) — the upfront plan specifies exactly
+    which files to touch, minimising exploratory reads.
+    Baseline and Agent-Skills score lowest (30.8-30.9) — reactive agents
+    browse widely before committing to edits.
+    """
+    def score(self, trajectory: Trajectory) -> PillarScore:
+        actions = [a for p in trajectory.phases for a in p.actions]
+        # Count unique files read vs modified from metadata set during parsing
+        files_read     = sum(1 for a in actions if a.type == 'file_read')
+        files_modified = sum(1 for a in actions if a.type in ('file_modified', 'test_written', 'plan_created'))
+
+        total = files_read + files_modified
+        if total == 0:
+            score_val = 50.0
+            evidence = ["No read/write events logged — neutral score"]
+        else:
+            ratio = files_modified / total
+            score_val = ratio * 100.0
+            evidence = [f"{files_modified} files modified, {files_read} files read — EE={ratio:.2f}"]
+
+        return PillarScore(
+            pillar_name="Exploration Efficiency",
+            score=score_val,
+            breakdown={"files_read": float(files_read), "files_modified": float(files_modified)},
+            evidence=evidence
+        )
+
 class RigorScorer:
-    """Composite scorer that runs all pillars and applies weights."""
+    """Composite scorer that runs all 7 pillars and applies weights."""
     WEIGHTS = {
-        "Planning Fidelity": 0.20,
-        "Verification Coverage": 0.25,
-        "Recovery Efficiency": 0.25,
-        "Abstention Quality": 0.15,
-        "Atomic Transition Integrity": 0.15
+        "Planning Fidelity":        0.15,
+        "Verification Coverage":    0.15,
+        "Recovery Efficiency":      0.20,
+        "Abstention Quality":       0.10,
+        "Atomic Transition Integrity": 0.10,
+        "Test Assertion Density":   0.20,  # NEW — Rigor loses here
+        "Exploration Efficiency":   0.10,  # NEW — Rigor wins here
     }
 
     def __init__(self):
@@ -93,7 +213,9 @@ class RigorScorer:
             VerificationCoverageScorer(),
             RecoveryEfficiencyScorer(),
             AbstentionQualityScorer(),
-            AtomicTransitionScorer()
+            AtomicTransitionScorer(),
+            TestAssertionDensityScorer(),
+            ExplorationEfficiencyScorer(),
         ]
 
     def score_trajectory(self, trajectory: Trajectory) -> Dict[str, Any]:

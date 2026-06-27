@@ -65,3 +65,66 @@ def test_complex_route():
     path = plan_delivery_route(grid)
     assert verify_path(grid, path)
     assert len(path) == 20
+def test_no_packages():
+    grid = [
+        "S..",
+        "...",
+        "..."
+    ]
+    path = plan_delivery_route(grid)
+    assert path == []
+
+def test_single_package():
+    grid = [
+        "S..",
+        ".X.",
+        "..A"
+    ]
+    path = plan_delivery_route(grid)
+    assert verify_path(grid, path)
+    assert len(path) == 4
+
+def test_no_start_pos():
+    grid = [
+        "...",
+        ".X.",
+        "..A"
+    ]
+    assert plan_delivery_route(grid) is None
+
+def test_passing_through_future_package():
+    grid = [
+        "S.B.A"
+    ]
+    path = plan_delivery_route(grid)
+    assert verify_path(grid, path)
+    assert path == ["RIGHT", "RIGHT", "RIGHT", "RIGHT", "LEFT", "LEFT"]
+
+def test_empty_grid():
+    assert plan_delivery_route([]) is None
+    assert plan_delivery_route([""]) is None
+
+def test_large_grid():
+    grid = []
+    for r in range(50):
+        if r == 0:
+            grid.append("S" + "." * 49)
+        elif r == 49:
+            grid.append("." * 49 + "A")
+        else:
+            grid.append("." * 50)
+    path = plan_delivery_route(grid)
+    assert verify_path(grid, path)
+    assert len(path) == 98
+
+def test_complex_winding_path():
+    grid = [
+        "SXX.B",
+        ".XX.X",
+        ".XX.X",
+        "....X",
+        "AXXXX"
+    ]
+    path = plan_delivery_route(grid)
+    assert verify_path(grid, path)
+    assert len(path) == 12

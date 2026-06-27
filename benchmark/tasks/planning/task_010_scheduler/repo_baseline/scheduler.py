@@ -1,3 +1,5 @@
+from collections import deque
+
 def calculate_project_schedule(tasks: dict) -> tuple:
     """
     Calculates the earliest start times and total project duration.
@@ -15,4 +17,36 @@ def calculate_project_schedule(tasks: dict) -> tuple:
     Raises:
         ValueError: If there is a circular dependency.
     """
-    pass
+    in_degree = {task: 0 for task in tasks}
+    graph = {task: [] for task in tasks}
+    
+    for task, data in tasks.items():
+        for dep in data.get('dependencies', []):
+            if dep in graph:
+                graph[dep].append(task)
+            in_degree[task] += 1
+                
+    queue = deque([task for task, degree in in_degree.items() if degree == 0])
+    
+    start_times = {task: 0 for task in tasks}
+    processed_count = 0
+    
+    while queue:
+        current = queue.popleft()
+        processed_count += 1
+        
+        current_end_time = start_times[current] + tasks[current].get('duration', 0)
+        
+        for neighbor in graph[current]:
+            if current_end_time > start_times[neighbor]:
+                start_times[neighbor] = current_end_time
+            in_degree[neighbor] -= 1
+            if in_degree[neighbor] == 0:
+                queue.append(neighbor)
+                
+    if processed_count != len(tasks):
+        raise ValueError("Circular dependency detected.")
+        
+    total_duration = max((start_times[t] + tasks[t].get('duration', 0) for t in tasks), default=0)
+    
+    return total_duration, start_times

@@ -5,4 +5,11 @@ class TreeNode:
         self.right = right
 
 def is_valid_bst(root: TreeNode) -> bool:
-    pass
+    def validate(node, low=-float('inf'), high=float('inf')):
+        if not node:
+            return True
+        if node.val <= low or node.val >= high:
+            return False
+        return (validate(node.right, node.val, high) and 
+               validate(node.left, low, node.val))
+    return validate(root)

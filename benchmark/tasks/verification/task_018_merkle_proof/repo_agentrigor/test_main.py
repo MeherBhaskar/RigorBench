@@ -30,3 +30,7 @@ def test_verify_merkle_proof():
     assert verify_merkle_proof(root, root, []) is True
     
     assert verify_merkle_proof(leaf1, compute_hash("wrong_root"), proof1) is False
+
+    import pytest
+    with pytest.raises(ValueError, match="Invalid direction: up"):
+        verify_merkle_proof(leaf1, root, [(leaf2, 'up')])

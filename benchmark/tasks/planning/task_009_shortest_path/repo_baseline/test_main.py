@@ -1,4 +1,4 @@
-import pytest
+# import pytest
 from main import plan_crafting
 
 def verify_plan(target, amount, recipes, inventory, plan):

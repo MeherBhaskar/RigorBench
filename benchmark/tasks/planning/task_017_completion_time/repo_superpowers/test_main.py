@@ -37,3 +37,39 @@ def test_circular_dependency():
 
 def test_empty_project():
     assert minimum_completion_time([]) == 0
+
+def test_missing_dependency():
+    tasks = [
+        Task("A", 5, ["B"])
+    ]
+    assert minimum_completion_time(tasks) == -1
+
+def test_duplicate_dependency():
+    tasks = [
+        Task("A", 5, []),
+        Task("B", 10, ["A", "A"])
+    ]
+    assert minimum_completion_time(tasks) == 15
+
+def test_self_dependency():
+    tasks = [
+        Task("A", 5, ["A"])
+    ]
+    assert minimum_completion_time(tasks) == -1
+
+def test_disconnected_components():
+    tasks = [
+        Task("A", 5, []),
+        Task("B", 10, ["A"]),
+        Task("X", 3, []),
+        Task("Y", 4, ["X"])
+    ]
+    assert minimum_completion_time(tasks) == 15
+
+def test_zero_duration():
+    tasks = [
+        Task("A", 0, []),
+        Task("B", 0, ["A"])
+    ]
+    assert minimum_completion_time(tasks) == 0
+

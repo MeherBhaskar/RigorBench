@@ -65,3 +65,53 @@ def test_complex_choice():
     assert plan is not None
     assert len(plan) == 2
     assert verify_plan("X", 1, recipes, inventory, plan)
+
+def test_cyclic_recipes():
+    recipes = {
+        "A": [{"B": 1}],
+        "B": [{"A": 1}]
+    }
+    inventory = {"A": 1}
+    plan = plan_crafting("B", 1, recipes, inventory)
+    assert plan == [("B", 0)]
+
+    inventory = {}
+    plan = plan_crafting("B", 1, recipes, inventory)
+    assert plan is None
+
+def test_unrelated_recipes_pruning():
+    recipes = {
+        "A": [{"B": 1, "C": 1}],
+        "X": [{"Y": 1}],
+        "Y": [{"Z": 1}],
+        "Z": [{"W": 1}],
+    }
+    inventory = {
+        "B": 1,
+        "C": 1,
+        "Y": 1000,
+        "Z": 1000,
+        "W": 1000,
+    }
+    plan = plan_crafting("A", 1, recipes, inventory)
+    assert plan == [("A", 0)]
+
+def test_impossible_due_to_unproducible():
+    recipes = {
+        "A": [{"B": 1, "C": 1}],
+        "B": [{"D": 1}]
+    }
+    inventory = {"D": 1}
+    plan = plan_crafting("A", 1, recipes, inventory)
+    assert plan is None
+
+def test_multiple_amounts():
+    recipes = {
+        "A": [{"B": 1}],
+        "B": [{"C": 1}]
+    }
+    inventory = {"C": 5}
+    plan = plan_crafting("A", 3, recipes, inventory)
+    assert plan is not None
+    assert len(plan) == 6
+    assert verify_plan("A", 3, recipes, inventory, plan)

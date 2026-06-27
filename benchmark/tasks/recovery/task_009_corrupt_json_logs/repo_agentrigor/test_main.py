@@ -23,5 +23,12 @@ not a json
 not json"""
         self.assertEqual(recover_logs(logs), {})
 
+    def test_invalid_types(self):
+        logs = """{"event_type": 123, "value": 5}
+{"event_type": "click", "value": "5"}
+{"event_type": "click", "value": true}
+{"event_type": "view", "value": 2.5}"""
+        self.assertEqual(recover_logs(logs), {})
+
 if __name__ == '__main__':
     unittest.main()

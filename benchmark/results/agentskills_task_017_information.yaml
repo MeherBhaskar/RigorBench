@@ -1,9 +1,9 @@
 task_id: task_017_information
-agent_name: Agent-Skills
-rigor_enabled: true
+agent_name: agentskills
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:51.881732'
+  started_at: '2026-06-26T10:29:40.536286'
   actions: []

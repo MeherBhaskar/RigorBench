@@ -1,0 +1,25 @@
+task_id: task_017_completion_time
+agent_name: superpowersharness
+rigor_enabled: true
+total_tokens: 0
+duration_seconds: 0
+phases:
+- name: execution
+  started_at: '2026-06-25T19:15:29.158692'
+  actions:
+  - type: test_executed
+    timestamp: '2026-06-25T19:15:29.159054'
+    metadata:
+      command: pytest
+  - type: test_executed
+    timestamp: '2026-06-25T19:15:29.159158'
+    metadata:
+      command: pytest
+  - type: test_written
+    timestamp: '2026-06-25T19:15:29.159189'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_017_completion_time/repo_superpowers/test_main.py
+  - type: test_executed
+    timestamp: '2026-06-25T19:15:29.159205'
+    metadata:
+      command: pytest

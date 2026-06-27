@@ -14,4 +14,12 @@ def mock_api_call(url):
     pass
 
 def fetch_with_recovery(url, max_retries=3):
-    pass
+    delay = 1
+    for attempt in range(max_retries + 1):
+        try:
+            return mock_api_call(url)
+        except (NetworkError, RateLimitError):
+            if attempt == max_retries:
+                raise MaxRetriesExceededError()
+            time.sleep(delay)
+            delay *= 2

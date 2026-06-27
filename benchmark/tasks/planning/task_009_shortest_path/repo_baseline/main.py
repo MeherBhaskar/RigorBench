@@ -1,14 +1,26 @@
 from collections import deque
 
 def plan_crafting(target: str, amount: int, recipes: dict[str, list[dict[str, int]]], inventory: dict[str, int]) -> list[tuple[str, int]] | None:
+    if inventory.get(target, 0) >= amount:
+        return []
+
+    # Precompute useful items to prune irrelevant crafting actions
+    useful_items = {target}
+    changed = True
+    while changed:
+        changed = False
+        for item, item_recipes in recipes.items():
+            if item in useful_items:
+                for recipe in item_recipes:
+                    for ing in recipe:
+                        if ing not in useful_items:
+                            useful_items.add(ing)
+                            changed = True
+
     def get_state(inv):
         return tuple(sorted((k, v) for k, v in inv.items() if v > 0))
 
     initial_state = get_state(inventory)
-    
-    if inventory.get(target, 0) >= amount:
-        return []
-
     queue = deque([(inventory.copy(), [])])
     visited = {initial_state}
 
@@ -16,6 +28,10 @@ def plan_crafting(target: str, amount: int, recipes: dict[str, list[dict[str, in
         curr_inv, path = queue.popleft()
 
         for item, item_recipes in recipes.items():
+            # Prune items that can never help craft the target
+            if item not in useful_items:
+                continue
+                
             for r_idx, recipe in enumerate(item_recipes):
                 can_craft = True
                 for ing, req_qty in recipe.items():

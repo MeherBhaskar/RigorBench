@@ -1,17 +1,25 @@
 task_id: task_014_search_contracts
-agent_name: Superpowers-Harness
-rigor_enabled: true
+agent_name: superpowersharness
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:39.509032'
+  started_at: '2026-06-26T10:29:36.069875'
   actions:
+  - type: file_read
+    timestamp: '2026-06-26T10:29:36.069996'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_014_search_contracts/repo_superpowersharness/main.py
+  - type: file_read
+    timestamp: '2026-06-26T10:29:36.070085'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_014_search_contracts/repo_superpowers/test_main.py
   - type: file_modified
-    timestamp: '2026-06-22T18:17:39.509718'
+    timestamp: '2026-06-26T10:29:36.070112'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_014_search_contracts/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:39.509755'
+    timestamp: '2026-06-26T10:29:36.070132'
     metadata:
       command: pytest test_main.py

@@ -1,0 +1,186 @@
+task_001_rename_class:
+  agentskills:
+    requirements: &id001
+    - The old class name does not appear anywhere in the codebase
+    - The new class name is defined exactly once as a class declaration
+    - All 5 files that previously referenced the old class name now reference the
+      new class name
+    - All import or require statements referencing the old class name are updated
+      to use the new class name
+    - No string literals, comments, or documentation retain the old class name as
+      a reference to the class
+    - The new class name follows the same naming convention (casing style) as the
+      old class name
+    results:
+    - true
+    - true
+    - false
+    - false
+    - true
+    - false
+    satisfied: 3
+    sc: 0.5
+    total: 6
+  baseline:
+    requirements: *id001
+    results:
+    - false
+    - true
+    - false
+    - false
+    - false
+    - false
+    satisfied: 1
+    sc: 0.16666666666666666
+    total: 6
+  superpowersharness:
+    requirements: *id001
+    results:
+    - true
+    - true
+    - false
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 0.8333333333333334
+    total: 6
+task_002_split_module:
+  agentskills:
+    requirements: &id002
+    - The original module is split into exactly 3 separate submodule files
+    - Each submodule file contains fewer than 1000 lines of code
+    - All public symbols (functions, classes, variables) previously defined in the
+      original module are present across the 3 submodules
+    - The original module file re-exports all public symbols from the 3 submodules
+      to preserve the existing public API
+    - No circular imports exist between the 3 submodules
+    - Each submodule contains only logically related code (i.e., symbols are not arbitrarily
+      distributed)
+    results:
+    - true
+    - true
+    - false
+    - false
+    - true
+    - true
+    satisfied: 4
+    sc: 0.6666666666666666
+    total: 6
+  baseline:
+    requirements: *id002
+    results:
+    - true
+    - true
+    - false
+    - false
+    - true
+    - false
+    satisfied: 3
+    sc: 0.5
+    total: 6
+  superpowersharness:
+    requirements: *id002
+    results:
+    - true
+    - true
+    - false
+    - false
+    - false
+    - false
+    satisfied: 2
+    sc: 0.3333333333333333
+    total: 6
+task_003_change_signature:
+  agentskills:
+    requirements: &id003
+    - A function signature has a new parameter added to it
+    - The new parameter has no default value (i.e., it is required, not optional)
+    - Every call site of the modified function passes the new argument explicitly
+    - No call site of the modified function is left unchanged from before the addition
+    - The new parameter is listed in the function's parameter list before any existing
+      default/optional parameters (if any exist)
+    - The function's parameter count is exactly one greater than before the change
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+  baseline:
+    requirements: *id003
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+  superpowersharness:
+    requirements: *id003
+    results:
+    - true
+    - true
+    - true
+    - false
+    - true
+    - false
+    satisfied: 4
+    sc: 0.6666666666666666
+    total: 6
+task_004_upgrade_lib: {}
+task_005_sync_to_async:
+  agentskills:
+    requirements: &id004
+    - All database-calling functions must be declared with the `async` keyword
+    - All direct database call expressions must be preceded by the `await` keyword
+    - No synchronous blocking database driver or library calls (e.g., synchronous
+      variants of query methods) must remain in the codebase
+    - All callers of the converted database functions must themselves be declared
+      `async` and must `await` the calls
+    - An asynchronous-compatible database driver or library (e.g., asyncpg, aiomysql,
+      motor) must be imported and used in place of any synchronous driver
+    - No `time.sleep` or other synchronous blocking calls must appear inside any function
+      that performs database operations
+    results:
+    - true
+    - false
+    - false
+    - true
+    - false
+    - false
+    satisfied: 2
+    sc: 0.3333333333333333
+    total: 6
+  baseline:
+    requirements: *id004
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+  superpowersharness:
+    requirements: *id004
+    results:
+    - true
+    - false
+    - false
+    - true
+    - false
+    - false
+    satisfied: 2
+    sc: 0.3333333333333333
+    total: 6
+task_006_move_database: {}

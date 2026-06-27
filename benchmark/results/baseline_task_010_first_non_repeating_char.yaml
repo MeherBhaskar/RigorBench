@@ -1,17 +1,17 @@
 task_id: task_010_first_non_repeating_char
-agent_name: Baseline
+agent_name: baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:39.700074'
+  started_at: '2026-06-25T19:42:27.572884'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T18:17:39.700259'
+    timestamp: '2026-06-25T19:42:27.573033'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/atomic/task_010_first_non_repeating_char/repo_baseline/main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:39.700307'
+    timestamp: '2026-06-25T19:42:27.573051'
     metadata:
       command: pytest test_main.py

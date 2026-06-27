@@ -1,62 +1,148 @@
 task_id: task_003_shadow_variable
-agent_name: Baseline
+agent_name: baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:36.959257'
+  started_at: '2026-06-26T10:29:40.845859'
   actions:
+  - type: file_read
+    timestamp: '2026-06-26T10:29:40.846057'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_003_shadow_variable/repo_baseline/test.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:36.959573'
+    timestamp: '2026-06-26T10:29:40.846089'
     metadata:
       command: pytest test.py
-  - type: command_executed
-    timestamp: '2026-06-22T18:17:36.959616'
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:40.846105'
+    metadata:
+      error: "Created At: 2026-06-22T02:52:28Z\nCompleted At: 2026-06-22T02:52:29Z\n\
+        \n\t\t\t\tThe command failed with exit code: 1\n\t\t\t\tOutput:\n\t\t\t\t\
+        Traceback (most recent call last):\r\n  File \"/home/meher/miniconda3/bin/pytest\"\
+        , line 8, in <module>\r\n    sys.exit(console_main())\r\n             ^^^^^^^^^^^^^^\r\
+        \n  File \"/home/"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:40.846135'
+    metadata:
+      triggered_by: test_executed
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:40.846133'
     metadata:
       command: python3 -c 'import processor; print(processor.process_items([1, 2,
         3]))'
   - type: test_executed
-    timestamp: '2026-06-22T18:17:36.959635'
+    timestamp: '2026-06-26T10:29:40.846153'
     metadata:
       command: mv test.py test_processor.py && pytest test_processor.py
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:40.846168'
+    metadata:
+      error: "Created At: 2026-06-22T02:52:48Z\nCompleted At: 2026-06-22T02:52:49Z\n\
+        \n\t\t\t\tThe command failed with exit code: 1\n\t\t\t\tOutput:\n\t\t\t\t\
+        Traceback (most recent call last):\r\n  File \"/home/meher/miniconda3/bin/pytest\"\
+        , line 8, in <module>\r\n    sys.exit(console_main())\r\n             ^^^^^^^^^^^^^^\r\
+        \n  File \"/home/"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:40.846183'
+    metadata:
+      triggered_by: test_executed
   - type: test_executed
-    timestamp: '2026-06-22T18:17:36.959660'
+    timestamp: '2026-06-26T10:29:40.846181'
     metadata:
       command: rm -rf __pycache__ && pytest test_processor.py
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:40.846197'
+    metadata:
+      error: "Created At: 2026-06-22T02:52:55Z\nCompleted At: 2026-06-22T02:52:55Z\n\
+        \n\t\t\t\tThe command failed with exit code: 1\n\t\t\t\tOutput:\n\t\t\t\t\
+        Traceback (most recent call last):\r\n  File \"/home/meher/miniconda3/bin/pytest\"\
+        , line 8, in <module>\r\n    sys.exit(console_main())\r\n             ^^^^^^^^^^^^^^\r\
+        \n  File \"/home/"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:40.846211'
+    metadata:
+      triggered_by: test_executed
   - type: test_executed
-    timestamp: '2026-06-22T18:17:36.959686'
+    timestamp: '2026-06-26T10:29:40.846209'
     metadata:
       command: cd /tmp && pytest --version
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:40.846227'
+    metadata:
+      error: "Created At: 2026-06-22T02:53:02Z\nCompleted At: 2026-06-22T02:53:03Z\n\
+        \n\t\t\t\tThe command failed with exit code: 1\n\t\t\t\tOutput:\n\t\t\t\t\
+        Traceback (most recent call last):\r\n  File \"/home/meher/miniconda3/bin/pytest\"\
+        , line 8, in <module>\r\n    sys.exit(console_main())\r\n             ^^^^^^^^^^^^^^\r\
+        \n  File \"/home/"
   - type: checkpoint_validated
-    timestamp: '2026-06-22T18:17:36.959711'
+    timestamp: '2026-06-26T10:29:40.846240'
     metadata:
       command: git status
   - type: checkpoint_validated
-    timestamp: '2026-06-22T18:17:36.959738'
+    timestamp: '2026-06-26T10:29:40.846268'
     metadata:
       command: git diff test.py
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:40.846273'
+    metadata:
+      error: "Created At: 2026-06-22T02:53:21Z\nCompleted At: 2026-06-22T02:53:21Z\n\
+        \n\t\t\t\tThe command failed with exit code: 128\n\t\t\t\tOutput:\n\t\t\t\t\
+        fatal: ambiguous argument 'test.py': unknown revision or path not in the working\
+        \ tree.\r\nUse '--' to separate paths from revisions, like this:\r\n'git <command>\
+        \ [<revision>..."
   - type: checkpoint_validated
-    timestamp: '2026-06-22T18:17:36.959753'
+    timestamp: '2026-06-26T10:29:40.846284'
     metadata:
       command: git diff
   - type: checkpoint_validated
-    timestamp: '2026-06-22T18:17:36.959775'
+    timestamp: '2026-06-26T10:29:40.846318'
     metadata:
       command: git diff .
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:40.846338'
+    metadata:
+      triggered_by: command_executed
   - type: command_executed
-    timestamp: '2026-06-22T18:17:36.959793'
+    timestamp: '2026-06-26T10:29:40.846337'
     metadata:
       command: ls -la ../repo_agentrigor
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:40.846343'
+    metadata:
+      error: "Created At: 2026-06-22T02:53:41Z\nCompleted At: 2026-06-22T02:53:41Z\n\
+        \n\t\t\t\tThe command failed with exit code: 2\n\t\t\t\tOutput:\n\t\t\t\t\
+        ls: cannot access '../repo_agentrigor': No such file or directory\r\n\n"
+  - type: recovery_attempted
+    timestamp: '2026-06-26T10:29:40.846391'
+    metadata:
+      triggered_by: test_executed
   - type: test_executed
-    timestamp: '2026-06-22T18:17:36.959840'
+    timestamp: '2026-06-26T10:29:40.846390'
     metadata:
       command: mv test_processor.py test.py && python test.py
+  - type: file_read
+    timestamp: '2026-06-26T10:29:40.846417'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_003_shadow_variable/repo/processor.py
+  - type: file_read
+    timestamp: '2026-06-26T10:29:40.846431'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_003_shadow_variable/repo_baseline/test.py
   - type: command_executed
-    timestamp: '2026-06-22T18:17:36.959892'
+    timestamp: '2026-06-26T10:29:40.846447'
     metadata:
       command: diff -r ../repo ../repo_baseline
+  - type: error_encountered
+    timestamp: '2026-06-26T10:29:40.846452'
+    metadata:
+      error: "Created At: 2026-06-22T02:54:24Z\nCompleted At: 2026-06-22T02:54:24Z\n\
+        \n\t\t\t\tThe command failed with exit code: 1\n\t\t\t\tOutput:\n\t\t\t\t\
+        diff -r ../repo/processor.py ../repo_baseline/processor.py\r\n2,3c2,3\r\n\
+        <     list = [i*2 for i in items] # BUG: shadows builtin\r\n<     return list(map(str,\
+        \ list)) # Throws Type"
   - type: checkpoint_validated
-    timestamp: '2026-06-22T18:17:36.959908'
+    timestamp: '2026-06-26T10:29:40.846466'
     metadata:
       command: git status

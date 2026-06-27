@@ -1,8 +1,34 @@
 from __future__ import annotations
+import os
 import yaml
 from dataclasses import dataclass, field, asdict
 from typing import Dict, List, Optional, Any
 from datetime import datetime
+
+_TASKS_DIR = os.path.join(os.path.dirname(__file__), '..', 'tasks')
+
+_HARNESS_REPO = {
+    'agent-rigor':    'repo_agentrigor',
+    'agentrigor':     'repo_agentrigor',
+    'superpowers':    'repo_superpowers',
+    'superpowersharness': 'repo_superpowers',
+    'agent-skills':   'repo_agentskills',
+    'agentskills':    'repo_agentskills',
+    'baseline':       'repo_baseline',
+    'baseline react': 'repo_baseline',
+}
+
+def _find_repo(task_id: str, agent_name: str) -> Optional[str]:
+    key = agent_name.lower()
+    repo_dir = next((v for k, v in _HARNESS_REPO.items() if k in key), None)
+    if not repo_dir:
+        return None
+    tasks_root = os.path.abspath(_TASKS_DIR)
+    for cat in os.listdir(tasks_root):
+        candidate = os.path.join(tasks_root, cat, task_id, repo_dir)
+        if os.path.isdir(candidate):
+            return candidate
+    return None
 
 @dataclass
 class Action:
@@ -27,6 +53,7 @@ class Trajectory:
     total_tokens: int
     duration_seconds: int
     phases: List[Phase] = field(default_factory=list)
+    repo_path: Optional[str] = field(default=None, repr=False)  # resolved at load time
 
 class TrajectoryLogger:
     """Logs agent actions into a Trajectory and serializes to YAML."""
@@ -76,11 +103,14 @@ class TrajectoryLoader:
             actions = [Action(**a) for a in p_data.get('actions', [])]
             phases.append(Phase(name=p_data['name'], started_at=p_data['started_at'], actions=actions))
             
+        task_id   = data['task_id']
+        agent_name = data['agent_name']
         return Trajectory(
-            task_id=data['task_id'],
-            agent_name=data['agent_name'],
+            task_id=task_id,
+            agent_name=agent_name,
             rigor_enabled=data['rigor_enabled'],
             total_tokens=data.get('total_tokens', 0),
             duration_seconds=data.get('duration_seconds', 0),
-            phases=phases
+            phases=phases,
+            repo_path=_find_repo(task_id, agent_name),
         )

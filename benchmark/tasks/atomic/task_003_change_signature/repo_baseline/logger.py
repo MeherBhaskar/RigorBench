@@ -1,2 +1,2 @@
-def log(msg):
-    print(msg)
+def log(level, msg):
+    print(level, msg)

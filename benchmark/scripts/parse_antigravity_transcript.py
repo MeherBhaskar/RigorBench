@@ -4,6 +4,10 @@ import sys
 import os
 from datetime import datetime
 
+def strip_quotes(s: str) -> str:
+    """Remove outer and escaped inner quotes from JSON-serialised string args."""
+    return s.strip().strip('"').strip("'")
+
 def parse_transcript(transcript_path, output_yaml_path, task_id, agent_name, rigor_enabled):
     phases = []
     current_phase = {
@@ -30,24 +34,35 @@ def parse_transcript(transcript_path, output_yaml_path, task_id, agent_name, rig
             continue
             
         action = None
+        pending_cmd = None  # command being invoked (from PLANNER_RESPONSE tool_call)
         
-        # Check tool calls
-        if "tool_calls" in step and step["tool_calls"]:
+        # ── PLANNER_RESPONSE: capture tool invocations ──────────────────────────
+        if step.get("type") == "PLANNER_RESPONSE" and step.get("tool_calls"):
             for call in step["tool_calls"]:
                 tool_name = call.get("name", "")
                 args = call.get("args", {})
-                
-                # Strip extra quotes
                 args = {k: v.strip('"') if isinstance(v, str) else v for k, v in args.items()}
                 
-                # Heuristics for planning
-                if tool_name == "write_to_file" and ("plan" in args.get("TargetFile", "").lower() or "design" in args.get("TargetFile", "").lower()):
+                if tool_name == "write_to_file" and (
+                    "plan" in args.get("TargetFile", "").lower() or
+                    "design" in args.get("TargetFile", "").lower()
+                ):
                     action = {
                         "type": "plan_created",
                         "timestamp": datetime.now().isoformat(),
                         "metadata": {"file": args.get("TargetFile")}
                     }
+                elif tool_name == "view_file":
+                    # Track file reads for Exploration Efficiency metric
+                    fp = strip_quotes(args.get("AbsolutePath", ""))
+                    if fp.endswith(".py"):
+                        action = {
+                            "type": "file_read",
+                            "timestamp": datetime.now().isoformat(),
+                            "metadata": {"file": fp}
+                        }
                 elif tool_name in ["write_to_file", "multi_replace_file_content", "replace_file_content"]:
+
                     if "test" in args.get("TargetFile", "").lower():
                         action = {
                             "type": "test_written",
@@ -62,13 +77,14 @@ def parse_transcript(transcript_path, output_yaml_path, task_id, agent_name, rig
                         }
                 elif tool_name == "run_command":
                     cmd = args.get("CommandLine", "")
+                    pending_cmd = cmd
                     if "git diff" in cmd or "git status" in cmd or "git commit" in cmd:
                         action = {
                             "type": "checkpoint_validated",
                             "timestamp": datetime.now().isoformat(),
                             "metadata": {"command": cmd}
                         }
-                    elif "pytest" in cmd or "test" in cmd:
+                    elif "pytest" in cmd or "test" in cmd or "python" in cmd:
                         action = {
                             "type": "test_executed",
                             "timestamp": datetime.now().isoformat(),
@@ -80,17 +96,31 @@ def parse_transcript(transcript_path, output_yaml_path, task_id, agent_name, rig
                             "timestamp": datetime.now().isoformat(),
                             "metadata": {"command": cmd}
                         }
-        
-        # Check errors in step status or in command output contents (TOOL_RESPONSE / SYSTEM)
-        if step.get("status") == "ERROR" or (step.get("type") == "MODEL_ERROR"):
-            action = {
-                "type": "error_encountered",
-                "timestamp": datetime.now().isoformat(),
-                "metadata": {"error": step.get("content", "Unknown error")}
-            }
+
+        # ── RUN_COMMAND result: detect failures from actual command output ───────
+        # agy emits a dedicated RUN_COMMAND step whose content contains the full
+        # output string, including the line "The command failed with exit code: N"
+        # This is the ONLY reliable error signal in real agy transcripts.
+        elif step.get("type") == "RUN_COMMAND":
+            content = str(step.get("content", ""))
+            if "failed with exit code" in content or "The command failed" in content:
+                action = {
+                    "type": "error_encountered",
+                    "timestamp": datetime.now().isoformat(),
+                    "metadata": {"error": content[:300]}
+                }
+
+        # ── Fallback: legacy TOOL_RESPONSE / SYSTEM error patterns ───────────────
         elif step.get("type") in ["TOOL_RESPONSE", "SYSTEM"]:
             content = step.get("content", "")
-            if isinstance(content, str) and ("Traceback (most recent call last)" in content or "SyntaxError:" in content or "AssertionError" in content or "FAILED" in content or "Compile Error" in content):
+            if isinstance(content, str) and (
+                "Traceback (most recent call last)" in content or
+                "SyntaxError:" in content or
+                "AssertionError" in content or
+                "FAILED" in content or
+                "Compile Error" in content or
+                "failed with exit code" in content
+            ):
                 action = {
                     "type": "error_encountered",
                     "timestamp": datetime.now().isoformat(),

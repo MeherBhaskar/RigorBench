@@ -26,3 +26,8 @@ def test_disconnected():
     assert verify_topological_sort(graph, [3, 4, 1, 2]) == True
     assert verify_topological_sort(graph, [1, 3, 2, 4]) == True
     assert verify_topological_sort(graph, [2, 1, 3, 4]) == False
+
+def test_cycle():
+    graph = {1: [2], 2: [3], 3: [1]}
+    order = [1, 2, 3]
+    assert verify_topological_sort(graph, order) == False

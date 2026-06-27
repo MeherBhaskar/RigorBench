@@ -1,19 +1,23 @@
 task_id: task_006_hidden_character
-agent_name: Baseline
+agent_name: baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:34.445857'
+  started_at: '2026-06-26T10:29:40.784801'
   actions:
-  - type: command_executed
-    timestamp: '2026-06-22T18:17:34.446061'
+  - type: file_read
+    timestamp: '2026-06-26T10:29:40.784980'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/recovery/task_006_hidden_character/repo_baseline/test.py
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:40.785007'
     metadata:
       command: python3 -c \"import re; f=open('parser.py', 'r'); text=f.read(); f.close();
         text=re.sub(r'[\\u200b\\u200c\\u200d\\ufeff]', '', text); f=open('parser.py',
         'w'); f.write(text); f.close()\
-  - type: command_executed
-    timestamp: '2026-06-22T18:17:34.446081'
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:40.785025'
     metadata:
       command: python3 -c \"import parser; print(parser.get_user())\

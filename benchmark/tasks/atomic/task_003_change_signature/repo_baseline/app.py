@@ -1,2 +1,2 @@
 from logger import log
-log('started')
+log('INFO', 'started')

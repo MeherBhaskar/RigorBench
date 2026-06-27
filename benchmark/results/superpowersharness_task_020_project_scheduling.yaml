@@ -1,9 +1,76 @@
 task_id: task_020_project_scheduling
-agent_name: Superpowers-Harness
-rigor_enabled: true
+agent_name: superpowersharness
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:52.271974'
-  actions: []
+  started_at: '2026-06-26T10:29:43.022525'
+  actions:
+  - type: file_read
+    timestamp: '2026-06-26T10:29:43.022720'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/planning/task_020_project_scheduling/repo_superpowers/test_main.py
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:43.022765'
+    metadata:
+      command: "cat << 'EOF' > test_idle.py\\nimport itertools\\n\\ndef solve(tasks,\
+        \ num_workers):\\n    # tasks: dict id -> (duration, [pre])\\n    \\n    memo\
+        \ = {}\\n    \\n    def dfs(completed, in_progress, current_time):\\n    \
+        \    state = (frozenset(completed), tuple(sorted(in_progress)))\\n       \
+        \ if state in memo:\\n            return memo[state]\\n            \\n   \
+        \     if len(completed) == len(tasks):\\n            return current_time\\\
+        n            \\n        # find what finishes next\\n        if in_progress:\\\
+        n            next_finish_time = min(t for t, _ in in_progress)\\n        else:\\\
+        n            next_finish_time = float('inf')\\n            \\n        # we\
+        \ can either assign tasks to free workers right now, OR advance time\\n  \
+        \      free_workers = num_workers - len(in_progress)\\n        \\n       \
+        \ available = []\\n        for tid, (dur, pre) in tasks.items():\\n      \
+        \      if tid not in completed and not any(tid == running_tid for _, running_tid\
+        \ in in_progress):\\n                if all(p in completed for p in pre):\\\
+        n                    available.append(tid)\\n                    \\n     \
+        \   res = float('inf')\\n        \\n        # option 1: advance time to next\
+        \ finish\\n        if in_progress:\\n            new_in_progress = [(t, tid)\
+        \ for t, tid in in_progress if t > next_finish_time]\\n            new_completed\
+        \ = completed.copy()\\n            for t, tid in in_progress:\\n         \
+        \       if t == next_finish_time:\\n                    new_completed.add(tid)\\\
+        n            res = min(res, dfs(new_completed, new_in_progress, next_finish_time))\\\
+        n            \\n        # option 2: assign available tasks\\n        if free_workers\
+        \ > 0 and available:\\n            # try assigning any combination of up to\
+        \ free_workers available tasks\\n            for k in range(1, min(free_workers,\
+        \ len(available)) + 1):\\n                for subset in itertools.combinations(available,\
+        \ k):\\n                    new_in_progress = list(in_progress)\\n       \
+        \             for tid in subset:\\n                        new_in_progress.append((current_time\
+        \ + tasks[tid][0], tid))\\n          \n<truncated 2328 bytes>"
+  - type: test_executed
+    timestamp: '2026-06-26T10:29:43.022813'
+    metadata:
+      command: "cat << 'EOF' > test_dijkstra.py\\nimport heapq\\nimport time\\nimport\
+        \ random\\n\\ndef solve(tasks_info, num_workers):\\n    # tasks_info: dict\
+        \ id -> (duration, [pre])\\n    \\n    # check cycles\\n    in_degree = {tid:\
+        \ len(info[1]) for tid, info in tasks_info.items()}\\n    adj = {tid: [] for\
+        \ tid in tasks_info}\\n    for tid, info in tasks_info.items():\\n       \
+        \ for p in info[1]:\\n            adj[p].append(tid)\\n            \\n   \
+        \ q = [tid for tid, deg in in_degree.items() if deg == 0]\\n    visited =\
+        \ 0\\n    while q:\\n        curr = q.pop(0)\\n        visited += 1\\n   \
+        \     for nxt in adj[curr]:\\n            in_degree[nxt] -= 1\\n         \
+        \   if in_degree[nxt] == 0:\\n                q.append(nxt)\\n           \
+        \     \\n    if visited != len(tasks_info):\\n        return -1\\n\\n    #\
+        \ map tids to 0..N-1\\n    tids = list(tasks_info.keys())\\n    tid_to_idx\
+        \ = {tid: i for i, tid in enumerate(tids)}\\n    N = len(tids)\\n    \\n \
+        \   durations = [tasks_info[tid][0] for tid in tids]\\n    pre_masks = [0]\
+        \ * N\\n    for i, tid in enumerate(tids):\\n        for p in tasks_info[tid][1]:\\\
+        n            pre_masks[i] |= (1 << tid_to_idx[p])\\n            \\n    pq\
+        \ = [(0, 0, ())] # time, completed, active (tuple of (rem, idx))\\n    visited_states\
+        \ = set()\\n    \\n    target_mask = (1 << N) - 1\\n    \\n    states_visited\
+        \ = 0\\n    \\n    while pq:\\n        curr_time, completed, active = heapq.heappop(pq)\\\
+        n        \\n        state = (completed, active)\\n        if state in visited_states:\\\
+        n            continue\\n        visited_states.add(state)\\n        states_visited\
+        \ += 1\\n        \\n        if completed == target_mask:\\n            print(f\\\
+        \"States visited: {states_visited}\\\")\\n            return curr_time\\n\
+        \            \\n        free_workers = num_workers - len(active)\\n      \
+        \  \\n        active_mask = 0\\n        for rem, idx in active:\\n       \
+        \     active_mask |= (1 << idx)\\n            \\n        # option 1: start\
+        \ a task\\n        if free_workers > 0:\\n            for i in range(N):\\\
+        n                if not (completed & (1 << i)) and not (active_mask & (1 <<\
+        \ i)):\\n       \n<truncated 1348 bytes>"

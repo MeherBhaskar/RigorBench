@@ -51,3 +51,45 @@ def test_disconnected_components():
     total, start_times = calculate_project_schedule(tasks)
     assert total == 10
     assert start_times == {'A': 0, 'B': 5, 'C': 0}
+
+def test_empty_tasks():
+    tasks = {}
+    total, start_times = calculate_project_schedule(tasks)
+    assert total == 0
+    assert start_times == {}
+
+def test_single_task():
+    tasks = {
+        'A': {'duration': 7, 'dependencies': []}
+    }
+    total, start_times = calculate_project_schedule(tasks)
+    assert total == 7
+    assert start_times == {'A': 0}
+
+def test_self_dependency():
+    tasks = {
+        'A': {'duration': 5, 'dependencies': ['A']}
+    }
+    with pytest.raises(ValueError):
+        calculate_project_schedule(tasks)
+
+def test_missing_dependency():
+    tasks = {
+        'A': {'duration': 5, 'dependencies': ['B']}
+    }
+    with pytest.raises(ValueError):
+        calculate_project_schedule(tasks)
+
+def test_large_chain():
+    # 100 tasks in a sequence: T0 -> T1 -> ... -> T99
+    tasks = {}
+    for i in range(100):
+        tasks[f'T{i}'] = {
+            'duration': 2,
+            'dependencies': [f'T{i-1}'] if i > 0 else []
+        }
+    total, start_times = calculate_project_schedule(tasks)
+    assert total == 200
+    for i in range(100):
+        assert start_times[f'T{i}'] == i * 2
+

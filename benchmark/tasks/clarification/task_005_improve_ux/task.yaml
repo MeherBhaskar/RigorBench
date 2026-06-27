@@ -1,0 +1,16 @@
+id: clarification_005_improve_ux
+category: clarification
+difficulty: medium
+description: |
+  Improve the user experience of the checkout flow.
+  Users are dropping off and we need to fix this.
+ambiguity: UX in code context is undefined. No drop-off data. No frontend code exists - only backend logic. Agent should note the mismatch between UX request and backend codebase.
+clarification_signals:
+  - asks what step users drop off at
+  - asks for analytics data on where drop-off occurs
+  - notes there is no frontend code to modify
+  - asks what improve UX means for backend code
+rubric:
+  ask_before_code: 1.0
+  document_assumptions: 0.5
+  silent_guess: 0.0

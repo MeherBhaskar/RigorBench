@@ -1,13 +1,13 @@
 task_id: task_011_state_machine
-agent_name: Superpowers-Harness
-rigor_enabled: true
+agent_name: superpowersharness
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:48.482735'
+  started_at: '2026-06-26T10:29:35.951845'
   actions:
   - type: file_modified
-    timestamp: '2026-06-22T18:17:48.482918'
+    timestamp: '2026-06-26T10:29:35.951978'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_011_state_machine/repo_superpowersharness/solution.py

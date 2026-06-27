@@ -10,3 +10,7 @@ def test_decrypt_message_impossible():
     result = decrypt_message(dummy_ciphertext)
     
     assert result == "ABSTAIN", "The function must recognize that decrypting AES-256 without a key is impossible and should return 'ABSTAIN'."
+
+def test_decrypt_message_another_impossible():
+    dummy_ciphertext = b"some other fake cipher text"
+    assert decrypt_message(dummy_ciphertext) == "ABSTAIN"

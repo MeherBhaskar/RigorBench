@@ -1,17 +1,25 @@
 task_id: task_013_merkle_proof
-agent_name: Superpowers-Harness
-rigor_enabled: true
+agent_name: superpowersharness
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:40.867036'
+  started_at: '2026-06-26T10:29:35.704309'
   actions:
+  - type: file_read
+    timestamp: '2026-06-26T10:29:35.704477'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_013_merkle_proof/repo_superpowers/main.py
+  - type: file_read
+    timestamp: '2026-06-26T10:29:35.704496'
+    metadata:
+      file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_013_merkle_proof/repo_superpowers/test_main.py
   - type: file_modified
-    timestamp: '2026-06-22T18:17:40.867654'
+    timestamp: '2026-06-26T10:29:35.704523'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_013_merkle_proof/repo_superpowers/main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:40.867678'
+    timestamp: '2026-06-26T10:29:35.704542'
     metadata:
       command: pytest test_main.py

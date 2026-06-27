@@ -26,3 +26,12 @@ def test_schedule_tasks_circular():
     }
     with pytest.raises(ValueError):
         schedule_tasks(tasks)
+
+def test_schedule_tasks_missing():
+    tasks = {
+        "A": {"duration": 5, "dependencies": ["B"]}
+    }
+    with pytest.raises(ValueError) as excinfo:
+        schedule_tasks(tasks)
+    assert "not found in tasks" in str(excinfo.value)
+

@@ -25,5 +25,8 @@ class TestVerifySequence(unittest.TestCase):
     def test_empty_sequence_invalid(self):
         self.assertFalse(verify_sequence([], self.transitions, 'IDLE', {'RUNNING'}))
 
+    def test_unrecognized_state(self):
+        self.assertFalse(verify_sequence(['start', 'unknown_event'], self.transitions, 'IDLE', {'COMPLETED'}))
+
 if __name__ == '__main__':
     unittest.main()

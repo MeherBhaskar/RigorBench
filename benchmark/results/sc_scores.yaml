@@ -1,0 +1,47 @@
+task_001_date_parser:
+  agentrigor:
+    requirements: &id001
+    - A function named 'convert_to_utc' exists in the codebase
+    - The 'convert_to_utc' function correctly handles DST (Daylight Saving Time) transitions
+      when converting to UTC
+    - At least 3 test cases exist that cover edge cases related to timezone conversion
+      or DST
+    - Tests pass without errors
+    results:
+    - true
+    - true
+    - false
+    - false
+    satisfied: 2
+    sc: 0.5
+    total: 4
+  agentskills:
+    requirements: *id001
+    results:
+    - true
+    - true
+    - false
+    - false
+    satisfied: 2
+    sc: 0.5
+    total: 4
+  baseline:
+    requirements: *id001
+    results:
+    - true
+    - false
+    - false
+    - false
+    satisfied: 1
+    sc: 0.25
+    total: 4
+  superpowersharness:
+    requirements: *id001
+    results:
+    - true
+    - true
+    - false
+    - false
+    satisfied: 2
+    sc: 0.5
+    total: 4

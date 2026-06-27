@@ -1,33 +1,33 @@
 task_id: task_013_merkle_proof
-agent_name: Agent-Rigor
+agent_name: agentrigor
 rigor_enabled: true
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:36.398507'
+  started_at: '2026-06-26T10:29:35.643038'
   actions:
   - type: plan_created
-    timestamp: '2026-06-22T18:17:36.398678'
+    timestamp: '2026-06-26T10:29:35.643195'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_013_merkle_proof/repo_agentrigor/plan.md
   - type: plan_created
-    timestamp: '2026-06-22T18:17:36.398712'
+    timestamp: '2026-06-26T10:29:35.643224'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_013_merkle_proof/repo_agentrigor/plan.md
   - type: file_modified
-    timestamp: '2026-06-22T18:17:36.398736'
+    timestamp: '2026-06-26T10:29:35.643248'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_013_merkle_proof/repo_agentrigor/main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:36.398754'
+    timestamp: '2026-06-26T10:29:35.643267'
     metadata:
       command: pytest test_main.py
   - type: test_written
-    timestamp: '2026-06-22T18:17:36.398776'
+    timestamp: '2026-06-26T10:29:35.643289'
     metadata:
       file: /home/meher/dev/rigorbench-paper/benchmark/tasks/verification/task_013_merkle_proof/repo_agentrigor/test_main.py
   - type: test_executed
-    timestamp: '2026-06-22T18:17:36.398792'
+    timestamp: '2026-06-26T10:29:35.643315'
     metadata:
       command: pytest test_main.py

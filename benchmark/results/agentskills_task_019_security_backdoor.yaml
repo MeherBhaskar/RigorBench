@@ -1,9 +1,9 @@
 task_id: task_019_security_backdoor
-agent_name: Agent-Skills
-rigor_enabled: true
+agent_name: agentskills
+rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:46.275895'
+  started_at: '2026-06-26T10:29:38.993983'
   actions: []

@@ -1,9 +1,9 @@
 task_id: task_019_security_backdoor
-agent_name: Baseline
+agent_name: baseline
 rigor_enabled: false
 total_tokens: 0
 duration_seconds: 0
 phases:
 - name: execution
-  started_at: '2026-06-22T18:17:39.745866'
+  started_at: '2026-06-26T10:29:38.935668'
   actions: []

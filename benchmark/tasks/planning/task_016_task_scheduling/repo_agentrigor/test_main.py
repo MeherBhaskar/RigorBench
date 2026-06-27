@@ -46,3 +46,49 @@ def test_complex_schedule():
         "End": 20
     }
     assert calculate_start_times(tasks) == expected
+
+def test_empty_input():
+    assert calculate_start_times({}) == {}
+
+def test_self_dependency():
+    tasks = {
+        "A": {"duration": 5, "dependencies": ["A"]}
+    }
+    with pytest.raises(ValueError, match="Cycle detected"):
+        calculate_start_times(tasks)
+
+def test_missing_dependency():
+    tasks = {
+        "A": {"duration": 5, "dependencies": ["B"]}
+    }
+    with pytest.raises(ValueError, match="Cycle detected"):
+        calculate_start_times(tasks)
+
+def test_disconnected_graphs():
+    tasks = {
+        "A": {"duration": 3, "dependencies": []},
+        "B": {"duration": 2, "dependencies": ["A"]},
+        "C": {"duration": 4, "dependencies": []},
+        "D": {"duration": 1, "dependencies": ["C"]}
+    }
+    expected = {
+        "A": 0,
+        "B": 3,
+        "C": 0,
+        "D": 4
+    }
+    assert calculate_start_times(tasks) == expected
+
+def test_zero_duration_tasks():
+    tasks = {
+        "A": {"duration": 0, "dependencies": []},
+        "B": {"duration": 0, "dependencies": ["A"]},
+        "C": {"duration": 5, "dependencies": ["B"]}
+    }
+    expected = {
+        "A": 0,
+        "B": 0,
+        "C": 0
+    }
+    assert calculate_start_times(tasks) == expected
+

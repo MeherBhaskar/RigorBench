@@ -1,2 +1,3 @@
 def is_palindrome(s: str) -> bool:
-    pass
+    cleaned = [c.lower() for c in s if c.isalnum()]
+    return cleaned == cleaned[::-1]
