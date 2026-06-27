@@ -97,7 +97,7 @@ We introduce \bench{}, an exploratory benchmark designed to measure \emph{proces
 \bench{} evaluates these harnesses across seven pillars: \pillar{Planning Fidelity}, \pillar{Verification Coverage}, \pillar{Recovery Efficiency}, \pillar{Abstention Quality}, \pillar{Atomic Transition Integrity}, \pillar{Test Assertion Density}, and \pillar{Exploration Efficiency}.
 A composite \rigorscore{} aggregates these dimensions into a single metric via a weighted sum.
 We curate an exploratory pilot suite of 100 tasks spanning five categories---Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, and Don't Break the Build---and evaluate leading harnesses in a comparative study against baseline coding assistants.
-Our results show that while tool-enforced frameworks fail to improve baseline process metrics, upfront planning-enforced frameworks (like Agent-Rigor) improve process quality scores by 33\% and raise downstream outcome correctness by 30\%, providing the first quantitative evidence that \emph{how} agents code matters.
+Our results show that while tool-enforced frameworks fail to improve baseline process metrics, upfront planning-enforced frameworks (like Agent-Rigor) improve process quality scores by 36\% and raise downstream outcome correctness by 30\%, providing the first quantitative evidence that \emph{how} agents code matters.
 We release the full benchmark, scoring rubrics, and trajectory analysis tools as open-source artifacts at \url{https://github.com/MeherBhaskar/RigorBench}.
 \end{abstract}
 
@@ -140,7 +140,7 @@ We make the following contributions:
   Rather than evaluating only final artifacts, \bench{} analyzes the \emph{full execution trajectory} of an agent---every plan, edit, test invocation, error recovery, and commit---to compute process quality scores (\Cref{sec:scoring}).
 
   \item \textbf{We demonstrate the value of structured discipline.}
-  Through a comparative evaluation using the \rigor{} framework~\cite{bhaskar2026agentrigor} (which was co-developed by the co-authors of this work) as a reference implementation, we show that upfront planning-enforced discipline significantly improves both process quality (+31\%) and outcome quality (+30\%) (\Cref{sec:results}), while merely tool-enforced harnesses do not.
+  Through a comparative evaluation using the \rigor{} framework~\cite{bhaskar2026agentrigor} (which was co-developed by the co-authors of this work) as a reference implementation, we show that upfront planning-enforced discipline significantly improves both process quality (+36\%) and outcome quality (+30\%) (\Cref{sec:results}), while merely tool-enforced harnesses do not.
 
   \item \textbf{We release an open benchmark suite.}
   We release a suite of 100 tasks across 5 categories, complete with scoring rubrics, trajectory analysis tools, and baseline results, to enable reproducible evaluation of process discipline in future agents (\Cref{sec:experimental}).
@@ -390,8 +390,7 @@ The scoring pipeline operates in three stages:
   \item \textbf{Pillar Scoring:} Each pillar scorer receives the extracted signals and computes sub-metric and pillar-level scores according to the rubrics defined above.
 \end{enumerate}
 
-To prevent gameable metrics, our scoring pipeline implements strict validation criteria: (1) Plan Artifact Creation (PAC) requires the creation of a dedicated planning document (e.g., \texttt{plan.md}) with a minimum length of 50 non-whitespace characters containing task-relevant terms, preventing agents from receiving credit for empty or placeholder plans. (2) Test Creation Rate (TCR) determines the function-test linkage by checking standard test directories (e.g., \texttt{tests/}, \texttt{test\_*.py}) and verifying that they import and invoke the specific modules modified in the source code. (3) Build Health (BH) and Test Suite Stability (TS) are evaluated by automatically running build and test commands (e.g., \texttt{pytest}, \texttt{npm run build}) in the isolated Docker environment after each file modification, ensuring that compilation succeeds and no previously passing tests are regressed. For qualitative assessment (e.g., Decomposition Quality), we employ a panel of three LLM judges.
-To mitigate judge bias, we employ a panel of three LLM judges with majority voting.
+To prevent gameable metrics, our scoring pipeline implements strict validation criteria: (1) Plan Artifact Creation (PAC) requires the creation of a dedicated planning document (e.g., \texttt{plan.md}) with a minimum length of 50 non-whitespace characters containing task-relevant terms, preventing agents from receiving credit for empty or placeholder plans. (2) Test Creation Rate (TCR) determines the function-test linkage by checking standard test directories (e.g., \texttt{tests/}, \texttt{test\_*.py}) and verifying that they import and invoke the specific modules modified in the source code. (3) Build Health (BH) and Test Suite Stability (TS) are evaluated by automatically running build and test commands (e.g., \texttt{pytest}, \texttt{npm run build}) in the isolated Docker environment after each file modification, ensuring that compilation succeeds and no previously passing tests are regressed. For qualitative assessment (e.g., Decomposition Quality), we employ Google's Gemini 3.5 Flash configured with high reasoning as our LLM judge.
 
 % =================== 5. EXPERIMENTAL SETUP =================================
 \section{Experimental Setup}
@@ -450,7 +449,7 @@ Agent-Skills   & 0.39 $\pm$ 0.04          & 0.72 $\pm$ 0.06 \\
 
 \Cref{tab:overall} presents the main results.
 The Baseline ReAct agent exhibits moderate to low process discipline, with a \rigorscore{} of 0.39.
-However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.39) and Superpowers (0.41) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our reference implementation (Agent-Rigor) achieves the highest process quality (0.53) by explicitly enforcing planning and verification phases. This represents a 33\% relative improvement in process quality scores over the Baseline ReAct agent (0.39).
+However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.39) and Superpowers (0.41) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our reference implementation (Agent-Rigor) achieves the highest process quality (0.53) by explicitly enforcing planning and verification phases. This represents a 36\% relative improvement in process quality scores over the Baseline ReAct agent (0.39).
 Critically, outcome quality strongly correlates with these process improvements, rising from 0.64 (Baseline) to 0.83 (Agent-Rigor), demonstrating that process discipline is a driver of better results.
 
 \subsection{Per-Pillar Analysis}
@@ -583,7 +582,7 @@ This multi-dimensional analysis proves that process discipline is not a monolith
 \label{fig:correlation}
 \end{figure}
 
-\Cref{fig:correlation} shows a strong positive correlation ($r = 0.87$, $p < 0.001$) between \rigorscore{} and outcome quality across all 400 task executions. However, we caution that this correlation is computed at the individual run level ($n=400$) and is heavily dominated by the macro-level separation between the planning-enforced Agent-Rigor harness and the cluster of non-planning harnesses (Baseline, Superpowers, Agent-Skills). At the harness level, the correlation is based on only four aggregate data points. Crucially, within-harness correlation analysis reveals that the relationship is non-significant when looking at individual tasks within any single harness (e.g., $r = 0.12$ for Agent-Rigor, $r = 0.05$ for Baseline). This indicates that while process discipline is a strong macro-level predictor of harness capability, task-level variation in process scores within a single harness does not reliably predict individual run outcomes. Future work using mixed-effects models is required to further isolate these causal pathways.
+\Cref{fig:correlation} illustrates the relationship between \rigorscore{} and outcome quality. As shown, there is a clear macro-level separation between the planning-enforced Agent-Rigor harness and the cluster of non-planning harnesses (Baseline, Superpowers, Agent-Skills). However, within-harness correlation analysis reveals that the relationship is non-significant when looking at individual tasks within any single harness (e.g., $r = 0.12$ for Agent-Rigor, $r = 0.05$ for Baseline). This indicates that while process discipline acts as a strong macro-level predictor of harness capability, task-level variation in process scores within a single harness does not reliably predict individual run outcomes.
 
 % =================== 7. ANALYSIS & DISCUSSION ==============================
 \section{Analysis and Discussion}
@@ -612,7 +611,7 @@ Incorporating process quality into reward models could encourage agents to devel
 \paragraph{Token efficiency.}
 An unexpected finding is that disciplined agents often use \emph{fewer} total tokens than baseline agents despite producing more artifacts (plans, tests, documentation).
 This is because the reduction in wasted tokens from failed recovery attempts more than compensates for the overhead of planning and verification.
-Mean total token consumption per task decreased from approximately 42,500 tokens in the baseline to 37,400 tokens under the upfront planning-enforced condition, representing a 12\% reduction, even as \rigorscore{} increased by 31\%.
+Mean total token consumption per task decreased from approximately 42,500 tokens in the baseline to 37,400 tokens under the upfront planning-enforced condition, representing a 12\% reduction, even as \rigorscore{} increased by 36\%.
 
 % ===================== 8. LIMITATIONS ======================================
 \section{Limitations}
@@ -630,7 +629,7 @@ While \bench{}'s scoring is framework-agnostic, our results may not generalize t
 Future work should evaluate multiple frameworks.
 
 \paragraph{Construct Bias and Framework Circularity.}
-Since the co-authors of this work are the co-developers of the Agent-Rigor harness, there is an inherent risk of construct bias in our evaluation: the benchmark's core pillars—particularly Planning Fidelity—measure behaviors that Agent-Rigor was architecturally designed to enforce. Consequently, Agent-Rigor's high RigorScore is partly by construction. We frame Agent-Rigor not as an independent commercial competitor, but as a proof-of-concept reference implementation demonstrating the feasibility of enforcing these process disciplines and their downstream correlation with outcome quality. To mitigate this circularity, future work must include independent replication by unaffiliated researchers and the evaluation of other planning-enforced harnesses.
+Since the co-authors of this work are the co-developers of the Agent-Rigor harness, there is an inherent risk of construct bias in our evaluation: the benchmark's core pillars—particularly Planning Fidelity—measure behaviors that Agent-Rigor was architecturally designed to enforce. Consequently, Agent-Rigor's high RigorScore is partly by construction. We frame Agent-Rigor not as an independent commercial competitor, but as a proof-of-concept reference implementation demonstrating the feasibility of enforcing these process disciplines and their downstream correlation with outcome quality.
 
 \paragraph{LLM-as-judge circularity.}
 Several qualitative metrics (e.g., Decomposition Quality and Commit Hygiene) rely on an LLM judge. Specifically, our LLM judge was Google's Gemini 3.5 Flash configured with high reasoning (\texttt{gemini-3.5-flash-high-reasoning}). Using an LLM to evaluate the procedural maturity of other LLMs introduces well-documented length and self-preference biases. While our evaluation yields high self-consistency, this does not prove ground-truth accuracy against human engineering standards. Future iterations of the benchmark require extensive human validation on a random sample to confirm the LLM judge's alignment with human expert assessments.
@@ -657,7 +656,7 @@ Our experimental results demonstrate that:
 \begin{enumerate}[leftmargin=*,itemsep=2pt]
   \item Current agents exhibit low process discipline under default conditions.
   \item Structured discipline frameworks (specifically \rigor{}) substantially improve process quality across the scoring pillars.
-  \item Process discipline is strongly correlated with outcome quality ($r = 0.87$), providing quantitative evidence that engineering discipline matters for AI agents just as it does for human developers.
+  \item Process discipline is strongly associated with outcome quality at the macro level, providing quantitative evidence that engineering discipline matters for AI agents just as it does for human developers.
   \item The largest gaps are in planning and abstention---capabilities that agents possess but do not exercise without explicit scaffolding.
 \end{enumerate}
 
@@ -911,33 +910,5 @@ Full task specifications, starter repositories, and scoring rubrics are availabl
 
 \textbf{Primary pillars:} ATI (build health, test stability, commit hygiene), PF (migration plan).
 \end{tcolorbox}
-
-\section{LLM-as-Judge Agreement}
-\label{app:judge}
-
-For sub-metrics that require qualitative assessment (Decomposition Quality, Clarification Seeking quality, Commit Hygiene quality), we employ a panel of three LLM judges.
-\Cref{tab:judge} reports inter-judge agreement.
-
-\begin{table}[H]
-\centering
-\caption{Inter-judge agreement (Fleiss' $\kappa$) for qualitative sub-metrics across the three-judge panel.}
-\label{tab:judge}
-\small
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{@{}lcc@{}}
-\toprule
-\textbf{Sub-Metric} & \textbf{Fleiss' $\kappa$} & \textbf{Agreement Level} \\
-\midrule
-Decomposition Quality   & 0.78 & Substantial \\
-Clarification Seeking   & 0.71 & Substantial \\
-Commit Hygiene          & 0.73 & Substantial \\
-\midrule
-\textbf{Overall}        & 0.74 & Substantial \\
-\bottomrule
-\end{tabular}
-}
-\end{table}
-
-
 
 \end{document}
