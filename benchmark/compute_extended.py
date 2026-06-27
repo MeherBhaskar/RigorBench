@@ -207,10 +207,10 @@ def diff_minimality(repo, seed):
     if lines_changed == 0: return 0.5
     return 1.0 / (1.0 + math.log(1.0 + lines_changed))
 
-# ── Hallucination Rate (FIXED) ────────────────────────────────────────────────
-def hallucination_rate(repo):
+# ── Metric 6: Contextual Grounding Rate ──────────────────────────────────────
+def contextual_grounding_rate(repo):
     """
-    CHR = 1 - hallucinated_imports / total_imports
+    CGR = 1 - hallucinated_imports / total_imports
     FIX: adds all .py basenames in the repo to the known set.
     Previously 'from parser import X' was flagged as hallucination
     even when parser.py exists locally.
@@ -309,11 +309,11 @@ def main():
             tad = test_assertion_density(repo)
             dcr = dead_code_ratio(repo)
             dm  = diff_minimality(repo, seed)
-            chr_ = hallucination_rate(repo)
+            cgr = contextual_grounding_rate(repo)
             if tad  is not None: agg[label]["TAD"].append(tad)
             if dcr  is not None: agg[label]["DCR"].append(dcr)
             if dm   is not None: agg[label]["DM"].append(dm)
-            if chr_ is not None: agg[label]["CHR"].append(chr_)
+            if cgr  is not None: agg[label]["CGR"].append(cgr)
 
     ORDER   = ["Baseline","Superpowers","Agent-Skills","Agent-Rigor"]
     METRICS = [
@@ -323,8 +323,9 @@ def main():
         ("TAD", "Assert Density ↑"),
         ("DCR", "Dead Code Ratio ↑"),
         ("DM",  "Diff Minimality ↑"),
-        ("CHR", "Hallucination Rate ↑ [fixed]"),
+        ("CGR", "Contextual Grounding Rate ↑"),
     ]
+
 
     print(f"\n{'Metric':<28}" + "".join(f"{h:>16}" for h in ORDER))
     print("─"*(28+16*4))
