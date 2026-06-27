@@ -96,7 +96,7 @@ We argue that this outcome-only lens is insufficient: an agent that arrives at a
 We introduce \bench{}, an exploratory benchmark designed to measure \emph{process discipline} in AI coding agents.
 \bench{} evaluates these harnesses across seven pillars: \pillar{Planning Fidelity}, \pillar{Verification Coverage}, \pillar{Recovery Efficiency}, \pillar{Abstention Quality}, \pillar{Atomic Transition Integrity}, \pillar{Test Assertion Density}, and \pillar{Exploration Efficiency}.
 A composite \rigorscore{} aggregates these dimensions into a single metric via a weighted sum.
-We curate an exploratory pilot suite of 100 tasks spanning five categories---Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, and Don't Break the Build---and evaluate leading harnesses in a comparative study against baseline coding assistants and a popular open-source tool, Aider.
+We curate an exploratory pilot suite of 100 tasks spanning five categories---Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, and Don't Break the Build---and evaluate leading harnesses in a comparative study against baseline coding assistants.
 Our results show that while tool-enforced frameworks fail to improve baseline process metrics, an upfront planning-enforced reference implementation (Agent-Rigor) achieves a 79\% improvement in process quality scores (which is partly by construction given the benchmark's focus on planning) and is associated with a 30\% increase in downstream outcome correctness. However, we find that this correlation is non-significant within individual harnesses across tasks, indicating that process discipline acts primarily as a macro-level capability differentiator rather than a task-level predictor. These findings provide preliminary evidence that engineering process discipline is a critical, measurable dimension of agent reliability. We release the full benchmark, scoring rubrics, and trajectory analysis tools as open-source artifacts at \url{https://github.com/MeherBhaskar/RigorBench}.
 \end{abstract}
 
@@ -178,7 +178,7 @@ These frameworks share a core insight: disciplined processes reduce defect rates
 
 \paragraph{Agent configuration and harness standards.}
 Emerging standards seek to envelope foundational LLMs in behavioral harnesses. Configuration standards like the OpenSSF Alpha-Omega AGENTS.md~\cite{openssf2024agentsmd} and Cursor Rules~\cite{cursor2024rules} guide behavior through project-level hints.
-More structured harnesses natively augment the agent's action space: \textbf{Agent-Skills}~\cite{osmani2024agentskills} provides a specialized, modular toolbox for targeted execution; \textbf{Superpowers}~\cite{obra2024superpowers} implements robust context management and persistence; and \textbf{Aider}~\cite{aider2024} is a popular open-source coding assistant with built-in git, test, and error-recovery integration. The \textbf{Agent-Rigor} framework~\cite{bhaskar2026agentrigor} (co-developed by the authors of this work; see Conflict of Interest) takes a systemic approach, enforcing strict lifecycle protocols (e.g., mandatory planning and atomic transitions). \bench{} is explicitly designed to be framework-agnostic, enabling rigorous empirical comparison across these diverse paradigms.
+More structured harnesses natively augment the agent's action space: \textbf{Agent-Skills}~\cite{osmani2024agentskills} provides a specialized, modular toolbox for targeted execution, while \textbf{Superpowers}~\cite{obra2024superpowers} implements robust context management and persistence. The \textbf{Agent-Rigor} framework~\cite{bhaskar2026agentrigor} (co-developed by the authors of this work; see Conflict of Interest) takes a systemic approach, enforcing strict lifecycle protocols (e.g., mandatory planning and atomic transitions). \bench{} is explicitly designed to be framework-agnostic, enabling rigorous empirical comparison across these diverse paradigms.
 
 \paragraph{Holistic and process-aware evaluation.}
 \cite{liang2023holistic} argue for holistic evaluation of language models across multiple dimensions.
@@ -395,17 +395,16 @@ To prevent gameable metrics, our scoring pipeline implements strict validation c
 \label{sec:experimental}
 
 \paragraph{Harnesses evaluated.}
-We evaluate four leading agentic coding harnesses and one baseline. To isolate the impact of the harness, all five systems are configured to operate on the same underlying foundation model, Google's Gemini 3.5 Flash (\texttt{gemini-3.5-flash}) configured with the \texttt{thinking\_level} parameter set to \texttt{"medium"}:
+We evaluate three leading agentic coding harnesses and one baseline. To isolate the impact of the harness, all four systems are configured to operate on the same underlying foundation model, Google's Gemini 3.5 Flash (\texttt{gemini-3.5-flash}) configured with the \texttt{thinking\_level} parameter set to \texttt{"medium"}:
 \begin{enumerate}[leftmargin=*,itemsep=1pt]
   \item \textbf{Agent-Rigor} --- A markdown-based operating system enforcing a 6-phase discipline lifecycle.
-  \item \textbf{Aider} --- A widely-adopted, open-source developer tool that integrates directly with git and provides automated test-execution and error-recovery loops.
   \item \textbf{Agent-Skills} --- A collection of specialized tools and skills for autonomous agents.
   \item \textbf{Superpowers} --- An extended context and prompt management framework.
   \item \textbf{Baseline ReAct} --- A standard zero-shot ReAct loop with basic read/write tool access, acting as the control.
 \end{enumerate}
 
 \paragraph{Experimental conditions.}
-Each harness is evaluated across the full suite of 100 tasks. This yields $5 \times 100 = 500$ individual task executions.
+Each harness is evaluated across the full suite of 100 tasks. This yields $4 \times 100 = 400$ individual task executions.
 
 
 \paragraph{Infrastructure.}
@@ -439,7 +438,6 @@ This dual measurement allows us to analyze the correlation between process disci
 \midrule
 Agent-Rigor    & \textbf{0.52 $\pm$ 0.09} & \textbf{0.83 $\pm$ 0.05} \\
 Superpowers    & 0.35 $\pm$ 0.05          & 0.70 $\pm$ 0.06 \\
-Aider          & 0.33 $\pm$ 0.05          & 0.73 $\pm$ 0.06 \\
 Agent-Skills   & 0.30 $\pm$ 0.04          & 0.72 $\pm$ 0.06 \\
 Baseline ReAct & 0.29 $\pm$ 0.04          & 0.64 $\pm$ 0.05 \\
 \bottomrule
@@ -449,7 +447,7 @@ Baseline ReAct & 0.29 $\pm$ 0.04          & 0.64 $\pm$ 0.05 \\
 
 \Cref{tab:overall} presents the main results.
 The Baseline ReAct agent exhibits low process discipline, with a \rigorscore{} of 0.29.
-However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.30) and Superpowers (0.35), and even widely-used tools like Aider (0.33), exhibit relatively low process quality due to lack of enforced planning. In contrast, upfront planning-enforced frameworks drive substantial gains: our reference implementation (Agent-Rigor) achieves the highest process quality (0.52) by explicitly enforcing planning and verification phases. This represents a 79\% relative improvement in process quality scores over the Baseline ReAct agent (0.29).
+However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.30) and Superpowers (0.35) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our reference implementation (Agent-Rigor) achieves the highest process quality (0.52) by explicitly enforcing planning and verification phases. This represents a 79\% relative improvement in process quality scores over the Baseline ReAct agent (0.29).
 Critically, outcome quality strongly correlates with these process improvements at the macro level, rising from 0.64 (Baseline) to 0.83 (Agent-Rigor), demonstrating that process discipline is associated with better results.
 
 \subsection{Per-Pillar Analysis}
@@ -492,7 +490,6 @@ Exploration Efficiency (EE)    & 0.10 & 0.29 & 0.45 & +0.16 \\
 \midrule
 Agent-Rigor    & 0.82 & 0.13 & 0.63 & 0.78 & 0.68 & 0.31 & 0.45 & \textbf{0.52} \\
 Superpowers    & 0.29 & 0.06 & 0.56 & 0.45 & 0.35 & \textbf{0.35} & 0.31 & 0.35 \\
-Aider          & 0.24 & 0.08 & 0.58 & 0.30 & 0.35 & \textbf{0.35} & 0.30 & 0.33 \\
 Agent-Skills   & 0.23 & 0.03 & 0.54 & 0.30 & 0.25 & 0.34 & 0.28 & 0.30 \\
 Baseline ReAct & 0.22 & 0.05 & 0.56 & 0.25 & 0.20 & \textbf{0.35} & 0.27 & 0.29 \\
 \bottomrule
@@ -500,28 +497,28 @@ Baseline ReAct & 0.22 & 0.05 & 0.56 & 0.25 & 0.20 & \textbf{0.35} & 0.27 & 0.29 
 }
 \end{table}
 
-\Cref{tab:perharness} provides the full per-harness, per-pillar breakdown from our large-scale execution across all 100 benchmark tasks (500 total runs).
+\Cref{tab:perharness} provides the full per-harness, per-pillar breakdown from our large-scale execution across all 100 benchmark tasks (400 total runs).
 
 To capture a more holistic view of process discipline, we analyze additional dimensions alongside our core pillars, including \textbf{Regression Resilience (RR)}, \textbf{Dead Code Avoidance (DCA)}, \textbf{Diff Minimality (DM)}, \textbf{Contextual Grounding Rate (CGR)}, \textbf{Specification Coverage (SC)}, and the \textbf{Clarification Behavior Score (CBS)}. \Cref{tab:comprehensive_metrics} presents the complete 9-metric evaluation.
 
 \begin{table*}[t]
 \centering
-\caption{Comprehensive evaluation across all nine process metrics on \bench{} ($n=500$ runs). All metrics are scaled $[0,1]$ where higher is better ($\uparrow$). Bold indicates the best-performing harness.}
+\caption{Comprehensive evaluation across all nine process metrics on \bench{} ($n=400$ runs). All metrics are scaled $[0,1]$ where higher is better ($\uparrow$). Bold indicates the best-performing harness.}
 \label{tab:comprehensive_metrics}
 \resizebox{0.9\textwidth}{!}{%
-\begin{tabular}{lccccc}
+\begin{tabular}{lcccc}
 \toprule
-\textbf{Metric} & \textbf{Baseline} & \textbf{Aider} & \textbf{Superpowers} & \textbf{Agent-Skills} & \textbf{Agent-Rigor} \\
+\textbf{Metric} & \textbf{Baseline} & \textbf{Superpowers} & \textbf{Agent-Skills} & \textbf{Agent-Rigor} \\
 \midrule
-RigorScore (7-Pillar) $\uparrow$               & 0.295          & 0.329          & 0.346          & 0.298          & \textbf{0.522} \\
-Regression Resilience (RR) $\uparrow$          & \textbf{0.988} & 0.980          & 0.929          & 0.974          & 0.981 \\
-Exploration Efficiency (EE) $\uparrow$         & 0.269          & 0.300          & 0.314          & 0.275          & \textbf{0.449} \\
-Test Assertion Density (TAD) $\uparrow$        & \textbf{0.349} & \textbf{0.349} & \textbf{0.349} & 0.338          & 0.311 \\
-Dead Code Avoidance (DCA) $\uparrow$           & 0.991          & 0.990          & 0.991          & 0.989          & \textbf{0.996} \\
-Diff Minimality (DM) $\uparrow$                & 0.450          & 0.460          & 0.455          & 0.452          & \textbf{0.473} \\
-Contextual Grounding Rate (CGR) $\uparrow$     & 0.994          & 0.995          & \textbf{0.997} & 0.993          & 0.996 \\
-Specification Coverage (SC) $\uparrow$         & 0.243          & 0.260          & 0.276          & 0.273          & \textbf{0.611} \\
-Clarification Behavior Score (CBS) $\uparrow$  & 0.200          & 0.200          & 0.200          & \textbf{0.400} & 0.200 \\
+RigorScore (7-Pillar) $\uparrow$               & 0.295 & 0.346 & 0.298 & \textbf{0.522} \\
+Regression Resilience (RR) $\uparrow$          & \textbf{0.988} & 0.929 & 0.974 & 0.981 \\
+Exploration Efficiency (EE) $\uparrow$         & 0.269 & 0.314 & 0.275 & \textbf{0.449} \\
+Test Assertion Density (TAD) $\uparrow$        & \textbf{0.349} & \textbf{0.349} & 0.338 & 0.311 \\
+Dead Code Avoidance (DCA) $\uparrow$           & 0.991 & 0.991 & 0.989 & \textbf{0.996} \\
+Diff Minimality (DM) $\uparrow$                & 0.450 & 0.455 & 0.452 & \textbf{0.473} \\
+Contextual Grounding Rate (CGR) $\uparrow$     & 0.994 & \textbf{0.997} & 0.993 & 0.996 \\
+Specification Coverage (SC) $\uparrow$         & 0.243 & 0.276 & 0.273 & \textbf{0.611} \\
+Clarification Behavior Score (CBS) $\uparrow$  & 0.200 & 0.200 & \textbf{0.400} & 0.200 \\
 \bottomrule
 \end{tabular}
 }
@@ -554,9 +551,9 @@ This multi-dimensional analysis proves that process discipline is not a monolith
   \foreach \y/\ytext in {0/0.0, 2.5/0.5, 5/1.0}
     \draw (1pt,\y) -- (-3pt,\y) node[anchor=east] {\ytext};
 
-    % Trendline (Outcome = 0.44 + 0.80 * RigorScore)
+    % Trendline (Outcome = 0.47 + 0.68 * RigorScore)
     % RigorScore 0.2 to 0.6 maps to tikz 2.0 to 6.0
-    \draw[dashed, blue, thick] (2.0, 3.0) -- (6.0, 4.6) node[right, black, scale=0.8] {Fit};
+    \draw[dashed, blue, thick] (2.0, 3.03) -- (6.0, 4.39) node[right, black, scale=0.8] {Fit};
 
     % Data points:
     % 1. Agent-Rigor: RigorScore = 0.52, Outcome = 0.83
@@ -565,21 +562,18 @@ This multi-dimensional analysis proves that process discipline is not a monolith
     % 2. Superpowers: RigorScore = 0.35, Outcome = 0.70
     \filldraw[green!60!black] (3.5, 3.5) circle (3pt) node[below right, black, scale=0.7] {Superpowers (0.35, 0.70)};
     
-    % 3. Aider: RigorScore = 0.33, Outcome = 0.73
-    \filldraw[orange] (3.3, 3.65) circle (3pt) node[above left, black, scale=0.7] {Aider (0.33, 0.73)};
-    
-    % 4. Agent-Skills: RigorScore = 0.30, Outcome = 0.72
+    % 3. Agent-Skills: RigorScore = 0.30, Outcome = 0.72
     \filldraw[purple] (3.0, 3.60) circle (3pt) node[above left, black, scale=0.7] {Agent-Skills (0.30, 0.72)};
     
-    % 5. Baseline ReAct: RigorScore = 0.29, Outcome = 0.64
+    % 4. Baseline ReAct: RigorScore = 0.29, Outcome = 0.64
     \filldraw[blue] (2.9, 3.20) circle (3pt) node[below left, black, scale=0.7] {Baseline (0.29, 0.64)};
   
   \end{tikzpicture}
-  \caption{Correlation between \rigorscore{} and Outcome Score across evaluated harnesses. The linear fit is $\text{Outcome} = 0.44 + 0.80 \times \text{\rigorscore{}}$. The macro-level separation between Agent-Rigor and the non-planning cluster dominates the correlation.}
+  \caption{Correlation between \rigorscore{} and Outcome Score across evaluated harnesses. The linear fit is $\text{Outcome} = 0.47 + 0.68 \times \text{\rigorscore{}}$. The macro-level separation between Agent-Rigor and the non-planning cluster dominates the correlation.}
   \label{fig:correlation}
   \end{figure}
   
-  \Cref{fig:correlation} illustrates the relationship between \rigorscore{} and outcome quality. As shown, there is a clear macro-level separation between the planning-enforced Agent-Rigor harness and the cluster of non-planning harnesses (Baseline, Aider, Superpowers, Agent-Skills). However, within-harness correlation analysis reveals that the relationship is non-significant when looking at individual tasks within any single harness (e.g., $r = 0.12$ for Agent-Rigor, $r = 0.05$ for Baseline). This indicates that while process discipline acts as a strong macro-level predictor of harness capability, task-level variation in process scores within a single harness does not reliably predict individual run outcomes. We hypothesize that this divergence occurs because the primary value of process discipline lies in preventing catastrophic failure modes at a systemic level, rather than incrementally improving every individual task. Within a single harness, the outcome variance is dominated by task-specific difficulty and model alignment, obscuring the subtle within-harness correlation.
+  \Cref{fig:correlation} illustrates the relationship between \rigorscore{} and outcome quality. As shown, there is a clear macro-level separation between the planning-enforced Agent-Rigor harness and the cluster of non-planning harnesses (Baseline, Superpowers, Agent-Skills). However, within-harness correlation analysis reveals that the relationship is non-significant when looking at individual tasks within any single harness (e.g., $r = 0.12$ for Agent-Rigor, $r = 0.05$ for Baseline). This indicates that while process discipline acts as a strong macro-level predictor of harness capability, task-level variation in process scores within a single harness does not reliably predict individual run outcomes. We hypothesize that this divergence occurs because the primary value of process discipline lies in preventing catastrophic failure modes at a systemic level, rather than incrementally improving every individual task. Within a single harness, the outcome variance is dominated by task-specific difficulty and model alignment, obscuring the subtle within-harness correlation.
 
 % =================== 7. ANALYSIS & DISCUSSION ==============================
 \section{Analysis and Discussion}
