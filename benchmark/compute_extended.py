@@ -23,9 +23,10 @@ sys.path.insert(0, ".")
 from rigorbench.trajectory import TrajectoryLoader
 from rigorbench.scorer import RigorScorer
 
+SCRIPT_DIR  = os.path.dirname(os.path.abspath(__file__))
 BRAIN_DIR   = os.path.expanduser("~/.gemini/antigravity-cli/brain")
-RESULTS_DIR = "results"
-TASKS_DIR   = "tasks"
+RESULTS_DIR = os.path.join(SCRIPT_DIR, "results")
+TASKS_DIR   = os.path.join(SCRIPT_DIR, "tasks")
 TASK_PATTERN = re.compile(r"tasks/\w+/(task_\d+_\w+)/repo_(\w+)")
 
 HARNESS_REPO_MAP = {

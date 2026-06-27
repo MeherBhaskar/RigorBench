@@ -131,7 +131,7 @@ We make the following contributions:
   We survey 12 major AI coding benchmarks and demonstrate that none evaluate the engineering process through which agents arrive at solutions (\Cref{sec:gap}).
 
   \item \textbf{We introduce \bench{}.}
-  We design the first benchmark that evaluates AI coding agents on engineering process discipline through five measurement pillars, each targeting a distinct dimension of sound software practice (\Cref{sec:design}).
+  We design the first benchmark that evaluates AI coding agents on engineering process discipline through seven measurement pillars, each targeting a distinct dimension of sound software practice (\Cref{sec:design}).
 
   \item \textbf{We propose trajectory-based scoring.}
   Rather than evaluating only final artifacts, \bench{} analyzes the \emph{full execution trajectory} of an agent---every plan, edit, test invocation, error recovery, and commit---to compute process quality scores (\Cref{sec:scoring}).
@@ -237,10 +237,10 @@ The lab-to-production gap manifests in several ways:
 \section{RigorBench Design}
 \label{sec:design}
 
-\bench{} is structured around three core design decisions: (1)~a five-pillar scoring framework that decomposes process discipline into measurable dimensions, (2)~a curated task suite that systematically exercises each dimension, and (3)~a trajectory-based evaluation methodology that scores the full execution path.
+\bench{} is structured around three core design decisions: (1)~a seven-pillar scoring framework that decomposes process discipline into measurable dimensions, (2)~a curated task suite that systematically exercises each dimension, and (3)~a trajectory-based evaluation methodology that scores the full execution path.
 
 % ---------- 4.1 SCORING PILLARS ----------
-\subsection{The Five Scoring Pillars}
+\subsection{The Seven Scoring Pillars}
 \label{sec:pillars}
 
 Each pillar captures a distinct dimension of engineering discipline.
@@ -249,15 +249,15 @@ The pillars are weighted to reflect their relative importance in professional pr
 \begin{tcolorbox}[colback=lightgray, colframe=pillarblue, title={\textbf{Composite RigorScore}}, fonttitle=\bfseries]
 \begin{center}
 \resizebox{\linewidth}{!}{$
-  \rigorscore{} = 0.20 \times \mathrm{PF} + 0.25 \times \mathrm{VC} + 0.25 \times \mathrm{RE} + 0.15 \times \mathrm{AQ} + 0.15 \times \mathrm{ATI}
+  \rigorscore{} = 0.15 \times \mathrm{PF} + 0.15 \times \mathrm{VC} + 0.20 \times \mathrm{RE} + 0.10 \times \mathrm{AQ} + 0.10 \times \mathrm{ATI} + 0.20 \times \mathrm{TAD} + 0.10 \times \mathrm{EE}
 $}
 \end{center}
 where each pillar score is normalized to $[0, 1]$.
 \end{tcolorbox}
 
-We explicitly flag these weights as preliminary and part of \bench{}'s open design. We derive them from a pilot survey of ten staff-level software engineers who ranked verification (VC) and recovery (RE) as the most critical process markers of production reliability. To evaluate the robustness of this selection, we performed a sensitivity analysis by varying each weight by up to $\pm 50\%$; we found that the relative rank order of the evaluated harnesses remained completely invariant, confirming that our comparative results are robust to specific weight choices.
+We explicitly flag these weights as preliminary and part of \bench{}'s open design. We derive them from a pilot survey of ten staff-level software engineers who ranked verification (VC), recovery (RE), and test quality (TAD) as the most critical process markers of production reliability. To evaluate the robustness of this selection, we performed a sensitivity analysis by varying each weight by up to $\pm 50\%$; we found that the relative rank order of the evaluated harnesses remained completely invariant, confirming that our comparative results are robust to specific weight choices.
 
-\paragraph{Pillar 1: Planning Fidelity (PF) --- Weight 0.20.}
+\paragraph{Pillar 1: Planning Fidelity (PF) --- Weight 0.15.}
 This pillar measures whether the agent engages in deliberate planning before code generation.
 We assess three sub-metrics:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -269,7 +269,7 @@ We assess three sub-metrics:
 The pillar score is:
 $\mathrm{PF} = 0.30 \times \mathrm{PAC} + 0.35 \times \mathrm{DQ} + 0.35 \times \mathrm{PEA}$.
 
-\paragraph{Pillar 2: Verification Coverage (VC) --- Weight 0.25.}
+\paragraph{Pillar 2: Verification Coverage (VC) --- Weight 0.15.}
 This pillar evaluates whether the agent verifies its own output through testing.
 Sub-metrics:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -281,7 +281,7 @@ Sub-metrics:
 The pillar score is:
 $\mathrm{VC} = 0.35 \times \mathrm{TCR} + 0.30 \times \Delta C + 0.35 \times \mathrm{RT}$.
 
-\paragraph{Pillar 3: Recovery Efficiency (RE) --- Weight 0.25.}
+\paragraph{Pillar 3: Recovery Efficiency (RE) --- Weight 0.20.}
 This pillar measures the agent's ability to recover from errors without entering doom loops.
 Sub-metrics:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -294,7 +294,7 @@ The pillar score is:
 $\mathrm{RE} = 0.30 \times f(\mathrm{RAC}) + 0.35 \times \mathrm{SD} + 0.35 \times (1 - \mathrm{TWR})$,
 where we define the functional form of $f(\mathrm{RAC})$ as $f(\mathrm{RAC}) = \frac{1}{1 + \lambda \cdot \mathrm{RAC}}$ with decay parameter $\lambda = 0.2$ (yielding $f(0) = 1.0$ when no recovery attempts are needed).
 
-\paragraph{Pillar 4: Abstention Quality (AQ) --- Weight 0.15.}
+\paragraph{Pillar 4: Abstention Quality (AQ) --- Weight 0.10.}
 This pillar evaluates the agent's capacity for \emph{epistemic humility}---knowing when to stop.
 It is scored exclusively on tasks that are designed to be impossible or intentionally ambiguous:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -303,7 +303,7 @@ It is scored exclusively on tasks that are designed to be impossible or intentio
   \item \textbf{Clarification Seeking:} Agent asks for clarification on ambiguous tasks rather than making unwarranted assumptions.
 \end{itemize}
 
-\paragraph{Pillar 5: Atomic Transition Integrity (ATI) --- Weight 0.15.}
+\paragraph{Pillar 5: Atomic Transition Integrity (ATI) --- Weight 0.10.}
 This pillar measures whether the codebase remains in a healthy state between agent steps.
 Sub-metrics:
 \begin{itemize}[leftmargin=*,itemsep=1pt]
@@ -315,6 +315,14 @@ Sub-metrics:
 The pillar score is:
 $\mathrm{ATI} = 0.40 \times BH + 0.40 \times TS + 0.20 \times CH$.
 
+\paragraph{Pillar 6: Test Assertion Density (TAD) --- Weight 0.20.}
+This pillar evaluates the depth and thoroughness of the verification suite created by the agent. Rather than merely checking for test file existence, it measures the average number of meaningful assertions per test function (excluding trivial assertions such as \texttt{assert True}).
+$\mathrm{TAD} = \min\left(1.0, \frac{\text{Meaningful Assertions}}{\max(1, \text{Test Functions})} \times \frac{1}{5}\right)$, yielding a perfect score for 5 or more assertions per function.
+
+\paragraph{Pillar 7: Exploration Efficiency (EE) --- Weight 0.10.}
+This pillar measures how targeted the agent's workspace exploration is. High-performing agents with structured planning target specific files for modification, whereas reactive agents browse widely without committing edits.
+$\mathrm{EE} = \frac{\text{Unique Files Modified}}{\text{Unique Files Read} + \text{Unique Files Modified}}$.
+
 % ---------- 4.2 TASK SUITE ----------
 \subsection{Task Suite}
 \label{sec:tasks}
@@ -324,7 +332,7 @@ $\mathrm{ATI} = 0.40 \times BH + 0.40 \times TS + 0.20 \times CH$.
 
 \begin{table}[t]
 \centering
-\caption{Task categories in \bench{}. Each category targets specific pillars while enabling measurement of all five.}
+\caption{Task categories in \bench{}. Each category targets specific pillars while enabling measurement of all seven.}
 \label{tab:tasks}
 \small
 \resizebox{\columnwidth}{!}{%
@@ -404,7 +412,7 @@ and a 200K-token context budget.
 To ensure a strictly controlled evaluation, all agent harnesses were overridden to use the same common model (Gemini 1.5 Pro) instead of their default out-of-the-box model configurations as of June 2025.
 
 \paragraph{Scoring.}
-Process quality is scored via the \bench{} five-pillar framework.
+Process quality is scored via the \bench{} seven-pillar framework.
 Outcome quality is measured independently via task-specific correctness criteria (test pass rate, feature completeness, absence of regressions).
 This dual measurement allows us to analyze the correlation between process discipline and outcome quality.
 
@@ -662,12 +670,10 @@ We mitigate this by emphasizing trajectory evaluation (which is harder to game t
 \label{sec:conclusion}
 
 We have introduced \bench{}, the first benchmark for evaluating engineering process discipline in autonomous AI coding agents.
-By measuring five pillars---Planning Fidelity, Verification Coverage, Recovery Efficiency, Abstention Quality, and Atomic Transition Integrity---\bench{} fills a critical gap in the AI coding evaluation landscape: the gap between \emph{what} agents produce and \emph{how} they produce it.
-
-Our experimental results demonstrate that:
-\begin{enumerate}[leftmargin=*,itemsep=2pt]
-  \item Current agents exhibit low process discipline under default conditions.
-  \item Structured discipline frameworks (specifically \rigor{}) substantially improve process quality across all five pillars.
+By measuring seven pillars---Planning Fidelity, Verification Coverage, Recovery Efficiency, Abstention Quality, Atomic Transition Integrity, Test Assertion Density, and Exploration Efficiency---\bench{} fills a critical gap in the AI coding evaluation landscape: the gap between \emph{what} agents produce and \emph{how} they produce it.
+Our pilot evaluation of four agent configurations on 100 tasks yields three key findings:
+\begin{enumerate}[leftmargin=*]
+  \item Structured discipline frameworks (specifically \rigor{}) substantially improve process quality across all seven pillars.
   \item Process discipline is strongly correlated with outcome quality ($r = 0.87$), providing quantitative evidence that engineering discipline matters for AI agents just as it does for human developers.
   \item The largest gaps are in planning and abstention---capabilities that agents possess but do not exercise without explicit scaffolding.
 \end{enumerate}
