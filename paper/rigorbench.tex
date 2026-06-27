@@ -535,7 +535,7 @@ To capture a more holistic view of process discipline, we extend the seven core 
 \textbf{Metric} & \textbf{Baseline} & \textbf{Superpowers} & \textbf{Agent-Skills} & \textbf{Agent-Rigor} \\
 \midrule
 RigorScore (7-Pillar) $\uparrow$               & 0.395 & 0.410 & 0.387 & \textbf{0.527} \\
-Regression Rate (RR) $\uparrow$                & \textbf{0.988} & 0.929 & 0.974 & 0.981 \\
+Regression Resilience (RR) $\uparrow$          & \textbf{0.988} & 0.929 & 0.974 & 0.981 \\
 Exploration Efficiency (EE) $\uparrow$         & 0.269 & 0.314 & 0.275 & \textbf{0.449} \\
 Test Assertion Density (TAD) $\uparrow$        & \textbf{0.349} & \textbf{0.349} & 0.338 & 0.311 \\
 Dead Code Ratio (DCR) $\uparrow$               & 0.991 & 0.991 & 0.989 & \textbf{0.996} \\
@@ -552,7 +552,7 @@ Several critical insights emerge from this comprehensive view:
 \begin{itemize}[leftmargin=*]
   \item \textbf{The Upfront Planning Advantage}: Agent-Rigor achieves the highest composite \rigorscore{} (0.527) and excels in \textbf{Exploration Efficiency} (0.449) and \textbf{Specification Coverage} (0.611). Upfront planning ensures the agent knows exactly which files to modify (minimising unnecessary reads) and systematically covers more of the user's requirements.
   \item \textbf{The Test Quality Trade-Off}: Critically, Agent-Rigor scores \emph{lowest} on \textbf{Test Assertion Density} (0.311 vs.\ baseline 0.349). Because Rigor's planning phase forces it to write test stubs early in the run before the solution is fully implemented, it tends to write fewer deep assertions. Conversely, iterative trial-and-error agents (Baseline, Superpowers) accumulate denser assertions as they refine their code.
-  \item \textbf{Reckless Exploration}: Superpowers exhibits the lowest \textbf{Regression Rate} (0.929), indicating a higher frequency of PASS $\rightarrow$ FAIL transitions. This aligns with its design: it relies heavily on rapid, iterative trial-and-error runs rather than disciplined state validation.
+  \item \textbf{Reckless Exploration}: Superpowers exhibits the lowest \textbf{Regression Resilience} (0.929), indicating a higher frequency of PASS $\rightarrow$ FAIL transitions. This aligns with its design: it relies heavily on rapid, iterative trial-and-error runs rather than disciplined state validation.
   \item \textbf{Ambiguity Handling}: On our newly introduced clarification tasks (\textbf{CBS}), most agents aggressively guess the user's intent without asking questions (resulting in a low score of 0.200). However, \textbf{Agent-Skills} demonstrates the highest clarification discipline (0.400), frequently pausing to ask for more context before writing code.
 \end{itemize}
 This multi-dimensional analysis proves that process discipline is not a monolith: different agentic architectures trade off planning precision, test quality, and interactive clarification.

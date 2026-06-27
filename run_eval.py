@@ -113,7 +113,7 @@ def main():
     ORDER = ["Baseline", "Superpowers", "Agent-Skills", "Agent-Rigor"]
     METRICS_META = [
         ("RigorScore", "RigorScore (7-Pillar) ↑"),
-        ("RR", "Regression Rate (RR) ↑"),
+        ("RR", "Regression Resilience (RR) ↑"),
         ("EE", "Exploration Efficiency (EE) ↑"),
         ("TAD", "Test Assertion Density (TAD) ↑"),
         ("DCR", "Dead Code Ratio (DCR) ↑"),

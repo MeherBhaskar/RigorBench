@@ -318,8 +318,8 @@ def main():
 
     ORDER   = ["Baseline","Superpowers","Agent-Skills","Agent-Rigor"]
     METRICS = [
-        ("RigorScore", "RigorScore (7-pillar)"),
-        ("RR",  "Regression Rate ↑"),
+        ("RigorScore", "RigorScore (7-Pillar)"),
+        ("RR",  "Regression Resilience (RR) ↑"),
         ("EE",  "Exploration Eff. ↑"),
         ("TAD", "Assert Density ↑"),
         ("DCR", "Dead Code Ratio ↑"),
