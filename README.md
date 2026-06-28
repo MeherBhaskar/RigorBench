@@ -1,75 +1,67 @@
-# RigorBench: A Benchmark for Process Discipline in AI Coding Agents
+# agent-rigor & RigorBench
 
-This repository contains the source code, evaluation datasets, and analysis scripts for **RigorBench**, the first benchmark designed to measure *process discipline* in AI coding agents. 
+Your AI coding agent passes the tests. But did it plan first? Add a regression test? Avoid the doom loop? **agent-rigor** enforces the six-phase discipline lifecycle that separates reliable agents from lucky ones.
 
-While existing benchmarks evaluate agents almost exclusively on outcome correctness (whether the generated code passes tests), RigorBench evaluates the behavioral process of agents across nine distinct dimensions.
+![Agent-Rigor Demo](figures/demo.gif)
+*(Above: A comparison of standard ReAct trial-and-error vs. Agent-Rigor's structured execution.)*
 
----
+## The Impact
 
-## Repository Structure
+We benchmarked Agent-Rigor across 100 complex software tasks using our companion evaluation suite, **RigorBench**. Enforcing process discipline fundamentally raises the capability ceiling of your AI.
 
-```
-├── benchmark/
-│   ├── rigorbench/          # Core Python library containing trajectory models and scorers
-│   ├── results/              # Checked-in raw evaluation results (YAML files) for 400+ runs
-│   ├── tasks/                # Curation of 100 benchmark tasks across 5 categories
-│   ├── compute_extended.py   # Computes trajectory and repository-based process metrics
-│   ├── compute_sc.py         # Specification Coverage scorer using LLM-as-judge
-│   ├── compute_cbs.py        # Clarification Behavior Score evaluator
-│   └── generate_final_table.py
-├── paper/
-│   └── rigorbench.tex        # LaTeX source code for the publication
-└── run_eval.py               # Master reproduction script (aggregates all 9 metrics)
-```
+| Metric | Baseline ReAct | agent-rigor | Impact |
+|--------|----------------|-------------|--------|
+| **Process Quality** | 0.29 | 0.52 | **+79% Improvement** |
+| **Outcome Correctness** | 64% | 83% | **+30% Improvement** |
 
----
+## Quick Start (under 60 seconds)
 
-## Getting Started
-
-### 1. Installation
-
-RigorBench requires Python 3.10+ and a few lightweight dependencies for static analysis and parsing.
+You can wire `agent-rigor` into your existing AI coding assistant in seconds.
 
 ```bash
-# Clone the repository
-git clone https://github.com/MeherBhaskar/RigorBench.git
-cd RigorBench
-
-# Install dependencies
-pip install pyyaml pyflakes
+pip install agent-rigor
+# Wrap your favorite agent to enforce the 6-phase lifecycle
+agent-rigor wrap claude-code
 ```
 
-### 2. Reproducing the Evaluation Tables
+## Why this exists
 
-To reproduce the exact 9-metric process evaluation table and LaTeX snippets reported in the paper, run the master evaluation entrypoint from the repository root:
-
-```bash
-python3 run_eval.py
-```
-
-This will parse the 400+ checked-in trajectories and repository artifacts, calculate the metrics, and print both a Markdown table and a LaTeX snippet matching the publication.
+Consider two agents solving the same bug. Agent A formulates a hypothesis, writes a targeted fix, adds a regression test, and verifies it passes. Agent B tries five random patches in sequence until it stumbles upon one that makes the tests pass, without understanding why or adding tests. Under existing benchmarks, both get a perfect score. Yet Agent A is reliable and safe for production, while Agent B is a fragile liability. **agent-rigor** exists to force your AI to act like Agent A, and **RigorBench** exists to measure it.
 
 ---
 
-## Evaluated Process Metrics
+## Live RigorScore Leaderboard
 
-RigorBench evaluates coding agents across nine process dimensions, all scaled from `[0, 1]` where **higher is better** ($\uparrow$):
+This leaderboard tracks the process discipline of leading foundational agents and harnesses on the RigorBench suite. (Higher is better, scaled `[0, 1]`)
 
-1. **RigorScore (Composite)**: The weighted average of the core process pillars.
-2. **Regression Resilience (RR) $\uparrow$**: Measures development stability. Defined as $1 - \text{Regression Ratio}$, where a regression is a transition from a passing test suite state to a failing test suite state.
-3. **Exploration Efficiency (EE) $\uparrow$**: Measures how targeted the agent's file access is. Ratio of modified files to total read/modified files.
-4. **Test Assertion Density (TAD) $\uparrow$**: Evaluates test quality. Measures the average number of meaningful assertions per test function (excluding trivial checks like `assert True`).
-5. **Dead Code Avoidance (DCA) $\uparrow$**: Measures code cleanliness. Ratio of active, used symbols to total declared symbols.
-6. **Diff Minimality (DM) $\uparrow$**: Measures edit surgical precision. Penalizes excessive code churn.
-7. **Contextual Grounding Rate (CGR) $\uparrow$**: Measures grounding of imports. Ratio of valid imports (stdlib, local files, requirements) to total imports.
-8. **Specification Coverage (SC) $\uparrow$**: Evaluates semantic completeness against the task README using an LLM-as-judge.
-9. **Clarification Behavior Score (CBS) $\uparrow$**: Evaluates whether the agent asks clarifying questions when given an ambiguous task.
+| Rank | Agent / Harness | RigorScore | Outcome Score | Notes |
+|------|-----------------|------------|---------------|-------|
+| 1 | **agent-rigor (Gemini 3.5 Flash)** | **0.52** | **83%** | Upfront planning enforced |
+| 2 | Superpowers (Gemini 3.5 Flash) | 0.35 | 70% | High iterative iteration |
+| 3 | Agent-Skills (Gemini 3.5 Flash) | 0.30 | 72% | Excellent Clarification |
+| 4 | Baseline ReAct (Gemini 3.5 Flash) | 0.29 | 64% | Zero-shot standard |
+
+*Want to add your agent? Open a PR with your trajectory logs!*
+
+---
+
+## Compatibility Matrix
+
+`agent-rigor` acts as an intercepting harness. Here is what it works with out of the box:
+
+| Agent / Harness | Compatibility | Notes |
+|-----------------|---------------|-------|
+| **Claude Code** | ✅ Full | Natively supports custom rules and lifecycle hooks |
+| **Cursor** | ✅ Full | Enforced via `.cursorrules` and workspace sync |
+| **Gemini CLI** | ✅ Full | Natively wraps the execution loop |
+| **Aider** | 🚧 Partial | Custom architect mode required |
+| **Codex CLI** | ❌ Planned | Support coming in v1.2 |
 
 ---
 
 ## Citation
 
-If you use RigorBench in your research, please cite our work:
+If you use RigorBench or agent-rigor in your research, please cite our paper:
 
 ```bibtex
 @inproceedings{bhaskar2026rigorbench,
