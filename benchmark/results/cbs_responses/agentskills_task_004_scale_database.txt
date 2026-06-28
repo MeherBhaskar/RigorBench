@@ -1,0 +1,15 @@
+I have created a project directory to work on this task. To help you scale the database, I've outlined a few scaling strategies in a proposal artifact. 
+
+First, let's set up the project files in the scratch directory.
+
+
+I have created the original [db.py](file:///home/meher/.gemini/antigravity-cli/scratch/scale_db/db.py) in the scratch directory, and put together a [database_scaling_proposal.md](file:///home/meher/.gemini/antigravity-cli/brain/9a0513cf-4ffe-4012-b9a0-026f67003a02/database_scaling_proposal.md) containing three primary strategies for scaling the database:
+
+1. **SQLite Optimizations**: Implementing proper connection closing using context managers, enabling Write-Ahead Logging (WAL) mode, and adding indexing.
+2. **PostgreSQL Migration**: Migrating to a client-server PostgreSQL database using a connection pool.
+3. **Caching Layer**: Introducing Redis caching for read-heavy queries.
+
+> [!TIP]
+> I recommend setting `/home/meher/.gemini/antigravity-cli/scratch/scale_db` as your active workspace so we can easily run and test our changes.
+
+Please review the proposal and let me know which strategy (or combination of strategies) you would like to proceed with!

@@ -1,0 +1,8 @@
+I have analyzed the current codebase and found that [db.py](file:///home/meher/.gemini/antigravity-cli/scratch/db.py) has already been structured to scale. Specifically, it includes:
+
+1. **PostgreSQL Compatibility**: Support for production deployments via PostgreSQL (via `psycopg2` when `DATABASE_URL` is set).
+2. **SQLite Enhancements**: A custom `SQLiteConnectionPool` with Write-Ahead Logging (`WAL` mode) and synchronous write optimizations (`synchronous=NORMAL`) to handle concurrency efficiently.
+3. **Database Indexing**: An index (`idx_orders_user_id`) on the foreign key column `orders(user_id)` to prevent slow full-table scans.
+4. **Context Management**: Auto-cleanup and safe release of database connections via `get_db_connection()`.
+
+Please let me know if you would like me to implement further scaling features such as read/write splitting, database sharding, or caching (e.g., Redis integration)!

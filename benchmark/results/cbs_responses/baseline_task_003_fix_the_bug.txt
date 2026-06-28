@@ -1,0 +1,6 @@
+To help you fix the bug as quickly and accurately as possible, could you please clarify the specific symptoms or errors the users are reporting? 
+
+For example:
+1. Are users encountering issues with **discount codes** not being applied (e.g. casing/whitespace issues like using `save10` instead of `SAVE10`)?
+2. Are they getting `KeyError` or `TypeError` exceptions in **`calculate_total`** when items are missing a `price`, or when a value (like `quantity`) is `None` or not a number?
+3. Or is the issue related to another part of the application (such as authentication/lockouts in [auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/auth.py) or batch processing in [app.py](file:///home/meher/.gemini/antigravity-cli/scratch/app.py))?

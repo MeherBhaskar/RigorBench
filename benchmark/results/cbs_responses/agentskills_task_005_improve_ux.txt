@@ -1,0 +1,26 @@
+I have analyzed the codebase, focusing on [checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/checkout.py) and [test_checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/test_checkout.py).
+
+To improve the checkout flow user experience and address cart drop-offs, we can implement several key features directly in the backend checkout logic:
+
+### 🌟 UX Improvement Plan
+
+1. **Auto-Correction & High-Tolerance Field Parsing**:
+   * **Credit Cards**: Strip spaces, dashes, and non-alphanumeric characters automatically (already partially done, but we can make it robust and auto-detect card brand).
+   * **Expiry Dates**: Allow more formats (e.g., `MMYY`, `MM-YY`, `M/YY`, `MM/YYYY`, `M/YYYY`) and auto-format or parse them leniently instead of throwing a validation error.
+   * **Promo Codes**: Auto-trim whitespace, convert to uppercase, and handle common user mistakes.
+
+2. **Actionable & Friendly Error Messages**:
+   * Instead of generic errors, provide helpful hints (e.g., if a promo code requires a minimum amount, show exactly how much more the user needs to add).
+   * If a card fails the Luhn check, suggest checking for typos in the digits.
+
+3. **Detailed Shipping Upsell**:
+   * Calculate exactly how much is needed to unlock free shipping and present it in a friendly, encouraging message.
+
+4. **Detailed Checkout Preview & Order Summary**:
+   * Return a structured breakdown of costs (subtotal, shipping, discount, tax, total) and promo status in the preview step so the client UI can display it dynamically as the user types.
+
+---
+
+### ❓ Question for You
+
+Would you like me to proceed with implementing these UX enhancements directly in [checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/checkout.py) and updating the tests in [test_checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/test_checkout.py)? Alternatively, if you have specific checkout drop-off data or particular payment/checkout features you want to focus on, please let me know!

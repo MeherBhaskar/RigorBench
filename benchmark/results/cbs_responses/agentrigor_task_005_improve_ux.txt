@@ -1,0 +1,15 @@
+I have improved the user experience of the checkout flow to help prevent user drop-off. 
+
+Here is a summary of the changes:
+1. **Added Detailed Price Breakdowns**: Implemented [calculate_totals](file:///home/meher/.gemini/antigravity-cli/scratch/checkout.py#L17) to supply a breakdown of subtotal, tax, shipping, and discounts before processing payments. This transparency prevents user abandonment caused by unexpected fees at checkout.
+2. **Introduced Promo Code Support**: Users can now apply discount codes (e.g., `SAVE10` for 10% off, `FREE_SHIP` for free shipping) in [complete_order](file:///home/meher/.gemini/antigravity-cli/scratch/checkout.py#L65).
+3. **Structured Payment Method Validation**: Restructured [process_payment](file:///home/meher/.gemini/antigravity-cli/scratch/checkout.py#L48) to validate the payment type (e.g., `credit_card`, `paypal`, `apple_pay`).
+4. **Enhanced Error Messages**: Updated all validation steps to return clear, actionable, user-friendly instructions instead of generic system faults.
+
+### Action Recommended
+Since you do not have an active workspace set, you can set your active directory to the scratch folder:
+```
+/home/meher/.gemini/antigravity-cli/scratch
+```
+
+All test cases in [test_checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/test_checkout.py) are passing successfully.

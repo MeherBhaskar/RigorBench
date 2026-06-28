@@ -1,0 +1,21 @@
+I have reviewed the codebase, and the login endpoint in [auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/auth.py) has been successfully secured with the following enhancements:
+
+### Security Enhancements Added
+1. **Password Hashing (PBKDF2-HMAC-SHA256)**:
+   - Replaced plain-text password storage with salted password hashes.
+   - Uses `hashlib.pbkdf2_hmac` with 100,000 iterations and a cryptographically secure 128-bit salt per user.
+
+2. **Brute-Force Protection & Rate Limiting**:
+   - Implemented an in-memory tracking mechanism for failed login attempts.
+   - Automatically locks out a username for 5 minutes after 5 consecutive failed attempts.
+
+3. **Timing Attack & Username Enumeration Mitigations**:
+   - Uses `hmac.compare_digest` for constant-time hash comparisons.
+   - Executes a dummy password hashing step when a username does not exist, ensuring response times remain uniform and preventing attackers from enumerating valid usernames.
+
+4. **Cryptographically Secure Session Tokens**:
+   - Replaced the static `"abc123"` token with a 32-byte secure random hex token (`secrets.token_hex(32)`).
+   - Added token expiration tracking (`active_sessions`).
+
+### Verification
+All tests in [test_auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/test_auth.py) (covering successful logins, failed logins, and account lockouts) have run and passed successfully.

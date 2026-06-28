@@ -1,0 +1,6 @@
+To help you resolve the issue as quickly and accurately as possible, could you please provide a bit more context or clarify which part of the application users are encountering problems with? 
+
+Specifically:
+1. **Which component is failing?** (e.g., is it related to the session management/lockout in [auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/auth.py), the parallel worker thread pool in [app.py](file:///home/meher/.gemini/antigravity-cli/scratch/app.py), or the pricing/discount logic in [utils.py](file:///home/meher/.gemini/antigravity-cli/scratch/utils.py)?)
+2. **What are the symptoms or error messages?** (e.g., traceback details, incorrect calculations, unexpected lockout behavior, or hanging threads?)
+3. **Are there any steps or input data to reproduce the bug?**

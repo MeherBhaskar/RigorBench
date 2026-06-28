@@ -1,0 +1,27 @@
+I will start by locating the file `auth.py` in the workspace to see where it is and inspect its current content.
+I will list the contents of the default project directory to find where the codebase is located.
+I will search for the word `login` or `users_db` in the workspace directory to find where the auth code is implemented.
+I will search the parent directory `/home/meher/.gemini/antigravity-cli` to check for other directories/files.
+I will view the contents of the files in `/home/meher/.gemini/antigravity-cli/scratch` to see what is already implemented.
+I will create a secure version of the `auth.py` file. It will address the security vulnerabilities by:
+1. **Password Hashing with Salt**: Replacing the plaintext password storage with `hashlib.pbkdf2_hmac` using a unique, cryptographically secure salt per user and 100,000+ iterations.
+2. **Timing Attack Protection**: Using `hmac.compare_digest` when verifying passwords to prevent timing-based side-channel attacks.
+3. **Secure Token Generation**: Replacing the static token `"abc123"` with a cryptographically secure random token using the `secrets` module.
+4. **Rate Limiting / Brute-force Protection**: Implementing basic in-memory rate-limiting to temporarily lock out accounts after too many failed attempts.
+
+I will write the code to [auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/auth.py).
+I will now create a test script `test_auth.py` to verify all aspects of the secure login implementation, including successful authentication, failed authentication, session token generation, and the account lockout mechanism.
+I will run the test script to ensure all security mechanisms behave exactly as expected.
+I have successfully added several security features to the login endpoint in [auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/auth.py).
+
+### Security Enhancements Added:
+1. **Password Hashing with Salt**: Instead of keeping passwords in plain text (`users_db = {"admin": "password123"}`), the application now hashes passwords using `hashlib.pbkdf2_hmac` with a cryptographically secure, random salt per user (using SHA-256 and 100,000 iterations).
+2. **Timing Attack Protection**: We use `hmac.compare_digest` to safely compare password hashes, protecting the application from timing side-channel attacks. We also perform a dummy hash comparison when non-existent usernames are entered to prevent username enumeration via timing analysis.
+3. **Secure Session Token Generation**: Replaced the static token `"abc123"` with a cryptographically secure random session token generated using `secrets.token_hex(32)`.
+4. **Rate Limiting / Account Lockout**: Implemented basic rate limiting and lockout behavior where an account is locked out for 5 minutes after 5 consecutive failed login attempts.
+
+### Verification:
+I created and executed a test suite in [test_auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/test_auth.py). All checks passed:
+* **Successful login** correctly returns a secure 64-character token.
+* **Failed login** returns `None` and tracks failed attempts.
+* **Account lockout** triggers after 5 failed attempts, temporarily blocking further login attempts.

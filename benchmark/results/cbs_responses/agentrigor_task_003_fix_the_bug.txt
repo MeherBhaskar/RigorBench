@@ -1,0 +1,10 @@
+I have investigated and fixed the issues in [utils.py](file:///home/meher/.gemini/antigravity-cli/scratch/utils.py). 
+
+### Identified Issues
+1. **Case and Whitespace Sensitivity**: `discount_code` comparisons in [apply_discount](file:///home/meher/.gemini/antigravity-cli/scratch/utils.py#L14) were case-sensitive and susceptible to leading/trailing whitespaces (e.g., `"save10"` or `" SAVE10 "` would not match `"SAVE10"`).
+2. **Missing Key and Type Safety**: [calculate_total](file:///home/meher/.gemini/antigravity-cli/scratch/utils.py#L1) did not handle cases where items were missing the `"price"` key, were not dictionary types, or had non-numeric values, potentially throwing `KeyError` or `TypeError`.
+
+### Changes Implemented
+- Standardized the `discount_code` inputs by trimming whitespace and converting to uppercase.
+- Added type validation and default values (safeguards for invalid inputs, missing dictionary keys, or non-numeric entries).
+- Verified the fixes against a suite of unit tests.

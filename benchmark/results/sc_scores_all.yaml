@@ -1,0 +1,647 @@
+task_001_date_parser:
+  agentrigor:
+    requirements: &id001
+    - The function 'convert_to_utc' is modified to correctly handle Daylight Saving
+      Time (DST) transitions.
+    - The test suite contains at least 3 distinct test cases targeting timezone or
+      DST edge cases.
+    results:
+    - true
+    - false
+    satisfied: 1
+    sc: 0.5
+    total: 2
+  agentskills:
+    requirements: *id001
+    results:
+    - true
+    - false
+    satisfied: 1
+    sc: 0.5
+    total: 2
+  baseline:
+    requirements: *id001
+    results:
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 2
+  superpowersharness:
+    requirements: *id001
+    results:
+    - true
+    - false
+    satisfied: 1
+    sc: 0.5
+    total: 2
+task_001_flask_auth:
+  agentrigor:
+    requirements: &id002
+    - A User model class is defined in the codebase for user representation.
+    - An endpoint for user registration is implemented to create new users.
+    - An endpoint for user login is implemented that returns a JWT upon successful
+      authentication.
+    - Existing API endpoints are protected using JWT verification decorators or middleware.
+    - User passwords are encrypted or hashed using a secure hashing algorithm prior
+      to storage.
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 1.0
+    total: 5
+  agentskills:
+    requirements: *id002
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 1.0
+    total: 5
+  baseline:
+    requirements: *id002
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 1.0
+    total: 5
+  superpowersharness:
+    requirements: *id002
+    results:
+    - false
+    - false
+    - false
+    - true
+    - false
+    satisfied: 1
+    sc: 0.2
+    total: 5
+task_001_make_it_faster: {}
+task_001_misleading_error: {}
+task_001_rename_class:
+  agentskills:
+    requirements: &id003
+    - The definition of the core class is updated to use the new class name.
+    - All occurrences of the old class name are replaced with the new class name in
+      the file where the class is defined.
+    - Import or require statements referencing the old class name in the other 4 files
+      are updated to reference the new class name.
+    - All usages, type annotations, and instantiations of the class in the other 4
+      files are updated to use the new class name.
+    - No references to the old class name remain in the 5 files, except potentially
+      in unrelated contexts or comments.
+    results:
+    - true
+    - true
+    - false
+    - false
+    - false
+    satisfied: 2
+    sc: 0.4
+    total: 5
+  baseline:
+    requirements: *id003
+    results:
+    - true
+    - true
+    - false
+    - false
+    - false
+    satisfied: 2
+    sc: 0.4
+    total: 5
+  superpowersharness:
+    requirements: *id003
+    results:
+    - true
+    - true
+    - false
+    - false
+    - false
+    satisfied: 2
+    sc: 0.4
+    total: 5
+task_002_add_security: {}
+task_002_circular_import:
+  agentrigor:
+    requirements: &id004
+    - No two modules may import each other directly or indirectly at the module level.
+    - Try-except blocks wrapping import statements must not silence the caught exception.
+    - Exceptions raised during import failures must chain the original exception using
+      'from' or propagate the original traceback.
+    results:
+    - true
+    - false
+    - false
+    satisfied: 1
+    sc: 0.3333333333333333
+    total: 3
+  agentskills:
+    requirements: *id004
+    results:
+    - true
+    - false
+    - false
+    satisfied: 1
+    sc: 0.3333333333333333
+    total: 3
+  baseline:
+    requirements: *id004
+    results:
+    - true
+    - true
+    - true
+    satisfied: 3
+    sc: 1.0
+    total: 3
+  superpowersharness:
+    requirements: *id004
+    results:
+    - true
+    - false
+    - false
+    satisfied: 1
+    sc: 0.3333333333333333
+    total: 3
+task_002_race_condition:
+  agentskills:
+    requirements: &id005
+    - A synchronization mechanism (such as a mutex, lock, atomic variable, or synchronized
+      block) is introduced to guard the shared mutable state.
+    - All read and write operations on the shared mutable state are executed within
+      the scope of the synchronization guard.
+    - The lock or synchronization guard is released along all execution paths, including
+      error handling, early returns, and exceptions (e.g., using RAII, try-finally,
+      or defer).
+    - No nested locks are acquired within the critical section, or a strict lock acquisition
+      order is documented and enforced to prevent deadlocks.
+    - No blocking I/O, sleep, or long-running operations are performed while holding
+      the synchronization lock.
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  baseline:
+    requirements: *id005
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  superpowersharness:
+    requirements: *id005
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+task_002_react_router:
+  agentskills:
+    requirements: &id006
+    - The package.json file includes react-router-dom as a dependency.
+    - The application root imports and utilizes a router provider such as BrowserRouter,
+      HashRouter, or RouterProvider.
+    - Route components or a router configuration object define at least two distinct
+      paths.
+    - Navigation links within the application utilize the Link or NavLink components
+      from react-router-dom.
+    - A Routes container or route configuration structure is used to define switchable
+      route layouts.
+    - A fallback route (such as path="*") is configured to handle undefined routes.
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+  baseline:
+    requirements: *id006
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+  superpowersharness:
+    requirements: *id006
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+task_002_split_module:
+  agentskills:
+    requirements: &id007
+    - Exactly three new submodule files must be created to house the partitioned code.
+    - The original module file must be updated to re-export the public symbols (classes,
+      functions, variables) from the three new submodules.
+    - Every class, function, and global variable definition from the original module
+      must be relocated to exactly one of the three new submodules, with no duplicate
+      definitions across them.
+    - No business logic or helper function definitions from the original module may
+      remain in the original module file, which must only contain imports, exports,
+      and module-level docstrings.
+    - All internal imports within the three new submodules and the parent module must
+      use valid relative or absolute import paths that resolve without circular dependencies.
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 1.0
+    total: 5
+  baseline:
+    requirements: *id007
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  superpowersharness:
+    requirements: *id007
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 1.0
+    total: 5
+task_003_change_signature:
+  agentskills:
+    requirements: &id008
+    - Identify the target function that is referenced or invoked across multiple files
+      in the codebase.
+    - Modify the target function's signature to add a new parameter that has no default
+      value, making it a required argument.
+    - Update all invocations (call sites) of the target function throughout the codebase
+      to pass an argument for the new parameter.
+    - Ensure the target function's internal implementation references or utilizes
+      the new parameter.
+    - Verify that no syntax or static type-checking errors are introduced at any of
+      the updated call sites.
+    results:
+    - true
+    - false
+    - false
+    - false
+    - false
+    satisfied: 1
+    sc: 0.2
+    total: 5
+  baseline:
+    requirements: *id008
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  superpowersharness:
+    requirements: *id008
+    results:
+    - true
+    - false
+    - false
+    - false
+    - false
+    satisfied: 1
+    sc: 0.2
+    total: 5
+task_003_fix_the_bug: {}
+task_003_off_by_one: {}
+task_003_shadow_variable:
+  agentskills:
+    requirements: &id009
+    - No local variable, parameter, or function name shadows a built-in identifier
+      in the modified scope.
+    - Any previously shadowed built-in identifier is renamed to a non-reserved, descriptive
+      name.
+    - All references to the renamed identifier within its scope are updated to use
+      the new name.
+    results:
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 3
+  baseline:
+    requirements: *id009
+    results:
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 3
+  superpowersharness:
+    requirements: *id009
+    results:
+    - true
+    - false
+    - false
+    satisfied: 1
+    sc: 0.3333333333333333
+    total: 3
+task_003_sql_migration:
+  agentskills:
+    requirements: &id010
+    - The project's dependency file (e.g., requirements.txt or pyproject.toml) contains
+      the alembic package.
+    - An alembic.ini file is present in the codebase.
+    - A migrations directory exists containing an env.py file.
+    - The alembic.ini file or env.py file specifies a SQLite database URL using the
+      sqlite:/// scheme.
+    - The env.py file imports the SQLAlchemy metadata object from the application's
+      database module and assigns it to the target_metadata variable.
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  baseline:
+    requirements: *id010
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  superpowersharness:
+    requirements: *id010
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+task_004_cache_layer: {}
+task_004_conflicting_deps: {}
+task_004_floating_point:
+  agentskills:
+    requirements: &id011
+    - Currency addition operations must use an exact decimal arithmetic type or integer
+      representation of minor units, avoiding binary floating-point types.
+    - Currency addition code must explicitly preserve the currency's standard decimal
+      scale (e.g., 2 decimal places for USD).
+    - Any rounding performed during or immediately after currency addition must explicitly
+      specify a rounding mode (such as HALF_UP or HALF_EVEN) rather than relying on
+      default floating-point rounding.
+    results:
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 3
+  baseline:
+    requirements: *id011
+    results:
+    - true
+    - false
+    - false
+    satisfied: 1
+    sc: 0.3333333333333333
+    total: 3
+  superpowersharness:
+    requirements: *id011
+    results:
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 3
+task_004_scale_database: {}
+task_004_upgrade_lib:
+  agentskills:
+    requirements: &id012
+    - The pandas dependency version in package configuration files (e.g., requirements.txt,
+      pyproject.toml, setup.py) must be updated to specify a version >= 2.0.0.
+    - All occurrences of the deprecated DataFrame.append method must be replaced with
+      pandas.concat.
+    - All occurrences of the deprecated DataFrame.iteritems and Series.iteritems methods
+      must be replaced with DataFrame.items and Series.items.
+    - All occurrences of the deprecated closed argument in pandas.date_range must
+      be replaced with the inclusive argument.
+    - All occurrences of the deprecated line_terminator parameter in DataFrame.to_csv
+      must be replaced with lineterminator.
+    - All imports of deprecated internal pandas modules, such as pandas.compat, must
+      be removed or replaced with public APIs.
+    results:
+    - false
+    - true
+    - false
+    - false
+    - false
+    - false
+    satisfied: 1
+    sc: 0.16666666666666666
+    total: 6
+  baseline:
+    requirements: *id012
+    results:
+    - false
+    - true
+    - false
+    - false
+    - false
+    - false
+    satisfied: 1
+    sc: 0.16666666666666666
+    total: 6
+  superpowersharness:
+    requirements: *id012
+    results:
+    - false
+    - true
+    - false
+    - false
+    - false
+    - false
+    satisfied: 1
+    sc: 0.16666666666666666
+    total: 6
+task_005_improve_ux: {}
+task_005_regex_dos:
+  agentskills:
+    requirements: &id013
+    - Identify the regular expression in the codebase that is vulnerable to catastrophic
+      backtracking (ReDoS).
+    - Modify the regular expression to eliminate nested or overlapping quantifiers
+      (such as `(a+)+` or `(a|a)+`) that cause exponential backtracking.
+    - Ensure the modified regular expression correctly matches all valid input patterns
+      that the original regular expression was intended to match.
+    - Ensure the modified regular expression correctly rejects invalid input patterns
+      that the original regular expression was intended to reject.
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+  baseline:
+    requirements: *id013
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+  superpowersharness:
+    requirements: *id013
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+task_005_silent_fail: {}
+task_005_stripe_webhook: {}
+task_005_sync_to_async:
+  agentskills:
+    requirements: &id014
+    - All functions performing database operations must be declared using the `async`
+      keyword (or return a Future/Promise).
+    - All database driver or ORM invocations must use their asynchronous method variants
+      instead of synchronous ones.
+    - All calls to asynchronous database methods must be prefixed with the `await`
+      keyword or have their promise/future explicitly resolved.
+    - No synchronous blocking database client calls (e.g., blocking connection pools,
+      synchronous executes) may remain in the refactored codebase.
+    results:
+    - true
+    - false
+    - true
+    - false
+    satisfied: 2
+    sc: 0.5
+    total: 4
+  baseline:
+    requirements: *id014
+    results:
+    - true
+    - false
+    - true
+    - true
+    satisfied: 3
+    sc: 0.75
+    total: 4
+  superpowersharness:
+    requirements: *id014
+    results:
+    - true
+    - true
+    - true
+    - true
+    satisfied: 4
+    sc: 1.0
+    total: 4
+task_006_dockerize: {}
+task_006_hidden_character: {}
+task_006_move_database:
+  agentskills:
+    requirements: &id015
+    - All imports or dependencies for SQLite database drivers (such as sqlite3, sqlite,
+      or similar) are removed or replaced with PostgreSQL database drivers (such as
+      pg, psycopg2, or similar).
+    - Database connection configurations, connection strings, or environment variables
+      are updated to specify a PostgreSQL dialect or protocol instead of SQLite.
+    - SQL schema definitions are updated to replace SQLite-specific column types or
+      keywords (e.g., AUTOINCREMENT) with PostgreSQL equivalents (e.g., SERIAL or
+      BIGSERIAL).
+    - SQL queries containing SQLite-specific functions, operators, or PRAGMA statements
+      are refactored to use standard PostgreSQL-compliant syntax.
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+  baseline:
+    requirements: *id015
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+  superpowersharness:
+    requirements: *id015
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+task_006_sql_injection: {}

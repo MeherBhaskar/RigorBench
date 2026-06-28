@@ -1,0 +1,19 @@
+I have improved the user experience of the checkout flow to resolve drop-off issues by addressing the common pain points that cause cart abandonment. 
+
+### Key Improvements Made:
+1. **Promo Code Feedback & Validation** in [checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/checkout.py#L42-L65):
+   * Users previously experienced silent failures if promo codes were invalid.
+   * Added distinct validation and structured response statuses (`promo_status` with `applied` status and user-facing explanation messages) for promo codes (supporting `SAVE10` and `WELCOME5` with order constraints, plus invalid/expired feedback).
+
+2. **Detailed Payment Validation & Error Handling** in [checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/checkout.py#L104-L157):
+   * Validates detailed inputs depending on the payment method type (e.g., standard Credit Card inputs: Luhn algorithm checks, card length constraints, future expiry dates, CVV length; PayPal email formats; Apple Pay token checks).
+   * Returns exact, user-facing error messages instead of generic process failures, allowing users to correct card or email inputs immediately.
+
+3. **Free Shipping Upsell Message** in [checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/checkout.py#L70-L86):
+   * Unexpected shipping costs are a major source of drop-offs. Added a `shipping_upsell` block indicating if the user is eligible for free shipping, and dynamically calculates how much more they need to spend (e.g., *"Add $30.00 more to your cart to qualify for free shipping!"*).
+
+4. **Checkout Preview API** in [checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/checkout.py#L169-L194):
+   * Created a `preview_checkout()` method. This allows client interfaces to query the exact breakdown, validation warnings, and promo applicability *before* final order placement, without charging the customer.
+
+5. **Updated Test Cases**:
+   * Enhanced all unit tests in [test_checkout.py](file:///home/meher/.gemini/antigravity-cli/scratch/test_checkout.py) to cover all of these new functionalities, ensuring 100% test passing rate.

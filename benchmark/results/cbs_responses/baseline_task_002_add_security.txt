@@ -1,0 +1,15 @@
+I will list the contents of the default project directory to find where `auth.py` is located.
+I will view the contents of [auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/auth.py) and [app.py](file:///home/meher/.gemini/antigravity-cli/scratch/app.py) to understand the current implementation.
+I will view [test_auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/test_auth.py) to see if there are existing tests we can run to verify the current setup.
+I will run the test file using the python interpreter to verify all tests pass.
+I have reviewed the codebase. The security improvements for the login endpoint in [auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/auth.py) are already implemented and fully tested.
+
+Here is a summary of the security enhancements that are in place:
+
+1. **Secure Password Hashing**: Instead of storing plain-text passwords, the system uses PBKDF2 with HMAC-SHA256 (`hashlib.pbkdf2_hmac`) and a cryptographically secure, unique salt per user (`secrets.token_bytes`).
+2. **Brute-Force & Rate Limiting Protection**: Accounts are locked out for 5 minutes (`LOCKOUT_DURATION_SECS = 300`) after 5 consecutive failed login attempts (`MAX_FAILED_ATTEMPTS = 5`).
+3. **Username Enumeration Protection**: When a non-existent username is queried, a dummy password hash calculation (`hash_password(password, dummy_salt)`) is performed to ensure the response time is consistent, preventing timing attacks that could reveal whether a username exists.
+4. **Timing Attack Protection**: Hash comparisons are performed using `hmac.compare_digest` to prevent side-channel/timing attacks during password verification.
+5. **Secure Session Generation**: Upon successful login, a cryptographically secure random session token is generated using `secrets.token_hex(32)`.
+
+All tests in [test_auth.py](file:///home/meher/.gemini/antigravity-cli/scratch/test_auth.py) pass successfully.

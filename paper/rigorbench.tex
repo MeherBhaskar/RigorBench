@@ -436,18 +436,18 @@ This dual measurement allows us to analyze the correlation between process disci
 \toprule
 \textbf{Harness} & \textbf{\rigorscore{}} & \textbf{Outcome Score} \\
 \midrule
-Agent-Rigor    & \textbf{0.52 $\pm$ 0.09} & \textbf{0.83 $\pm$ 0.05} \\
-Superpowers    & 0.35 $\pm$ 0.05          & 0.70 $\pm$ 0.06 \\
-Agent-Skills   & 0.30 $\pm$ 0.04          & 0.72 $\pm$ 0.06 \\
-Baseline ReAct & 0.29 $\pm$ 0.04          & 0.64 $\pm$ 0.05 \\
+Agent-Rigor    & \textbf{0.53 $\pm$ 0.09} & \textbf{0.83 $\pm$ 0.05} \\
+Superpowers    & 0.41 $\pm$ 0.05          & 0.70 $\pm$ 0.06 \\
+Agent-Skills   & 0.39 $\pm$ 0.04          & 0.72 $\pm$ 0.06 \\
+Baseline ReAct & 0.39 $\pm$ 0.04          & 0.64 $\pm$ 0.05 \\
 \bottomrule
 \end{tabular}
 }
 \end{table}
 
 \Cref{tab:overall} presents the main results.
-The Baseline ReAct agent exhibits low process discipline, with a \rigorscore{} of 0.29.
-However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.30) and Superpowers (0.35) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our harness (Agent-Rigor) achieves the highest process quality (0.52) by explicitly enforcing planning and verification phases. This represents a 79\% relative improvement in process quality scores over the Baseline ReAct agent (0.29).
+The Baseline ReAct agent exhibits low process discipline, with a \rigorscore{} of 0.39.
+However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.39) and Superpowers (0.41) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our harness (Agent-Rigor) achieves the highest process quality (0.53) by explicitly enforcing planning and verification phases. This represents a 36\% relative improvement in process quality scores over the Baseline ReAct agent (0.39).
 Critically, outcome quality strongly correlates with these process improvements at the macro level, rising from 0.64 (Baseline) to 0.83 (Agent-Rigor), demonstrating that process discipline is associated with better results.
 
 \subsection{Per-Pillar Analysis}
@@ -465,16 +465,16 @@ Critically, outcome quality strongly correlates with these process improvements 
 Planning Fidelity (PF)         & 0.15 & 0.25 & 0.82 & +0.57 \\
 Verification Coverage (VC)     & 0.15 & 0.05 & 0.13 & +0.08 \\
 Recovery Efficiency (RE)       & 0.20 & 0.55 & 0.63 & +0.08 \\
-Abstention Quality (AQ)        & 0.10 & 0.33 & 0.78 & +0.45 \\
-Atomic Trans.\ Integrity (ATI) & 0.10 & 0.27 & 0.68 & +0.41 \\
-Test Assertion Density (TAD)   & 0.20 & 0.35 & 0.31 & $-$0.04 \\
-Exploration Efficiency (EE)    & 0.10 & 0.29 & 0.45 & +0.16 \\
+Abstention Quality (AQ)        & 0.10 & 0.56 & 0.57 & +0.01 \\
+Atomic Trans.\ Integrity (ATI) & 0.10 & 0.43 & 0.42 & $-$0.01 \\
+Test Assertion Density (TAD)   & 0.20 & 0.39 & 0.37 & $-$0.02 \\
+Exploration Efficiency (EE)    & 0.10 & 0.66 & 0.85 & +0.19 \\
 \bottomrule
 \end{tabular}
 }
 \end{table}
 
-\Cref{tab:perpillar} reveals that the largest improvements under the disciplined condition occur in \pillar{Planning Fidelity} (+0.57) and \pillar{Abstention Quality} (+0.45), where planning-enforced frameworks force explicit plan generation and appropriate task-level abstention. Meaningful improvements are also observed in \pillar{Exploration Efficiency} (+0.16) and \pillar{Atomic Transition Integrity} (+0.41), confirming that structured harnesses focus their workspace search and maintain high commit/checkpoint discipline. The overall variance in \rigorscore{} is driven across all seven pillars, demonstrating that the composite score successfully captures multiple orthogonal dimensions of process discipline.
+\Cref{tab:perpillar} reveals that the largest improvements under the disciplined condition occur in \pillar{Planning Fidelity} (+0.57) and \pillar{Exploration Efficiency} (+0.19), where planning-enforced frameworks force explicit plan generation and focused workspace search. In contrast, improvements in \pillar{Abstention Quality} (+0.01) and \pillar{Atomic Transition Integrity} ($-$0.01) are negligible. The overall variance in \rigorscore{} is driven primarily by planning and verification dimensions rather than atomic commits or abstention.
 
 
 \subsection{Per-Harness Detailed Results}
@@ -488,10 +488,10 @@ Exploration Efficiency (EE)    & 0.10 & 0.29 & 0.45 & +0.16 \\
 \toprule
 \textbf{Harness} & \textbf{PF} & \textbf{VC} & \textbf{RE} & \textbf{AQ} & \textbf{ATI} & \textbf{TAD} & \textbf{EE} & \textbf{\rigorscore{}} \\
 \midrule
-Agent-Rigor    & 0.82 & 0.13 & 0.63 & 0.78 & 0.68 & 0.31 & 0.45 & \textbf{0.52} \\
-Superpowers    & 0.29 & 0.06 & 0.56 & 0.45 & 0.35 & \textbf{0.35} & 0.31 & 0.35 \\
-Agent-Skills   & 0.23 & 0.03 & 0.54 & 0.30 & 0.25 & 0.34 & 0.28 & 0.30 \\
-Baseline ReAct & 0.22 & 0.05 & 0.56 & 0.25 & 0.20 & \textbf{0.35} & 0.27 & 0.29 \\
+Agent-Rigor    & 0.82 & 0.13 & 0.63 & 0.57 & 0.42 & 0.37 & 0.85 & \textbf{0.53} \\
+Superpowers    & 0.29 & 0.06 & 0.56 & 0.56 & 0.44 & 0.39 & 0.68 & 0.41 \\
+Agent-Skills   & 0.23 & 0.03 & 0.54 & 0.57 & 0.43 & 0.38 & 0.64 & 0.39 \\
+Baseline ReAct & 0.22 & 0.05 & 0.56 & 0.56 & 0.43 & 0.40 & 0.65 & 0.39 \\
 \bottomrule
 \end{tabular}
 }
@@ -510,7 +510,7 @@ To capture a more holistic view of process discipline, we analyze additional dim
 \toprule
 \textbf{Metric} & \textbf{Baseline} & \textbf{Superpowers} & \textbf{Agent-Skills} & \textbf{Agent-Rigor} \\
 \midrule
-RigorScore (7-Pillar) $\uparrow$               & 0.295 & 0.346 & 0.298 & \textbf{0.522} \\
+RigorScore (7-Pillar) $\uparrow$               & 0.395 & 0.410 & 0.387 & \textbf{0.527} \\
 Regression Resilience (RR) $\uparrow$          & \textbf{0.988} & 0.929 & 0.974 & 0.981 \\
 Exploration Efficiency (EE) $\uparrow$         & 0.269 & 0.314 & 0.275 & \textbf{0.449} \\
 Test Assertion Density (TAD) $\uparrow$        & \textbf{0.349} & \textbf{0.349} & 0.338 & 0.311 \\
@@ -551,25 +551,25 @@ This multi-dimensional analysis proves that process discipline is not a monolith
   \foreach \y/\ytext in {0/0.0, 2.5/0.5, 5/1.0}
     \draw (1pt,\y) -- (-3pt,\y) node[anchor=east] {\ytext};
 
-    % Trendline (Outcome = 0.47 + 0.68 * RigorScore)
+    % Trendline (Outcome = 0.26 + 1.07 * RigorScore)
     % RigorScore 0.2 to 0.6 maps to tikz 2.0 to 6.0
-    \draw[dashed, blue, thick] (2.0, 3.03) -- (6.0, 4.39) node[right, black, scale=0.8] {Fit};
+    \draw[dashed, blue, thick] (2.0, 2.37) -- (6.0, 4.51) node[right, black, scale=0.8] {Fit};
 
     % Data points:
-    % 1. Agent-Rigor: RigorScore = 0.52, Outcome = 0.83
-    \filldraw[red] (5.2, 4.15) circle (3pt) node[above right, black, scale=0.7] {Agent-Rigor (0.52, 0.83)};
+    % 1. Agent-Rigor: RigorScore = 0.53, Outcome = 0.83
+    \filldraw[red] (5.3, 4.15) circle (3pt) node[above right, black, scale=0.7] {Agent-Rigor (0.53, 0.83)};
     
-    % 2. Superpowers: RigorScore = 0.35, Outcome = 0.70
-    \filldraw[green!60!black] (3.5, 3.5) circle (3pt) node[below right, black, scale=0.7] {Superpowers (0.35, 0.70)};
+    % 2. Superpowers: RigorScore = 0.41, Outcome = 0.70
+    \filldraw[green!60!black] (4.1, 3.5) circle (3pt) node[below right, black, scale=0.7] {Superpowers (0.41, 0.70)};
     
-    % 3. Agent-Skills: RigorScore = 0.30, Outcome = 0.72
-    \filldraw[purple] (3.0, 3.60) circle (3pt) node[above left, black, scale=0.7] {Agent-Skills (0.30, 0.72)};
+    % 3. Agent-Skills: RigorScore = 0.39, Outcome = 0.72
+    \filldraw[purple] (3.9, 3.60) circle (3pt) node[above left, black, scale=0.7] {Agent-Skills (0.39, 0.72)};
     
-    % 4. Baseline ReAct: RigorScore = 0.29, Outcome = 0.64
-    \filldraw[blue] (2.9, 3.20) circle (3pt) node[below left, black, scale=0.7] {Baseline (0.29, 0.64)};
+    % 4. Baseline ReAct: RigorScore = 0.39, Outcome = 0.64
+    \filldraw[blue] (3.9, 3.20) circle (3pt) node[below left, black, scale=0.7] {Baseline (0.39, 0.64)};
   
   \end{tikzpicture}
-  \caption{Correlation between \rigorscore{} and Outcome Score across evaluated harnesses. The linear fit is $\text{Outcome} = 0.47 + 0.68 \times \text{\rigorscore{}}$. The macro-level separation between Agent-Rigor and the non-planning cluster dominates the correlation.}
+  \caption{Correlation between \rigorscore{} and Outcome Score across evaluated harnesses. The linear fit is $\text{Outcome} = 0.26 + 1.07 \times \text{\rigorscore{}}$. The macro-level separation between Agent-Rigor and the non-planning cluster dominates the correlation.}
   \label{fig:correlation}
   \end{figure}
   

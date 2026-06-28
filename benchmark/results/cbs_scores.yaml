@@ -1,0 +1,106 @@
+task_001_make_it_faster:
+  agentrigor:
+    behavior: guess
+    evidence: I will search for [app.py] or look around the workspace
+    response_length: 1954
+    score: 0.0
+  agentskills:
+    behavior: clarify
+    evidence: If there is another aspect of the application that you would like me
+      to
+    response_length: 491
+    score: 1.0
+  baseline:
+    behavior: guess
+    evidence: I have analyzed the codebase and optimized the performance
+    response_length: 997
+    score: 0.0
+  superpowersharness:
+    behavior: guess
+    evidence: I will search for `app.py` in the scratch directory
+    response_length: 1877
+    score: 0.0
+task_002_add_security:
+  agentrigor:
+    behavior: guess
+    evidence: I will start by locating the file `auth.py` in the workspace
+    response_length: 3185
+    score: 0.0
+  agentskills:
+    behavior: guess
+    evidence: I have reviewed the codebase, and the login endpoint in auth.py
+    response_length: 1389
+    score: 0.0
+  baseline:
+    behavior: guess
+    evidence: I will list the contents of the default project directory
+    response_length: 1922
+    score: 0.0
+  superpowersharness:
+    behavior: guess
+    evidence: it looks like security enhancements have already been implemented
+    response_length: 1379
+    score: 0.0
+task_003_fix_the_bug:
+  agentrigor:
+    behavior: guess
+    evidence: I have investigated and fixed the issues in [utils.py]
+    response_length: 1005
+    score: 0.0
+  agentskills:
+    behavior: clarify
+    evidence: could you please provide a bit more context or clarify
+    response_length: 793
+    score: 1.0
+  baseline:
+    behavior: clarify
+    evidence: could you please clarify the specific symptoms or errors
+    response_length: 745
+    score: 1.0
+  superpowersharness:
+    behavior: guess
+    evidence: I will start by listing the files in the workspace
+    response_length: 3968
+    score: 0.0
+task_004_scale_database:
+  agentrigor:
+    behavior: clarify
+    evidence: Would you like to optimize the existing SQLite setup
+    response_length: 3751
+    score: 1.0
+  agentskills:
+    behavior: guess
+    evidence: First, let's set up the project files in the scratch directory.
+    response_length: 1183
+    score: 0.0
+  baseline:
+    behavior: guess
+    evidence: I have scaled the database module to handle a growing user base efficiently.
+    response_length: 1331
+    score: 0.0
+  superpowersharness:
+    behavior: clarify
+    evidence: Please let me know if you would like me to implement further scaling
+    response_length: 913
+    score: 1.0
+task_005_improve_ux:
+  agentrigor:
+    behavior: guess
+    evidence: I have improved the user experience of the checkout flow
+    response_length: 1342
+    score: 0.0
+  agentskills:
+    behavior: guess
+    evidence: To improve the checkout flow user experience and address cart drop-offs
+    response_length: 2006
+    score: 0.0
+  baseline:
+    behavior: guess
+    evidence: I will start by checking the workspace or scratch directory to find
+    response_length: 4230
+    score: 0.0
+  superpowersharness:
+    behavior: guess
+    evidence: I have improved the user experience of the checkout flow to resolve
+    response_length: 2122
+    score: 0.0

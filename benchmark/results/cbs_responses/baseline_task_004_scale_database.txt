@@ -1,0 +1,14 @@
+I have scaled the database module to handle a growing user base efficiently.
+
+### Summary of Scaling Improvements
+1. **Connection Pooling (`SQLiteConnectionPool`)**:
+   - Implemented a thread-safe connection pool using `queue.Queue` to limit and manage open connections, preventing connection overhead and thread-safety issues under high concurrency.
+2. **SQLite Performance Optimizations**:
+   - Enabled **Write-Ahead Logging (WAL)** (`PRAGMA journal_mode=WAL;`), allowing concurrent reads and writes.
+   - Set `PRAGMA synchronous=NORMAL;` to reduce disk write bottlenecks while preserving durability.
+3. **Database Indexing**:
+   - Added a composite/foreign-key index on `orders(user_id)` (`CREATE INDEX IF NOT EXISTS idx_orders_user_id ON orders(user_id)`) to convert slow full-table scans into $O(1)$/$O(\log N)$ index lookups.
+4. **PostgreSQL Compatibility (Production Scaling)**:
+   - Configured fallback to a production-grade database like PostgreSQL (`psycopg2.pool.ThreadedConnectionPool`) when `DATABASE_URL` is set, allowing seamless transition from SQLite to a distributed SQL server as your user base scales further.
+5. **Exact API Compatibility**:
+   - The returned values for `get_user` and `get_all_orders` are converted to standard tuples when using SQLite, preserving exact compatibility with the legacy API code.
