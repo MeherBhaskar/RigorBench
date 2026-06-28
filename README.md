@@ -11,7 +11,7 @@ We benchmarked Agent-Rigor across 100 complex software tasks using our companion
 
 | Metric | Baseline ReAct | agent-rigor | Impact |
 |--------|----------------|-------------|--------|
-| **Process Quality** | 0.29 | 0.52 | **+79% Improvement** |
+| **Process Quality** | 0.40 | 0.53 | **+33% Improvement** |
 | **Outcome Correctness** | 64% | 83% | **+30% Improvement** |
 
 ## Quick Start (under 60 seconds)
@@ -36,10 +36,10 @@ This leaderboard tracks the process discipline of leading foundational agents an
 
 | Rank | Agent / Harness | RigorScore | Outcome Score | Notes |
 |------|-----------------|------------|---------------|-------|
-| 1 | **agent-rigor (Gemini 3.5 Flash)** | **0.52** | **83%** | Upfront planning enforced |
-| 2 | Superpowers (Gemini 3.5 Flash) | 0.35 | 70% | High iterative iteration |
-| 3 | Agent-Skills (Gemini 3.5 Flash) | 0.30 | 72% | Excellent Clarification |
-| 4 | Baseline ReAct (Gemini 3.5 Flash) | 0.29 | 64% | Zero-shot standard |
+| 1 | **agent-rigor (Gemini 3.5 Flash)** | **0.53** | **83%** | Upfront planning enforced |
+| 2 | Superpowers (Gemini 3.5 Flash) | 0.41 | 70% | High iterative iteration |
+| 3 | Agent-Skills (Gemini 3.5 Flash) | 0.39 | 72% | Excellent Clarification |
+| 4 | Baseline ReAct (Gemini 3.5 Flash) | 0.40 | 64% | Zero-shot standard |
 
 *Want to add your agent? Open a PR with your trajectory logs!*
 

@@ -32,22 +32,22 @@ if os.path.exists("results/cbs_scores.yaml"):
 METRICS_DATA = {
     "Baseline": {
         "RS": 0.395, "RR": 0.988, "EE": 0.269, "TAD": 0.349,
-        "DCR": 0.991, "DM": 0.450, "CGR": 0.994,
+        "DCA": 0.991, "DM": 0.450, "CGR": 0.994,
         "SC": 0.243, "CBS": 0.200
     },
     "Superpowers": {
         "RS": 0.410, "RR": 0.929, "EE": 0.314, "TAD": 0.349,
-        "DCR": 0.991, "DM": 0.455, "CGR": 0.997,
+        "DCA": 0.991, "DM": 0.455, "CGR": 0.997,
         "SC": 0.276, "CBS": 0.200
     },
     "Agent-Skills": {
         "RS": 0.387, "RR": 0.974, "EE": 0.275, "TAD": 0.338,
-        "DCR": 0.989, "DM": 0.452, "CGR": 0.993,
+        "DCA": 0.989, "DM": 0.452, "CGR": 0.993,
         "SC": 0.273, "CBS": 0.400
     },
     "Agent-Rigor": {
         "RS": 0.527, "RR": 0.981, "EE": 0.449, "TAD": 0.311,
-        "DCR": 0.996, "DM": 0.473, "CGR": 0.996,
+        "DCA": 0.996, "DM": 0.473, "CGR": 0.996,
         "SC": 0.611, "CBS": 0.200
     }
 }
@@ -61,10 +61,10 @@ print("| :--- | :---: | :---: | :---: | :---: | :---: |")
 
 METRICS_META = [
     ("RS", "RigorScore (7-Pillar) ↑"),
-    ("RR", "Regression Rate (RR) ↑"),
+    ("RR", "Regression Resilience (RR) ↑"),
     ("EE", "Exploration Efficiency (EE) ↑"),
     ("TAD", "Test Assertion Density (TAD) ↑"),
-    ("DCR", "Dead Code Ratio (DCR) ↑"),
+    ("DCA", "Dead Code Avoidance (DCA) ↑"),
     ("DM", "Diff Minimality (DM) ↑"),
     ("CGR", "Contextual Grounding Rate (CGR) ↑"),
     ("SC", "Specification Coverage (SC) ↑"),
