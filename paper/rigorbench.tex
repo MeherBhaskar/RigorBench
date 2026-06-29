@@ -97,7 +97,7 @@ We introduce \bench{}, an exploratory benchmark designed to measure \emph{proces
 \bench{} evaluates these harnesses across seven pillars: \pillar{Planning Fidelity}, \pillar{Verification Coverage}, \pillar{Recovery Efficiency}, \pillar{Abstention Quality}, \pillar{Atomic Transition Integrity}, \pillar{Test Assertion Density}, and \pillar{Exploration Efficiency}.
 A composite \rigorscore{} aggregates these dimensions into a single metric via a weighted sum.
 We curate an exploratory pilot suite of 100 tasks spanning five categories---Plan-Then-Build, Verify-Or-Die, Doom Loop Gauntlet, Know When to Fold, and Don't Break the Build---and evaluate leading harnesses in a comparative study against baseline coding assistants.
-Our results show that while tool-enforced frameworks fail to improve baseline process metrics, an upfront planning-enforced harness (Agent-Rigor) achieves a 36\% improvement in process quality scores (which is partly by construction given the benchmark's focus on planning) and is associated with a 30\% increase in downstream outcome correctness. However, we find that this correlation is non-significant within individual harnesses across tasks, indicating that process discipline acts primarily as a macro-level capability differentiator rather than a task-level predictor. These findings provide preliminary evidence that engineering process discipline is a critical, measurable dimension of agent reliability. We release the full benchmark, scoring rubrics, and trajectory analysis tools as open-source artifacts at \url{https://github.com/MeherBhaskar/RigorBench}.
+Our results show that while tool-enforced frameworks fail to improve baseline process metrics, an upfront planning-enforced harness (Agent-Rigor) achieves a 33\% improvement in process quality scores (which is partly by construction given the benchmark's focus on planning) and is associated with a 30\% increase in downstream outcome correctness. However, we find that this correlation is non-significant within individual harnesses across tasks, indicating that process discipline acts primarily as a macro-level capability differentiator rather than a task-level predictor. These findings provide preliminary evidence that engineering process discipline is a critical, measurable dimension of agent reliability. We release the full benchmark, scoring rubrics, and trajectory analysis tools as open-source artifacts at \url{https://github.com/MeherBhaskar/RigorBench}.
 \end{abstract}
 
 % ============================= 1. INTRODUCTION ==============================
@@ -139,7 +139,7 @@ We make the following contributions:
   Rather than evaluating only final artifacts, \bench{} analyzes the \emph{full execution trajectory} of an agent---every plan, edit, test invocation, error recovery, and commit---to compute process quality scores (\Cref{sec:scoring}).
 
   \item \textbf{We demonstrate the value of structured discipline.}
-  Through an exploratory comparative evaluation, we demonstrate that an upfront planning-enforced harness (Agent-Rigor) achieves a 36\% improvement in process quality scores (which is partly by construction given the benchmark's focus on planning) and is associated with a 30\% increase in outcome quality. We note that this process-outcome correlation is non-significant within individual harnesses across tasks, suggesting that process metrics serve primarily as macro-level differentiators rather than task-level predictors.
+  Through an exploratory comparative evaluation, we demonstrate that an upfront planning-enforced harness (Agent-Rigor) achieves a 33\% improvement in process quality scores (which is partly by construction given the benchmark's focus on planning) and is associated with a 30\% increase in outcome quality. We note that this process-outcome correlation is non-significant within individual harnesses across tasks, suggesting that process metrics serve primarily as macro-level differentiators rather than task-level predictors.
 
   \item \textbf{We release an open benchmark suite.}
   We release a suite of 100 tasks across 5 categories, complete with scoring rubrics, trajectory analysis tools, and baseline results, to enable reproducible evaluation of process discipline in future agents (\Cref{sec:experimental}).
@@ -404,7 +404,7 @@ We evaluate three leading agentic coding harnesses and one baseline. To isolate 
 \end{enumerate}
 
 \paragraph{Experimental conditions.}
-Each harness is evaluated across the full suite of 100 tasks. This yields $4 \times 100 = 400$ individual task executions.
+Each harness is evaluated across the full suite of 100 tasks. This yields approximately 410 individual task executions (some tasks produced multiple runs).
 
 
 \paragraph{Infrastructure.}
@@ -436,18 +436,18 @@ This dual measurement allows us to analyze the correlation between process disci
 \toprule
 \textbf{Harness} & \textbf{\rigorscore{}} & \textbf{Outcome Score} \\
 \midrule
-Agent-Rigor    & \textbf{0.53 $\pm$ 0.09} & \textbf{0.83 $\pm$ 0.05} \\
-Superpowers    & 0.41 $\pm$ 0.05          & 0.70 $\pm$ 0.06 \\
-Agent-Skills   & 0.39 $\pm$ 0.04          & 0.72 $\pm$ 0.06 \\
-Baseline ReAct & 0.39 $\pm$ 0.04          & 0.64 $\pm$ 0.05 \\
+Agent-Rigor    & \textbf{0.53 $\pm$ 0.08} & \textbf{0.83 $\pm$ 0.05} \\
+Superpowers    & 0.41 $\pm$ 0.09          & 0.70 $\pm$ 0.06 \\
+Agent-Skills   & 0.39 $\pm$ 0.09          & 0.72 $\pm$ 0.06 \\
+Baseline ReAct & 0.40 $\pm$ 0.09          & 0.64 $\pm$ 0.05 \\
 \bottomrule
 \end{tabular}
 }
 \end{table}
 
 \Cref{tab:overall} presents the main results.
-The Baseline ReAct agent exhibits low process discipline, with a \rigorscore{} of 0.39.
-However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.39) and Superpowers (0.41) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our harness (Agent-Rigor) achieves the highest process quality (0.53) by explicitly enforcing planning and verification phases. This represents a 36\% relative improvement in process quality scores over the Baseline ReAct agent (0.39).
+The Baseline ReAct agent exhibits low process discipline, with a \rigorscore{} of 0.40.
+However, structured harnesses alone do not guarantee improvement: tool-enforced frameworks like Agent-Skills (0.39) and Superpowers (0.41) perform similarly to the baseline. In contrast, upfront planning-enforced frameworks drive substantial gains: our harness (Agent-Rigor) achieves the highest process quality (0.53) by explicitly enforcing planning and verification phases. This represents a 33\% relative improvement in process quality scores over the Baseline ReAct agent (0.40).
 Critically, outcome quality strongly correlates with these process improvements at the macro level, rising from 0.64 (Baseline) to 0.83 (Agent-Rigor), demonstrating that process discipline is associated with better results.
 
 \subsection{Per-Pillar Analysis}
@@ -497,13 +497,13 @@ Baseline ReAct & 0.22 & 0.05 & 0.56 & 0.56 & 0.43 & 0.40 & 0.65 & 0.39 \\
 }
 \end{table}
 
-\Cref{tab:perharness} provides the full per-harness, per-pillar breakdown from our large-scale execution across all 100 benchmark tasks (400 total runs).
+\Cref{tab:perharness} provides the full per-harness, per-pillar breakdown from our large-scale execution across all 100 benchmark tasks (~410 total runs).
 
 To capture a more holistic view of process discipline, we analyze additional dimensions alongside our core pillars, including \textbf{Regression Resilience (RR)}, \textbf{Dead Code Avoidance (DCA)}, \textbf{Diff Minimality (DM)}, \textbf{Contextual Grounding Rate (CGR)}, \textbf{Specification Coverage (SC)}, and the \textbf{Clarification Behavior Score (CBS)}. \Cref{tab:comprehensive_metrics} presents the complete 9-metric evaluation.
 
 \begin{table*}[t]
 \centering
-\caption{Comprehensive evaluation across all nine process metrics on \bench{} ($n=400$ runs). All metrics are scaled $[0,1]$ where higher is better ($\uparrow$). Bold indicates the best-performing harness.}
+\caption{Comprehensive evaluation across all nine process metrics on \bench{} ($n{\approx}410$ runs). All metrics are scaled $[0,1]$ where higher is better ($\uparrow$). Bold indicates the best-performing harness.}
 \label{tab:comprehensive_metrics}
 \resizebox{0.9\textwidth}{!}{%
 \begin{tabular}{lcccc}
@@ -592,7 +592,7 @@ All evaluated harnesses hovered around an Abstention Quality of 0.56 to 0.57. Th
 As shown in Table V, the evaluated harnesses exhibit moderate differentiation on Recovery Efficiency, with Agent-Rigor scoring highest (0.63) and Agent-Skills scoring lowest (0.54). While the trajectory parser successfully captured error and recovery events, we observe that the overall variance is relatively compressed. This compression stems from the binary nature of recovery in many tasks: agents either recover immediately or enter infinite loops that terminate only upon timeout, leaving few intermediate recovery states. Future iterations of the benchmark will introduce more granular step-level recovery tracking to increase discriminative resolution.
 
 \paragraph{Agent-Skills and iterative recovery.}
-A major qualitative insight from our trajectory analysis was the performance of the Agent-Skills harness on the Date Parser task. While the strict Agent-Rigor harness forced an explicit \texttt{plan.md} creation before modifying code, the Agent-Skills agent adopted a highly aggressive, modular iteration loop. While it struggled significantly with Verification Coverage (scoring 0.00) due to poorly isolated test cases, it scored exceptionally well on Recovery Efficiency (1.00). When it recognized the systemic failures of the legacy \texttt{pytz} library during ambiguous daylight-saving transitions, its robust feedback loop led it to gracefully recover from failures by fundamentally ripping out the library and natively adopting Python's modern \texttt{zoneinfo} module. This demonstrates that while some frameworks struggle with rigorous verification, they can compensate through high-frequency empirical validation and recovery.
+A major qualitative insight from our trajectory analysis was the performance of the Agent-Skills harness on the Date Parser task \textbf{(a single-task anecdote, not the aggregate average)}. While the strict Agent-Rigor harness forced an explicit \texttt{plan.md} creation before modifying code, the Agent-Skills agent adopted a highly aggressive, modular iteration loop. On this specific task, it struggled significantly with Verification Coverage (scoring 0.00) due to poorly isolated test cases, yet scored exceptionally well on Recovery Efficiency (1.00). When it recognized the systemic failures of the legacy \texttt{pytz} library during ambiguous daylight-saving transitions, its robust feedback loop led it to gracefully recover from failures by fundamentally ripping out the library and natively adopting Python's modern \texttt{zoneinfo} module. This demonstrates that while some frameworks struggle with rigorous verification on specific tasks, they can compensate through high-frequency empirical validation and recovery.
 
 \paragraph{Process discipline as a training signal.}
 Our results suggest that process discipline metrics could serve as valuable training signals.
@@ -602,7 +602,7 @@ Incorporating process quality into reward models could encourage agents to devel
 \paragraph{Token efficiency.}
 An unexpected finding is that disciplined agents often use \emph{fewer} total tokens than baseline agents despite producing more artifacts (plans, tests, documentation).
 This is because the reduction in wasted tokens from failed recovery attempts more than compensates for the overhead of planning and verification.
-Mean total token consumption per task decreased from approximately 42,500 tokens in the baseline to 37,400 tokens under the upfront planning-enforced condition, representing a 12\% reduction, even as \rigorscore{} increased by 36\%.
+Mean total token consumption per task decreased from approximately 42,500 tokens in the baseline to 37,400 tokens under the upfront planning-enforced condition, representing a 12\% reduction, even as \rigorscore{} increased by 33\%.
 
 % ===================== 8. LIMITATIONS ======================================
 \section{Limitations}
@@ -612,7 +612,7 @@ Mean total token consumption per task decreased from approximately 42,500 tokens
 Evaluating on 100 tasks (20 per category) provides a much more robust empirical foundation for a benchmarking paper than our initial pilot. However, modern LLM coding benchmarks (like SWE-bench) leverage thousands of instances to ensure statistical power. While we explicitly present \bench{} as an exploratory study to validate the scoring methodology, we acknowledge that sample size sensitivity remains a limitation and plan to expand the task suite to thousands of instances before claiming definitive benchmark status.
 
 \paragraph{Overhead of explicit planning.}
-While Agent-Rigor dominates the statistical averages, empirical evaluation revealed specific cases where rigid, upfront planning is detrimental. For example, on unsolvable logic paradoxes like the Halting Problem, Superpowers substantially outperformed Agent-Rigor (0.66 vs 0.37) because Agent-Rigor wasted tokens and confident assertions attempting to formalize a plan for an impossible task, while Superpowers utilized its deep context window to immediately identify the paradox and abstain. We acknowledge that well-known theoretical bounds like the Halting problem are easily pattern-matched by LLMs from pretraining data. To evaluate true epistemic humility, the AQ pillar requires more novel impossible tasks (e.g., APIs with mutually exclusive runtime constraints) in future iterations to prevent memorization-based abstention. Furthermore, on standard tasks (e.g., Flask Authentication), the unconstrained Baseline ReAct agent scored higher (0.82 vs 0.53) by rapidly emitting the known solution, proving that strict planning frameworks incur unnecessary overhead when the solution is already implicitly memorized by the underlying LLM.
+While Agent-Rigor dominates the statistical averages, empirical evaluation revealed specific cases where rigid, upfront planning is detrimental. For example, on unsolvable logic paradoxes like the Halting Problem \textbf{(a single-task anecdote)}, Superpowers substantially outperformed Agent-Rigor (0.66 vs 0.37) because Agent-Rigor wasted tokens and confident assertions attempting to formalize a plan for an impossible task, while Superpowers utilized its deep context window to immediately identify the paradox and abstain. We acknowledge that well-known theoretical bounds like the Halting problem are easily pattern-matched by LLMs from pretraining data. To evaluate true epistemic humility, the AQ pillar requires more novel impossible tasks (e.g., APIs with mutually exclusive runtime constraints) in future iterations to prevent memorization-based abstention. Furthermore, on standard tasks (e.g., Flask Authentication \textbf{(a single-task anecdote)}), the unconstrained Baseline ReAct agent scored higher (0.82 vs 0.53) by rapidly emitting the known solution, proving that strict planning frameworks incur unnecessary overhead when the solution is already implicitly memorized by the underlying LLM.
 
 \paragraph{Framework coupling.}
 Our experimental design uses \rigor{} as the sole discipline framework.

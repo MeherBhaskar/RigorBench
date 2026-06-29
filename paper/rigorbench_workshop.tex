@@ -47,7 +47,7 @@
 \pagestyle{empty}
 
 \begin{abstract}
-Agentic coding harnesses are increasingly deployed for real-world software engineering tasks. Existing benchmarks evaluate these agents almost exclusively on outcome correctness: whether generated code passes tests or resolves issues. We argue this outcome-only lens is insufficient and hides a massive blindspot: an agent that arrives at a correct solution through reckless trial-and-error is fundamentally less reliable than one following sound engineering discipline. We introduce \bench{}, an exploratory benchmark measuring process discipline. To test whether process discipline can be measured and enforced, we developed Agent-Rigor not as a commercial competitor, but as an experimental probe hardcoded to enforce upfront planning and verification. Our goal is to observe how forcing process alters LLM execution trajectories. Our results reveal a paradoxical finding: enforcing macro-level discipline elevates a framework's overall capability ceiling (a 36\% improvement in process quality scores and 30\% increase in outcome correctness), yet fails to predict task-level success on individual runs ($r=0.12$). We invite the community to explore this "Over-Engineering Tax" where ReAct "cowboy coding" fails and structured planning becomes mathematically worth the overhead.
+Agentic coding harnesses are increasingly deployed for real-world software engineering tasks. Existing benchmarks evaluate these agents almost exclusively on outcome correctness: whether generated code passes tests or resolves issues. We argue this outcome-only lens is insufficient and hides a massive blindspot: an agent that arrives at a correct solution through reckless trial-and-error is fundamentally less reliable than one following sound engineering discipline. We introduce \bench{}, an exploratory benchmark measuring process discipline. To test whether process discipline can be measured and enforced, we developed Agent-Rigor not as a commercial competitor, but as an experimental probe hardcoded to enforce upfront planning and verification. Our goal is to observe how forcing process alters LLM execution trajectories. Our results reveal a paradoxical finding: enforcing macro-level discipline elevates a framework's overall capability ceiling (a 33\% improvement in process quality scores and 30\% increase in outcome correctness), yet fails to predict task-level success on individual runs ($r=0.12$). We invite the community to explore this "Over-Engineering Tax" where ReAct "cowboy coding" fails and structured planning becomes mathematically worth the overhead.
 \end{abstract}
 
 \section{Introduction \& Related Work}
@@ -81,7 +81,7 @@ Each pillar captures a distinct dimension of engineering discipline. A composite
 \section{Experimental Setup}
 To test whether process discipline can be measured and enforced, we developed Agent-Rigor. We frame Agent-Rigor not as a commercial competitor, but as an experimental probe hardcoded to enforce upfront planning and verification. Our goal is to observe how forcing process alters LLM execution trajectories. We explicitly declare this construct circularity as a bounded experimental parameter.
 
-We evaluate three structured harnesses (Agent-Rigor, Agent-Skills, Superpowers) and a Baseline ReAct loop. All four use Gemini 3.5 Flash (\texttt{thinking\_level}="medium"). Each harness is evaluated across all 100 tasks, yielding 400 total executions.
+We evaluate three structured harnesses (Agent-Rigor, Agent-Skills, Superpowers) and a Baseline ReAct loop. All four use Gemini 3.5 Flash (\texttt{thinking\_level}="medium"). Each harness is evaluated across all 100 tasks, yielding approximately 410 total executions (some tasks produced multiple runs).
 
 \section{Results}
 \begin{table}[h]
@@ -93,16 +93,16 @@ We evaluate three structured harnesses (Agent-Rigor, Agent-Skills, Superpowers) 
 \toprule
 \textbf{Harness} & \textbf{\rigorscore{}} & \textbf{Outcome Score} \\
 \midrule
-Agent-Rigor (Probe) & \textbf{0.53 $\pm$ 0.09} & \textbf{0.83 $\pm$ 0.05} \\
-Superpowers    & 0.41 $\pm$ 0.05          & 0.70 $\pm$ 0.06 \\
-Agent-Skills   & 0.39 $\pm$ 0.04          & 0.72 $\pm$ 0.06 \\
-Baseline ReAct & 0.39 $\pm$ 0.04          & 0.64 $\pm$ 0.05 \\
+Agent-Rigor (Probe) & \textbf{0.53 $\pm$ 0.08} & \textbf{0.83 $\pm$ 0.05} \\
+Superpowers    & 0.41 $\pm$ 0.09          & 0.70 $\pm$ 0.06 \\
+Agent-Skills   & 0.39 $\pm$ 0.09          & 0.72 $\pm$ 0.06 \\
+Baseline ReAct & 0.40 $\pm$ 0.09          & 0.64 $\pm$ 0.05 \\
 \bottomrule
 \end{tabular}
 }
 \end{table}
 
-The Baseline ReAct agent exhibits low process discipline (\rigorscore{} = 0.39). Structured harnesses alone do not guarantee improvement (Agent-Skills 0.39, Superpowers 0.41). In contrast, our experimental probe (Agent-Rigor) achieves the highest process quality (0.53), driving substantial outcome gains.
+The Baseline ReAct agent exhibits low process discipline (\rigorscore{} = 0.40). Structured harnesses alone do not guarantee improvement (Agent-Skills 0.39, Superpowers 0.41). In contrast, our experimental probe (Agent-Rigor) achieves the highest process quality (0.53), driving substantial outcome gains.
 
 \begin{figure}[h]
 \centering

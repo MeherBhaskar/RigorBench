@@ -1,42 +1,387 @@
 task_001_date_parser:
   agentrigor:
     requirements: &id001
-    - A function named 'convert_to_utc' exists in the codebase
-    - The 'convert_to_utc' function correctly handles DST (Daylight Saving Time) transitions
-      when converting to UTC
-    - At least 3 test cases exist that cover edge cases related to timezone conversion
-      or DST
-    - Tests pass without errors
+    - The convert_to_utc function must be modified to handle Daylight Saving Time
+      (DST) transitions.
+    - The test suite must contain at least 3 test cases specifically targeting timezone
+      and DST transition edge cases.
     results:
     - true
-    - true
     - false
-    - false
-    satisfied: 2
+    satisfied: 1
     sc: 0.5
-    total: 4
+    total: 2
   agentskills:
     requirements: *id001
     results:
     - true
-    - true
     - false
-    - false
-    satisfied: 2
+    satisfied: 1
     sc: 0.5
-    total: 4
+    total: 2
   baseline:
+    requirements: *id001
+    results:
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 2
+  superpowersharness:
     requirements: *id001
     results:
     - true
     - false
+    satisfied: 1
+    sc: 0.5
+    total: 2
+task_001_flask_auth:
+  agentrigor:
+    requirements: &id002
+    - A User model class must exist.
+    - A registration endpoint route must be defined.
+    - A login endpoint route must be defined that returns a JWT.
+    - Existing endpoints must be protected using JWT middleware or decorators.
+    - A secure password hashing function must be imported and used.
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 1.0
+    total: 5
+  agentskills:
+    requirements: *id002
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 1.0
+    total: 5
+  baseline:
+    requirements: *id002
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 1.0
+    total: 5
+  superpowersharness:
+    requirements: *id002
+    results:
     - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+task_001_make_it_faster: {}
+task_001_misleading_error:
+  agentrigor:
+    requirements: &id003
+    - Modify config.py to pass an integer instead of a string.
+    results:
+    - true
+    satisfied: 1
+    sc: 1.0
+    total: 1
+  agentskills:
+    requirements: *id003
+    results:
+    - true
+    satisfied: 1
+    sc: 1.0
+    total: 1
+  baseline:
+    requirements: *id003
+    results:
+    - true
+    satisfied: 1
+    sc: 1.0
+    total: 1
+  superpowersharness:
+    requirements: *id003
+    results:
+    - true
+    satisfied: 1
+    sc: 1.0
+    total: 1
+task_001_rename_class:
+  agentskills:
+    requirements: &id004
+    - The old class name must not be present in any file in the repository.
+    - The class definition must use the new name instead of the old name.
+    - All imports of the old class name must be updated to the new class name in all
+      files.
+    - All type hints or annotations using the old class name must be updated to the
+      new class name.
+    - All instantiations of the old class name must be updated to the new class name.
+    - Exactly five files must contain references to the new class name.
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+  baseline:
+    requirements: *id004
+    results:
+    - true
+    - true
+    - true
+    - false
+    - true
+    - false
+    satisfied: 4
+    sc: 0.6666666666666666
+    total: 6
+  superpowersharness:
+    requirements: *id004
+    results:
+    - true
+    - true
+    - true
+    - false
+    - true
+    - false
+    satisfied: 4
+    sc: 0.6666666666666666
+    total: 6
+task_002_add_security: {}
+task_002_circular_import:
+  agentrigor:
+    requirements: &id005
+    - The codebase must not contain circular import dependencies between modules.
+    - Import statements must not be enclosed in try-except blocks that silently suppress
+      the true underlying import errors.
+    results:
+    - true
+    - true
+    satisfied: 2
+    sc: 1.0
+    total: 2
+  agentskills:
+    requirements: *id005
+    results:
+    - true
+    - true
+    satisfied: 2
+    sc: 1.0
+    total: 2
+  baseline:
+    requirements: *id005
+    results:
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 2
+  superpowersharness:
+    requirements: *id005
+    results:
+    - false
+    - true
+    satisfied: 1
+    sc: 0.5
+    total: 2
+task_002_race_condition:
+  agentskills:
+    requirements: &id006
+    - A synchronization primitive (such as a mutex, lock, or atomic variable) must
+      be explicitly used to protect all accesses to the shared resource.
+    - Every read and write operation on the shared resource must be fully enclosed
+      within the critical section established by the synchronization primitive.
+    - Any lock that is acquired must be guaranteed to be released in all possible
+      control flow paths, including early returns and error handling blocks.
+    - If multiple locks are acquired, they must be acquired in a strictly consistent
+      order across all code paths to prevent deadlocks.
+    results:
+    - false
+    - false
+    - true
+    - false
+    satisfied: 1
+    sc: 0.25
+    total: 4
+  baseline:
+    requirements: *id006
+    results:
+    - false
+    - false
+    - true
     - false
     satisfied: 1
     sc: 0.25
     total: 4
   superpowersharness:
-    requirements: *id001
+    requirements: *id006
+    results:
+    - false
+    - false
+    - true
+    - false
+    satisfied: 1
+    sc: 0.25
+    total: 4
+task_002_react_router:
+  agentskills:
+    requirements: &id007
+    - The package.json file must include 'react-router-dom' in its dependencies object.
+    - At least one file must import routing components (e.g., BrowserRouter, createBrowserRouter)
+      from 'react-router-dom'.
+    - The root of the component tree must be wrapped in a router provider component
+      (e.g., <BrowserRouter> or <RouterProvider>).
+    - The codebase must contain at least one defined route mapping a URL path to a
+      React component (e.g., using a <Route> component or route configuration object).
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+  baseline:
+    requirements: *id007
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+  superpowersharness:
+    requirements: *id007
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+task_002_split_module:
+  agentskills:
+    requirements: &id008
+    - Exactly 3 new submodule files must be created.
+    - The original module file must either be deleted or modified to only contain
+      import and export statements referencing the 3 new submodules.
+    - All functions, classes, and variables from the original module must be defined
+      within the 3 new submodules.
+    - Each of the 3 new submodules must contain appropriate import statements to resolve
+      dependencies on items moved to the other new submodules.
+    - The total combined line count of the 3 new submodules and the modified original
+      module must be approximately 1000 lines, accounting for new import/export statements.
+    results:
+    - false
+    - true
+    - false
+    - false
+    - false
+    satisfied: 1
+    sc: 0.2
+    total: 5
+  baseline:
+    requirements: *id008
+    results:
+    - true
+    - true
+    - false
+    - false
+    - false
+    satisfied: 2
+    sc: 0.4
+    total: 5
+  superpowersharness:
+    requirements: *id008
+    results:
+    - true
+    - true
+    - false
+    - false
+    - false
+    satisfied: 2
+    sc: 0.4
+    total: 5
+task_003_change_signature:
+  agentskills:
+    requirements: &id009
+    - The target function's signature must be updated to include the new argument.
+    - The newly added argument must not have a default value in the function definition.
+    - All existing calls to the target function across the codebase must be updated
+      to pass a value for the new argument.
+    results:
+    - true
+    - true
+    - true
+    satisfied: 3
+    sc: 1.0
+    total: 3
+  baseline:
+    requirements: *id009
+    results:
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 3
+  superpowersharness:
+    requirements: *id009
+    results:
+    - true
+    - true
+    - true
+    satisfied: 3
+    sc: 1.0
+    total: 3
+task_003_fix_the_bug: {}
+task_003_off_by_one:
+  agentskills:
+    requirements: &id010
+    - The pagination offset calculation must correctly compute the starting item index
+      for the given page without an off-by-one error.
+    - The loop or query condition must retrieve exactly the specified number of items
+      per page.
+    - The total page count calculation must correctly round up to include partial
+      pages.
+    - The pagination boundary check must not inadvertently skip the first or last
+      item in the dataset.
+    results:
+    - true
+    - true
+    - false
+    - true
+    satisfied: 3
+    sc: 0.75
+    total: 4
+  baseline:
+    requirements: *id010
+    results:
+    - true
+    - true
+    - false
+    - true
+    satisfied: 3
+    sc: 0.75
+    total: 4
+  superpowersharness:
+    requirements: *id010
     results:
     - true
     - true
@@ -45,3 +390,503 @@ task_001_date_parser:
     satisfied: 2
     sc: 0.5
     total: 4
+task_003_shadow_variable:
+  agentskills:
+    requirements: &id011
+    - No local variable, function parameter, or class attribute is named identically
+      to a standard language built-in.
+    - The specific identifier that previously shadowed a built-in has been renamed
+      to a non-conflicting, descriptive name.
+    results:
+    - true
+    - true
+    satisfied: 2
+    sc: 1.0
+    total: 2
+  baseline:
+    requirements: *id011
+    results:
+    - true
+    - true
+    satisfied: 2
+    sc: 1.0
+    total: 2
+  superpowersharness:
+    requirements: *id011
+    results:
+    - true
+    - false
+    satisfied: 1
+    sc: 0.5
+    total: 2
+task_003_sql_migration:
+  agentskills:
+    requirements: &id012
+    - The project contains an alembic.ini file in its directory structure.
+    - The project contains an Alembic migrations environment directory (typically
+      'alembic' or 'migrations') containing an env.py file.
+    - The env.py file imports the application's SQLAlchemy Base or metadata object
+      and assigns it to target_metadata.
+    - The database URL configured for Alembic (either in alembic.ini or programmatically
+      in env.py) uses a sqlite:/// prefix.
+    - The alembic package is listed as a dependency in the project's dependency management
+      file (e.g., requirements.txt, pyproject.toml, or Pipfile).
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  baseline:
+    requirements: *id012
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  superpowersharness:
+    requirements: *id012
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+task_004_cache_layer:
+  agentskills:
+    requirements: &id013
+    - The code includes an import statement for a Redis client library.
+    - The code instantiates a Redis client or establishes a connection to a Redis
+      server.
+    - The code contains logic to check the Redis cache for a value using a specific
+      key before executing the primary data fetch or computation.
+    - The code contains logic to store the result of the primary data fetch or computation
+      into the Redis cache.
+    - The cache storage logic includes an expiration time (TTL) configuration for
+      the cached keys.
+    results:
+    - true
+    - true
+    - true
+    - true
+    - false
+    satisfied: 4
+    sc: 0.8
+    total: 5
+  baseline:
+    requirements: *id013
+    results:
+    - true
+    - true
+    - true
+    - true
+    - false
+    satisfied: 4
+    sc: 0.8
+    total: 5
+  superpowersharness:
+    requirements: *id013
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 5
+    sc: 1.0
+    total: 5
+task_004_conflicting_deps:
+  agentrigor:
+    requirements: &id014
+    - The requirements.txt file must not specify multiple conflicting versions for
+      the same dependency.
+    results:
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 1
+  agentskills:
+    requirements: *id014
+    results:
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 1
+  baseline:
+    requirements: *id014
+    results:
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 1
+  superpowersharness:
+    requirements: *id014
+    results:
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 1
+task_004_floating_point: {}
+task_004_scale_database: {}
+task_004_upgrade_lib:
+  agentskills:
+    requirements: &id015
+    - The project's dependency specification file (e.g., requirements.txt, pyproject.toml,
+      setup.py) must explicitly require pandas version 2.0.0 or higher.
+    - The codebase must not contain any calls to the removed DataFrame.append() or
+      Series.append() methods.
+    - The codebase must not contain any usage of the removed pandas.Int64Index, pandas.Float64Index,
+      or pandas.UInt64Index classes.
+    - The codebase must not contain any calls to the removed DataFrame.mad() or Series.mad()
+      methods.
+    results:
+    - false
+    - true
+    - true
+    - true
+    satisfied: 3
+    sc: 0.75
+    total: 4
+  baseline:
+    requirements: *id015
+    results:
+    - false
+    - true
+    - true
+    - true
+    satisfied: 3
+    sc: 0.75
+    total: 4
+  superpowersharness:
+    requirements: *id015
+    results:
+    - false
+    - true
+    - true
+    - true
+    satisfied: 3
+    sc: 0.75
+    total: 4
+task_005_improve_ux: {}
+task_005_regex_dos:
+  agentskills:
+    requirements: &id016
+    - The regular expression pattern must be modified in the code.
+    - The modified regular expression must not contain nested indefinite quantifiers
+      (e.g., `(a+)+`, `(.*)*`).
+    - The modified regular expression must not contain overlapping or mutually inclusive
+      alternations within a quantified group.
+    - If the language supports it, the modified regular expression should utilize
+      possessive quantifiers or atomic groups to prevent unnecessary backtracking.
+    results:
+    - false
+    - true
+    - true
+    - false
+    satisfied: 2
+    sc: 0.5
+    total: 4
+  baseline:
+    requirements: *id016
+    results:
+    - false
+    - true
+    - true
+    - false
+    satisfied: 2
+    sc: 0.5
+    total: 4
+  superpowersharness:
+    requirements: *id016
+    results:
+    - false
+    - true
+    - true
+    - false
+    satisfied: 2
+    sc: 0.5
+    total: 4
+task_005_silent_fail:
+  agentskills:
+    requirements: &id017
+    - The code must contain a try-except or try-catch block.
+    - The except/catch block must catch an exception.
+    - The except/catch block must not contain any statements that re-raise or throw
+      the exception.
+    - The except/catch block must not contain any logging, printing, or error-reporting
+      statements.
+    - The except/catch block must be completely empty, contain only a 'pass' statement,
+      or contain only comments.
+    results:
+    - true
+    - true
+    - true
+    - false
+    - false
+    satisfied: 3
+    sc: 0.6
+    total: 5
+  baseline:
+    requirements: *id017
+    results:
+    - true
+    - true
+    - false
+    - false
+    - false
+    satisfied: 2
+    sc: 0.4
+    total: 5
+  superpowersharness:
+    requirements: *id017
+    results:
+    - true
+    - true
+    - false
+    - true
+    - false
+    satisfied: 3
+    sc: 0.6
+    total: 5
+task_005_stripe_webhook:
+  agentskills:
+    requirements: &id018
+    - Code defines an endpoint for receiving HTTP POST requests.
+    - Code reads the raw, unparsed request body.
+    - Code extracts the 'Stripe-Signature' header from the request.
+    - Code calls a Stripe SDK signature verification function using the raw body,
+      signature header, and a webhook secret.
+    - Code contains a switch statement or conditionals checking the Stripe event 'type'
+      property.
+    - Code explicitly returns a 200 HTTP status code upon successful handling.
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 6
+    sc: 1.0
+    total: 6
+  baseline:
+    requirements: *id018
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 6
+    sc: 1.0
+    total: 6
+  superpowersharness:
+    requirements: *id018
+    results:
+    - true
+    - true
+    - true
+    - true
+    - true
+    - true
+    satisfied: 6
+    sc: 1.0
+    total: 6
+task_005_sync_to_async:
+  agentskills:
+    requirements: &id019
+    - All functions that contain database operations must be defined with the 'async'
+      modifier.
+    - All database query executions and transactions must be prefixed with the 'await'
+      keyword.
+    - The codebase must import and use an asynchronous database driver rather than
+      a synchronous database driver.
+    - All database connections, commits, and closures must be handled using asynchronous
+      methods.
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+  baseline:
+    requirements: *id019
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+  superpowersharness:
+    requirements: *id019
+    results:
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 4
+task_006_dockerize:
+  agentskills:
+    requirements: &id020
+    - The repository must contain a file named 'Dockerfile'.
+    - The repository must contain a file named 'docker-compose.yml' or 'compose.yaml'.
+    - The Dockerfile must contain a 'FROM' instruction to define the base image.
+    - The Dockerfile must contain a 'CMD' or 'ENTRYPOINT' instruction.
+    - The compose file must define at least one service under a 'services' key.
+    - The compose file must include a 'build' directive within the service definition
+      pointing to the Dockerfile context.
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+  baseline:
+    requirements: *id020
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+  superpowersharness:
+    requirements: *id020
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 6
+task_006_hidden_character:
+  agentskills:
+    requirements: &id021
+    - The lexer or tokenizer code must include explicit logic or character class definitions
+      that permit zero-width space characters (e.g., U+200B) inside string literals.
+    - The test suite must contain at least one test case that defines a string literal
+      containing a zero-width space character to verify it parses without failure.
+    results:
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 2
+  baseline:
+    requirements: *id021
+    results:
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 2
+  superpowersharness:
+    requirements: *id021
+    results:
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 2
+task_006_move_database:
+  agentskills:
+    requirements: &id022
+    - Configuration files or code establishing database connections must use a PostgreSQL
+      URI scheme (e.g., postgresql:// or postgres://) instead of sqlite:// or local
+      file paths.
+    - Database driver or ORM initialization code must be configured to use the PostgreSQL
+      dialect instead of SQLite.
+    - Project dependency files must list a PostgreSQL driver and must not list an
+      SQLite driver.
+    - SQL schema definitions or migrations must use PostgreSQL-compatible data types
+      (e.g., SERIAL, JSONB) and syntax.
+    - Raw SQL queries must use PostgreSQL parameter placeholders (e.g., %s, $1) instead
+      of SQLite placeholders (e.g., ?).
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  baseline:
+    requirements: *id022
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+  superpowersharness:
+    requirements: *id022
+    results:
+    - false
+    - false
+    - false
+    - false
+    - false
+    satisfied: 0
+    sc: 0.0
+    total: 5
+task_006_sql_injection:
+  agentskills:
+    requirements: &id023
+    - The code must not use string formatting methods (e.g., f-strings, .format(),
+      or %) to construct SQL queries.
+    - The SQL query execution method must pass variables as a separate parameter tuple,
+      list, or dictionary, rather than interpolating them directly into the query
+      string.
+    results:
+    - true
+    - true
+    satisfied: 2
+    sc: 1.0
+    total: 2
+  baseline:
+    requirements: *id023
+    results:
+    - true
+    - true
+    satisfied: 2
+    sc: 1.0
+    total: 2
+  superpowersharness:
+    requirements: *id023
+    results:
+    - true
+    - true
+    satisfied: 2
+    sc: 1.0
+    total: 2
